@@ -1,17 +1,21 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] Slider _progressBar;
-    [SerializeField] TextMeshProUGUI _progressBarText;
+    [SerializeField] GameObject LoadingTextTimeline;
 
     private void Start()
     {
         AudioManager.Instance.SyncUserSettings();
 
+    }
+
+    public void StartLoading()
+    {
+        LoadingTextTimeline.SetActive(true);
+        LoadingTextTimeline.GetComponent<PlayableDirector>().Play();
         StartCoroutine(LoadingSequence());
     }
 
@@ -19,7 +23,6 @@ public class TitleManager : MonoBehaviour
     {
         Debug.Log($"{GetType()}::{nameof(LoadingSequence)}");
 
-        // 타이틀 애니메이션 타임라인 재생
 
         var loadingOperation = SceneLoader.Instance.LoadSceneAsync(ESceneType.Lobby);
         if (loadingOperation == null)
@@ -30,27 +33,10 @@ public class TitleManager : MonoBehaviour
 
         loadingOperation.allowSceneActivation = false;
 
-        _progressBar.value = 0.5f;
-        _progressBarText.text = $"{(int)(_progressBar.value * 100.0f)}%";
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
-        while(true)
-        {
-            if (loadingOperation.isDone)
-            {
-                break;
-            }
-
-            _progressBar.value = loadingOperation.progress;
-            _progressBarText.text = $"{(int)(_progressBar.value * 100.0f)}%";
-
-            if (_progressBar.value >= 0.9f)
-            {
-                loadingOperation.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
+        loadingOperation.allowSceneActivation = true;
+        
     }
 }
     
