@@ -40,6 +40,6 @@ public class PlayerDefaultData : ScriptableObject
     public float DefaultCurse {get => defaultCurse; set => defaultCurse = value;}
     
     [Header("플레이어 목숨 개수")]
-    [SerializeField] private float defaultLife;
-    public float DefaultLife {get => defaultLife; set => defaultLife = value;}
+    [SerializeField] private int defaultLife;
+    public int DefaultLife {get => defaultLife; set => defaultLife = value;}
 }
