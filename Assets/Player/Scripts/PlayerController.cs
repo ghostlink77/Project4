@@ -1,3 +1,6 @@
+/*
+플레이어 캐릭터의 게임 플레이 도중의 상태 변화, 성장 등을 관리하는 스크립트
+*/
 using Unity.VisualScripting;
 using UnityEngine;
 
