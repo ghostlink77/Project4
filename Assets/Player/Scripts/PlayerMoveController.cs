@@ -18,6 +18,4 @@ public class PlayerMoveController : MonoBehaviour
     {
         
     }
-    
-    void 
 }
