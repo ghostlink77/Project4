@@ -8,10 +8,12 @@ using UnityEngine.InputSystem;
 public class PlayerMoveController : MonoBehaviour
 {
     public PlayerInputKey keyList;
+    private PlayerController playerController;
+    private float moveSpeed;
     
     void Start()
     {
-
+        moveSpeed = playerController.MoveSpeed;
     }
 
     void Update()

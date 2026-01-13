@@ -50,4 +50,7 @@ public class PlayerController : MonoBehaviour
         curse = playerDefaultData.DefaultCurse;
         life = playerDefaultData.DefaultLife;
     }
+    
+    // 플레이어 스탯 반환 및 설정하는 함수
+    public float MoveSpeed {get => moveSpeed; set => moveSpeed = value;}
 }
