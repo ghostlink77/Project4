@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 6658784135598784195}
   - component: {fileID: 4891547313342275709}
   - component: {fileID: 8592272979165148098}
-  - component: {fileID: 4182623106864852511}
+  - component: {fileID: -4712269970147782130}
+  - component: {fileID: 3279161529823316723}
+  - component: {fileID: 3388451361037091150}
+  - component: {fileID: 1769412929353730414}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -167,7 +170,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4182623106864852511
+--- !u!114 &-4712269970147782130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3861700bbcf59440a4b19ffa218ccbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatController
+  playerDefaultData: {fileID: 11400000, guid: 91a7ab7f2fe6ce94fb60d9cbe4ce99d9, type: 2}
+--- !u!114 &3279161529823316723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,4 +194,84 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb3737e76fcd1274bbe14c4f3cead783, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveController
+--- !u!114 &3388451361037091150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: ff8fafb6ced782245891150e5c371ed6, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3279161529823316723}
+        m_TargetAssemblyTypeName: PlayerMoveController, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4e95e00f-207d-4173-9ae5-7a233c37957f
+    m_ActionName: 'Player/Move[/Keyboard/d,/Keyboard/a,/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4791ba05-ea78-40e4-9929-81dc3c59e7c6
+    m_ActionName: 'Player/Interaction[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aefce445-159d-46a0-8057-30e96b967f37
+    m_ActionName: 'UI/Confirm[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a337d9fe-e921-453b-b654-12d2657b7231
+    m_ActionName: 'UI/Cancel[/Mouse/rightButton]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!95 &1769412929353730414
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4806547eac617e949971f1f37740031e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -4,7 +4,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerStatController : MonoBehaviour
 {
     [SerializeField] private PlayerDefaultData playerDefaultData;
     
@@ -21,11 +21,15 @@ public class PlayerController : MonoBehaviour
     private float curse;
     private int life;
 
+    void Awake()
+    {
+        resetPlayerStat();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        resetPlayerStat();
-        
+
     }
 
     // Update is called once per frame
