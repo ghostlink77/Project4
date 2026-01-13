@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerDefaultData", menuName = "Scriptable Objects/PlayerDefaultData")]
 public class PlayerDefaultData : ScriptableObject
 {
+    [Header("플레이어 기본 레벨")]
+    [SerializeField] private int defaultLevel;
+    public int DefaultLevel {get => defaultLevel; set => defaultLevel = value;}
+
     [Header("플레이어 기본 최대 HP")]
     [SerializeField] private int defaultMaxHP;
     public int DefaultMaxHP {get => defaultMaxHP; set => defaultMaxHP = value;}

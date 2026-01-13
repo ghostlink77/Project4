@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerDefaultData playerDefaultData;
     
+    private int currentLevel;
     private int maxHp;
     private int currentHp;
     private int defense;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
     void resetPlayerStat()
     {
+        currentLevel = playerDefaultData.DefaultLevel;
         maxHp = playerDefaultData.DefaultMaxHP;
         currentHp = maxHp;
         defense = playerDefaultData.DefaultDef;
