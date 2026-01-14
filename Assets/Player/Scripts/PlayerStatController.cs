@@ -85,7 +85,7 @@ public class PlayerStatController : MonoBehaviour
         StartPlayerAnimation();
 
         // 방어력 적용해서 데미지 적용
-        float value = 100 / (100 + defense);
+        float value = damage * 100 / (100 + defense);
         int finalDamage = (int)Math.Round(value);
         currentHp -= finalDamage;
         Debug.Log($"{finalDamage} 적용, 남은 체력: {currentHp}");
