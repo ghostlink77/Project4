@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ba4d795223c954eaaf7f2652a0a608, type: 3}
   m_Name: PlayerDefaultData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDefaultData
-  defaultLevel: 0
+  defaultLevel: 1
   defaultMaxHP: 100
   defaultDef: 10
   defaultHpGenSpeed: 1
