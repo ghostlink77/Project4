@@ -1,30 +1,38 @@
+/*
+플레이어에게 데미지를 입히기 위한 투사체에 탑재할 스크립트
+*/
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class projectileController : MonoBehaviour
 {
-    [SerializeField] private string atkTargetTag;
-    [SerializeField] private int projDamage;
+    [SerializeField] private int _projDamage;
+    
+    //목표
+    private GameObject _target;
+    private PlayerStatController _playerStat;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _target = GameObject.FindGameObjectWithTag("Player");
+        _playerStat = _target.GetComponent<PlayerStatController>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(atkTargetTag))
+        if (other.CompareTag(_target.tag))
         {
-            Debug.Log("플레이어 감지됨");
+            GiveDamage();
+            
             // 여기에 데미지 입히는 코드 추가 필요
             Destroy(gameObject);
         }
+    }
+    
+    //플레이어에게 데미지를 주는 함수
+    private void GiveDamage()
+    {
+        _playerStat.GetDamage(_projDamage);
     }
 }

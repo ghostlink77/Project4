@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatController
   playerDefaultData: {fileID: 11400000, guid: 91a7ab7f2fe6ce94fb60d9cbe4ce99d9, type: 2}
+  animator: {fileID: 1769412929353730414}
 --- !u!114 &3279161529823316723
 MonoBehaviour:
   m_ObjectHideFlags: 0
