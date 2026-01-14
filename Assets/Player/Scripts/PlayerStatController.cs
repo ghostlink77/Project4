@@ -8,6 +8,7 @@ public class PlayerStatController : MonoBehaviour
 {
     [SerializeField] private PlayerDefaultData playerDefaultData;
     
+    // 플레이어 스탯
     private int currentLevel;
     private int maxHp;
     private int currentHp;
@@ -20,7 +21,7 @@ public class PlayerStatController : MonoBehaviour
     private float greed;
     private float curse;
     private int life;
-
+    
     void Awake()
     {
         resetPlayerStat();
