@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dd55f932044494bb6c4af67ca3c742, type: 3}
   m_Name: PlayerSoundData
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 2b0da7fdd59ba124b919b13b85a04dac, type: 3}

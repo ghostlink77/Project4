@@ -8,10 +8,14 @@ using UnityEngine;
 
 public class PlayerStatController : MonoBehaviour
 {
-    [SerializeField] private PlayerDefaultData playerDefaultData;
-    private Animator animator;
+    [Header("스크립터블 오브젝트들")]
+    [SerializeField]
+    private PlayerDefaultData playerDefaultData;
+    [SerializeField]
+    private SoundData playerSound;
     
     // 플레이어 스탯
+    [Header("플레이어 스탯")]
     [SerializeField]
     private int currentLevel;
     [SerializeField]
@@ -36,6 +40,9 @@ public class PlayerStatController : MonoBehaviour
     private float curse;
     [SerializeField]
     private int life;
+
+    private Animator animator;
+    private SoundManager soundManager;
     
     void Awake()
     {
@@ -46,6 +53,7 @@ public class PlayerStatController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        soundManager = SoundManager.Instance;
     }
 
     // Update is called once per frame
@@ -100,6 +108,7 @@ public class PlayerStatController : MonoBehaviour
     void StartPlayerAnimation()
     {
         animator.SetTrigger("isHurt");
+        soundManager.PlayPlayerSFX(playerSound.GetClip(0));
     }
     
     //플레이어 죽음 상태 설정하는 함수
