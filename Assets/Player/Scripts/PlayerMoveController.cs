@@ -12,6 +12,8 @@ public class PlayerMoveController : MonoBehaviour
 {
     // 플레이어 이동에 사용되는 스탯을 가져오기 위함
     private PlayerStatController _playerStat;
+    private SpriteRenderer _spriteRenderer;
+
     // 플레이어 애니메이션 패러미터를 수정하기 위한 애니메이터
     private Animator _animator;
     // 플레이어 이동 속도를 저장할 변수
@@ -35,6 +37,7 @@ public class PlayerMoveController : MonoBehaviour
         _moveSpeed = _playerStat.MoveSpeed;
         _currentPos = gameObject.transform.position;
         _lastPos = gameObject.transform.position;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -43,6 +46,7 @@ public class PlayerMoveController : MonoBehaviour
         _currentPos = gameObject.transform.position;
         
         // 이동 처리
+        FlipCharacter(_inputVector);
         transform.Translate(_moveVector.normalized * _moveSpeed * Time.deltaTime);
 
         // 애니메이션 처리
@@ -50,15 +54,19 @@ public class PlayerMoveController : MonoBehaviour
         
         // 플레이어 위치 기록하기
         _lastPos = _currentPos;
-
     }
     
     // 플레이어 이동 처리
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("플레이어 이동 실행");
         _inputVector = context.ReadValue<Vector2>();
         _moveVector = new Vector3(_inputVector.x, _inputVector.y, 0);
+    }
+    
+    private void FlipCharacter(Vector2 input)
+    {
+        if (input.x < 0) {_spriteRenderer.flipX = true;}
+        else if (input.x > 0) {_spriteRenderer.flipX = false;}
     }
     
     // 플레이어 이동 관리하는 프로그램
