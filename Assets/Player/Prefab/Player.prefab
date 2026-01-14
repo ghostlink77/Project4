@@ -183,7 +183,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatController
   playerDefaultData: {fileID: 11400000, guid: 91a7ab7f2fe6ce94fb60d9cbe4ce99d9, type: 2}
-  animator: {fileID: 1769412929353730414}
+  currentLevel: 0
+  maxHp: 0
+  currentHp: 0
+  defense: 0
+  hpGenSpeed: 0
+  moveSpeed: 0
+  itemReceiveRadius: 0
+  luck: 0
+  growth: 0
+  greed: 0
+  curse: 0
+  life: 0
 --- !u!114 &3279161529823316723
 MonoBehaviour:
   m_ObjectHideFlags: 0
