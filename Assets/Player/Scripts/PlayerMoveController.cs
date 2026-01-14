@@ -46,7 +46,6 @@ public class PlayerMoveController : MonoBehaviour
         _currentPos = gameObject.transform.position;
         
         // 이동 처리
-        FlipCharacter(_inputVector);
         transform.Translate(_moveVector.normalized * _moveSpeed * Time.deltaTime);
 
         // 애니메이션 처리
@@ -63,16 +62,18 @@ public class PlayerMoveController : MonoBehaviour
         _moveVector = new Vector3(_inputVector.x, _inputVector.y, 0);
     }
     
+    // 플레이어 입력에 따라 뒤집는 메서드
     private void FlipCharacter(Vector2 input)
     {
         if (input.x < 0) {_spriteRenderer.flipX = true;}
         else if (input.x > 0) {_spriteRenderer.flipX = false;}
     }
     
-    // 플레이어 이동 관리하는 프로그램
+    // 플레이어 이동 관리하는 메서드
     void DefinePlayerAnimation(Vector2 value1, Vector2 value2)
     {
         _animator.SetBool("isMoving", (value1 != value2));
+        FlipCharacter(_inputVector);
     }
 }
 
