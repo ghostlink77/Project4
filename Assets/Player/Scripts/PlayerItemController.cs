@@ -12,15 +12,10 @@ public class PlayerItemController : MonoBehaviour
     [SerializeField]
     private List<GameObject> playerPassiveItemSlot = new List<GameObject>();
 
-    void Awake()
+    void Start()
     {
         InitializeSlots(playerWeaponSlot, 4);
         InitializeSlots(playerPassiveItemSlot, 8);
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
