@@ -83,7 +83,6 @@ public class PlayerStatController : MonoBehaviour
     // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
     public void GetDamage(int damage)
     {
-        Debug.Log($"animator: {animator.name}, has controller: {animator.runtimeAnimatorController != null}");
         bool isDead = animator.GetBool("isDead");
 
         // 플레이어가 이미 죽은 경우 함수 미적용
