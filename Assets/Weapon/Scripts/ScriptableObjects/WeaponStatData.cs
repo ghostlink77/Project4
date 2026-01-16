@@ -58,7 +58,7 @@ public class WeaponStatData : ScriptableObject
     [Header("공격 사거리")]
     [SerializeField]
     private float atkRange;
-    public float AtkRange;
+    public float AtkRange => atkRange;
 
     [Header("투사체 속도")]
     [SerializeField]
