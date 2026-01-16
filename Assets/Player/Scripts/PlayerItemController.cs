@@ -70,14 +70,14 @@ public class PlayerItemController : MonoBehaviour
     // 슬롯의 아이템 새로운 아이템으로 대체하는 메서드
     private void ChangeItem(List<GameObject> itemSlot, int slotNumber, GameObject newItem)
     {
-        Debug.Log($"{nameof(itemSlot)} 리스트의 {slotNumber}번째 슬롯 비어있음, {nameof(newItem)} 넣기");
+        // Debug.Log($"{nameof(itemSlot)} 리스트의 {slotNumber}번째 슬롯 비어있음, {nameof(newItem)} 넣기");
         itemSlot[slotNumber] = newItem;
     }
     
     // 슬롯 사이즈 맞추기
     private void InitializeSlots(List<GameObject> list, int count)
     {
-        Debug.Log($"{nameof(list)} 리스트 크기를 {count}로 설정");
+        // Debug.Log($"{nameof(list)} 리스트 크기를 {count}로 설정");
         // 리스트가 작으면
         if (list.Count < count) ExpandList(list, count);
         // 리스트가 더 크면
@@ -87,7 +87,7 @@ public class PlayerItemController : MonoBehaviour
     // 정한 사이즈만큼 리스트 크기 늘리는 메서드
     private void ExpandList(List<GameObject> list, int count)
     {
-        Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
+        // Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
         if (list.Count >= count) return;
         int sizeToExpand = count - list.Count;
         for (int i = 0; i < sizeToExpand; i++) list.Add(null);
@@ -96,7 +96,7 @@ public class PlayerItemController : MonoBehaviour
     // 정한 사이즈 초과하는 리스트 인덱스 모두 없애는 메서드
     private void ReduceList(List<GameObject> list, int count)
     {
-        Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
+        // Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
         if (list.Count <= count) return;
         int sizeToDelete = list.Count - count;
         list.RemoveRange(list.Count - sizeToDelete, sizeToDelete);
