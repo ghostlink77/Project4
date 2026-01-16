@@ -5,9 +5,13 @@ using UnityEngine.UIElements;
 public class BulletController : MonoBehaviour
 {
     // 사운드 에셋들
-    [Header("사운드 스크립터블 오브젝트")]
+    [Header("발사음")]
     [SerializeField]
     private SoundData shootingSounds;
+    
+    [Header("발사음 리스트 번호")]
+    [SerializeField]
+    private int shootSoundListNumber;
     
     // 오디오 소스
     [SerializeField]
@@ -48,8 +52,8 @@ public class BulletController : MonoBehaviour
     // 총알 사운드 출력하는 메서드
     private void PlayBulletSound()
     {
-        audioSource.clip = shootingSounds.GetClip(0);
-        if (CheckAbleToShoot(shootingSounds, 0) == false)
+        audioSource.clip = shootingSounds.GetClip(shootSoundListNumber);
+        if (CheckAbleToShoot(shootingSounds, shootSoundListNumber) == false)
         {
             Debug.LogError("사운드 파일 재생 불가");
             return;
