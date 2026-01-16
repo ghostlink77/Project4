@@ -28,9 +28,19 @@ public class BulletController : MonoBehaviour
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
+        // 총알 사운드 출력
+        PlayBulletSound();
+    }
+    
+    // 총알 사운드 출력하는 메서드
+    private void PlayBulletSound()
+    {
         audioSource.clip = shootingSounds.GetClip(0);
-        if (CheckAbleToShoot(shootingSounds, 0) == false) return;
-
+        if (CheckAbleToShoot(shootingSounds, 0) == false)
+        {
+            Debug.LogError("사운드 파일 재생 불가");
+            return;
+        }
         Debug.Log($"{audioSource.clip.name} 파일 재생");
         audioSource.Play();
     }
@@ -42,12 +52,13 @@ public class BulletController : MonoBehaviour
         // 사운드 클립이 존재하는지 확인
         if (scriptableObject.GetClip(clipNumber) == null)
         {
-            Debug.Log($"{scriptableObject.name}의 {clipNumber}번 항목이 존재하지 않음");
+            Debug.LogError($"{scriptableObject.name}의 {clipNumber}번 항목이 존재하지 않음");
             return false;
         }
+        // 사운드 클립이 일치하는지 확인
         else if (audioSource.clip != scriptableObject.GetClip(clipNumber))
         {
-            Debug.Log($"필요한 사운드 클립: {scriptableObject.GetClip(clipNumber)}, 현재 할당된 사운드 클립: {audioSource.clip.name}");
+            Debug.LogError($"필요한 사운드 클립: {scriptableObject.GetClip(clipNumber)}\n현재 할당된 사운드 클립: {audioSource.clip.name}");
         }
         return true;
     }
