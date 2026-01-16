@@ -23,15 +23,28 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         playerObj = GameObject.FindWithTag("Player");
+        // 게임 오브젝트 비활성화
+        if (gameObject.activeSelf == true) gameObject.SetActive(false);
     }
 
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
+        // 게임 오브젝트 활성화
+        if (gameObject.activeSelf == false) gameObject.SetActive(true);
         // 총알 사운드 출력
         PlayBulletSound();
     }
-    
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("트리거 감지");
+            gameObject.SetActive(false);
+        }
+    }
+
     // 총알 사운드 출력하는 메서드
     private void PlayBulletSound()
     {
@@ -41,7 +54,7 @@ public class BulletController : MonoBehaviour
             Debug.LogError("사운드 파일 재생 불가");
             return;
         }
-        Debug.Log($"{audioSource.clip.name} 파일 재생");
+        // Debug.Log($"{audioSource.clip.name} 파일 재생");
         audioSource.Play();
     }
     
