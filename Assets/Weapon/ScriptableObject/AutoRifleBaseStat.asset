@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
   weaponName: "\uC790\uB3D9 \uC18C\uCD1D"
   icon: {fileID: -8695669024712420183, guid: 2413f1a85c7eb544da96ae1033b64749, type: 3}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8740604490144623316, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
   level: 1
   type: 1
   atk: 20
@@ -22,6 +22,6 @@ MonoBehaviour:
   critMultiplier: 1.4
   effectRate: 10
   atkSpeed: 0.25
-  atkRange: 15
+  atkRange: 3
   projectileSpeed: 20
   projectileCount: 1
