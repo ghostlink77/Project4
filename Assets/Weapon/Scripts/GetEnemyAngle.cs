@@ -1,5 +1,5 @@
 /*
-플레이어의 하위 오브젝트로 생성된 무기의 월드 좌표, 
+플레이어를 기준으로 적의 방향을 구하는 스크립트
 */
 using System;
 using System.Collections.Generic;
@@ -8,98 +8,60 @@ using UnityEngine;
 
 public class GetEnemyAngle : MonoBehaviour
 {
-    private Vector2 playerPos;
-    private Vector2 targetPos;
-    private GameObject targetObj;
-    private CircleCollider2D weaponCollider;
     private List<GameObject> enemiesInRange = new List<GameObject>();
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        weaponCollider = GetComponent<CircleCollider2D>();
-        GetPlayerPosition();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // 트리거 콜라이더에 적이 들어올 때
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) enemiesInRange.Add(collision.gameObject);
     }
 
-    // 트리거 콜라이더에서 적이 나갈 때
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
-        {
-            enemiesInRange.Remove(collision.gameObject);
-            if (targetObj == collision.gameObject) targetObj = null;
-        }
+        if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
     }
 
-    // 플레이어 위치 갱신하는 메서드
-    void GetPlayerPosition()
+    Vector2 GetGameObjectPosition(GameObject gameObj)
     {
-        playerPos = transform.position;
+        return gameObj.transform.position;
     }
     
-    // 적 위치 갱신하는 메서드
-    void GetTargetPosition()
-    {
-        // 타겟인 적의 게임 오브젝트 할당
-        
-        // 변수에 가져오기
-        targetPos = targetObj.transform.position;
-    }
-    
-    // 매개변수로 시작 지점, 끝 지점 설정한 후 벡터 반환하는 메서드
-    public Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos)
+    // 방향 뿐만이 아니라 길이를 구할 때에도 활용하기 때문에 따로 normalize는 적용하지 않는다
+    private Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos)
     {
         return endPos - startPos;
     }
     
-    // 제공된 2차원 벡터의 크기를 구하는 메서드
-    public double GetDistance(Vector2 directionVector)
-    {
-        double distance = Math.Pow(directionVector.x, 2) + Math.Pow(directionVector.y, 2);
-        return Math.Sqrt(distance);
-    }
-    
+    // 방향을 구하는 것만이 목적이기 때문에, 반드시 반환값은 normalize되어야 한다.
+    /*
+    결과가 정상적이지 않을 경우 Vector2.zero를 출력하도록 코드를 작성했다.
+    따라서 거리가 0이라면 사격을 실행하지 않도록 하는 코드를 사격 코드에 추가해야 할 것이다.
+    */
     public Vector2 FindCLosestEnemyDirection()
     {
+        Vector2 playerPos = GetGameObjectPosition(gameObject);
         int length = enemiesInRange.Count;
-        // 플레이어와 적의 거리 저장하는 리스트
-        List<double> enemyDistance = new List<double>();
-        
-        // 플레이어 위치 동기화
-        GetPlayerPosition();
+        if (length == 0) return Vector2.zero;
+
+        int smallestEnemyIndex = 0;
+        float smallestDistance = float.MaxValue;
         
         // 적과의 거리 저장하는 리스트에 거리들 작성
         for (int i = 0; i < length; i++)
         {
-            // 플레이어에서 적으로 도달하는 벡터 구하는 배열
-            enemyDistance.Add(GetDistance(GetDirectionVector(playerPos, enemiesInRange[i].transform.position)));
-        }
-        
-        int smallestEnemyIndex = 0;
-        double smallestDirection = enemyDistance[0];
-        
-        // 거리들 비교하고, 제일 작은 값과 인덱스 번호 찾아내기
-        for (int i = 1; i < length; i++)
-        {
-            if (smallestDirection > enemyDistance[i])
+            Vector2 oneEnemyDirection = GetDirectionVector(playerPos, enemiesInRange[i].transform.position);
+            float oneEnemyDistance = oneEnemyDirection.sqrMagnitude;
+
+            if (smallestDistance > oneEnemyDistance)
             {
                 smallestEnemyIndex = i;
-                smallestDirection = enemyDistance[i];
+                smallestDistance = oneEnemyDistance;
             }
         }
 
-        return enemiesInRange[smallestEnemyIndex].transform.position;
+        // 단순 거리 반환용이고, 나중에 따로 속도도 적용할 예정이기 때문에 normalize를 진행한다.
+        if (enemiesInRange[smallestEnemyIndex] == null) return Vector2.zero;
+        Vector2 closestEnemyPos = enemiesInRange[smallestEnemyIndex].transform.position;
+        Vector2 result = GetDirectionVector(playerPos, closestEnemyPos).normalized;
+        return result;
     }
 }
