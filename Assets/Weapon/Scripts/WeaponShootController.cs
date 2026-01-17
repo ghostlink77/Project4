@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class WeaponShootController : MonoBehaviour
 {
-    
-    
+    PlayerStatController playerStat;
+
     void Start()
     {
-        
+        playerStat = GetComponent<PlayerStatController>();
     }
 
     void Update()
