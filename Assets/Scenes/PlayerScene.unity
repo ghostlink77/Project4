@@ -139,6 +139,11 @@ MonoBehaviour:
   _playerWeaponSlot: []
   _playerPassiveItemSlot: []
   _playerTurretSlot: []
+--- !u!82 &316996982 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 78060522483258619, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
+  m_PrefabInstance: {fileID: 7512630448816253690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &594040551
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +528,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239158515339091101, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 316996982}
     - target: {fileID: 2645344037866386997, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -7,13 +7,9 @@ public class BulletController : MonoBehaviour
     // 사운드 에셋들
     [Header("발사음")]
     [SerializeField]
-    private SoundData shootingSounds;
+    private WeaponSoundData weaponSounds;
     
-    [Header("발사음 리스트 번호")]
-    [SerializeField]
-    private int shootSoundListNumber;
-    
-    // 오디오 소스
+    // 오디오 실행할 오디오 소스(총알 프리팹에 존재)
     [SerializeField]
     private AudioSource audioSource;
     
@@ -37,7 +33,7 @@ public class BulletController : MonoBehaviour
         // 게임 오브젝트 활성화
         if (gameObject.activeSelf == false) gameObject.SetActive(true);
         // 총알 사운드 출력
-        PlayBulletSound();
+        PlaySound(weaponSounds.ShootSound);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -50,37 +46,27 @@ public class BulletController : MonoBehaviour
     }
 
     // 총알 사운드 출력하는 메서드
-    private void PlayBulletSound()
+    private void PlaySound(AudioClip clip)
     {
-        audioSource.clip = shootingSounds.GetClip(shootSoundListNumber);
-        if (CheckAbleToShoot(shootingSounds, shootSoundListNumber) == false)
-        {
-            Debug.LogError("사운드 파일 재생 불가");
-            return;
-        }
+        audioSource.clip = clip;
+        if (CheckAbleToShoot(audioSource.clip) == false) return;
         // Debug.Log($"{audioSource.clip.name} 파일 재생");
         audioSource.Play();
     }
     
     // 사격이 가능한지 확인하는 메서드
     // 사격이 가능하면 true 반환
-    private bool CheckAbleToShoot(SoundData scriptableObject, int clipNumber)
+    private bool CheckAbleToShoot(AudioClip clip)
     {
         // 사운드 클립이 존재하는지 확인
-        if (scriptableObject.GetClip(clipNumber) == null)
+        if (clip == null)
         {
-            Debug.LogError($"{scriptableObject.name}의 {clipNumber}번 항목이 존재하지 않음");
+            Debug.LogError($"AudioClip이 존재하지 않음");
             return false;
-        }
-        // 사운드 클립이 일치하는지 확인
-        else if (audioSource.clip != scriptableObject.GetClip(clipNumber))
-        {
-            Debug.LogError($"필요한 사운드 클립: {scriptableObject.GetClip(clipNumber)}\n현재 할당된 사운드 클립: {audioSource.clip.name}");
         }
         return true;
     }
     
-    // Update is called once per frame
     void Update()
     {
         
