@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19dd55f932044494bb6c4af67ca3c742, type: 3}
-  m_Name: ShootSounds
-  m_EditorClassIdentifier: Assembly-CSharp::SoundData
-  clips:
-  - {fileID: 8300000, guid: 191ea8dda64216044b2f21b45da2bb32, type: 3}
+  m_Script: {fileID: 11500000, guid: 56b8cda85d6070140b655030093a7cb0, type: 3}
+  m_Name: AutoRifleSound
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundData
+  shootSound: {fileID: 0}
+  bulletHitSound: {fileID: 0}
