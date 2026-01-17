@@ -1,3 +1,7 @@
+/*
+무기의 스탯을 관리하는 컨트롤러 스크립트
+무기 스탯 관리를 제외한 다른 요소들은 이 스크립트에서 구현해서는 안된다.
+*/
 using NUnit.Framework;
 using UnityEngine;
 
