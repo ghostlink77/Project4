@@ -42,6 +42,7 @@ public class WeaponStatController : MonoBehaviour
     {
         weaponRangeCollider = GetComponent<CircleCollider2D>();
         ResetWeaponData();
+        SyncAtkRange(atkRange);
     }
 
     void Update()
@@ -59,7 +60,6 @@ public class WeaponStatController : MonoBehaviour
         effectRate = baseStat.EffectRate;
         atkSpeed = baseStat.AtkSpeed;
         atkRange = baseStat.AtkRange;
-        SyncAtkRange(atkRange);
         projectileSpeed = baseStat.ProjectileSpeed;
         projectileCount = baseStat.ProjectileCount;
     }
@@ -67,7 +67,10 @@ public class WeaponStatController : MonoBehaviour
     // 매개변수로 입력된 공격 범위에 따라 조절하는 메서드
     private void SyncAtkRange(float atkRange)
     {
-        weaponRangeCollider.radius = atkRange;
-        if (weaponRangeCollider.radius == atkRange) Debug.Log($"콜라이더 반경 {weaponRangeCollider.radius}으로 설정됨");
+        if (weaponRangeCollider.radius != atkRange)
+        {
+            weaponRangeCollider.radius = atkRange;
+            Debug.Log($"콜라이더 반경 {weaponRangeCollider.radius}으로 설정됨");
+        }
     }
 }
