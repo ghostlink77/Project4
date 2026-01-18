@@ -1,5 +1,6 @@
 /*
 플레이어를 기준으로 적의 방향을 구하는 스크립트
+CircleCollider2D가 있는 게임오브젝트에 이 스크립트가 컴포넌트로 있어야 함
 */
 using System;
 using System.Collections.Generic;
