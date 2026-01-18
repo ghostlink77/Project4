@@ -124,7 +124,7 @@ public class WeaponShootController : MonoBehaviour
         Vector2 direction = GetDirectionVector(playerPos, targetPos).normalized;
         obj.transform.right = direction;
         obj.SetActive(true);
-        Debug.Log($"오브젝트 개수: {(_projectilePool as ObjectPool<GameObject>).CountAll}");
+        // Debug.Log($"오브젝트 개수: {(_projectilePool as ObjectPool<GameObject>).CountAll}");
         BulletController bulletController = obj.GetComponent<BulletController>();
         bulletController.ProjectileSpeed = _weaponStatController.ProjectileSpeed;
     }

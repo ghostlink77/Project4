@@ -31,10 +31,12 @@ public class BulletController : MonoBehaviour
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
-        // 게임 오브젝트 활성화
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+
         if (gameObject.activeSelf == false) gameObject.SetActive(true);
         StartCoroutine(DeactivateAfterTime());
-        // 총알 사운드 출력
+
         PlaySound(weaponSounds.ShootSound);
     }
     
@@ -59,9 +61,22 @@ public class BulletController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("트리거 감지");
-            ReturnToPool();
+            if (!gameObject.activeSelf) return;
+            StartCoroutine(DelayedRelease());
         }
+    }
+    
+    private IEnumerator DelayedRelease()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        
+        if (audioSource != null && audioSource.clip != null)
+        {
+            yield return new WaitWhile(() => audioSource.isPlaying);
+        }
+        
+        _projectilePool.Release(gameObject);
     }
 
     // 총알 사운드 출력하는 메서드
