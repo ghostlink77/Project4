@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 346130979}
   - component: {fileID: 346130978}
   - component: {fileID: 346130980}
-  - component: {fileID: 346130981}
   - component: {fileID: 346130982}
   m_Layer: 0
   m_Name: AutoRifle
@@ -232,18 +231,6 @@ MonoBehaviour:
   atkRange: 0
   projectileSpeed: 0
   projectileCount: 0
---- !u!114 &346130981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346130976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6d313a9da4bbe419a9c10cda41235b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GetEnemyAngle
 --- !u!114 &346130982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312475b04dbc72a41b63a5470d827998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShootController
-  weaponStatData: {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}
 --- !u!1 &594040551
 GameObject:
   m_ObjectHideFlags: 0
