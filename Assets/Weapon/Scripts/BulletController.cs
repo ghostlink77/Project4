@@ -10,9 +10,12 @@ public class BulletController : MonoBehaviour
     [Header("발사음")]
     [SerializeField]
     private WeaponSoundData weaponSounds;
+
+    private float _projectileSpeed;
+    public float ProjectileSpeed {get => _projectileSpeed; set => _projectileSpeed = value;}
     
     private AudioSource audioSource;
-    
+
     [SerializeField]
     private float _lifeTime = 3f;
 
@@ -33,6 +36,11 @@ public class BulletController : MonoBehaviour
         StartCoroutine(DeactivateAfterTime());
         // 총알 사운드 출력
         PlaySound(weaponSounds.ShootSound);
+    }
+    
+    void Update()
+    {
+        transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     }
     
     private IEnumerator DeactivateAfterTime()
@@ -76,10 +84,5 @@ public class BulletController : MonoBehaviour
             return false;
         }
         return true;
-    }
-    
-    void Update()
-    {
-        
     }
 }
