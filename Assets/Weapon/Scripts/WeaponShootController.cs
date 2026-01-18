@@ -13,7 +13,6 @@ public class WeaponShootController : MonoBehaviour
     CircleCollider2D _weaponRangeCollider;
     List<GameObject> enemiesInRange = new List<GameObject>();
     WeaponStatController _weaponStatController;
-    BulletController _bulletController;
     
     float _atkSpeed = 0f;
     float _atkCoolTime = 0f;
@@ -37,9 +36,6 @@ public class WeaponShootController : MonoBehaviour
         _weaponStatController = GetComponent<WeaponStatController>();
         _weaponRangeCollider = GetComponent<CircleCollider2D>();
         _bulletPrefab = _weaponStatController.baseStat.ProjectilePrefab;
-
-        _bulletController = _bulletPrefab.GetComponent<BulletController>();
-        _bulletController.SetProjectilePool(_projectilePool);
     }
 
     void Update()
@@ -64,6 +60,7 @@ public class WeaponShootController : MonoBehaviour
     public void Shoot()
     {
         GameObject bullet = _projectilePool.Get();
+        _atkCoolTime = 0f;
     }
     
     /*
@@ -106,15 +103,34 @@ public class WeaponShootController : MonoBehaviour
     }
 
     // 여기 아래부터는 오브젝트 풀링 관련 함수들 정리
-    private GameObject OnCreateBullet() => Instantiate(_bulletPrefab);
+    private GameObject OnCreateBullet()
+    {
+        GameObject obj = Instantiate(_bulletPrefab);
+        var bullet = obj.GetComponent<BulletController>();
+        if (bullet != null) bullet.SetProjectilePool(_projectilePool);
+        return obj;
+    }
     private void OnGetBullet(GameObject obj)
     {
-        Vector2 playerPos = gameObject.transform.position;
-        Vector2 projectileDirection = FindClosestTargetVector(playerPos).normalized;
-        if (projectileDirection == Vector2.zero) Debug.LogError("사거리 안에 적 없음");
+        Vector2 playerPos = transform.position;
+        obj.transform.position = playerPos;
+        Vector2 targetPos = FindClosestTargetVector(playerPos);
+        if (targetPos == Vector2.zero)
+        {
+            Debug.LogError("적 발견 불가");
+            _projectilePool.Release(obj);
+            return;
+        }
+        Vector2 direction = GetDirectionVector(playerPos, targetPos).normalized;
+        obj.transform.right = direction;
         obj.SetActive(true);
-        obj.transform.right = projectileDirection;
+        Debug.Log($"오브젝트 개수: {(_projectilePool as ObjectPool<GameObject>).CountAll}");
     }
-    private void OnReleaseBullet(GameObject obj) => obj.SetActive(false);
+
+    private void OnReleaseBullet(GameObject obj)
+    {
+        obj.SetActive(false);
+        obj.GetComponent<BulletController>().StopAllCoroutines();
+    }
     private void OnDestroyBullet(GameObject obj) => Destroy(obj);
 }

@@ -52,7 +52,7 @@ public class BulletController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log("트리거 감지");
-            gameObject.SetActive(false);
+            ReturnToPool();
         }
     }
 
