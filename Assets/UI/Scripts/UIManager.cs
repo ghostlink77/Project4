@@ -11,6 +11,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     private Dictionary<Type, BaseUI> _openUIPool = new();
     private Dictionary<Type, BaseUI> _closeUIPool = new();
 
+    public Camera uiCamera;
+
     private BaseUI GetUI<T>(out bool isAlreadyOpen) where T : BaseUI
     {
         Type uiType = typeof(T);

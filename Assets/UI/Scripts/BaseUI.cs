@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BaseUI : MonoBehaviour
-{    
-    public string AnimOnOpen;
-    public Animator Anim;
+{
+    public PlayableDirector FadeIn;
+    public PlayableDirector FadeOut;
+
 
     public virtual void Init(Transform canvas)
     {
@@ -19,21 +22,25 @@ public class BaseUI : MonoBehaviour
 
     public virtual void Show()
     {
-        if (AnimOnOpen != null)
+        if (FadeIn != null)
         {
-            Anim.Play(AnimOnOpen);
+            FadeIn.Play();
         }
     }
 
     public virtual void Close(bool isCloseAll = false)
     {
-        //UIManager.Instance.CloseUI(this);
+        UIManager.Instance.CloseUI(this);
     }
 
     public virtual void OnClickCloseButton()
     {
-        //AudioManager.Instance.Play();
-        Close();
+        if (FadeOut != null)
+        {
+            Debug.Log("FadeOUt Ω««‡¡ﬂ..");
+            FadeOut.Play();
+        }
+        
     }
 
 }

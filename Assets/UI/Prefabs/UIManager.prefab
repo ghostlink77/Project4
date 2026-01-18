@@ -335,3 +335,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   CanvasTransform: {fileID: 8336848515035050676}
   ClosedUiTransform: {fileID: 1178520610825733224}
+  uiCamera: {fileID: 6864246068008638890}
