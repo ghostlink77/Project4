@@ -24,7 +24,7 @@ public class LobbyUIController : MonoBehaviour
             var frontUI = UIManager.Instance.GetFrontUI();
             if (frontUI != null)
             {
-                frontUI.Close();
+                frontUI.OnClickCloseButton();
             }
             else
             {

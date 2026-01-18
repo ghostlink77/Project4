@@ -712,7 +712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LobbyUIController
   _fadeOutObj: {fileID: 1825331368}
   _firstBtn: {fileID: 3513004534203070781}
-  Canvas: {fileID: 8258031946443431243}
 --- !u!114 &1225626604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,7 +1194,7 @@ Animator:
   m_GameObject: {fileID: 1825331363}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8df4de6af0aec7042b94d8f942e85b24, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1496,7 +1495,7 @@ Animator:
   m_GameObject: {fileID: 2126030831}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8df4de6af0aec7042b94d8f942e85b24, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
