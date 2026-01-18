@@ -8,8 +8,7 @@ using UnityEngine;
 public class WeaponStatController : MonoBehaviour
 {
     [Header("무기 기본 데이터 담은 스크립터블 오브젝트")]
-    [SerializeField]
-    private WeaponStatData baseStat;
+    public WeaponStatData baseStat;
     
     // 무기 범위로 사용되는 콜라이더
     private CircleCollider2D weaponRangeCollider;

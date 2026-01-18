@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
@@ -9,22 +11,18 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private WeaponSoundData weaponSounds;
     
-    // 오디오 실행할 오디오 소스(총알 프리팹에 존재)
-    [SerializeField]
     private AudioSource audioSource;
     
-    // 오브젝트 위치
-    // 플레이어 게임 오브젝트
-    private GameObject playerObj;
-    // 적 게임 오브젝트
-    private GameObject enemyObj;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private float _lifeTime = 3f;
+
+    private IObjectPool<GameObject> _projectilePool;
+
+    public void SetProjectilePool(IObjectPool<GameObject> pool) => _projectilePool = pool;
+
+    void Awake()
     {
-        playerObj = GameObject.FindWithTag("Player");
-        // 게임 오브젝트 비활성화
-        if (gameObject.activeSelf == true) gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // 투사체가 발사 시작되었을 때 출력할 코드들
@@ -32,8 +30,21 @@ public class BulletController : MonoBehaviour
     {
         // 게임 오브젝트 활성화
         if (gameObject.activeSelf == false) gameObject.SetActive(true);
+        StartCoroutine(DeactivateAfterTime());
         // 총알 사운드 출력
         PlaySound(weaponSounds.ShootSound);
+    }
+    
+    private IEnumerator DeactivateAfterTime()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+        ReturnToPool();
+        
+    }
+    
+    void ReturnToPool()
+    {
+        if (gameObject.activeSelf) _projectilePool.Release(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
