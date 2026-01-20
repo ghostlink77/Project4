@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f5d4803c916de4296f6b2724664828, type: 3}
   m_Name: Turret3
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  turretName: 
-  turretPrefab: {fileID: 0}
+  turretName: Turret3
+  turretPrefab: {fileID: 6450811886185524183, guid: 547d7f688d674f84db222cdd5bbe8575, type: 3}
+  icon: {fileID: 698051579788153543, guid: 547d7f688d674f84db222cdd5bbe8575, type: 3}
   scrapCost: 0
   damage: 0
   range: 0

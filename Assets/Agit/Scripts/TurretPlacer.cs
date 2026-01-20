@@ -10,19 +10,23 @@ public class TurretPlacer : MonoBehaviour
     [SerializeField] private LayerMask tileLayer;
     [SerializeField] private TurretData[] turrets = new TurretData[4];
 
+    public TurretData[] Turrets { get { return turrets; } }
+
     private Tile currentTile;
     private int selectedTurretIndex = -1;
     private Vector2 startMousePos;
-    private float selectThreshold = 5f;
+    private float selectThreshold = 10f;
 
     private bool isSelecting = false;
+
+    [Header("UI")]
+    [SerializeField] private TurretSelectUI turretSelectUI;
 
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             TrySelect();
-            //TryBuildTurret();
         }
 
         if (isSelecting)
@@ -38,8 +42,16 @@ public class TurretPlacer : MonoBehaviour
 
     void TrySelect()
     {
+        currentTile = GetTilePlayerPosition();
+        if (currentTile == null || !currentTile.CanPlaceTurret())
+        {
+            Debug.Log("No valid tile to place turret.");
+            return;
+        }
+
         startMousePos = Mouse.current.position.ReadValue();
         isSelecting = true;
+        turretSelectUI?.Show(startMousePos);
     }
     void UpdateMouseDirection()
     {
@@ -81,6 +93,7 @@ public class TurretPlacer : MonoBehaviour
             TryBuildTurret();
         }
         selectedTurretIndex = -1;
+        turretSelectUI?.Hide();
     }
 
     void TryBuildTurret()
