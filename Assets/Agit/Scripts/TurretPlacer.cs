@@ -1,14 +1,18 @@
+// 플레이어 오브젝트에 부착되는 터렛 배치 스크립트
+// 스페이스바를 눌러 터렛 배치 모드로 진입
+// 마우스 드래그 방향에 따라 상하좌우 4방향 중 터렛 선택
+
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// 플레이어 오브젝트에 부착되는 터렛 배치 스크립트
+
 public class TurretPlacer : MonoBehaviour
 {
 
     [SerializeField] private LayerMask tileLayer;
-    [SerializeField] private TurretData[] turrets = new TurretData[4];
+    [SerializeField] private TurretData[] turrets = new TurretData[4];  // 플레이어 포탑 슬롯의 포탑
 
     public TurretData[] Turrets { get { return turrets; } }
 
@@ -48,6 +52,8 @@ public class TurretPlacer : MonoBehaviour
             Debug.Log("No valid tile to place turret.");
             return;
         }
+
+        GetPlayerTurret();
 
         startMousePos = Mouse.current.position.ReadValue();
         isSelecting = true;
@@ -101,8 +107,14 @@ public class TurretPlacer : MonoBehaviour
         Tile tile = GetTilePlayerPosition();
         if(tile != null && tile.CanPlaceTurret())
         {
+            if(turrets[selectedTurretIndex] == null)
+            {
+                Debug.Log("No turret in selected slot.");
+                return;
+            }
             TurretData selectedTurret = turrets[selectedTurretIndex];
             tile.PlaceTurret(selectedTurret.turretPrefab);
+
         }
     }   
 
@@ -116,5 +128,9 @@ public class TurretPlacer : MonoBehaviour
             Debug.Log("Tile found at player position.");
         }
         return null;
+    }
+    void GetPlayerTurret()
+    {
+        // 추후 플레이어가 가진 포탑 정보를 가져오는 로직 추가
     }
 }
