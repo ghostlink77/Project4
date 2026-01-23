@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   weaponSounds: {fileID: 11400000, guid: 2a88cd052bbb68647b7434f754532a0b, type: 2}
-  audioSource: {fileID: 78060522483258619}
+  _lifeTime: 3
 --- !u!82 &78060522483258619
 AudioSource:
   m_ObjectHideFlags: 0
