@@ -119,26 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &300778741 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1648057168967098522, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
-  m_PrefabInstance: {fileID: 1235735846}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &300778750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300778741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76171d0de5cf69c46a40b2d29ede9b41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemController
-  _playerWeaponSlot: []
-  _playerPassiveItemSlot: []
-  _playerTurretSlot: []
 --- !u!4 &300778758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2786458683079629028, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
@@ -338,20 +318,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6658784135598784195, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2786458683079629028, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
       insertIndex: -1
       addedObject: {fileID: 346130979}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1648057168967098522, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 300778750}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
 --- !u!1001 &1811623332
 PrefabInstance:
@@ -401,10 +374,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5465676831210145756, guid: 78d93df792072a74bbbee674226c1c49, type: 3}
-      propertyPath: _projDamage
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9178846134306271934, guid: 78d93df792072a74bbbee674226c1c49, type: 3}
       propertyPath: m_Name
       value: EnemyProjectile
@@ -414,24 +383,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78d93df792072a74bbbee674226c1c49, type: 3}
---- !u!1 &2093794009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5875285538776505495, guid: 4c4ac6e84d832e94ebcbdeaa236966be, type: 3}
-  m_PrefabInstance: {fileID: 3686196720106666414}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2093794010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093794009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e759ed4f2e79c7c45b55ce0f81e509c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHpController
-  enemyHp: 100
 --- !u!1001 &217228043390551019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,10 +552,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5875285538776505495, guid: 4c4ac6e84d832e94ebcbdeaa236966be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2093794010}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4ac6e84d832e94ebcbdeaa236966be, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

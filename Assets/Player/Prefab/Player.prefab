@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3279161529823316723}
   - component: {fileID: 3388451361037091150}
   - component: {fileID: 1769412929353730414}
+  - component: {fileID: 2361471354788731644}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -288,3 +289,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2361471354788731644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76171d0de5cf69c46a40b2d29ede9b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemController
+  _playerWeaponSlot: []
+  _playerPassiveItemSlot: []
+  _playerTurretSlot: []
