@@ -106,8 +106,9 @@ public class WeaponShootController : MonoBehaviour
     private GameObject OnCreateBullet()
     {
         GameObject obj = Instantiate(_bulletPrefab);
-        var bullet = obj.GetComponent<BulletController>();
-        if (bullet != null) bullet.SetProjectilePool(_projectilePool);
+        BulletController bulletController = obj.GetComponent<BulletController>();
+        bulletController.SetDmg(_weaponStatController.Atk);
+        if (bulletController != null) bulletController.SetProjectilePool(_projectilePool);
         return obj;
     }
     private void OnGetBullet(GameObject obj)

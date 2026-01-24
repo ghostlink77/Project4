@@ -13,6 +13,7 @@ public class BulletController : MonoBehaviour
 
     private float _projectileSpeed;
     public float ProjectileSpeed {get => _projectileSpeed; set => _projectileSpeed = value;}
+    private int _projectileDmg;
     
     private AudioSource audioSource;
 
@@ -45,6 +46,9 @@ public class BulletController : MonoBehaviour
         transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     }
     
+    // 투사체 데미지 받아오는 스크립트
+    public void SetDmg(int dmg) => _projectileDmg = dmg;
+    
     private IEnumerator DeactivateAfterTime()
     {
         yield return new WaitForSeconds(_lifeTime);
@@ -63,6 +67,7 @@ public class BulletController : MonoBehaviour
         {
             if (!gameObject.activeSelf) return;
             StartCoroutine(DelayedRelease());
+            other.GetComponent<EnemyHpController>().GetDamage(_projectileDmg);
         }
     }
     
