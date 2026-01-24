@@ -43,6 +43,12 @@ public class PlayerStatController : MonoBehaviour
     public int Life {get => _life; set => _life = value;}
     private bool _dead = false;
     public bool Dead {get => _dead; set => _dead = value;}
+    private int _weaponSlotSize;
+    public int WeaponSlotSize {get => _weaponSlotSize; set => _weaponSlotSize = value;}
+    private int _passiveItemSlotSize;
+    public int PassiveItemSlotSize {get => _passiveItemSlotSize; set => _passiveItemSlotSize = value;}
+    private int _turretSlotSize;
+    public int TurretSlotSize {get => _turretSlotSize; set => _turretSlotSize = value;}
 
     private Animator animator;
     private SoundManager soundManager;
@@ -52,7 +58,6 @@ public class PlayerStatController : MonoBehaviour
         resetPlayerStat();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -62,6 +67,7 @@ public class PlayerStatController : MonoBehaviour
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
     void resetPlayerStat()
     {
+        // 플레이어 스테이터스
         CurrentLevel = playerDefaultData.DefaultLevel;
         MaxHp = playerDefaultData.DefaultMaxHP;
         CurrentHp = MaxHp;
@@ -74,6 +80,11 @@ public class PlayerStatController : MonoBehaviour
         Greed = playerDefaultData.DefaultGreed;
         Curse = playerDefaultData.DefaultCurse;
         Life = playerDefaultData.DefaultLife;
+        
+        // 슬롯들
+        WeaponSlotSize = playerDefaultData.DefaultWeaponSlotSize;
+        PassiveItemSlotSize = playerDefaultData.DefaultPassiveItemSlotSize;
+        TurretSlotSize = playerDefaultData.DefaultTurretSlotSize;
     }
     
     //플레이어 hp에 데미지 가하는 함수
@@ -91,13 +102,8 @@ public class PlayerStatController : MonoBehaviour
         CurrentHp -= calcDmg;
         Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
-        if (CurrentHp <= 0)
-        {
-            CurrentHp = 0;
-            SetPlayerDead();
-        }
+        if (CurrentHp <= 0) CurrentHp = 0;
     }
-    
     int CalculateReducedDmg(int damage, int defense)
     {
         float value = damage * 100 / (100 + defense);
@@ -111,10 +117,17 @@ public class PlayerStatController : MonoBehaviour
         soundManager.PlayPlayerSFX(playerSound.GetClip(0));
     }
     
-    //플레이어 죽음 상태 설정하는 함수
-    void SetPlayerDead()
+    // 플레이어의 현재 hp가 0 이하인지 확인하는 메서드
+    bool CheckHpZero()
     {
-        Dead = true;
+        if (CurrentHp <= 0) return true;
+        else return false;
+    }
+    
+    //플레이어 죽음 상태 설정하는 메서드
+    public void CheckDead()
+    {
+        Dead = CheckHpZero();
         animator.SetBool("isDead", Dead);
     }
 }

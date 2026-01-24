@@ -8,7 +8,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     PlayerMoveController _playerMoveController;
-    PlayerStatController _playerStatController;
+    public PlayerStatController _playerStatController;
+    PlayerItemController _playerItemController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -21,11 +22,13 @@ public class PlayerManager : MonoBehaviour
     {
         _playerMoveController = GetComponent<PlayerMoveController>();
         _playerStatController = GetComponent<PlayerStatController>();
+        _playerItemController = GetComponent<PlayerItemController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // 플레이어가 죽었는지 확인
+        _playerStatController.CheckDead();
         // 플레이어 이동 애니메이션 설정
         _playerMoveController.SetMoveAnimation();
     }

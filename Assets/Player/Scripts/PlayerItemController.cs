@@ -11,6 +11,9 @@ using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
 {
+    // 참조 클래스
+    private PlayerManager _playerManager;
+
     [Header("플레이어 무기 슬롯")]
     public List<GameObject> _weaponSlot = new List<GameObject>();
     
@@ -20,12 +23,26 @@ public class PlayerItemController : MonoBehaviour
     [Header("플레이어 포탑 슬롯")]
     public List<GameObject> _turretSlot = new List<GameObject>();
 
+    void Awake()
+    {
+        _playerManager = GetComponent<PlayerManager>();
+    }
+
     void Start()
     {
-        // 아이템 슬롯들 초기화
-        InitializeSlots(_weaponSlot, 4);
-        InitializeSlots(_passiveItemSlot, 8);
-        InitializeSlots(_turretSlot, 4);
+        ResetItemSlots();
+    }
+    
+    // 아이템 슬롯 초기화하는 메서드
+    void ResetItemSlots()
+    {
+        int weaponSlotSize = _playerManager._playerStatController.WeaponSlotSize;
+        int passiveItemSlotSize = _playerManager._playerStatController.PassiveItemSlotSize;
+        int turretSlotSize = _playerManager._playerStatController.TurretSlotSize;
+
+        InitializeSlots(_weaponSlot, weaponSlotSize);
+        InitializeSlots(_passiveItemSlot, passiveItemSlotSize);
+        InitializeSlots(_turretSlot, turretSlotSize);
     }
     
     // 빈 무기 슬롯이 있다면 아이템 넣는 메서드
@@ -65,16 +82,11 @@ public class PlayerItemController : MonoBehaviour
     }
     
     // 슬롯의 아이템 새로운 아이템으로 대체하는 메서드
-    private void ChangeItem(List<GameObject> itemSlot, int slotNumber, GameObject newItem)
-    {
-        // Debug.Log($"{nameof(itemSlot)} 리스트의 {slotNumber}번째 슬롯 비어있음, {nameof(newItem)} 넣기");
-        itemSlot[slotNumber] = newItem;
-    }
+    private void ChangeItem(List<GameObject> itemSlot, int slotNumber, GameObject newItem) => itemSlot[slotNumber] = newItem;
     
     // 슬롯 사이즈 맞추기
     private void InitializeSlots(List<GameObject> list, int count)
     {
-        // Debug.Log($"{nameof(list)} 리스트 크기를 {count}로 설정");
         // 리스트가 작으면
         if (list.Count < count) ExpandList(list, count);
         // 리스트가 더 크면
