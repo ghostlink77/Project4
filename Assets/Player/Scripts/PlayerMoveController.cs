@@ -40,39 +40,33 @@ public class PlayerMoveController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    // 플레이어 위치를 가져와서 애니메이션 처리를 하도록 하는 메서드
+    public void SetMoveAnimation()
     {
-        // 플레이어 위치 가져오기
         _currentPos = gameObject.transform.position;
-        
-        // 이동 처리
         transform.Translate(_moveVector.normalized * _moveSpeed * Time.deltaTime);
-
-        // 애니메이션 처리
         DefinePlayerAnimation(_currentPos, _lastPos);
-        
-        // 플레이어 위치 기록하기
         _lastPos = _currentPos;
     }
     
-    // 플레이어 이동 처리
+    // 플레이어 이동 처리하는 메서드
     public void OnMove(InputAction.CallbackContext context)
     {
         _inputVector = context.ReadValue<Vector2>();
         _moveVector = new Vector3(_inputVector.x, _inputVector.y, 0);
     }
     
-    // 플레이어 입력에 따라 뒤집는 메서드
+    // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
     private void FlipCharacter(Vector2 input)
     {
-        if (input.x < 0) {_spriteRenderer.flipX = true;}
-        else if (input.x > 0) {_spriteRenderer.flipX = false;}
+        if (input.x < 0) _spriteRenderer.flipX = true;
+        else if (input.x > 0) _spriteRenderer.flipX = false;
     }
     
     // 플레이어 이동 관리하는 메서드
-    void DefinePlayerAnimation(Vector2 value1, Vector2 value2)
+    void DefinePlayerAnimation(Vector2 lastPosition, Vector2 nowPosition)
     {
-        _animator.SetBool("isMoving", (value1 != value2));
+        _animator.SetBool("isMoving", (lastPosition != nowPosition));
         FlipCharacter(_inputVector);
     }
 }
