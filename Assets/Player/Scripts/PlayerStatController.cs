@@ -11,111 +11,123 @@ public class PlayerStatController : MonoBehaviour
     [Header("스크립터블 오브젝트들")]
     [SerializeField]
     private PlayerDefaultData playerDefaultData;
+
     [SerializeField]
     private SoundData playerSound;
     
     // 플레이어 스탯
-    [Header("플레이어 스탯")]
-    [SerializeField]
-    private int currentLevel;
-    [SerializeField]
-    private int maxHp;
-    [SerializeField]
-    private int currentHp;
-    [SerializeField]
-    private int defense;
-    [SerializeField]
-    private int hpGenSpeed;
-    [SerializeField]
-    private float moveSpeed;
-    [SerializeField]
-    private float itemReceiveRadius;
-    [SerializeField]
-    private float luck;
-    [SerializeField]
-    private float growth;
-    [SerializeField]
-    private float greed;
-    [SerializeField]
-    private float curse;
-    [SerializeField]
-    private int life;
+    private int _currentLevel;
+    public int CurrentLevel {get => _currentLevel; set => _currentLevel = value;}
+    private int _maxHp;
+    public int MaxHp {get => _maxHp; set => _maxHp = value;}
+    private int _currentHp;
+    public int CurrentHp {get => _currentHp; set => _currentHp = value;}
+    private int _defense;
+    public int Defense {get => _defense; set => _defense = value;}
+    private int _hpGenSpeed;
+    public int HpGenSpeed {get => _hpGenSpeed; set => _hpGenSpeed = value;}
+    private float _moveSpeed;
+    // 플레이어 스탯 반환 및 설정하는 함수
+    public float MoveSpeed {get => _moveSpeed; set => _moveSpeed = value;}
+    private float _itemGetRadius;
+    public float ItemGetRadius {get => _itemGetRadius; set => _itemGetRadius = value;}
+    private float _luck;
+    public float Luck {get => _luck; set => _luck = value;}
+    private float _growth;
+    public float Growth {get => _growth; set => _growth = value;}
+    private float _greed;
+    public float Greed {get => _greed; set => _greed = value;}
+    private float _curse;
+    public float Curse {get => _curse; set => _curse = value;}
+    private int _life;
+    public int Life {get => _life; set => _life = value;}
+    private bool _dead = false;
+    public bool Dead {get => _dead; set => _dead = value;}
+    private int _weaponSlotSize;
+    public int WeaponSlotSize {get => _weaponSlotSize; set => _weaponSlotSize = value;}
+    private int _passiveItemSlotSize;
+    public int PassiveItemSlotSize {get => _passiveItemSlotSize; set => _passiveItemSlotSize = value;}
+    private int _turretSlotSize;
+    public int TurretSlotSize {get => _turretSlotSize; set => _turretSlotSize = value;}
 
     private Animator animator;
     private SoundManager soundManager;
     
-    void Awake()
+    // 필요한 데이터를 PlayerManager에서 받아오는 메서드
+    // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
+    public void SetUp(Animator anim, SoundManager sm)
     {
+        animator = anim;
+        soundManager = sm;
         resetPlayerStat();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        soundManager = SoundManager.Instance;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
-    void resetPlayerStat()
+    private void resetPlayerStat()
     {
-        currentLevel = playerDefaultData.DefaultLevel;
-        maxHp = playerDefaultData.DefaultMaxHP;
-        currentHp = maxHp;
-        defense = playerDefaultData.DefaultDef;
-        hpGenSpeed = playerDefaultData.DefaultHpGenSpeed;
-        moveSpeed = playerDefaultData.DefaultSpeed;
-        itemReceiveRadius = playerDefaultData.DefaultReceiveRadius;
-        luck = playerDefaultData.DefaultLuck;
-        growth = playerDefaultData.DefaultGrowth;
-        greed = playerDefaultData.DefaultGreed;
-        curse = playerDefaultData.DefaultCurse;
-        life = playerDefaultData.DefaultLife;
+        // 플레이어 스테이터스
+        CurrentLevel = playerDefaultData.DefaultLevel;
+        MaxHp = playerDefaultData.DefaultMaxHP;
+        CurrentHp = MaxHp;
+        Defense = playerDefaultData.DefaultDef;
+        HpGenSpeed = playerDefaultData.DefaultHpGenSpeed;
+        MoveSpeed= playerDefaultData.DefaultSpeed;
+        ItemGetRadius = playerDefaultData.DefaultReceiveRadius;
+        Luck = playerDefaultData.DefaultLuck;
+        Growth = playerDefaultData.DefaultGrowth;
+        Greed = playerDefaultData.DefaultGreed;
+        Curse = playerDefaultData.DefaultCurse;
+        Life = playerDefaultData.DefaultLife;
+        
+        // 슬롯들
+        WeaponSlotSize = playerDefaultData.DefaultWeaponSlotSize;
+        PassiveItemSlotSize = playerDefaultData.DefaultPassiveItemSlotSize;
+        TurretSlotSize = playerDefaultData.DefaultTurretSlotSize;
     }
     
     //플레이어 hp에 데미지 가하는 함수
     // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
-    public void GetDamage(int damage)
+    public void GetHurt(int damage)
     {
-        bool isDead = animator.GetBool("isDead");
-
-        // 플레이어가 이미 죽은 경우 함수 미적용
-        if (isDead) return;
+        // 플레이어가 이미 죽은 경우 메서드 미적용
+        if (Dead == true) return;
         
-        // 플레이어 피격 이펙트 출력
-        StartPlayerAnimation();
-
         // 방어력 적용해서 데미지 적용
-        float value = damage * 100 / (100 + defense);
-        int finalDamage = (int)Math.Round(value);
-        currentHp -= finalDamage;
-        Debug.Log($"{finalDamage} 적용, 남은 체력: {currentHp}");
+        int calcDmg = CalculateReducedDmg(damage, Defense);
+        CurrentHp -= calcDmg;
+        Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
-        if (currentHp <= 0)
-        {
-            currentHp = 0;
-            SetPlayerDead();
-        }
+        if (CurrentHp <= 0) CurrentHp = 0;
+
+        // 플레이어 죽었는지 확인
+        CheckDead();
+        // 플레이어 피격 이펙트 출력
+        ActivateHurtAnimation();
+    }
+    int CalculateReducedDmg(int damage, int defense)
+    {
+        float value = damage * 100 / (100 + defense);
+        return (int)Math.Round(value);
     }
     
-    void StartPlayerAnimation()
+    // 플레이어 다치는 애니메이션 실행
+    void ActivateHurtAnimation()
     {
         animator.SetTrigger("isHurt");
         soundManager.PlayPlayerSFX(playerSound.GetClip(0));
     }
     
-    //플레이어 죽음 상태 설정하는 함수
-    private void SetPlayerDead()
+    // 플레이어의 현재 hp가 0 이하인지 확인하는 메서드
+    bool CheckHpZero()
     {
-        animator.SetBool("isDead", true);
+        if (CurrentHp <= 0) return true;
+        else return false;
     }
     
-    // 플레이어 스탯 반환 및 설정하는 함수
-    public float MoveSpeed {get => moveSpeed; set => moveSpeed = value;}
+    //플레이어 죽음 상태 설정하는 메서드
+    public void CheckDead()
+    {
+        Dead = CheckHpZero();
+        animator.SetBool("isDead", Dead);
+    }
 }

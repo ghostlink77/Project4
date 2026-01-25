@@ -46,4 +46,19 @@ public class PlayerDefaultData : ScriptableObject
     [Header("플레이어 목숨 개수")]
     [SerializeField] private int defaultLife;
     public int DefaultLife {get => defaultLife; set => defaultLife = value;}
+    
+    [Header("무기 슬롯 기본 개수")]
+    [SerializeField]
+    private int defaultWeaponSlotSize;
+    public int DefaultWeaponSlotSize {get => defaultWeaponSlotSize; set => defaultWeaponSlotSize = value;}
+    
+    [Header("패시브 아이템 슬롯 기본 개수")]
+    [SerializeField]
+    private int defaultPassiveItemSlotSize;
+    public int DefaultPassiveItemSlotSize {get => defaultPassiveItemSlotSize; set => defaultPassiveItemSlotSize = value;}
+    
+    [Header("포탑 슬롯 기본 개수")]
+    [SerializeField]
+    private int defaultTurretSlotSize;
+    public int DefaultTurretSlotSize {get => defaultTurretSlotSize; set => defaultTurretSlotSize = value;}
 }

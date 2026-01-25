@@ -23,3 +23,6 @@ MonoBehaviour:
   defaultGreed: 0
   defaultCurse: 0
   defaultLife: 1
+  defaultWeaponSlotSize: 4
+  defaultPassiveItemSlotSize: 8
+  defaultTurretSlotSize: 4

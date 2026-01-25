@@ -12,10 +12,12 @@ GameObject:
   - component: {fileID: 6658784135598784195}
   - component: {fileID: 4891547313342275709}
   - component: {fileID: 8592272979165148098}
+  - component: {fileID: 1643480019299862885}
   - component: {fileID: -4712269970147782130}
   - component: {fileID: 3279161529823316723}
   - component: {fileID: 3388451361037091150}
   - component: {fileID: 1769412929353730414}
+  - component: {fileID: 2361471354788731644}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -170,6 +172,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1643480019299862885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e63a3acb8e0d674dbb8180864b2dfb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
 --- !u!114 &-4712269970147782130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,18 +198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatController
   playerDefaultData: {fileID: 11400000, guid: 91a7ab7f2fe6ce94fb60d9cbe4ce99d9, type: 2}
   playerSound: {fileID: 11400000, guid: 5274b4dede7502041b907bbc31ec4aee, type: 2}
-  currentLevel: 0
-  maxHp: 0
-  currentHp: 0
-  defense: 0
-  hpGenSpeed: 0
-  moveSpeed: 0
-  itemReceiveRadius: 0
-  luck: 0
-  growth: 0
-  greed: 0
-  curse: 0
-  life: 0
 --- !u!114 &3279161529823316723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,3 +290,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2361471354788731644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057168967098522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76171d0de5cf69c46a40b2d29ede9b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemController

@@ -3,100 +3,97 @@
 아이템을 바꾸는 메서드나 각종 아이템 업그레이드 기능은 무기 개발이 끝나고 구현하도록 함
 */
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
 {
     [Header("플레이어 무기 슬롯")]
-    [SerializeField]
-    private List<GameObject> _playerWeaponSlot = new List<GameObject>();
-    
+    private List<GameObject> _weaponSlot = new List<GameObject>();
+
     [Header("플레이어 패시브 아이템 슬롯")]
-    [SerializeField]
-    private List<GameObject> _playerPassiveItemSlot = new List<GameObject>();
-    
+    private List<GameObject> _passiveItemSlot = new List<GameObject>();
+
     [Header("플레이어 포탑 슬롯")]
-    [SerializeField]
-    private List<GameObject> _playerTurretSlot = new List<GameObject>();
+    private List<GameObject> _turretSlot = new List<GameObject>();
 
-    void Start()
+    // 초기 설정 PlayerManager에서 받아오기
+    public void SetUp(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
     {
-        // 아이템 슬롯들 초기화
-        InitializeSlots(_playerWeaponSlot, 4);
-        InitializeSlots(_playerPassiveItemSlot, 8);
-        InitializeSlots(_playerTurretSlot, 4);
+        ResetItemSlots(weaponSlotSize, passiveSlotSize, turretSlotSize);
     }
 
-    void Update()
+    // 아이템 슬롯 초기화하는 메서드
+    void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
     {
-        
+        InitializeSlots(_weaponSlot, weaponSlotSize);
+        InitializeSlots(_passiveItemSlot, passiveSlotSize);
+        InitializeSlots(_turretSlot, turretSlotSize);
+        Debug.Log("플레이어 아이템 슬롯 모두 초기화됨");
     }
-    
-    // 빈 아이템 슬롯에 아이템 넣는 메서드
-    public void AddItemToEmptySlot(List<GameObject> itemSlot, GameObject newItem)
-    {
-        bool slotEmpty = CheckEmpty(itemSlot);
 
-        // 슬롯이 비어있다면
-        if (slotEmpty == true)
+    // 빈 무기 슬롯이 있다면 아이템 넣는 메서드
+    // 빈 무기 슬롯이 없다면 무기 교환해서 넣는 기능은 따로 구현하지 않는다.
+    private void AddWeaponToSlot(GameObject newWeapon)
+    {
+        List<GameObject> weaponSlots = _weaponSlot;
+        bool isEmpty = CheckEmptySlot(weaponSlots, out int emptyIndex);
+        if (isEmpty == true) weaponSlots[emptyIndex] = newWeapon;
+        else Debug.Log($"weaponSlots에 남은 자리 없음");
+    }
+
+    // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드
+    private void AddItemToSlot(GameObject newItem)
+    {
+        List<GameObject> itemSlots = _passiveItemSlot;
+        bool isEmpty = CheckEmptySlot(itemSlots, out int emptyIndex);
+        if (isEmpty == true) itemSlots[emptyIndex] = newItem;
+    }
+
+    // 빈칸이 있는지 확인하는 메서드
+    // out을 사용해 비어 있는 슬롯의 번호도 확인하도록 한다.
+    private bool CheckEmptySlot(List<GameObject> itemSlot, out int emptyIndex)
+    {
+        emptyIndex = 0;
+        for (int i = 0; i < itemSlot.Count; i++)
         {
-            for (int i = 0; i < itemSlot.Count; i++)
+            if (itemSlot[i] == null)
             {
-                if (itemSlot[i] == null) ChangeItem(itemSlot, i, newItem);
+                emptyIndex = i;
+                return true;
             }
         }
-        
-        //슬롯이 비어있는데 플레이어 무기 슬롯이 아니라면
-        else if (slotEmpty == false && itemSlot != _playerWeaponSlot)
-        {
-            // 아이템 바꿔넣을 슬롯 고르는 작업 수행
-            /*
-            이 부분을 어떻게 구현해야 할지 모르겠다.
-            일단 UI 부분이 개발되고 나면 판단해야 할 것 같다.
-            아래의 CheckItem() 메서드를 활용하면 될 것 같다.
-            */
-        }
-    }
-    
-    // 아이템 슬롯이 비었는지 확인하는 메서드
-    private bool CheckEmpty(List<GameObject> itemSlot)
-    {
-        for (int i = 0; i < itemSlot.Count; i++) if (itemSlot[i] == null) return true;
         return false;
     }
-    
+
     // 슬롯의 아이템 새로운 아이템으로 대체하는 메서드
-    private void ChangeItem(List<GameObject> itemSlot, int slotNumber, GameObject newItem)
-    {
-        Debug.Log($"{nameof(itemSlot)} 리스트의 {slotNumber}번째 슬롯 비어있음, {nameof(newItem)} 넣기");
-        itemSlot[slotNumber] = newItem;
-    }
-    
+    private void ChangeItem(List<GameObject> itemSlot, int slotNumber, GameObject newItem) => itemSlot[slotNumber] = newItem;
+
     // 슬롯 사이즈 맞추기
     private void InitializeSlots(List<GameObject> list, int count)
     {
-        Debug.Log($"{nameof(list)} 리스트 크기를 {count}로 설정");
         // 리스트가 작으면
         if (list.Count < count) ExpandList(list, count);
         // 리스트가 더 크면
         else if (list.Count > count) ReduceList(list,count);
     }
-    
+
     // 정한 사이즈만큼 리스트 크기 늘리는 메서드
     private void ExpandList(List<GameObject> list, int count)
     {
-        Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
+        // Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
         if (list.Count >= count) return;
         int sizeToExpand = count - list.Count;
         for (int i = 0; i < sizeToExpand; i++) list.Add(null);
     }
-    
+
     // 정한 사이즈 초과하는 리스트 인덱스 모두 없애는 메서드
     private void ReduceList(List<GameObject> list, int count)
     {
-        Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
+        // Debug.Log($"현재 리스트 사이즈: {list.Count}, 필요한 사이즈: {count}");
         if (list.Count <= count) return;
         int sizeToDelete = list.Count - count;
         list.RemoveRange(list.Count - sizeToDelete, sizeToDelete);
