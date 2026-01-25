@@ -9,13 +9,12 @@ public class BulletController : MonoBehaviour
     // 사운드 에셋들
     [Header("발사음")]
     [SerializeField]
-    private WeaponSoundData weaponSounds;
+    private WeaponSoundData _weaponSounds;
 
     private float _projectileSpeed;
-    public float ProjectileSpeed {get => _projectileSpeed; set => _projectileSpeed = value;}
     private int _projectileDmg;
     
-    private AudioSource audioSource;
+    private AudioSource _audioSource;
 
     [SerializeField]
     private float _lifeTime = 3f;
@@ -26,7 +25,7 @@ public class BulletController : MonoBehaviour
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
     }
 
     // 투사체가 발사 시작되었을 때 출력할 코드들
@@ -35,12 +34,18 @@ public class BulletController : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
 
-        if (gameObject.activeSelf == false) gameObject.SetActive(true);
         StartCoroutine(DeactivateAfterTime());
 
-        PlaySound(weaponSounds.ShootSound);
+        PlaySound(_weaponSounds.ShootSound);
     }
-    
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+    }
+
     void Update()
     {
         transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
@@ -48,6 +53,7 @@ public class BulletController : MonoBehaviour
     
     // 투사체 데미지 받아오는 스크립트
     public void SetDmg(int dmg) => _projectileDmg = dmg;
+    public void SetProjectileSpeed(float projSpeed) => _projectileSpeed = projSpeed;
     
     private IEnumerator DeactivateAfterTime()
     {
@@ -76,9 +82,9 @@ public class BulletController : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
         
-        if (audioSource != null && audioSource.clip != null)
+        if (_audioSource != null && _audioSource.clip != null)
         {
-            yield return new WaitWhile(() => audioSource.isPlaying);
+            yield return new WaitWhile(() => _audioSource.isPlaying);
         }
         
         _projectilePool.Release(gameObject);
@@ -87,10 +93,12 @@ public class BulletController : MonoBehaviour
     // 총알 사운드 출력하는 메서드
     private void PlaySound(AudioClip clip)
     {
-        audioSource.clip = clip;
-        if (CheckAbleToShoot(audioSource.clip) == false) return;
+        // if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
+        // if (clip == null) Debug.LogError("오디오 클립 없음");
+        _audioSource.clip = clip;
+        if (CheckAbleToShoot(_audioSource.clip) == false) return;
         // Debug.Log($"{audioSource.clip.name} 파일 재생");
-        audioSource.Play();
+        _audioSource.Play();
     }
     
     // 사격이 가능한지 확인하는 메서드

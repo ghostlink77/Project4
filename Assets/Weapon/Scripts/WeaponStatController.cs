@@ -2,59 +2,75 @@
 무기의 스탯을 관리하는 컨트롤러 스크립트
 무기 스탯 관리를 제외한 다른 요소들은 이 스크립트에서 구현해서는 안된다.
 */
+using System;
+using System.Collections;
+using Game.Types;
 using NUnit.Framework;
 using UnityEngine;
 
+public enum WeaponStat {Level, Atk, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount}
+
 public class WeaponStatController : MonoBehaviour
 {
-    [Header("무기 기본 데이터 담은 스크립터블 오브젝트")]
-    public WeaponStatData baseStat;
-    
-    // 무기 범위로 사용되는 콜라이더
-    private CircleCollider2D weaponRangeCollider;
-    
+    public event Action<WeaponStat> OnStatChanged;
+
     [SerializeField]
-    private int level;
-    public int Level {get => level; set => level = value;}
+    private int level, atk;
     [SerializeField]
-    private int atk;
-    public int Atk {get => atk; set => atk = value;}
-    [SerializeField]
-    private float critRate;
-    public float CritRate {get => critRate; set => critRate = value;}
-    [SerializeField]
-    private float critMultiplier;
-    public float CritMultiplier {get => critMultiplier; set => critMultiplier = value;}
+    private float critRate, critMultiplier;
     [SerializeField]
     private float effectRate;
-    public float EffectRate {get => effectRate; set => effectRate = value;}
     [SerializeField]
-    private float atkSpeed;
-    public float AtkSpeed {get => atkSpeed; set => atkSpeed = value;}
+    private float atkSpeed, atkRange;
     [SerializeField]
-    private float atkRange;
-    public float AtkRange {get => atkRange; set => atkRange = value;}
-    [SerializeField]
-    private float projectileSpeed;
-    public float ProjectileSpeed {get => projectileSpeed; set => projectileSpeed = value;}
-    [SerializeField]
-    private float projectileCount;
-    public float ProjectileCount {get => projectileCount; set => projectileCount = value;}
+    private float projectileSpeed, projectileCount;
+
+    // 무기 범위로 사용되는 콜라이더
+    private CircleCollider2D _weaponRangeCollider;
     
-    void Start()
+    public void SetUp(WeaponStatData baseStat, CircleCollider2D weaponRange)
     {
-        weaponRangeCollider = GetComponent<CircleCollider2D>();
-        ResetWeaponData();
-        SyncAtkRange(atkRange);
+        _weaponRangeCollider = weaponRange;
+        ResetWeaponData(baseStat);
+        SetStat(WeaponStat.AtkSpeed, baseStat.AtkSpeed);
     }
 
-    void Update()
+    // 스탯 가져올 때
+    public void SetStat<T>(WeaponStat type, T value)
     {
+        switch (type)
+        {
+            case WeaponStat.Level: level = Convert.ToInt32(value); break;
+            case WeaponStat.Atk: atk = Convert.ToInt32(value); break;
+            case WeaponStat.CritRate: critRate = Convert.ToSingle(value); break;
+            case WeaponStat.CritMultiplier: critMultiplier = Convert.ToSingle(value); break;
+            case WeaponStat.EffectRate: effectRate = Convert.ToSingle(value); break;
+            case WeaponStat.AtkSpeed: atkSpeed = Convert.ToSingle(value); break;
+            case WeaponStat.AtkRange: atkRange = Convert.ToSingle(value); break;
+            case WeaponStat.ProjectileSpeed: projectileSpeed = Convert.ToSingle(value); break;
+            case WeaponStat.ProjectileCount: projectileCount = Convert.ToSingle(value); break;
+        }
         
+        OnStatChanged?.Invoke(type);
     }
     
+    // 스탯 읽을 때
+    public float GetStat(WeaponStat type) => type switch
+    {
+        WeaponStat.Level => level,
+        WeaponStat.Atk => atk,
+        WeaponStat.CritRate => critRate,
+        WeaponStat.CritMultiplier => critMultiplier,
+        WeaponStat.EffectRate => effectRate,
+        WeaponStat.AtkSpeed => atkSpeed,
+        WeaponStat.AtkRange => atkRange,
+        WeaponStat.ProjectileSpeed => projectileSpeed,
+        WeaponStat.ProjectileCount => projectileCount,
+        _ => 0
+    };
+
     // 스크립터블 오브젝트에 저장한 대로 무기 데이터 설정 완료
-    private void ResetWeaponData()
+    private void ResetWeaponData(WeaponStatData baseStat)
     {
         level = baseStat.Level;
         atk = baseStat.Atk;
@@ -65,15 +81,5 @@ public class WeaponStatController : MonoBehaviour
         atkRange = baseStat.AtkRange;
         projectileSpeed = baseStat.ProjectileSpeed;
         projectileCount = baseStat.ProjectileCount;
-    }
-    
-    // 매개변수로 입력된 공격 범위에 따라 조절하는 메서드
-    private void SyncAtkRange(float atkRange)
-    {
-        if (weaponRangeCollider.radius != atkRange)
-        {
-            weaponRangeCollider.radius = atkRange;
-            Debug.Log($"콜라이더 반경 {weaponRangeCollider.radius}으로 설정됨");
-        }
     }
 }
