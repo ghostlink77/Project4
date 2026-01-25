@@ -3,6 +3,7 @@
 플레이어 이동과 관련이 없는 스크립트는 이 코드에 작성하면 안된다.
 */
 using System.Reflection;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
@@ -10,8 +11,7 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerMoveController : MonoBehaviour
 {
-    // 플레이어 이동에 사용되는 스탯을 가져오기 위함
-    private PlayerStatController _playerStat;
+    // 플레이어 스프라이트 뒤집힘 여부 판단하기 위해서 가져옴
     private SpriteRenderer _spriteRenderer;
 
     // 플레이어 애니메이션 패러미터를 수정하기 위한 애니메이터
@@ -23,18 +23,15 @@ public class PlayerMoveController : MonoBehaviour
     private Vector3 _moveVector;
     
     // 플레이어 위치 기록용 2차원 벡터 변수들
+    // 마지막 위치
     private Vector2 _lastPos;
+    // 현재 위치
     private Vector2 _currentPos;
     
-    void Awake()
+    public void SetUp(Animator anim, float moveSpeed)
     {
-        _animator = gameObject.GetComponent<Animator>();
-        _playerStat = gameObject.GetComponent<PlayerStatController>();
-    }
-    
-    void Start()
-    {
-        _moveSpeed = _playerStat.MoveSpeed;
+        _animator = anim;
+        _moveSpeed = moveSpeed;
         _currentPos = gameObject.transform.position;
         _lastPos = gameObject.transform.position;
         _spriteRenderer = GetComponent<SpriteRenderer>();

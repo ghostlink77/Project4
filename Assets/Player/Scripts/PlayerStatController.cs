@@ -53,19 +53,17 @@ public class PlayerStatController : MonoBehaviour
     private Animator animator;
     private SoundManager soundManager;
     
-    void Awake()
+    // 필요한 데이터를 PlayerManager에서 받아오는 메서드
+    // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
+    public void SetUp(Animator anim, SoundManager sm)
     {
+        animator = anim;
+        soundManager = sm;
         resetPlayerStat();
     }
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        soundManager = SoundManager.Instance;
-    }
-    
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
-    void resetPlayerStat()
+    private void resetPlayerStat()
     {
         // 플레이어 스테이터스
         CurrentLevel = playerDefaultData.DefaultLevel;
@@ -94,15 +92,17 @@ public class PlayerStatController : MonoBehaviour
         // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;
         
-        // 플레이어 피격 이펙트 출력
-        ActivateHurtAnimation();
-
         // 방어력 적용해서 데미지 적용
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
         Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
         if (CurrentHp <= 0) CurrentHp = 0;
+
+        // 플레이어 죽었는지 확인
+        CheckDead();
+        // 플레이어 피격 이펙트 출력
+        ActivateHurtAnimation();
     }
     int CalculateReducedDmg(int damage, int defense)
     {
