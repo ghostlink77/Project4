@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7e0e8ab78922745a2ba1a3065f12e5, type: 3}
+  m_Name: AutoRifleBaseStat
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
+  weaponName: "\uC790\uB3D9 \uC18C\uCD1D"
+  icon: {fileID: -8695669024712420183, guid: 2413f1a85c7eb544da96ae1033b64749, type: 3}
+  projectilePrefab: {fileID: 8740604490144623316, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
+  level: 1
+  type: 1
+  atk: 20
+  critRate: 20
+  critMultiplier: 1.4
+  effectRate: 10
+  atkSpeed: 0.25
+  atkRange: 3
+  projectileSpeed: 20
+  projectileCount: 1
