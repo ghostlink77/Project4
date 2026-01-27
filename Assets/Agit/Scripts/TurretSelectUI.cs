@@ -1,3 +1,8 @@
+﻿/*
+ * 포탑 건설 선택 UI
+ * UI오브젝트에 부착
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 

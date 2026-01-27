@@ -1,3 +1,8 @@
+﻿/*
+ * 타일 오브젝트 스크립트
+ * 타일 상태(포탑 설치 가능 여부)
+ * 포탑 설치, 제거 기능
+*/
 using UnityEngine;
 
 public class Tile : MonoBehaviour

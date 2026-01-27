@@ -1,6 +1,8 @@
-// ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ®¿¡ ºÎÂøµÇ´Â ÅÍ·¿ ¹èÄ¡ ½ºÅ©¸³Æ®
-// ½ºÆäÀÌ½º¹Ù¸¦ ´­·¯ ÅÍ·¿ ¹èÄ¡ ¸ğµå·Î ÁøÀÔ
-// ¸¶¿ì½º µå·¡±× ¹æÇâ¿¡ µû¶ó »óÇÏÁÂ¿ì 4¹æÇâ Áß ÅÍ·¿ ¼±ÅÃ
+ï»¿/*
+ * í”Œë ˆì´ì–´ ì˜¤ë¸Œì íŠ¸ì— ë¶€ì°©ë˜ëŠ” í„°ë › ë°°ì¹˜ ìŠ¤í¬ë¦½íŠ¸
+ * ìŠ¤í˜ì´ìŠ¤ë°”ë¥¼ ëˆŒëŸ¬ í„°ë › ë°°ì¹˜ ëª¨ë“œë¡œ ì§„ì…
+ * ë§ˆìš°ìŠ¤ ë“œë˜ê·¸í•˜ì—¬ ë°©í–¥ì— ë”°ë¼ ìƒí•˜ì¢Œìš° 4ë°©í–¥ ì¤‘ í„°ë › ì„ íƒ
+*/
 
 using System;
 using System.Runtime.CompilerServices;
@@ -12,7 +14,7 @@ public class TurretPlacer : MonoBehaviour
 {
 
     [SerializeField] private LayerMask tileLayer;
-    [SerializeField] private TurretData[] turrets = new TurretData[4];  // ÇÃ·¹ÀÌ¾î Æ÷Å¾ ½½·ÔÀÇ Æ÷Å¾
+    [SerializeField] private TurretData[] turrets = new TurretData[4];  // í”Œë ˆì´ì–´ í¬íƒ‘ ìŠ¬ë¡¯ì˜ í¬íƒ‘
 
     public TurretData[] Turrets { get { return turrets; } }
 
@@ -131,6 +133,6 @@ public class TurretPlacer : MonoBehaviour
     }
     void GetPlayerTurret()
     {
-        // ÃßÈÄ ÇÃ·¹ÀÌ¾î°¡ °¡Áø Æ÷Å¾ Á¤º¸¸¦ °¡Á®¿À´Â ·ÎÁ÷ Ãß°¡
+        // ì¶”í›„ í”Œë ˆì´ì–´ê°€ ê°€ì§„ í¬íƒ‘ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë¡œì§ ì¶”ê°€
     }
 }
