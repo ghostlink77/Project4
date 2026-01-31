@@ -1,0 +1,46 @@
+using System.Collections.Generic;
+using System.Drawing;
+using UnityEngine;
+
+public class PlayerItemController : MonoBehaviour
+{
+    [Header("플레이어 무기 슬롯")]
+    [SerializeField]
+    private List<GameObject> playerWeaponSlot = new List<GameObject>();
+    
+    [Header("플레이어 패시브 아이템 슬롯")]
+    [SerializeField]
+    private List<GameObject> playerPassiveItemSlot = new List<GameObject>();
+
+    void Awake()
+    {
+        InitializeSlots(playerWeaponSlot, 4);
+        InitializeSlots(playerPassiveItemSlot, 8);
+    }
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        
+    }
+    
+    private void InitializeSlots(List<GameObject> list, int count)
+    {
+        Debug.Log($"{nameof(list)} 리스트 크기를 {count}로 설정");
+        if (list.Count < count) for (int i = 0; i < count; i++) list.Add(null);
+        else if (list.Count > count) RemoveListIndex(list, count);
+    }
+    
+    private void RemoveListIndex(List<GameObject> list, int count)
+    {
+        if (list.Count > count)
+        {
+            int sizeToDelete = list.Count - count;
+            list.RemoveRange(list.Count - sizeToDelete, sizeToDelete);
+        }
+    }
+}
