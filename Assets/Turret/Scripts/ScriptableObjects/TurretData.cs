@@ -8,7 +8,8 @@ public class TurretData : ScriptableObject
     public SpriteRenderer icon;
     public int scrapCost;
 
-    public float damage;
+    public int damage;
     public float range;
     public float fireRate;
+    public float projectileSpeed;
 }
