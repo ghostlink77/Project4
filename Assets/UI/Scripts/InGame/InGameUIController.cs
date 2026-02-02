@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class InGameUIController : MonoBehaviour
@@ -5,10 +6,12 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject _pauseUI;
     [SerializeField] private GameObject _endGameUI;
     [SerializeField] private GameObject _levelupUI;
+    [SerializeField] private TextMeshProUGUI _playTimeUI;
 
     private void Update()
     {
         HandleInput();
+        ShowPlayTime();
     }
 
     private void HandleInput()
@@ -91,5 +94,14 @@ public class InGameUIController : MonoBehaviour
     public void OpenEndgameUI()
     {
         _endGameUI.SetActive(true);
+    }
+
+    public void ShowPlayTime()
+    {
+        float time = InGameManager.Instance.PlayTime;
+        string min = ((int)(time / 60)).ToString("D2");
+        string sec = ((int)(time % 60)).ToString("D2");
+
+        _playTimeUI.text = $"{min} : {sec}";
     }
 }

@@ -4,6 +4,8 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 {
     public InGameUIController InGameUIController { get; private set; }
 
+    public float PlayTime { get; private set; }
+
     protected override void Init()
     {
         IsDestroyOnLoad = false;
@@ -22,5 +24,16 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
         AudioManager.Instance.StopAll();
         //AudioManager.Instance.Play("InGameBGM");
+
+        PlayTime = 0;
+    }
+    private void Update()
+    {
+        RecordPlayTime();
+    }
+
+    private void RecordPlayTime()
+    {
+        PlayTime += Time.deltaTime;
     }
 }
