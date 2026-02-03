@@ -73,7 +73,7 @@ public class BulletController : MonoBehaviour
         {
             if (!gameObject.activeSelf) return;
             StartCoroutine(DelayedRelease());
-            other.GetComponent<EnemyHpController>().GetDamage(_projectileDmg);
+            other.GetComponent<IDamageable>().TakeDamage(_projectileDmg);
         }
     }
     

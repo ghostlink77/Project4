@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private EnemySpawner spawner;
 
     private Rigidbody2D rigid;
+    private CapsuleCollider2D collider;
     private Rigidbody2D target;
 
     private SpriteRenderer spriteRenderer;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         spawner = FindAnyObjectByType<EnemySpawner>();
+        collider = GetComponent<CapsuleCollider2D>();
     }
     private void Update()
     {
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         currentHp = maxHp;
         isLive = true;
+        collider.enabled = true;
 
         animator.Play("Walk", 0, 0f);
     }
@@ -112,6 +115,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Die()
     {
         isLive = false;
+        collider.enabled = false;
         rigid.linearVelocity = Vector2.zero;
         animator.SetTrigger("Dead");
         // 경험치 오브젝트 드랍

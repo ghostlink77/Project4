@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3538558558491683659}
   m_Layer: 0
   m_Name: Drone1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 4321110377694782218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.92, y: -1.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3193292146876135035}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   damage: 2
   damageDelay: 0.2
-  speed: 1
+  speed: 0.9
   maxHp: 1
   enemyType: Drone1
 --- !u!1 &7941980596950222767
