@@ -42,4 +42,8 @@ public class ExpData : IGameData
 
         }
     }
+    public float GetExpData(int currentLevel)
+    {
+        return experienceData[currentLevel];
+    }
 }

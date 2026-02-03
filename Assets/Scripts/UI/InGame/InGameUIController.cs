@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameUIController : MonoBehaviour
 {
@@ -7,11 +8,13 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject _endGameUI;
     [SerializeField] private GameObject _levelupUI;
     [SerializeField] private TextMeshProUGUI _playTimeUI;
+    [SerializeField] private Image _expBar;
 
     private void Update()
     {
         HandleInput();
         ShowPlayTime();
+        UpdateExpBar();
     }
 
     private void HandleInput()
@@ -103,5 +106,13 @@ public class InGameUIController : MonoBehaviour
         string sec = ((int)(time % 60)).ToString("D2");
 
         _playTimeUI.text = $"{min} : {sec}";
+    }
+
+    public void UpdateExpBar()
+    {
+        //float currentLevel = PlayerDataManager.Instance.GetLevel();
+        //float currentExp =  PlayerDataManager.Instance.GetExp();
+        //float maxExp = DataTableManager.GetGameData<ExpData>().GetExpData(currentLevel);
+        //_expBar.fillAmount = currentExp / maxExp;
     }
 }
