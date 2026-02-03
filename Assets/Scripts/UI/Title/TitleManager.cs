@@ -9,6 +9,7 @@ public class TitleManager : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.SyncUserSettings();
+        DataTableManager.Instance.SetData();
 
     }
 
