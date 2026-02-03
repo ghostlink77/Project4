@@ -8,7 +8,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
     protected override void Init()
     {
-        IsDestroyOnLoad = false;
+        IsDestroyOnLoad = true;
 
         base.Init();
     }
@@ -16,16 +16,16 @@ public class InGameManager : SingletonBehaviour<InGameManager>
     private void Start()
     {
         InGameUIController = FindAnyObjectByType<InGameUIController>();
+        
         if (InGameUIController == null)
         {
             Debug.Log("InGameUIController does not exist.");
             return;
         }
 
+        PlayTime = 0;
         AudioManager.Instance.StopAll();
         //AudioManager.Instance.Play("InGameBGM");
-
-        PlayTime = 0;
     }
     private void Update()
     {

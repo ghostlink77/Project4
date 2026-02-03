@@ -12,6 +12,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         base.Init();
 
         GameDataList.Add(new ExpData());
+        GameDataList.Add(new WeaponData());
     }
 
     public T GetGameData<T>() where T : class, IGameData
