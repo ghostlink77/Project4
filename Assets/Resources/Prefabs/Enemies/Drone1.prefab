@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5834294517814774301}
   - component: {fileID: 3538558558491683659}
   m_Layer: 0
-  m_Name: Enemy_Drone
+  m_Name: Drone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4035959289877228764, guid: 25fce6ee2aa2bee479ec44f8fdd022a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,8 +152,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -9.65894e-10, y: -0.008102507}
-  m_Size: {x: 0.8750005, y: 0.62640744}
+  m_Offset: {x: -0.007958367, y: -0.10821511}
+  m_Size: {x: 0.79542184, y: 0.42940706}
   m_Direction: 1
 --- !u!50 &5834294517814774301
 Rigidbody2D:
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   damage: 2
-  damageDelay: 0.3
+  damageDelay: 0.2
   speed: 1
   maxHp: 1
   enemyType: Drone1

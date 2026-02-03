@@ -49,5 +49,5 @@ public class PlayerManager : MonoBehaviour
     }
 
     // 플레이어에게 데미지 입히는 메서드
-    public void GetHurt(int dmg) => _playerStatController.GetHurt(dmg);
+    public void GetHurt(int dmg) => _playerStatController.TakeDamage(dmg);
 }

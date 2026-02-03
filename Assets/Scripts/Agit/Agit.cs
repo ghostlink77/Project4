@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
-public class Agit : MonoBehaviour
+public class Agit : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHP = 100f;
-    private float currentHP;
+    [SerializeField] private int maxHP = 100;
+    private int currentHP;
 
     [SerializeField] float cameraMoveDuration = 0.5f;
 
@@ -17,12 +17,12 @@ public class Agit : MonoBehaviour
         isDestroyed = false;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (isDestroyed) return;
 
         currentHP = Mathf.Max(0, currentHP - damage);
-        Debug.Log($"¾ÆÁöÆ® ÇÇÇØ: {damage} | ³²Àº HP: {currentHP}/{maxHP}");
+        Debug.Log($"ì•„ì§€íŠ¸ í”¼í•´: {damage} | ë‚¨ì€ HP: {currentHP}/{maxHP}");
 
         if (currentHP <= 0)
         {
@@ -34,13 +34,13 @@ public class Agit : MonoBehaviour
     {
         isDestroyed = true;
 
-        // Ä«¸Ş¶ó ¾ÆÁöÆ®·Î ÀÌµ¿
+        // ì¹´ë©”ë¼ ì•„ì§€íŠ¸ë¡œ ì´ë™
         yield return StartCoroutine(MoveCameraToAgit());
 
-        // ¾ÆÁöÆ® ÆÄ±« È¿°ú
+        // ì•„ì§€íŠ¸ íŒŒê´´ íš¨ê³¼
         yield return new WaitForSeconds(1f);
 
-        // °ÔÀÓ ¿À¹ö Ã³¸®
+        // ê²Œì„ ì˜¤ë²„ ì²˜ë¦¬
         Debug.Log("Agit Destroyed! Game Over.");
     }
 
@@ -68,7 +68,7 @@ public class Agit : MonoBehaviour
     [ContextMenu("Test Take Damage 30")]
     public void TestDamage()
     {
-        TakeDamage(30f);
+        TakeDamage(30);
     }
 
 }

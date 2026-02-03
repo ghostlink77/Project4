@@ -33,6 +33,6 @@ public class projectileController : MonoBehaviour
     //플레이어에게 데미지를 주는 함수
     private void GiveDamage()
     {
-        _playerStat.GetHurt(_projDamage);
+        _playerStat.TakeDamage(_projDamage);
     }
 }

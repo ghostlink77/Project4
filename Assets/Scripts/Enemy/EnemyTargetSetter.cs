@@ -1,3 +1,8 @@
+﻿/*
+ * 적 타겟 설정 스크립트
+ * 기본적으로 적은 아지트를 타겟으로 설정
+ * 적 시야 안에 플레이어가 들어오면 플레이어를 타겟으로 설정
+ */
 using UnityEngine;
 
 public class EnemyTargetSetter : MonoBehaviour
