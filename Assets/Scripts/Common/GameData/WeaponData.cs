@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public struct WeaponDataStruct
 {
+    public string WeaponName;
     public string WeaponType;
     public float WeaponDamage;
     public float CritRate;
@@ -22,15 +23,15 @@ public struct WeaponDataStruct
 public class WeaponData : IGameData
 {
     private readonly string FILENAME = "WeaponData";
-    private Dictionary<string, WeaponDataStruct> _weaponData = new Dictionary<string, WeaponDataStruct>();
+    private List<WeaponDataStruct> _weaponData = new List<WeaponDataStruct>();
     public void SetData()
     {
         string path = Application.dataPath + "/Resources/DataTable/" + FILENAME + ".csv";
-
+        Debug.Log(path);
         StreamReader reader = new StreamReader(path);
         if (reader == null)
         {
-            Debug.Log("ExpData.csv doesn't exist.");
+            Debug.Log("WeaponData.csv doesn't exist.");
         }
 
         reader.ReadLine();
@@ -42,11 +43,13 @@ public class WeaponData : IGameData
             if (data == null)
             {
                 isFinish = true;
+                Debug.Log("No WeaponData.");
                 break;
             }
             
             WeaponDataStruct weaponData = new WeaponDataStruct();
             var splitData = data.Split(',');
+            weaponData.WeaponName = splitData[0];
             weaponData.WeaponType = splitData[1];
             if (float.TryParse(splitData[2], out float result2)) weaponData.WeaponDamage = result2;
             else break;
@@ -65,11 +68,41 @@ public class WeaponData : IGameData
             if (float.TryParse(splitData[9], out float result9)) weaponData.AtkRange = result9;
             else break;
 
+            _weaponData.Add(weaponData);
+            Debug.Log($"weaponData Added -> {data}");
 
         }
     }
-    public WeaponDataStruct GetExpData(string weaponName)
+    public WeaponDataStruct GetWeaponData(string weaponName)
     {
-        return _weaponData[weaponName];
+        foreach(var weaponData in _weaponData)
+        {
+            if (weaponData.WeaponName == weaponName)
+                return weaponData;
+        }
+        Debug.Log($"weapon : {weaponName} doesn't exist. Return the initial weapon.");
+        return _weaponData[0];
+    }
+
+    public WeaponDataStruct GetRandomWeaponData()
+    {
+        /*int totalWeight = 0;
+        foreach(var weaponData in _weaponData)
+        {
+            totalWeight += weaponData.weight;
+        }
+
+        int pivot = Random.Range(0, totalWeight);
+
+        int currentWeight = 0;
+        foreach(var weaponData in _weaponData)
+        {
+            currentWeight += weaponData_weight;
+            if (pivot < currentWeight) return weaponData;
+        }
+        return _weaponData[0];*/
+
+        int index = Random.Range(0, _weaponData.Count-1);
+        return _weaponData[index];
     }
 }

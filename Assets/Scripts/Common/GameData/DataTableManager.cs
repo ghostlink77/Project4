@@ -24,6 +24,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
     {
         foreach (var data in GameDataList)
         {
+            Debug.Log("data.Setdata.");
             data.SetData();
         }
     }

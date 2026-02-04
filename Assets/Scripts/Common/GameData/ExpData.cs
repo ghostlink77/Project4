@@ -39,7 +39,7 @@ public class ExpData : IGameData
             {
                 Debug.Log("LevelUpdata Error.");
             }
-
+            Debug.Log($"Exp Data Added -> Level : {splitData[0]} Exp : {splitData[1]}");
         }
     }
     public float GetExpData(int currentLevel)
