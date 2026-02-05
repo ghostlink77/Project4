@@ -4,7 +4,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class projectileController : MonoBehaviour
+public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private int _projDamage;
     
