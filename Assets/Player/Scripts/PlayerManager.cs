@@ -52,9 +52,9 @@ public class PlayerManager : MonoBehaviour
 
     void PlayerComponentSetup()
     {
-        PlayerStatController.SetUp(Instance, SoundManager);
-        PlayerMoveController.SetUp(Instance);
-        PlayerItemController.SetUp(Instance);
+        PlayerStatController.SetUp();
+        PlayerMoveController.SetUp();
+        PlayerItemController.SetUp();
     }
 
     void Update()

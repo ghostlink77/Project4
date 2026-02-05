@@ -21,9 +21,9 @@ public class PlayerItemController : MonoBehaviour
     private List<GameObject> _turretSlot = new List<GameObject>();
 
     // 초기 설정 PlayerManager에서 받아오기
-    public void SetUp(PlayerManager manager)
+    public void SetUp()
     {
-        PlayerStatController statCon = manager.PlayerStatController;
+        PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
     }
 

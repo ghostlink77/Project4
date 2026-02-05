@@ -28,14 +28,14 @@ public class PlayerMoveController : MonoBehaviour
     // 현재 위치
     private Vector2 _currentPos;
     
-    public void SetUp(PlayerManager manager)
+    public void SetUp()
     {
-        _animator = manager.Animator;
-        _moveSpeed = manager.PlayerStatController.MoveSpeed;
+        _animator = PlayerManager.Instance.Animator;
+        _moveSpeed = PlayerManager.Instance.PlayerStatController.MoveSpeed;
         Debug.Log($"플레이어 속도 {_moveSpeed}");
-        _currentPos = manager.gameObject.transform.position;
-        _lastPos = manager.gameObject.transform.position;
-        _spriteRenderer = manager.gameObject.GetComponent<SpriteRenderer>();
+        _currentPos = PlayerManager.Instance.gameObject.transform.position;
+        _lastPos = PlayerManager.Instance.gameObject.transform.position;
+        _spriteRenderer = PlayerManager.Instance.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // 플레이어 위치를 가져와서 애니메이션 처리를 하도록 하는 메서드
