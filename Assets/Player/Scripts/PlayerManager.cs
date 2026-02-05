@@ -8,38 +8,53 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    PlayerMoveController _playerMoveController;
-    private PlayerStatController _playerStatController;
-    PlayerItemController _playerItemController;
-    private SoundManager _soundManager;
-    private Animator _animator;
+    // 플레이어 매니저 싱글톤 전용
+    public static PlayerManager Instance { get; private set; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // 스크립트 컴포넌트들
+    public PlayerMoveController _playerMoveController { get; private set; }
+    public PlayerStatController _playerStatController { get; private set; }
+    public PlayerItemController _playerItemController { get; private set; }
+    public SoundManager _soundManager { get; private set; } 
+    public Animator _animator { get; private set; }
+
     void Awake()
     {
-        GetPlayerComponent();
+        if (SingleTonGenerate() == true)
+        {
+            _playerMoveController = GetComponent<PlayerMoveController>();
+            _playerStatController = GetComponent<PlayerStatController>();
+            _playerItemController = GetComponent<PlayerItemController>();
+            _animator = GetComponent<Animator>();
+        }
     }
-    
+
     void Start()
     {
-        _playerStatController.SetUp(_animator, _soundManager);
-        _playerMoveController.SetUp(_animator, _playerStatController.MoveSpeed);
-        _playerItemController.SetUp(
-            _playerStatController.WeaponSlotSize, 
-            _playerStatController.PassiveItemSlotSize,
-            _playerStatController.TurretSlotSize
-        );
+        if (Instance == this)
+        {
+            _soundManager = SoundManager.Instance;
+            PlayerComponentSetup();
+        }
     }
 
-    // 플레이어 컴포넌트 초기화하는 메서드
-    void GetPlayerComponent()
+    bool SingleTonGenerate()
     {
-        _playerMoveController = GetComponent<PlayerMoveController>();
-        _playerStatController = GetComponent<PlayerStatController>();
-        _playerItemController = GetComponent<PlayerItemController>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return false;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        return true;
+    }
 
-        _soundManager = SoundManager.Instance;
-        _animator = GetComponent<Animator>();
+    void PlayerComponentSetup()
+    {
+        _playerStatController.SetUp(Instance, _soundManager);
+        _playerMoveController.SetUp(Instance);
+        _playerItemController.SetUp(Instance);
     }
 
     void Update()

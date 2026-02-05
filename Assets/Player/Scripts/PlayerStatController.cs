@@ -50,16 +50,16 @@ public class PlayerStatController : MonoBehaviour
     private int _turretSlotSize;
     public int TurretSlotSize {get => _turretSlotSize; set => _turretSlotSize = value;}
 
-    private Animator animator;
-    private SoundManager soundManager;
+    private Animator _animator;
+    private SoundManager _soundManager;
     
     // 필요한 데이터를 PlayerManager에서 받아오는 메서드
     // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
-    public void SetUp(Animator anim, SoundManager sm)
+    public void SetUp(PlayerManager manager, SoundManager sm)
     {
-        animator = anim;
-        soundManager = sm;
         resetPlayerStat();
+        _animator = manager._animator;
+        _soundManager = sm;
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
@@ -113,8 +113,16 @@ public class PlayerStatController : MonoBehaviour
     // 플레이어 다치는 애니메이션 실행
     void ActivateHurtAnimation()
     {
-        animator.SetTrigger("isHurt");
-        soundManager.PlayPlayerSFX(playerSound.GetClip(0));
+        if (_animator == null)
+        {
+            Debug.LogError("애니메이터 비어있음");
+            return;
+        }
+        
+
+        if (_soundManager != null && playerSound != null) _soundManager.PlayPlayerSFX(playerSound.GetClip(0));
+        else if (_soundManager == null) Debug.LogError("사운드매니저 null");
+        else if (playerSound == null) Debug.LogError("플레이어 사운드 null");
     }
     
     // 플레이어의 현재 hp가 0 이하인지 확인하는 메서드
@@ -128,6 +136,6 @@ public class PlayerStatController : MonoBehaviour
     public void CheckDead()
     {
         Dead = CheckHpZero();
-        animator.SetBool("isDead", Dead);
+        _animator.SetBool("isDead", Dead);
     }
 }
