@@ -23,7 +23,7 @@ public class PlayerItemController : MonoBehaviour
     // 초기 설정 PlayerManager에서 받아오기
     public void SetUp(PlayerManager manager)
     {
-        PlayerStatController statCon = manager._playerStatController;
+        PlayerStatController statCon = manager.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
     }
 

@@ -12,20 +12,20 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     // 스크립트 컴포넌트들
-    public PlayerMoveController _playerMoveController { get; private set; }
-    public PlayerStatController _playerStatController { get; private set; }
-    public PlayerItemController _playerItemController { get; private set; }
-    public SoundManager _soundManager { get; private set; } 
-    public Animator _animator { get; private set; }
+    public PlayerMoveController PlayerMoveController { get; private set; }
+    public PlayerStatController PlayerStatController { get; private set; }
+    public PlayerItemController PlayerItemController { get; private set; }
+    public SoundManager SoundManager { get; private set; } 
+    public Animator Animator { get; private set; }
 
     void Awake()
     {
         if (SingleTonGenerate() == true)
         {
-            _playerMoveController = GetComponent<PlayerMoveController>();
-            _playerStatController = GetComponent<PlayerStatController>();
-            _playerItemController = GetComponent<PlayerItemController>();
-            _animator = GetComponent<Animator>();
+            PlayerMoveController = GetComponent<PlayerMoveController>();
+            PlayerStatController = GetComponent<PlayerStatController>();
+            PlayerItemController = GetComponent<PlayerItemController>();
+            Animator = GetComponent<Animator>();
         }
     }
 
@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (Instance == this)
         {
-            _soundManager = SoundManager.Instance;
+            SoundManager = SoundManager.Instance;
             PlayerComponentSetup();
         }
     }
@@ -52,17 +52,17 @@ public class PlayerManager : MonoBehaviour
 
     void PlayerComponentSetup()
     {
-        _playerStatController.SetUp(Instance, _soundManager);
-        _playerMoveController.SetUp(Instance);
-        _playerItemController.SetUp(Instance);
+        PlayerStatController.SetUp(Instance, SoundManager);
+        PlayerMoveController.SetUp(Instance);
+        PlayerItemController.SetUp(Instance);
     }
 
     void Update()
     {
         // 플레이어 이동 애니메이션 설정
-        _playerMoveController.SetMoveAnimation();
+        PlayerMoveController.SetMoveAnimation();
     }
 
     // 플레이어에게 데미지 입히는 메서드
-    public void GetHurt(int dmg) => _playerStatController.GetHurt(dmg);
+    public void GetHurt(int dmg) => PlayerStatController.GetHurt(dmg);
 }

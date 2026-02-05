@@ -58,7 +58,7 @@ public class PlayerStatController : MonoBehaviour
     public void SetUp(PlayerManager manager, SoundManager sm)
     {
         resetPlayerStat();
-        _animator = manager._animator;
+        _animator = manager.Animator;
         _soundManager = sm;
     }
 

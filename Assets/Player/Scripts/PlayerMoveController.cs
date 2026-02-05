@@ -30,8 +30,8 @@ public class PlayerMoveController : MonoBehaviour
     
     public void SetUp(PlayerManager manager)
     {
-        _animator = manager._animator;
-        _moveSpeed = manager._playerStatController.MoveSpeed;
+        _animator = manager.Animator;
+        _moveSpeed = manager.PlayerStatController.MoveSpeed;
         Debug.Log($"플레이어 속도 {_moveSpeed}");
         _currentPos = manager.gameObject.transform.position;
         _lastPos = manager.gameObject.transform.position;
