@@ -92,6 +92,9 @@ public class PlayerStatController : MonoBehaviour
         // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;
         
+        // 애니메이션 재생을 위한 트리거
+        _animator.SetTrigger("isHurt");
+        
         // 방어력 적용해서 데미지 적용
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
