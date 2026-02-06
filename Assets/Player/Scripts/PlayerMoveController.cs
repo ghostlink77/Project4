@@ -50,6 +50,12 @@ public class PlayerMoveController : MonoBehaviour
     // 플레이어 이동 처리하는 메서드
     public void OnMove(InputAction.CallbackContext context)
     {
+        bool isDead = PlayerManager.Instance.PlayerStatController.Dead;
+        if (isDead == true)
+        {
+            _moveVector = Vector3.zero;
+            return;
+        }
         _inputVector = context.ReadValue<Vector2>();
         _moveVector = new Vector3(_inputVector.x, _inputVector.y, 0);
     }
