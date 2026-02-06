@@ -64,7 +64,7 @@ public class PlayerMoveController : MonoBehaviour
     public void SetMoveAnimation()
     {
         _currentPos = gameObject.transform.position;
-        transform.Translate(_moveVector.normalized * _moveSpeed * Time.deltaTime);
+        transform.Translate(MoveVector.normalized * _moveSpeed * Time.deltaTime);
         DefinePlayerAnimation(_currentPos, _lastPos);
         _lastPos = _currentPos;
     }
@@ -72,10 +72,10 @@ public class PlayerMoveController : MonoBehaviour
     // 플레이어 이동 처리하는 메서드
     public void OnMove(InputAction.CallbackContext context)
     {
-        _inputVector = context.ReadValue<Vector2>();
+        InputVector = context.ReadValue<Vector2>();
         
         // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector3.zero를 대입한다.
-        MoveVector = new Vector3(_inputVector.x, _inputVector.y, 0);
+        MoveVector = new Vector3(InputVector.x, InputVector.y, 0);
     }
     
     // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
@@ -89,7 +89,6 @@ public class PlayerMoveController : MonoBehaviour
     void DefinePlayerAnimation(Vector2 lastPosition, Vector2 nowPosition)
     {
         _animator.SetBool("isMoving", (lastPosition != nowPosition));
-        FlipCharacter(_inputVector);
+        FlipCharacter(InputVector);
     }
 }
-
