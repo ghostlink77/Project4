@@ -81,7 +81,8 @@ public class PlayerMoveController : MonoBehaviour
     // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
     private void FlipCharacter(Vector2 input)
     {
-        if (input.x < 0) _spriteRenderer.flipX = true;
+        if (input.x == 0) return;
+        else if (input.x < 0) _spriteRenderer.flipX = true;
         else if (input.x > 0) _spriteRenderer.flipX = false;
     }
     
