@@ -39,6 +39,16 @@ public class PlayerMoveController : MonoBehaviour
         }
     }
     
+    public Vector3 InputVector
+    {
+        get {return _inputVector;}
+        set
+        {
+            // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
+            if (PlayerManager.Instance.PlayerStatController.Dead == true) _inputVector = Vector3.zero;
+            else _inputVector = value;
+        }
+    }
     
     public void SetUp()
     {
