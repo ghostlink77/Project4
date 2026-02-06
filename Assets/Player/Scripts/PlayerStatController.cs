@@ -120,7 +120,6 @@ public class PlayerStatController : MonoBehaviour
             Debug.LogError("애니메이터 비어있음");
             return;
         }
-        
 
         if (_sm != null && playerSound != null) _sm.PlayPlayerSFX(playerSound.GetClip(0));
         else if (_sm == null) Debug.LogError("사운드매니저 null");
@@ -138,7 +137,13 @@ public class PlayerStatController : MonoBehaviour
     public void CheckDead()
     {
         Dead = CheckHpZero();
-        PlayerManager.Instance.Animator.SetBool("isDead", Dead);
+        if (Dead == true) PlayerDeadSequence();
+    }
+    
+    // 플레이어가 죽으면 실행할 효과들
+    public void PlayerDeadSequence()
+    {
+        // 플레이어 애니메이터 사망 트리거 실행
         _animator.SetBool("isDead", Dead);
     }
 }
