@@ -145,6 +145,6 @@ public class PlayerStatController : MonoBehaviour
     {
         // 플레이어 애니메이터 사망 트리거 실행
         _animator.SetBool("isDead", Dead);
-        PlayerManager.Instance.PlayerMoveController.MoveVector = Vector3.zero;
+        PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
     }
 }

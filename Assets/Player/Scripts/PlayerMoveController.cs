@@ -74,7 +74,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         InputVector = context.ReadValue<Vector2>();
         
-        // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector3.zero를 대입한다.
+        // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector2.zero를 대입한다.
         MoveVector = new Vector2(InputVector.x, InputVector.y);
     }
     
