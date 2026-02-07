@@ -26,9 +26,10 @@ public class WeaponData : IGameData
     private List<WeaponDataStruct> _weaponData = new List<WeaponDataStruct>();
     public void SetData()
     {
-        string path = Application.dataPath + "/Resources/DataTable/" + FILENAME + ".csv";
-        Debug.Log(path);
-        StreamReader reader = new StreamReader(path);
+        //string path = Application.dataPath + "/Resources/DataTable/" + FILENAME + ".csv";
+        
+        TextAsset csvData = Resources.Load<TextAsset>($"DataTable/{FILENAME}");
+        StringReader reader = new StringReader(csvData.text);
         if (reader == null)
         {
             Debug.Log("WeaponData.csv doesn't exist.");

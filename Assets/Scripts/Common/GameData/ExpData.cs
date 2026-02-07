@@ -9,9 +9,11 @@ public class ExpData : IGameData
 
     public void SetData()
     {
-        string path = Application.dataPath + "/Resources/DataTable/" + FILENAME + ".csv";
+        //string path = Application.dataPath + "/Resources/DataTable/" + FILENAME + ".csv";
 
-        StreamReader reader = new StreamReader(path);
+        TextAsset csvData = Resources.Load<TextAsset>("DataTable/ExpData");
+
+        StringReader reader = new StringReader(csvData.text);
         if (reader == null)
         {
             Debug.Log("ExpData.csv doesn't exist.");
