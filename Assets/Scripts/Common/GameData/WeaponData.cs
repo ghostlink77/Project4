@@ -103,7 +103,7 @@ public class WeaponData : IGameData
         }
         return _weaponData[0];*/
 
-        int index = Random.Range(0, _weaponData.Count-1);
+        int index = Random.Range(0, _weaponData.Count);
         return _weaponData[index];
     }
 }
