@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerStatController : MonoBehaviour
+public class PlayerStatController : MonoBehaviour, IDamageable
 {
     [Header("스크립터블 오브젝트들")]
     [SerializeField]
@@ -86,7 +86,7 @@ public class PlayerStatController : MonoBehaviour
     
     //플레이어 hp에 데미지 가하는 함수
     // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
-    public void GetHurt(int damage)
+    public void TakeDamage(int damage)
     {
         // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;

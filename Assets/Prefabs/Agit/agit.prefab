@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1111733673559794471}
   - component: {fileID: -2863072243580214846}
   m_Layer: 0
-  m_Name: agit
-  m_TagString: Untagged
+  m_Name: Agit
+  m_TagString: Agit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

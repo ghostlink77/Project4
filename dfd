@@ -1,0 +1,844 @@
+[33mcommit c94212268e42f7bc7d2001dede7cf1c2f42ed3d5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/enemy[m[33m)[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Feb 3 15:53:46 2026 +0900
+
+    Feat: 적 스폰 구현
+    
+    적 오브젝트 풀을 관리하는 EnemySpawner 구현
+    적을 스폰하는 EnemySpawnPoint 구현
+    
+      with '#' will be ignored, and an empty message aborts the commit.
+
+[33mcommit dc1af2deb3272317d25e2f8812d269e946b84689[m[33m ([m[1;31morigin/feature/enemy[m[33m)[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Feb 3 02:51:09 2026 +0900
+
+    Feat: 적 이동
+    
+    적이 아지트를 향해 이동하는 로직 구현
+    만약 적의 시야 안에 플레이어가 들어오면 추적 대상을 플레이어로 변경하는
+    로직 구현
+
+[33mcommit 56f4b90d14a4e32dc57390be378298e7856513bf[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Feb 3 01:59:35 2026 +0900
+
+    Init: 적 스프라이트 임포트 및 테스트 씬
+
+[33mcommit 5aa637b3430e48d84156455993b2eea7b73a4ea0[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Mon Feb 2 23:24:37 2026 +0900
+
+    Minor: 폴더 정리
+    
+    Scripts, Scenes, Prefabs, Sprites 폴더로 나누어 관리
+    혹시 몰라서 박근혁 담당 파일들만 정리
+
+[33mcommit 7d57b96e5bef9b3f974e5d3e25d766de68280c32[m
+Merge: 706b028 3ac02f6
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Mon Feb 2 18:02:42 2026 +0900
+
+    Merge pull request #5 from ghostlink77/feature/agit
+    
+    Feat: 아지트 초기 구현
+
+[33mcommit 3ac02f67bd7620b8832889dd719046648bdde1ef[m[33m ([m[1;31morigin/feature/agit[m[33m, [m[1;32mfeature/agit[m[33m)[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Sat Jan 31 23:11:24 2026 +0900
+
+    Minor: Sorting Layers 삭제
+
+[33mcommit c3d3cdb6773090203f6a1c541f4931691323ee06[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Sat Jan 31 23:08:48 2026 +0900
+
+    Feat: 포탑 스크립트 추가
+
+[33mcommit 39e5062aab7c59e2ea230ec095c223c559ac4783[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 27 20:16:25 2026 +0900
+
+    Feat: 기본 공격 포탑 구현
+    
+    사거리 내의 가장 가까운 적을 공격하는 포탑 구현
+    Weapon 스크립트들을 이용하여 구현
+
+[33mcommit baae1b85c3c6d0f3e8aa569b05a0a2212db4d050[m[33m ([m[1;32mmodest-haibt[m[33m)[m
+Merge: 4c72c40 560ae9c
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Mon Jan 26 14:53:58 2026 +0900
+
+    Resolve merge conflicts: feature/player 브랜치와 머지 및 충돌 해결
+
+[33mcommit 560ae9cf8977980ad7aebb4c7ed4e490ef0d22a4[m[33m ([m[1;32mfeature/player[m[33m)[m
+Merge: 706b028 d7f9176
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Mon Jan 26 14:38:32 2026 +0900
+
+    Resolve conflict: InputSystem_Acitons 파일 삭제
+
+[33mcommit d7f917694b106592ac9629de6a40a9c9faea9f80[m[33m ([m[1;31morigin/feature/player[m[33m)[m
+Merge: 5fe0eaa 1181b1e
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Mon Jan 26 01:05:28 2026 +0900
+
+    Merge pull request #4 from ghostlink77/feature/weaponAutoRifle
+    
+    Feature/weapon auto rifle
+
+[33mcommit 1181b1e437cf3027c8054c988c42405483f2c4c9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Mon Jan 26 00:47:39 2026 +0900
+
+    refactor: 무기 관련 로직을 WeaponManager 중심으로 리팩토링(완료)
+    
+    - WeaponManager 스크립트를 신규 생성하여 무기 시스템의 중앙 제어 구조 구현
+        - 현재 구현된 모든 스크립트에 ~Manager.cs 스크립트를 생성하고, 중앙 제어 구조를 구현
+    - WeaponShootController 및 WeaponStatController의 초기화와 업데이트 로직을 WeaponManager로 이관
+    - WeaponStatController에 enum(WeaponStat) 기반 스탯 관리 및 OnStatChanged 이벤트 시스템 도입
+    - 하위 컨트롤러(Bullet, Shoot, Stat)의 필드 명명 규칙 통일 (_변수명) 및 캡슐화 강화
+    - 무기 프리팹 및 씬 파일에 변경된 컴포넌트 구조와 변수 할당 상태 반영
+    - 이제 구현한 모든 것의 리팩토링이 끝났기 때문에 PR 작성 예정
+
+[33mcommit 675b042e2caddf431c7454f6d80a7451cf3126de[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 25 17:30:11 2026 +0900
+
+    refactor: 플레이어와 관련된 스크립트를 중앙 매니저 스크립트에서 관리하는 식으로 변경 완료
+    
+    - 변수 할당 등을 이제부터는 PlayerManager 스크립트에서 전달하는 식으로 구성해야 함
+    - 중앙 매니저 스크립트를 제외한 모든 스크립트에서는 Start, Awake, Update, FixedUpdate 등의 메서드는 사용해서는 안됨
+
+[33mcommit 97b2e949c7849e6af73d3a593815c47625fbbf7c[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 25 15:50:28 2026 +0900
+
+    chore: gitignore에서 프로젝트 솔루션 파일 제거
+    
+    갑자기 에디터 자동완성이 지원이 안되던데, 이게 문제였음.
+    slnx 파일은 사용자의 작업 환경에 따라 달라지므로, gitignore에 추가해두는 것이 바람직함.
+
+[33mcommit c5efce8e78c2b58b0f208e6e9d7db245a32da5b5[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 25 00:55:30 2026 +0900
+
+    refactor: 플레이어 관련 리팩토링 여전히 진행중
+    
+    - 데이터 관리를 스크립트에서 할지, 아니면 PlayerManager.cs 스크립트에서 할지 고민이다.
+    - 씬을 바꿔도 플레이어 캐릭터 데이터를 유지해야 하는 경우, Awake 메서드와 Start 메서드가 다시 실행되기 때문에 이를 고려하여 설계를 해야 한다.
+
+[33mcommit 73708d3350cbc7bb0d0a67ba49565e5bf6e06c3e[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 24 23:59:23 2026 +0900
+
+    refactor: 아이템 슬롯 관리를 위해 플레이어 기본 스탯을 담는 스크립터블 오브젝트 수정
+    
+    아이템 슬롯 3개 int 변수를 스크립터블 오브젝트에 추가함
+
+[33mcommit 31466e6536aa61f2926547ec86b2880e40be56b9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 24 23:43:50 2026 +0900
+
+    refactor: 리팩토링 진행중
+    
+    - Update나 FixedUpdate와 관련된 작업들은 모두 PlayerManager.cs에서 관리하도록 리팩토링할 예정.
+    - 현재 진행 완료된 파일:
+        - PlayerItemController.cs
+        - PlayerMoveController.cs
+        - PlayerStatController.cs
+
+[33mcommit e28176f796c37a98b34db3335d6cff5369d78937[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 24 19:51:58 2026 +0900
+
+    feat: 프리팹 동기화
+    
+    Hierarchy 메뉴에서 작업한 프리팹 내용물을 실제 프리팹 파일에 동기화함
+
+[33mcommit b6950f77c686196bfec1e32f6f7b577e5e68e05e[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 24 19:37:24 2026 +0900
+
+    feat: 플레이어에게 데미지 입히는 기능 구현
+    
+    - 작업이 조금 많이 복잡하므로, 리팩토링 작업이 필요.
+    - 이제 풀 리퀘스트만 하면 되지만 리팩토링 작업 이후 풀 리퀘스트를 올릴 예정.
+
+[33mcommit b79c26d7417d8e1b6c951cb679ff4cc6e50323cf[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 24 18:26:16 2026 +0900
+
+    feat: 적 샘플에게 hp 및 데미지 입는 메서드 구현
+
+[33mcommit 5a091a34112624215748b8952b7d8ffe4b498e1d[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 23 21:48:01 2026 +0900
+
+    refactor: 미반영된 스크립트 변경 요소 프리팹에 반영
+
+[33mcommit 706b028c3fc279f464aa0d6b46844804020d53e5[m[33m ([m[1;31morigin/test[m[33m)[m
+Merge: dbb7ff0 9905064
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 20 20:41:56 2026 +0900
+
+    Merge pull request #3 from ghostlink77/feature_UI
+    
+    Feat : UI 초기 구현
+
+[33mcommit 4c72c407fc91edf2774d82e18f17a872992c1f6d[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 20 15:33:30 2026 +0900
+
+    feat: 아지트 오브젝트/게임오버
+    
+    아지트 오브젝트 생성
+    아지트 체력이 0이 될 시 게임오버 코루틴 시작
+    카메라를 아지트로 옮기는 로직
+
+[33mcommit 0928be0544fffbbc4e0e97e3fddfa9ed9223aca3[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 20 13:58:15 2026 +0900
+
+    feat: 포탑 설치 UI 임시 구현
+
+[33mcommit 2404f3de25ca4dadc8124372cff1298518b7377c[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 20 12:17:04 2026 +0900
+
+    feat: 포탑 선택 설치 로직 구현
+    
+    UI 미구현
+
+[33mcommit da5002ead0eb2c64c45e71fc4388b68121c217c2[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Tue Jan 20 04:09:53 2026 +0900
+
+    feat: 포탑 설치 기본 로직 구현
+    
+    아지트 영역 내에서 스페이스 바를 누르면 플레이어가 위치한 타일에 포탑이
+    설치됨
+
+[33mcommit 358bff437515ccaa718e23e6fb8d3d066e92e9ea[m[33m ([m[1;31morigin/feature/weaponAutoRifle[m[33m)[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 23:49:33 2026 +0900
+
+    feat: 총알 소리가 끊기는 문제 해결 완료
+    
+    - 오브젝트 자체가 비활성화되기 때문에 생기는 문제였음
+    - 코루틴을 도입해 총알의 콜라이더와 스프라이트 렌더러만 비활성화하고, 오브젝트 비활성화는 음원 재생이 끝난 뒤에 하는 방식으로 수정함
+    - 이제 실제로 데미지를 입히는 기능을 구현할 예정임
+
+[33mcommit 0620d8c3b7309754d07e6cfb25000c17719f04aa[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 23:34:33 2026 +0900
+
+    feat: 자동소총 프리팹 생성 완료(버그 발견)
+    
+    - 자동소총이 날아가 적에게 닿으면 총알이 삭제되는 기능까지 구현 완료
+        - 총알이 너무 빨리 삭제돼서 소리가 끊기는 문제가 발생
+            - 이후 커밋에서 이것 수정할 예정
+    - 자동소총의 외형적인 기능들을 구현했기 때문에 앞서 언급한 문제 해결 후 '실제로 데미지를 입히는' 기능을 구현할 예정
+
+[33mcommit 6c06ca0d558752aeba89b167a70511fade483538[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 23:21:01 2026 +0900
+
+    chore: 삭제된 GetEnemyAngle.cs의 컴포넌트를 AutoRifle 에셋에서도 삭제함
+
+[33mcommit 7db4dfe6a90df62d049e8525f9ff2cf2e0341af7[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 23:10:47 2026 +0900
+
+    chore: 총알 무한생성 버그때문에 유니티가 터진 적이 있었는데 해당 오류 파일을 삭제함
+
+[33mcommit e37def982902a59150696faa029ffa11245eab5d[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 23:07:29 2026 +0900
+
+    feat: 공격 속도에 맞춰 총알이 생성되지 않는 문제 해결 완료
+    
+    - 1프레임만에 총알이 2000개 넘게 생성되는 문제가 발생했었음
+        - 오브젝트 풀링 시스템에서 Release가 제대로 되지 않는 문제
+        - 총알을 쏘면 공격 쿨타임을 초기화해야 하는데, 쿨타임이 초기화되지 않음
+    - 위 두가지 문제를 해결함
+    - 이제 총알이 공격 속도에 맞춰서 생성되며, 적을 맞추지 못하면 3초 뒤에 없어짐
+        - AutoRifleBullet 프리팹의 BulletController.cs 스크립트 컴포넌트에 할당된 변수에 따라 달라짐
+            - 인스펙터에서 수정 가능
+    - 다음으로 할 일은 총알이 적을 향해 나아가는 것 구현하기
+
+[33mcommit 5058def49bdffe7168e8a2183d17798a103d700a[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 22:35:59 2026 +0900
+
+    feat: 적을 인식하고 총알을 발사하는 것까지 구현 완료
+    
+    - GetEnemyAngle.cs의 기능을 WeaponShootController.cs로 옮김
+        - "사격을 위해" 적을 찾는다는 점에서 굳이 분리할 필요를 느끼지 못함
+    - WeaponShootController.cs는 이제 오브젝트 풀링을 통해 총알을 관리하는 것도 관여함
+        - 다만 총알이 공격 속도에 맞춰 하나씩 생성되는 게 아니라 한번에 몇백개가 우다다 생겨버리는 문제가 발생했음
+            - 우선적으로 해결해야 할 과제
+        - 또한 오브젝트 풀링 제한을 50개로 걸어뒀는데도 문제가 생겼는데, 아무래도 방법을 찾아봐야겠음.
+    - BulletController.cs에서 관리하던 총알의 SetActive()도 오브젝트 풀링을 관리하는 WeaponShootController.cs로 옮김
+
+[33mcommit 905024908e3e93d22c16bf6c280487ab3794edae[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 21:17:55 2026 +0900
+
+    feat: 적 방향으로 사격하는 기능 구현 시작
+    
+    - 오브젝트 풀링 구현함
+    - 현재는 적을 감지하고 위치 파악하는 것을 GetEnemyAngle.cs에서 진행하는데, 사격을 관리하는 스크립트로 가져오는게 좋지 않을까 하는 생각이 든다
+        - 총알은 오로지 총알의 생성 및 설정에만 관여해야 하기 때문이다.
+
+[33mcommit 99050644411d0b7829fbc09fe9653b7784d33ee0[m[33m ([m[1;31morigin/feature_UI[m[33m, [m[1;32mfeature_UI[m[33m)[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Sun Jan 18 17:14:47 2026 +0900
+
+    Minor : 불필요한 스크립트 삭제 및 설정 UI FadeOut 오류 수정
+
+[33mcommit 5e86995f305a3f05093f9febc6884dc478f4d1e5[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Sun Jan 18 17:01:30 2026 +0900
+
+    Minor : 사용하지 않는 에셋 삭제 및 설정 UI FadeOut 오류 해결
+
+[33mcommit fcff260ab8166652d18594e0f9478cf51ec4080b[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Sun Jan 18 16:08:00 2026 +0900
+
+    Feat : UI 버튼 상호작용 구현
+
+[33mcommit c7ce8f2c38e78f77fffcdab1cf7490318cf86b17[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 04:31:33 2026 +0900
+
+    feat: 플레이어 스탯을 불러오기 위해 플레이어 스탯 스크립트를 가져오는 클래스 변수 생성함
+    
+    - 코드 리팩토링이 끝났으니 다시 무기 사격 구현에 집중할 예정
+
+[33mcommit 6378a7df1b6d54bace9fd104e9c15f395bc5a709[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 04:29:40 2026 +0900
+
+    refactor: 성능 최적화를 위한 코드 리팩토링 진행
+    
+    - 성능을 많이 잡아먹는 제곱근 연산을 없앰
+    - 불필요한 함수들을 없앰
+    - 주석은 최대한 필요한 경우에만 작성하도록 수정함
+
+[33mcommit 5431de6eb4bd3224b33b6974b1120093577f9144[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 03:04:31 2026 +0900
+
+    feat: 가장 가까운 적의 '방향' 구하는 기능 구현
+    
+    - 이전에는 가장 가까운 적 게임오브젝트를 반환하는 식으로 구현하고자 했지만, 이 게임에서 플레이어가 발사하는 투사체는 적에게 유도되는 투사체가 아닌 '적의 방향으로 뻗어나가는 투사체'이다
+    - 따라서 단순히 투사체의 방향을 반환하는 식으로 구현하도록 한다
+    - 이후에는 실제로 발사 속도에 맞춰 투사체를 발사하는 것을 구현할 예정이다
+
+[33mcommit 650c4e6e0976fd6db69fbed710cadb38017abe6d[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sun Jan 18 01:38:07 2026 +0900
+
+    docs: WeaponStatController.cs 맨 위쪽에 코드에 대한 설명 추가
+
+[33mcommit c889d564840c21075c78e6006e6a57499574c1d7[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 21:59:23 2026 +0900
+
+    feat: AutoRifle 게임 오브젝트에 GetEnemyAngle.cs 스크립트 컴포넌트로 추가
+
+[33mcommit eb45bfa9040b2bcde2a34db54e9a2640b9b1990b[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 21:56:16 2026 +0900
+
+    feat: 플레이어 --> 적 벡터 방향 구하는 코드 완성
+    
+    - 적 벡터 방향을 구하는 코드는 완성했으나, 가장 가까운 적을 구하는 코드는 아직 구현하지 못함
+        - 이것이 다음 과제
+
+[33mcommit bf722dbd14f449bc11b85b0ef999c8847908017d[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 20:06:30 2026 +0900
+
+    refactor: 메서드의 역할을 하나로 한정하기 위해 메서드 실행 위치 수정
+    
+    - 원래는 SyncAtkRange() 메서드가 ResetWeaponData() 메서드 내부에 있었음
+        - 그러나 ResetWeaponData() 메서드의 목적은 어디까지나 스탯 변수 초기화
+        - 따라서 해당 메서드 내부에서 SyncAtkRange() 메서드를 호출하는 것은 부적절하다고 판단함
+    - SyncAtkRange() 메서드 실행을 Start() 메서드로 옮김
+
+[33mcommit 00b3ce119bfed3e1109ae3517e6fdf31338abdaa[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 18:14:53 2026 +0900
+
+    feat: 무기 스탯 관리하는 스크립트 파일(WeaponStatController.cs) 생성
+    
+    - 현재 구현한 것:
+        - 스크립터블 오브젝트에 저장된 대로 무기 데이터를 변수에 할당하는 메서드
+        - 매개변수로 입력된 공격 범위에 따라 공격 범위 콜라이더를 조절하는 메서드
+            - 공격 범위에 해당하는 콜라이더는 이 스크립트 파일(WeaponStatController.cs)이 컴포넌트로 작동하는 무기 프리팹에 또 다른 컴포넌트로 존재하는 원형 2d 콜라이더
+    - 앞으로 해야 할 것:
+        - 새로운 스크립트를 만들어서 플레이어와 적의 거리, 각도 판단하는 스크립트 제작하기
+
+[33mcommit a810c2b83618f24ac93cfbbcb6647109ee4e68d9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 15:56:31 2026 +0900
+
+    feat: 새로운 스크립트 생성
+    
+    - 이 스크립트는 자동소총을 관리하는 스크립트가 될 것임
+    - 적을 찾는 스크립트와 분리해두는 게 좋지 않을까 하는 생각도 듬.
+        - 사실 이게 맞는 것 같다. 다음 커밋에서 반영 예정이다.
+
+[33mcommit fa62d3d420f323cc4ff5029eda604169aed62b61[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 14:54:52 2026 +0900
+
+    refactor: 무기 사운드 관리용 스크립터블 오브젝트에 맞춰 총알 스크립트의 사운드 출력 부분 수정
+    
+    - 이제는 리스트의 번호가 아니라 특정 변수를 실행하는 방향으로 수정함
+    - 이제 PlaySound() 메서드는 매개변수인 오디오 클립이 실행 가능한지 점검하고 출력함
+
+[33mcommit 39ba43e7e651faf15bedb9a9076a32fed97bac33[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 14:34:35 2026 +0900
+
+    refactor: 무기 사운드 조절 방식 수정
+    
+    - 기존에는 리스트에 넣고 관리하는 식으로 SoundData.cs 스크립트 기반의 스크립터블 오브젝트로 관리했음
+        - 리스트 기반으로 관리해야 했기 때문에 직관적으로 관리하지 못하는 문제가 있었음
+    - 따라서 무기 사운드 데이터를 관리하기 위한 전용 스크립터블 오브젝트를 생성하기로 결정함
+    - 필요한 경우 스크립터블 오브젝트의 스크립트를 수정하여 새로운 변수를 수정하는 식으로 구현
+
+[33mcommit 75eca488e16520c4ec366f3927df570c091f0ffd[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 03:25:23 2026 +0900
+
+    feat: 발사음을 고를 수 있도록 스크립트에 변수 추가
+    
+    - 고민이 생김
+        - 총알 사운드 에셋을 지금처럼 스크립터블 오브젝트로 정리하는 게 좋은 생각인가?
+        - 아니면 지금처럼 '발사음' 이렇게 모아두는 것이 아니라 무기마다1 사운드 에셋을 모아두는 것도 좋은 생각인 것 같음
+
+[33mcommit aeb888f1ab1cd89ac6ffa1b3d9df42297b915e67[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 03:13:26 2026 +0900
+
+    chore: 폴더 관리를 위해 기존의 총알 프리팹들을 분류하는 폴더를 하나 더 생성함
+
+[33mcommit 89d1bf76db62ef35ad1b545a5f7ace6ede6f00ef[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 03:10:08 2026 +0900
+
+    feat: 총알을 프리팹으로 만들고, 적과 총알이 닿으면 비활성화되는 효과 구현
+    
+    - 총알의 데미지를 어떻게 구현할 것인가를 잘 생각해보아야겠음
+        - 총알 프리팹을 무기의 하위 오브젝트로 생성해서 발사한다는 느낌으로 해야 할까?
+
+[33mcommit de9972c5baf5cd37da7b84053d31bb956e6616e7[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 03:08:56 2026 +0900
+
+    chore: Temp 목적에 맞게, 폴더 위치를 상위로 옮김
+    
+    - Temp 폴더의 목적은 '다른 사람의 영역일지도 모르는 분야를 임시로 구현한 것들을 모아두는 것'임
+    - 따라서 기존 위치가 아니라, Assets/ 폴더 위치로 옮김.
+
+[33mcommit 3b01b6a412b672c4f1dd89bfd8279895b3f9d1e6[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 02:37:50 2026 +0900
+
+    feat: 총알 사운드 점검 및 출력 메서드 구현
+
+[33mcommit 4e85c24f3de4305f2afcc4aee4bebff06134a859[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 02:36:07 2026 +0900
+
+    chore: Debug.Log 전부 주석 처리
+    
+    - 파일이 제대로 작동하는 것을 확인했으므로, PlayerItemController.cs에 있는 콘솔 출력 코드들을 모두 주석처리함
+
+[33mcommit 49757ce8fb377bdda8b83720c7d38cd1cf1ecceb[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Sat Jan 17 02:18:43 2026 +0900
+
+    feat: '자동 소총' 무기 총알 구현중
+    
+    - 사용하기 좋은 총알 투사체 스프라이트 이미지를 발견했기 때문에 해당 스프라이트 이미지의 애니메이션을 적용하여 총알을 구현할 예정.
+    - 현재 BulletController.cs 파일을 작업 중임.
+
+[33mcommit 492113caed4d3c7e2888369f0d59b6df62dc74a6[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 20:47:50 2026 +0900
+
+    fix: 스크립터블 데이터 스크립트 수정
+    
+    - 스크립터블 데이터에 누락된 부분이 있어 수정함
+    - '자동 소총' 무기 구현을 위한 스크립터블 오브젝트를 생성하고 데이터 채워넣음
+
+[33mcommit 4aa3e8203f74405ae6ccbccbbf420966f45a73f7[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 20:29:18 2026 +0900
+
+    chore: 잘못된 파일 위치 수정
+    
+    - 이전 커밋에서 생성한 두 가지 무기 데이터가 잘못된 폴더 위치에 있었음.
+    - 올바른 위치로 수정함
+
+[33mcommit ebc57b5664bf34779e9365ab3604df1225189471[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 20:24:53 2026 +0900
+
+    feat: 무기 타입 enum용 스크립트, 무기 데이터용 스크립터블 오브젝트 스크립트 생성함
+    
+    WeaponStatData.cs: 이 데이터를 기반으로 무기의 기초 데이터를 생성한다.
+    WeaponTypeEnum.cs: 근접 무기, 투사체 무기 두가지가 있다.
+
+[33mcommit 372f4bf28cbd013674133c7b876c0898dd492bb5[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 03:07:51 2026 +0900
+
+    feat: '자동소총' 무기 구현하기 위한 에셋 추가 및 데이터 관리할 스크립터블 오브젝트 스크립트 생성
+    
+    - 스크립터블 오브젝트는 생성만 했으며 아직 코드는 작성하지 않음
+    - 앞으로 무기 관련 스크립트 등은 `Assets/Weapon` 폴더에 저장 예정
+
+[33mcommit 5fe0eaaf90e29777e4ac8f8c3600a401dcc9aa8a[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 02:04:39 2026 +0900
+
+    feat: 아이템 슬롯 기반까지는 구현 완료
+    
+    - 아이템을 바꾸는 수준의 제대로 된 고급 기능은 UI 기능과도 연동이 필요하고, 무기 게임오브젝트를 일단 구현해야 하므로 여러 기능들을 구현하고 브랜치까지 파서 제대로 개발하도록 한다.
+    - _playerTurretSlot: 터렛 아이템을 저장하는 슬롯으로 사용하기 위한 게임 오브젝트 리스트를 추가했다.
+    - AddItemToEmptySlot(): 빈 슬롯을 찾아 아이템을 추가하는 로직 메서드
+    - CheckEmpty(): 빈 슬롯이 있다면 true를 반환하고, 빈 슬롯이 없으면 false를 반환하는 메서드
+    - ChangeItem(): 특정 슬롯의 아이템을 새로운 아이템으로 바꾸는 메서드
+
+[33mcommit b2784daea9017eff15379fe978b64c4eb711f298[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Fri Jan 16 00:09:36 2026 +0900
+
+    refactor: 혹시 모를 런타임 오류를 방지하기 위해 코드를 Awake()에서 Start()로 옮김
+    
+    - 아이템 슬롯 생성하는 시점을 Start()로 옮김
+
+[33mcommit 25456d9aa06fb8c1328106811b19ec054d7fcdd9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 23:38:37 2026 +0900
+
+    feat: 플레이어 아이템을 담는 게임오브젝트 리스트 두가지를 생성
+    
+    - InitializeSlots(): 아이템 슬롯 역할을 하는 리스트의 현재 크기를 매개변수 크기로 맞추는 변수
+    - ExpandList(): 리스트의 크기가 작은 경우, 매개변수의 크기로 리스트 크기를 늘리는 메서드
+    - ReduceList(): 리스트의 크기가 큰 경우, 매개변수의 크기로 리스트 크기를 줄이는 메서드
+
+[33mcommit f1ab9dc58cec23db062ef71dadd020d0e634b388[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 18:03:24 2026 +0900
+
+    chore: 프리팹의 전체적인 위치 조정
+    
+    몇몇 프리팹의 위치가 중앙에 맞춰지도록 위치를 조정함
+
+[33mcommit 174fef84ccca3cc6b30a49b4e55e76d33937ceaf[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 17:59:58 2026 +0900
+
+    feature: SoundManager 프리팹 수정
+    
+    Hierarchy 메뉴에서 사운드매니저에 추가된 하위 오브젝트를 프리팹에도 적용함
+
+[33mcommit c647cc3ffce426e2ed9d825603cc678811cd4648[m
+Merge: bf76231 66f5ccb
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 17:58:18 2026 +0900
+
+    Merge pull request #2 from ghostlink77/feature/soundManager
+    
+    feat: 사운드매니저 작동 방식 수정
+
+[33mcommit 66f5ccb3101b4f86fdce9b6c8a1650c74f161625[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 17:10:13 2026 +0900
+
+    feat: 사운드매니저 작동 방식 수정
+    
+    - 이전에는 사운드매니저 게임오브젝트에 컴포넌트를 추가하여 활용하는 방식을 사용함
+        - 그러나 컴포넌트는 이름을 수정할 수 없으므로 컴포넌트 개수가 많아질 경우 활용하기가 힘들어짐
+    - 따라서 사운드매니저에 하위 오브젝트(AudioSource) 프리팹을 호출한다는 느낌으로 다시 구현함
+    - 인스펙터에서 SoundManager.cs에 오디오 소스를 연결하는 것은 이전과 조금 달라짐
+        - SoundManager의 하위 게임 오브젝트를 연결하는 방식을 사용함(변수에 연결되는 것은 해당 게임오브젝트의 오디오 소스)
+
+[33mcommit bf7623181fbcb32cb9f8538ef108063cf84590b3[m
+Merge: 3a9ddfe 26edf6c
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 07:42:22 2026 +0900
+
+    Merge pull request #1 from ghostlink77/feature/playerHurtEffect
+    
+    Feature/player hurt effect
+
+[33mcommit 26edf6cb370eaa089770025fea6d90e3b77bf923[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 04:06:06 2026 +0900
+
+    feat: 플레이어 피격 사운드 구현 완료
+    
+    - PlayerSoundData에 저장된 사운드 클립을 불러와 사운드매니저의 함수(PlayPlayerSFX())를 사용해 피격 사운드를 출력하는 방식
+
+[33mcommit 497f2d01611f6868a43932165a8175d43d2bf354[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 03:47:37 2026 +0900
+
+    feat: PlayerSoundData 에셋 생성하고, 피격 사운드 추가
+
+[33mcommit ecc91324e74fae734b28eea743899a2b3288ff27[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 03:45:23 2026 +0900
+
+    feat: 사운드매니저 프리팹으로 만들어서 기존 사운드매니저 삭제 후 재배치
+
+[33mcommit f0c4a4ee7e774d77cde37a21dbb23bcef20598f9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 03:42:07 2026 +0900
+
+    feat: 사운드매니저 프리팹화 및 사운드 클립을 담을 스크립터블 오브젝트 생성
+    
+    - 사운드매니저를 프리팹으로 바꿨음
+        - 다른 씬에서도 수월하게 사용하기 위함
+    - 사운드 관리하는 방법을 조금 고민해봤는데, 사운드별로 묶어서 스크립터블 오브젝트로 관리하는 것이 좋겠다고 생각했음
+
+[33mcommit 5ee5a15396da14565cf7d806cee72546e46bb0f6[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 03:12:37 2026 +0900
+
+    feat: 사운드 매니저 구현
+    
+    - 싱글톤을 사용하여 SoundManager.cs를 구성함.
+        - 게임 오브젝트 또한 배치했으며, 해당 게임 오브젝트는 이후 프리팹으로 만들어서 저장 예정.
+        - 일단 저장은 해뒀는데 혹시 다른 사람이 만들었을 경우 충돌 날 수도 있을지도...?
+
+[33mcommit 8753fed6c3803b59d51990427f36cc12c4ece024[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 02:45:17 2026 +0900
+
+    fix: 플레이어 데미지 계산 수식 수정 및 투사체 데미지 설정
+    
+    - PlayerStatController.cs: 데미지 계산 시 입력받은 damage 값이 누락되었던 수식 수정
+        - 이제 데미지에 방어력에 따른 데미지 감소가 제대로 적용됨
+    - PlayerScene.unity: 테스트용 투사체의 데미지(projDamage) 값을 10으로 설정
+
+[33mcommit 087727a4f4b1d3de1f238555432968da03312059[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 02:39:15 2026 +0900
+
+    chore: 플레이어 피격 사운드 추가 및 초기 데이터(Level) 수정
+
+[33mcommit 253d3998301f42c33ddbfe1eaa545242cc71ce0c[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 02:29:38 2026 +0900
+
+    feat: 플레이어 피격 및 데미지 시스템 구현
+    
+    - PlayerStatController.cs
+        - 스탯 변화를 시각적으로 더욱 쉽게 확인하기 위해 모든 플레이어 스탯 항목에 [SerializeField] 추가
+        - 플레이어의 피격 및 사망을 구현하기 위해 GetDamage(), StartPlayerAnimation(), SetPlayerDead() 함수 생성
+        - GetDamage() 함수에 플레이어 방어력 적용 수식 구현
+    - projectileController.cs
+        - 인스펙터 연결 방식에 문제가 생겼기 때문에, 공격이 적용되는 대상과 해당 대상의 PlayerStatController 참조 방식을 수정함. 이제 인스펙터에서 연결하는 것이 아니라 Start() 함수에서 각각 FindGameObjectWithTag(), GetComponent<PlayerStatController>() 사용하여 참조하는 방식으로 수정함.
+            - 인스펙터에 프리팹을 연결하는 방식을 사용할 경우, 실제 플레이어 캐릭터가 아닌 프리팹을 참조하게 되어 플레이어 애니메이션이 출력되지 않는 문제가 발생했었음.
+
+[33mcommit 8178e48662996220a0f2519916cbd8e3070073ab[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Thu Jan 15 00:19:11 2026 +0900
+
+    feat: 플레이어 피격 테스트용 임시 투사체 제작 중
+    
+    - 현재 구현된 기능:
+        - 특정 태그가 설정된 오브젝트와 닿을 시 콘솔 메시지 출력
+        - 투사체 게임오브젝트 삭제
+
+[33mcommit 3a9ddfe3f499fa267e15cc0db0ac3972dea48fa9[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Wed Jan 14 20:19:19 2026 +0900
+
+    feat: 플레이어 태그 설정 및 메인 카메라 URP 데이터 추가
+    
+    - Player 프리팹에 'Player' 태그 지정
+    - 메인 카메라에 UniversalAdditionalCameraData 컴포넌트 추가 및 기본 설정 적용
+    - TagManager에 렌더링 레이어 설정 추가 및 버전 업데이트
+    - 미트래킹된 meta 파일(Assets/Player/Temp.meta) 추가
+
+[33mcommit 97725d47d494f0f9429608d09d87423004098643[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Wed Jan 14 19:58:09 2026 +0900
+
+    refactor: 스프라이트 반전 로직 호출 위치 변경 및 주석 개선
+    
+    - Update에서 매 프레임 호출되던 FlipCharacter를 DefinePlayerAnimation 메서드 내부로 이동
+            - 캐릭터의 애니메이션을 관리한다는 점에서 해당 위치로 옮기는 것이 일관적이라고 판단함
+    - 메서드 설명 주석 보완 및 오타 수정
+
+[33mcommit 225f32117b174bf966ae41d16e34b2eaccda919a[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Wed Jan 14 19:48:49 2026 +0900
+
+    feat: 플레이어 이동 방향에 따른 스프라이트 좌우 반전 기능 구현
+    
+    - 플레이어 오브젝트의 위치 기준이 아니라, 유저의 키보드 입력 방향을 기준으로 스프라이트 반전 기능이 작동함
+    - PlayerMoveController에 SpriteRenderer를 활용한 좌우 반전 로직(FlipCharacter) 추가
+    - 이동 입력(input.x) 값에 따라 스프라이트의 flipX 속성 제어
+    - OnMove 메서드 내 불필요한 Debug.Log 제거
+
+[33mcommit 08a03499dfee7b1bcbb902513da6a707e1ac6295[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Wed Jan 14 16:44:59 2026 +0900
+
+    docs: PlayerStatController.cs에 주석 추가
+
+[33mcommit 5939ee17d8379542cad4ee27149df8df61231515[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Wed Jan 14 01:47:11 2026 +0900
+
+    feat: Input System 적용 및 플레이어 조작에 따른 플레이어 이동 구현 완료 및 리팩토리 진행
+    
+    - Input System을 처음 사용해서 적용에 상당히 애를 먹었으나, 플레이어의 입력에 따른 플레이어 이동 구현에 성공함
+    - 플레이어 이동 방향에 따라 플레이어가 바라보는 방향을 전환하는 기능을 구현해야 함
+    - PlayerController를 PlayerStatController로 변경하여 스탯 관리 역할 명확화
+    - PlayerInput 컴포넌트를 활용하여 PlayerMoveController의 이동 로직 구현
+    - 새로운 GameInput Action 에셋 적용 및 기존 InputSystem_Actions 삭제
+    - Player 프리팹 및 PlayerScene에 PlayerStatController, Animator, PlayerInput 컴포넌트 추가
+    - PlayerMoveController에 이동 상태에 따른 애니메이션 제어 로직 추가
+
+[33mcommit 8b7b05e639813ac16fbb4488bf45ec95fd4ed3c5[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 23:28:41 2026 +0900
+
+    refactor: 새로운 Input System 활용을 위한 기존 InputKey 관련 파일 삭제
+    
+    - ScriptableObject 기반의 기존 입력 설정 에셋 및 베이스 스크립트 제거
+
+[33mcommit 564e35a067da88bd0a78089bf48b303dac268987[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 16:17:13 2026 +0900
+
+    feature: 플레이어 이동 속도 다른 스크립트로 전달하는 효과 구현
+    
+    - 플레이어 스탯을 관리하는 PlayerController.cs에서 플레이어 이동을 관여하는 playerMoveController.cs로 이동속도를 전달하기 위함임
+
+[33mcommit 3c71839d2568deb2e360db075fa7485b53dbf334[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 16:01:39 2026 +0900
+
+    feat: 플레이어 기본 레벨 기능 추가
+    
+    - PlayerDefaultData에 기본 레벨 필드 및 프로퍼티 추가
+    - PlayerController 초기화 시 playerDefaultData에서 기본 레벨을 가져오도록 수정
+
+[33mcommit 30479525fd9088554a9b8afb8482603e3eca1229[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 15:53:38 2026 +0900
+
+    docs: PlayerController 스크립트 설명 주석 추가
+    
+    - PlayerController 클래스의 역할(상태 변화 및 성장 관리)을 설명하는 주석 추가
+
+[33mcommit aa1b7315ea3b4b9fd386ad163109fba0bc7d57f3[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 15:44:13 2026 +0900
+
+    feat: PlayerController 스크립트 추가 및 PlayerMoveController 정리
+    
+    - PlayerDefaultData를 사용하여 플레이어 스탯을 초기화하는 resetPlayerStat 메서드를 PlayerController 클래스에 구현
+    - 앞으로 플레이어의 스탯 관리는 PlayerController에서 담당할 예정.
+            - 다른 파일에서 플레이어 데이터를 가져올 경우 이 클래스에서 참조해서 가져오기로 함.
+
+[33mcommit b98de3385c5b5cafd72535203a7cf6c0c35d138a[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 15:33:29 2026 +0900
+
+    fix: 플레이어 목숨의 잘못된 자료형 수정
+    
+    float로 되어 있었기 때문에 int로 수정함
+
+[33mcommit dfd7295b23f8d4bd3882879dbd8f3b4c9b6eb2c0[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 04:54:13 2026 +0900
+
+    fix: 플레이어 프리팹 내 이동 컨트롤러 컴포넌트 참조 업데이트
+    
+    - 스크립트 이름 변경(PlayerMove -> PlayerMoveController)에 따른 프리팹 내 컴포넌트 메타데이터 수정
+
+[33mcommit e7bff5a3cf9bce3d703ba2e0e67f9a48f2d0fc88[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 04:46:44 2026 +0900
+
+    feature: 플레이어 기본 스탯 데이터 구조 추가 및 프리팹 업데이트
+    
+    - PlayerDefaultData 스크립터블 오브젝트 추가 (HP, 이동 속도 등 기본 스탯 정의)
+    - 플레이어 프리팹에 변경된 스크립트 컴포넌트 반영
+
+[33mcommit 31a3b70b178447ff35acf60df83f12baa3b998ad[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 04:45:37 2026 +0900
+
+    refactor: PlayerMove 스크립트 이름을 PlayerMoveController로 변경
+
+[33mcommit 1f0edf4869af60fc26b4870e4329953220ff2079[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Tue Jan 13 03:55:44 2026 +0900
+
+    feature: 플레이어 애니메이션 및 입력 설정 추가
+    
+    - 플레이어 기본 애니메이션(Idle, Run, Hurt, Death) 및 Animator Controller 구성
+    - ScriptableObject 기반의 키 입력 설정(PlayerInputKey) 시스템 구현
+    - 플레이어 Prefab 생성 및 PlayerScene에 적용
+    - PlayerMove 스크립트 추가
+    - 이후 플레이어 이동 구현은 새로운 브랜치에서 이어서 할 예정
+
+[33mcommit e77de2621a712003416089bd80bafe3f5decb0ad[m
+Author: Chillbok <45466997+Chillbok@users.noreply.github.com>
+Date:   Mon Jan 12 23:03:26 2026 +0900
+
+    feature: 캐릭터 오브젝트 생성
+    
+    - 기초적인 리지드바디 및 박스 콜라이더를 추가했음
+
+[33mcommit 50ce2744f3a0995226d2f992b1e4d1aa42f6fc6d[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Mon Jan 12 22:45:48 2026 +0900
+
+    Feature : 타이틀 구현 완료
+
+[33mcommit 704214ab44faf7178737d020ea420a7a8fa1ee93[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Mon Jan 12 18:35:11 2026 +0900
+
+    Feature : UI 기본 세팅 구현
+
+[33mcommit aaeadf2c7edcff45abd5b2bb7b4ba136b49de5ef[m
+Author: Bai Kyungmin <qorudalswl@naver.com>
+Date:   Mon Jan 12 16:01:31 2026 +0900
+
+    Init : UI 에셋 삽입 및 씬 생성
+
+[33mcommit dbb7ff079db76c2c06817d8b52b9cc4a7b9ed401[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mgallant-euclid[m[33m)[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Sun Jan 11 23:22:32 2026 +0900
+
+    URP upgrade
+
+[33mcommit 6046497f8bbdcdd29cf936269977258fcfd57d58[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Sun Jan 11 23:07:54 2026 +0900
+
+    initial
+
+[33mcommit 654e14d0c659a5721b35b08217e3d8db7822300e[m
+Author: GongJaCh <81235791+ghostlink77@users.noreply.github.com>
+Date:   Sun Jan 11 22:02:19 2026 +0900
+
+    Initial commit

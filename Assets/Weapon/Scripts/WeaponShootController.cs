@@ -19,7 +19,7 @@ public class WeaponShootController : MonoBehaviour
     float _atkCoolTime, _projectileSpeed = 0f;
 
     void Awake()
-    {
+    {   
         _projectilePool = new ObjectPool<GameObject>(
             createFunc: OnCreateBullet,         // 객체 생성 로직
             actionOnGet: OnGetBullet,           // 풀에서 꺼낼 때
