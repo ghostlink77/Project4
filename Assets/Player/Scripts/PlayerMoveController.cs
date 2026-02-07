@@ -20,7 +20,7 @@ public class PlayerMoveController : MonoBehaviour
     private float _moveSpeed;
     // 유저 입력을 저장할 2차원 벡터 변수
     private Vector2 _inputVector;
-    private Vector3 _moveVector;
+    private Vector2 _moveVector;
     // 플레이어 위치 기록용 2차원 벡터 변수들
     // 마지막 위치
     private Vector2 _lastPos;
@@ -28,24 +28,24 @@ public class PlayerMoveController : MonoBehaviour
     private Vector2 _currentPos;
     
     // 프로퍼티
-    public Vector3 MoveVector
+    public Vector2 MoveVector
     {
         get {return _moveVector;}
         set
         {
             // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
-            if (PlayerManager.Instance.PlayerStatController.Dead == true) _moveVector = Vector3.zero;
+            if (PlayerManager.Instance.PlayerStatController.Dead == true) _moveVector = Vector2.zero;
             else _moveVector = value;
         }
     }
     
-    public Vector3 InputVector
+    public Vector2 InputVector
     {
         get {return _inputVector;}
         set
         {
             // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
-            if (PlayerManager.Instance.PlayerStatController.Dead == true) _inputVector = Vector3.zero;
+            if (PlayerManager.Instance.PlayerStatController.Dead == true) _inputVector = Vector2.zero;
             else _inputVector = value;
         }
     }
@@ -75,7 +75,7 @@ public class PlayerMoveController : MonoBehaviour
         InputVector = context.ReadValue<Vector2>();
         
         // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector3.zero를 대입한다.
-        MoveVector = new Vector3(InputVector.x, InputVector.y, 0);
+        MoveVector = new Vector2(InputVector.x, InputVector.y);
     }
     
     // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
