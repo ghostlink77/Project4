@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using static UnityEditor.Progress;
 
 [Serializable]
 public struct ItemSlotData
@@ -33,8 +34,8 @@ public class InGameUIController : MonoBehaviour
 
     public readonly string IMAGE_PATH = "Sprite";
 
-    [Header("PlayerStat")]
-    [SerializeField] private PlayerStatus _playerStatus;
+    /*[Header("PlayerStat")]
+    [SerializeField] private PlayerStatus _playerStatus;*/
 
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
@@ -146,108 +147,73 @@ public class InGameUIController : MonoBehaviour
 
     public void UpdateExpBar()
     {
-        int currentLevel = _playerStatus.currentLevel;
-        float currentExp = _playerStatus.currentExp;
+        int currentLevel = PlayerManager.Instance.PlayerStatController.CurrentLevel;
+        float currentExp = PlayerManager.Instance.PlayerStatController.CurrentExp;
         float maxExp = DataTableManager.Instance.GetGameData<ExpData>().GetExpData(currentLevel);
         _expBar.fillAmount = currentExp / maxExp;
     }
 
     private void UpdateSelectableItemInUI()
     {
-        while (true)
+        WeaponStatData newWeaponData = DataTableManager.Instance.GetSelectableWeapon();
+        if (newWeaponData == null)
         {
-            WeaponDataStruct randomWeapon = DataTableManager.Instance.GetGameData<WeaponData>().GetRandomWeaponData();
-
-            const int maxLevel = 10;
-            int currentWeaponLevel = 1;
-            bool isItemMaxLevel = false;
-
-            for (int i = 0; i < _playerStatus.Items.Length; i++)
-            {
-                if (_playerStatus.Items[i].ItemName == randomWeapon.WeaponName)
-                {
-                    if (_playerStatus.Items[i].ItemLevel >= maxLevel)
-                    {
-                        isItemMaxLevel = true;
-                    }
-                    else
-                    {
-                        currentWeaponLevel = _playerStatus.Items[i].ItemLevel + 1;
-                    }
-                }
-            }
-
-            if (!isItemMaxLevel)
-            {
-                _itemSelectBtnDatas[0].ItemNameText.text = randomWeapon.WeaponName;
-                _itemSelectBtnDatas[0].ItemImage.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/{randomWeapon.WeaponName}");
-                _itemSelectBtnDatas[0].ItemLevelText.text = currentWeaponLevel.ToString();
-                //_itemSelectBtnDatas[0].ItemDescriptionText.text = randomWeapon.Description;
-                _itemSelectBtnDatas[0].ItemDescriptionText.text = "";
-                _itemSelectBtns[0].onClick.AddListener(() => OnClickItemSelectBtn(
-                    randomWeapon.WeaponName,
-                    currentWeaponLevel,
-                    "",
-                    "Weapon"
-                    ));
-
-                break;
-            }
+            Debug.Log("No Selectable Weapon.");
+            _itemSelectBtnDatas[0].ItemNameText.text = "";
+            _itemSelectBtnDatas[0].ItemImage.sprite = null;
+            _itemSelectBtnDatas[0].ItemImage.color = new Color(1, 1, 1, 0);
+            _itemSelectBtnDatas[0].ItemLevelText.text = "";
+            //_itemSelectBtnDatas[0].ItemDescriptionText.text = randomWeapon.Description;
+            _itemSelectBtnDatas[0].ItemDescriptionText.text = "";
+            _itemSelectBtns[0].onClick.RemoveAllListeners();
+            return;
         }
+        int currentWeaponLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newWeaponData);
+
+        int weaponLevel = 1;
+        if (currentWeaponLevel != -1)
+        {
+            weaponLevel = currentWeaponLevel + 1;
+        }
+            
+        _itemSelectBtnDatas[0].ItemNameText.text = newWeaponData.WeaponName;
+        _itemSelectBtnDatas[0].ItemImage.sprite = newWeaponData.Icon;
+        _itemSelectBtnDatas[0].ItemLevelText.text = weaponLevel.ToString();
+        //_itemSelectBtnDatas[0].ItemDescriptionText.text = randomWeapon.Description;
+        _itemSelectBtnDatas[0].ItemDescriptionText.text = "";
+        _itemSelectBtns[0].onClick.RemoveAllListeners();
+        _itemSelectBtns[0].onClick.AddListener(() => OnClickItemSelectBtn(
+            newWeaponData,
+            "Weapon"
+            ));
     }
 
     private void UpdateInventory()
     {
-        for (int index = 0; index < _playerStatus.Items.Length; index++)
+        List<GameObject> weaponSlot = PlayerManager.Instance.PlayerItemController.WeaponSlot;
+        if (weaponSlot == null) return;
+        for (int index = 0; index < weaponSlot.Count; index++)
         {
-            Item item = _playerStatus.Items[index];
-            if (item.ItemLevel == 0) break;
-
+            if (weaponSlot[index] == null) return;
             ItemSlotData itemSlot = _inventorySlot[index];
-            itemSlot.ItemImage.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/{item.ItemName}");
+            itemSlot.ItemImage.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/{weaponSlot[index].name}");
             itemSlot.ItemImage.color = Color.white;
-            itemSlot.ItemLevelText.text = item.ItemLevel.ToString();
-            itemSlot.ItemDescriptionText.text = item.Description;
+            itemSlot.ItemLevelText.text = weaponSlot[index].GetComponent<WeaponStatController>().Level.ToString();
+            itemSlot.ItemDescriptionText.text = "";
         }
     }
 
-    private void OnClickItemSelectBtn(string Name, int level, string Description, string itemType)
+    private void OnClickItemSelectBtn(WeaponStatData newWeaponData, string itemType)
     {
-        Debug.Log($"클릭된 버튼 정보 -> Name : {Name} Level : {level} Desc : {Description}");
-
         switch(itemType)
         {
             case "Weapon":
-                AddWeaponItem(Name, level, Description);
+                PlayerManager.Instance.PlayerItemController.AddWeaponToSlot(newWeaponData);
                 CloseLevelupUI();
                 break;
             default:
                 Debug.Log("Doesn't Contains ItemType.");
                 break;
-        }
-
-        /*Item item = new Item();
-        item.ItemLevel = 
-        _playerStatus.Items.*/
-
-    }
-
-    private void AddWeaponItem(string Name, int level, string Description)
-    {
-        for(int i=0; i< _playerStatus.Items.Length; i++)
-        {
-            if (_playerStatus.Items[i].ItemName == Name)
-            {
-                _playerStatus.Items[i].ItemLevel = level;
-                return;
-            }
-            else if (_playerStatus.Items[i].ItemLevel == 0)
-            {
-                _playerStatus.Items[i].ItemName = Name;
-                _playerStatus.Items[i].ItemLevel = level;
-                _playerStatus.Items[i].Description = Description;
-                return;
-            }
         }
     }
 }

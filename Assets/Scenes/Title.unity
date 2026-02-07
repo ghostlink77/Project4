@@ -466,6 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b934033671f21c41b03ba60dcef95de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataTableManager
+  WeaponDatas:
+  - {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}
 --- !u!4 &849497057
 Transform:
   m_ObjectHideFlags: 0

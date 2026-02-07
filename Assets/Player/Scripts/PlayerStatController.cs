@@ -16,8 +16,10 @@ public class PlayerStatController : MonoBehaviour
     private SoundData playerSound;
     
     // 플레이어 스탯
+    
     private int _currentLevel;
     public int CurrentLevel {get => _currentLevel; set => _currentLevel = value;}
+    public int CurrentExp { get; private set; }
     private int _maxHp;
     public int MaxHp {get => _maxHp; set => _maxHp = value;}
     private int _currentHp;
