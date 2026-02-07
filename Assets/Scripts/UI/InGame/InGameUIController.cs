@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 [Serializable]
 public struct ItemSlotData
@@ -34,18 +31,13 @@ public class InGameUIController : MonoBehaviour
 
     public readonly string IMAGE_PATH = "Sprite";
 
-    /*[Header("PlayerStat")]
-    [SerializeField] private PlayerStatus _playerStatus;*/
-
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
     private void Update()
     {
         HandleInput();
-        ShowPlayTime();
         UpdateExpBar();
-        UpdateInventory();
     }
 
     private void HandleInput()
@@ -190,7 +182,7 @@ public class InGameUIController : MonoBehaviour
 
     private void UpdateInventory()
     {
-        List<GameObject> weaponSlot = PlayerManager.Instance.PlayerItemController.WeaponSlot;
+        IReadOnlyList<GameObject> weaponSlot = PlayerManager.Instance.PlayerItemController.WeaponSlot;
         if (weaponSlot == null) return;
         for (int index = 0; index < weaponSlot.Count; index++)
         {
@@ -215,5 +207,7 @@ public class InGameUIController : MonoBehaviour
                 Debug.Log("Doesn't Contains ItemType.");
                 break;
         }
+
+        UpdateInventory();
     }
 }

@@ -12,7 +12,7 @@ using UnityEngine;
 public class PlayerItemController : MonoBehaviour
 {
     [Header("플레이어 무기 슬롯")]
-    public List<GameObject> WeaponSlot { get { return _weaponSlot; } }
+    public IReadOnlyList<GameObject> WeaponSlot { get { return _weaponSlot.AsReadOnly(); } }
     private List<GameObject> _weaponSlot = new List<GameObject>();
 
     [Header("플레이어 패시브 아이템 슬롯")]
@@ -48,7 +48,6 @@ public class PlayerItemController : MonoBehaviour
         if (index != -1)
         {
             weaponSlots[index].GetComponent<WeaponStatController>().LevelUpWeaponLevel();
-            Debug.Log($"레벨업!! : {weaponSlots[index].GetComponent<WeaponStatController>().Level}");
             return;
         }
 

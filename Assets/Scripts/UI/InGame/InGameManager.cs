@@ -35,5 +35,6 @@ public class InGameManager : SingletonBehaviour<InGameManager>
     private void RecordPlayTime()
     {
         PlayTime += Time.deltaTime;
+        InGameUIController.ShowPlayTime();
     }
 }
