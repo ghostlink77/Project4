@@ -1,0 +1,7 @@
+weaponName,weaponType,weaponDmg,critRate,critMultiplier,effectRate,projAmount,projSpeed,atkSpeed,atkRange
+샷건,원거리 무기,10,35,1.6,20,10,20,3,1
+자동소총,원거리 무기,20,20,1.4,10,1,20,0.25,3
+저격총,원거리 무기,60,35,2.5,30,1,40,4,6
+핸드 캐논,원거리 무기,30,60,2,50,1,30,1.25,3
+로켓 런처,원거리 무기,50,10,1.1,30,1,10,5,4
+진짜 대검,근접 무기,50,50,3,50,1,0,3,1
