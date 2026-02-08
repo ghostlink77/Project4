@@ -1,10 +1,13 @@
+/*
+ * 적 스폰 지점 관리 스크립트
+ */
 using System.Collections;
 using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private string enemyType;
-    public string EnemyType => enemyType;
+    public string EnemyType { get => enemyType; set => enemyType = value; }
     [SerializeField] private float spawnInterval = 1f;
 
     private bool isSpawning = false;
@@ -14,13 +17,12 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private void Awake()
     {
-        spawner = FindAnyObjectByType<EnemySpawner>();
         spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
     private void Start()
     {
-        StartSpawn();
+        spawner = EnemySpawner.Instance;
     }
 
     public void StartSpawn()
@@ -31,6 +33,7 @@ public class EnemySpawnPoint : MonoBehaviour
     public void StopSpawn()
     {
         isSpawning = false;
+        StopCoroutine(SpawnLoop());
     }
 
     IEnumerator SpawnLoop()

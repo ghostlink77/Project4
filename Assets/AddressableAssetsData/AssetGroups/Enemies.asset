@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Enemies
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Enemies
+  m_GUID: df4833cf7349a46469c6be1ecfff0239
+  m_SerializeEntries:
+  - m_GUID: 031ba117d235aa1418392a60433f566b
+    m_Address: Prefabs/Enemy/Drone1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefabs
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7dfd1cfd68d654d4897543903772e05d, type: 2}
+    - {fileID: 11400000, guid: f520101a26c651c488c3e9675b8c5c30, type: 2}

@@ -1,26 +1,32 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * 적 스폰 및 오브젝트 풀 관리 스크립트
+ */
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.AddressableAssets;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 {
-    private ObjectPool<GameObject> enemyPool;
     private const int MAXSIZE = 50;
     private const int INITSIZE = 10;
 
-    // 적 오브젝트 종류별로 오브젝트 풀 관리
+    // NOTE: 적 오브젝트 종류별로 오브젝트 풀 관리
     private Dictionary<string, ObjectPool<GameObject>> enemyPools = new Dictionary<string, ObjectPool<GameObject>>();
     private Dictionary<string, GameObject> enemyPrefabs = new Dictionary<string, GameObject>();
 
-    private void Awake()
+
+    protected override void Init()
     {
+        base.Init();
+
         LoadEnemyPrefabs();
         CreatePools();
     }
 
     private void LoadEnemyPrefabs()
     {
-        GameObject[] prefabs = Resources.LoadAll<GameObject>("Prefabs/Enemies");
+        GameObject[] prefabs = Addressables.LoadAssetAsync<GameObject[]>("EnemyPrefabs").WaitForCompletion();
 
         foreach (var prefab in prefabs)
         {

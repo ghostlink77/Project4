@@ -65,10 +65,5 @@ public class Agit : MonoBehaviour, IDamageable
         mainCamera.transform.position = targetPos;
     }
 
-    [ContextMenu("Test Take Damage 30")]
-    public void TestDamage()
-    {
-        TakeDamage(30);
-    }
 
 }
