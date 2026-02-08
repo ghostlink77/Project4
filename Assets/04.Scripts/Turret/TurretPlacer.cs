@@ -14,7 +14,7 @@ public class TurretPlacer : MonoBehaviour
 {
 
     [SerializeField] private LayerMask tileLayer;
-    [SerializeField] private TurretData[] turrets = new TurretData[4];  // 플레이어 포탑 슬롯의 포탑
+    [SerializeField] private TurretData[] turrets = new TurretData[4];
 
     public TurretData[] Turrets { get { return turrets; } }
 
@@ -127,12 +127,11 @@ public class TurretPlacer : MonoBehaviour
         if(hit != null)
         {
             return hit.GetComponent<Tile>();
-            Debug.Log("Tile found at player position.");
         }
         return null;
     }
     void GetPlayerTurret()
     {
-        // 추후 플레이어가 가진 포탑 정보를 가져오는 로직 추가
+        // TODO: 추후 플레이어가 가진 포탑 정보를 가져오는 로직 추가
     }
 }
