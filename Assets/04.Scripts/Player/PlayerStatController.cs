@@ -161,7 +161,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             PlayerManager.Instance.Animator.SetBool("isDead", Dead);
             // 체력 최대 체력으로 초기화
             CurrentHp = MaxHp;
-            Debug.Log("플레이어 부활 완료");
+            Debug.Log($"부활 후 남은 목숨: {Life}, 플레이어 부활함");
         }
         else
         {
@@ -175,7 +175,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         if (Life > 0)
         {
-            Debug.Log($"목숨 {Life}개. 부활 가능. -1 줄일 예정");
+            Debug.Log($"목숨 {Life}개, 부활 가능");
             return true;
         }
         else
