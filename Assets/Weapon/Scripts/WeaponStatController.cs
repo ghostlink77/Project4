@@ -4,6 +4,7 @@
 */
 using System;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Game.Types;
 using NUnit.Framework;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class WeaponStatController : MonoBehaviour
 {
     public event Action<WeaponStat> OnStatChanged;
 
+    public int Level { get { return level; } }
     [SerializeField]
     private int level, atk;
     [SerializeField]
@@ -81,5 +83,10 @@ public class WeaponStatController : MonoBehaviour
         atkRange = baseStat.AtkRange;
         projectileSpeed = baseStat.ProjectileSpeed;
         projectileCount = baseStat.ProjectileCount;
+    }
+
+    public void LevelUpWeaponLevel()
+    {
+        level++;
     }
 }

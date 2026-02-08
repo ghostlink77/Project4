@@ -12,6 +12,7 @@ using UnityEngine;
 public class PlayerItemController : MonoBehaviour
 {
     [Header("플레이어 무기 슬롯")]
+    public IReadOnlyList<GameObject> WeaponSlot { get { return _weaponSlot.AsReadOnly(); } }
     private List<GameObject> _weaponSlot = new List<GameObject>();
 
     [Header("플레이어 패시브 아이템 슬롯")]
@@ -38,11 +39,26 @@ public class PlayerItemController : MonoBehaviour
 
     // 빈 무기 슬롯이 있다면 아이템 넣는 메서드
     // 빈 무기 슬롯이 없다면 무기 교환해서 넣는 기능은 따로 구현하지 않는다.
-    private void AddWeaponToSlot(GameObject newWeapon)
+    // 추가하려는 무기가 현재 무기 슬롯에 존재한다면 레벨만 올림.
+    public void AddWeaponToSlot(WeaponStatData newWeaponData)
     {
+        GameObject newWeapon = Resources.Load<GameObject>($"Weapon/{newWeaponData.WeaponName}");
+        int index = GetWeaponIndexInSlot(newWeaponData);
         List<GameObject> weaponSlots = _weaponSlot;
+        if (index != -1)
+        {
+            weaponSlots[index].GetComponent<WeaponStatController>().LevelUpWeaponLevel();
+            return;
+        }
+
         bool isEmpty = CheckEmptySlot(weaponSlots, out int emptyIndex);
-        if (isEmpty == true) weaponSlots[emptyIndex] = newWeapon;
+        if (isEmpty == true)
+        {
+            weaponSlots[emptyIndex] = newWeapon;
+            weaponSlots[emptyIndex].GetComponent<WeaponStatController>().LevelUpWeaponLevel();
+            Debug.Log("신규 무기 추가");
+
+        }
         else Debug.Log($"weaponSlots에 남은 자리 없음");
     }
 
@@ -98,5 +114,35 @@ public class PlayerItemController : MonoBehaviour
         if (list.Count <= count) return;
         int sizeToDelete = list.Count - count;
         list.RemoveRange(list.Count - sizeToDelete, sizeToDelete);
+    }
+
+    // 슬롯에 추가할 무기가 현재 슬롯에 있는지, 그리고 슬롯에 있다면 레벨은 몇인지 반환함.
+    public int GetWeaponLevelInSlot(WeaponStatData weaponData)
+    {
+        if (_weaponSlot == null) return -1;
+
+        foreach (var weapon in _weaponSlot)
+        {
+            if (weapon == null) break;
+            if (weapon.name == weaponData.WeaponName)
+            {
+                return weapon.GetComponent<WeaponStatController>().Level;
+            }
+        }
+        return -1;
+    }
+    
+    // 슬롯에 추가할 무기가 현재 슬롯에 있는지, 있다면 무기의 위치를 반환. 
+    public int GetWeaponIndexInSlot(WeaponStatData weaponData)
+    {
+        if (_weaponSlot == null) return -1;
+
+        for (int index = 0; index < _weaponSlot.Count; index++)
+        {
+            if (_weaponSlot[index] == null) break;
+            if (_weaponSlot[index].name == weaponData.WeaponName)
+                return index;
+        }
+        return -1;
     }
 }
