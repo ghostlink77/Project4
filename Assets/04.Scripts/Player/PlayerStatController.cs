@@ -148,5 +148,36 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         // 플레이어 애니메이터 사망 트리거 실행
         _animator.SetBool("isDead", Dead);
         PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
+        PlayerRevive();
+    }
+    // 플레이어 부활시키는 메서드
+    private void PlayerRevive()
+    {
+        if (CheckRevivable() == true)
+        {
+            Life -= 1;
+            Dead = false;
+            PlayerManager.Instance.Animator.SetBool("isDead", Dead);
+            Debug.Log("플레이어 부활 완료");
+        }
+        else
+        {
+            Debug.Log("플레이어 사망");
+        }
+    }
+    
+    // 부활 가능한지 판단하는 메서드
+    private bool CheckRevivable()
+    {
+        if (Life > 0)
+        {
+            Debug.Log($"목숨 {Life}개. 부활 가능. -1 줄일 예정");
+            return true;
+        }
+        else
+        {
+            Debug.Log($"목숨 {Life}개, 부활 불가능");
+            return false;
+        }
     }
 }
