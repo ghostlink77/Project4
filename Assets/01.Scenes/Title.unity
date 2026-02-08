@@ -631,7 +631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7707793191782503053, guid: 661222fb742bda44bb65932263c23f4b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8062455326422928004, guid: 661222fb742bda44bb65932263c23f4b, type: 3}
       propertyPath: uiCamera
