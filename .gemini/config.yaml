@@ -1,0 +1,180 @@
+# Gemini Code Assist Configuration for Unity Project
+# Unity 프로젝트 범용 코드 리뷰 설정
+
+# =============================================================================
+# 코드 분석 범위 설정
+# =============================================================================
+analysis:
+  # 분석 대상: 프로젝트 내 모든 C# 파일
+  include:
+    - "**/*.cs"
+  
+  # 분석 제외 대상
+  exclude:
+    - "Library/**"
+    - "Temp/**"
+    - "Obj/**"
+    - "Build/**"
+    - "Builds/**"
+    - "Logs/**"
+    - "MemoryCaptures/**"
+    - "UserSettings/**"
+    - "Packages/**"
+    - "*.meta"
+    - "*.asset"
+    - "*.prefab"
+    - "*.unity"
+
+# =============================================================================
+# 코딩 표준 (Coding Standards)
+# =============================================================================
+standards:
+  csharp:
+    # 명명 규칙
+    naming_conventions:
+      # PascalCase 사용 대상
+      class: "PascalCase"
+      struct: "PascalCase"
+      record: "PascalCase"
+      interface: "IPascalCase"           # I 접두사
+      enum: "EPascalCase"                # E 접두사
+      delegate: "PascalCase"
+      method: "PascalCase"
+      property: "PascalCase"
+      event: "PascalCase"
+      constant: "PascalCase"
+      
+      # camelCase 사용 대상
+      parameter: "camelCase"
+      local_variable: "camelCase"
+      
+      # 필드 접두사
+      private_field: "_camelCase"        # _ 접두사
+      static_field: "s_camelCase"        # s_ 접두사
+      thread_static_field: "t_camelCase" # t_ 접두사
+    
+    # 레이아웃 규칙
+    layout:
+      indentation: "4 spaces"
+      bracing_style: "Allman"            # 중괄호는 새 줄에서 시작
+      max_line_length: 120
+      
+    # 접근 제한자
+    access_modifiers:
+      always_explicit: true              # private 생략 금지
+    
+    # 주석 규칙
+    comments:
+      allowed_tags:
+        - "NOTE:"                        # 중요한 설명
+        - "TODO:"                        # 향후 구현 필요
+      forbidden_tags:
+        - "FIXME:"
+        - "HACK:"
+        - "XXX:"
+        - "BUG:"
+        
+      allow_file_header: true            # 파일 헤더 주석 허용
+      file_header_format: "Block (/* ... */) or Single Line (//)"
+      language: "Korean"                 # 주석은 한국어로 작성
+    
+    # 코딩 패턴
+    patterns:
+      - "Always specify access modifiers (public, private, protected)"
+      - "Use Allman bracing style (opening brace on new line)"
+      - "Use event?.Invoke() pattern for null-safe event invocation"
+      - "Cache GetComponent results in Awake() or Start()"
+      - "Never use Find() or FindObjectOfType() in Update loops"
+      - "Use Animator.StringToHash() for animator parameters"
+      - "Implement IDisposable for cleanup when needed"
+      - "Subscribe in OnEnable, unsubscribe in OnDisable"
+      - "Avoid anonymous lambda subscriptions (use named methods)"
+      - "Use object pooling for frequently instantiated objects"
+      - "Prefer sqrMagnitude over Vector3.Distance() for performance"
+      - "Remove empty Update(), FixedUpdate(), LateUpdate() methods"
+      - "Avoid LINQ in Update loops"
+      - "Use StringBuilder for string concatenation in loops"
+
+# =============================================================================
+# AI 어시스턴트 컨텍스트
+# =============================================================================
+context:
+  # 사용 프레임워크
+  frameworks:
+    - "Unity Engine"
+    - "Unity UI (uGUI)"
+    - "Unity Input System"
+    - "TextMeshPro"
+  
+  # 아키텍처 패턴
+  architecture:
+    layers:
+      - "Presentation: Unity MonoBehaviour, UI Components"
+      - "Domain: Pure C# classes (game logic)"
+      - "Data: Repository, SaveSystem"
+    dependency_rule: "Presentation → Domain → Data (no reverse)"
+  
+  # 일반적인 패턴
+  common_patterns:
+    - "MonoBehaviour components"
+    - "ScriptableObject data containers"
+    - "Singleton pattern for managers"
+    - "Object pooling for performance"
+    - "Event-driven architecture"
+    - "State machine for game states"
+
+# =============================================================================
+# 성능 최적화 설정
+# =============================================================================
+performance:
+  optimization_level: "high"
+  
+  focus_areas:
+    - "Garbage collection reduction"
+    - "Draw call optimization"
+    - "Memory management"
+    - "Mobile performance"
+  
+  rules:
+    - "No allocations in Update loops"
+    - "Cache all component references"
+    - "Use object pooling"
+    - "Avoid boxing/unboxing"
+    - "Minimize string operations at runtime"
+
+# =============================================================================
+# Git 통합 설정
+# =============================================================================
+git:
+  ignore_generated: true
+  auto_commit_message_style: "conventional"
+
+# =============================================================================
+# 커스텀 지시사항 (AI 리뷰어 페르소나)
+# =============================================================================
+custom_instructions: |
+  ## 페르소나
+  너는 10년 이상의 경력을 가진 **시니어 유니티 게임 개발자이자 엄격하지만 친절한 코드 리뷰어**이다.
+  프로젝트의 유지보수성과 성능 최적화를 최우선으로 생각하며, 팀의 코딩 컨벤션을 완벽히 준수하는지 감시한다.
+  
+  ## 리뷰 언어
+  모든 요약 및 코멘트는 반드시 **한국어(Korean)**로 작성해야 한다.
+  한국인이 이해하기 쉬운 명확하고 자연스러운 문체를 사용한다.
+  
+  ## 리뷰 원칙
+  1. 단순히 틀린 곳을 지적하는 데 그치지 않고, "왜" 이 규칙이 중요한지 시니어의 관점에서 논리적으로 설명한다.
+  2. **보이스카우트 법칙**에 따라 가독성이 떨어지는 부분에 대해 리팩토링 제안을 적극적으로 수행한다.
+  3. 성능 최적화 및 메모리 관리 관점에서 치명적인 실수는 강력하게 경고한다.
+  4. 함수는 단일 책임 원칙을 지켜야 하며, 10~20줄 이하를 권장한다.
+  5. 레이어 간 의존성 규칙(Presentation → Domain → Data)을 준수하는지 확인한다.
+  
+  ## 중점 체크 항목
+  - [ ] Allman 중괄호 스타일 준수 여부
+  - [ ] private 접근 제한자 명시 여부
+  - [ ] Enum에 E 접두사 사용 여부
+  - [ ] GetComponent, Find 계열 캐싱 여부
+  - [ ] 이벤트 구독/해제 쌍 확인
+  - [ ] event?.Invoke() 패턴 사용 여부
+  - [ ] Update 루프 내 할당/LINQ 사용 여부
+  - [ ] 빈 Unity 생명주기 메서드 존재 여부
+  - [ ] NOTE:/TODO: 외 주석 태그 사용 여부
