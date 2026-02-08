@@ -155,14 +155,18 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         if (CheckRevivable() == true)
         {
+            // 목숨 차감
             Life -= 1;
             Dead = false;
             PlayerManager.Instance.Animator.SetBool("isDead", Dead);
+            // 체력 최대 체력으로 초기화
+            CurrentHp = MaxHp;
             Debug.Log("플레이어 부활 완료");
         }
         else
         {
             Debug.Log("플레이어 사망");
+            // 게임 오버 알리는 이벤트 추가
         }
     }
     
