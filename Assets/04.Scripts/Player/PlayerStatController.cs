@@ -191,7 +191,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         else
         {
             Debug.Log("플레이어 사망");
-            // 게임 오버 알리는 이벤트 추가
+            // TODO: 게임 오버 알리는 이벤트 추가
         }
     }
     
