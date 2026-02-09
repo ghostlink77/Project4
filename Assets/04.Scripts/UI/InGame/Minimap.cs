@@ -4,18 +4,21 @@ using UnityEngine;
 public class Minimap : MonoBehaviour
 {
     [Header("References")]
-    public BoxCollider2D _mapReference;
-    public Transform _playerTransform;
+    [SerializeField] private BoxCollider2D _mapReference;
+    [SerializeField] private Transform _playerTransform;
 
     [Header("References - UI")]
-    public RectTransform _playerIndicator;
+    [SerializeField] private RectTransform _playerIndicator;
 
     [Header("Parameters")]
-    public Vector2 _mapTextureSize = new Vector2(1024, 1024);
-    public Bounds _mapBounds;
+    [SerializeField] private Vector2 _mapTextureSize = new Vector2(1024, 1024);
+    [SerializeField] private Bounds _mapBounds;
 
     [Header("Player Options")]
-    public float minimapScale = 1.0f;
+    [SerializeField] private float minimapScale = 1.0f;
+
+    Vector2 _unitScale;
+    Vector2 _mapPosition = Vector2.zero;
 
     private void Awake()
     {
@@ -24,21 +27,23 @@ public class Minimap : MonoBehaviour
             _mapReference.gameObject.SetActive(true);
             _mapBounds = _mapReference.bounds;
             _mapReference.gameObject.SetActive(false);
+
+            _unitScale = new Vector2(_mapTextureSize.x / _mapBounds.size.x,
+            _mapTextureSize.y / _mapBounds.size.y);
         }
     }
 
     private void LateUpdate()
     {
-        Transform positionReference = _playerTransform;
+        if (_playerTransform == null || _playerIndicator == null) return;
 
-        Vector2 unitScale = new Vector2(_mapTextureSize.x / _mapBounds.size.x,
-            _mapTextureSize.y / _mapBounds.size.y);
+        Transform positionReference = _playerTransform;
         Vector3 positionOffset = _mapBounds.center - positionReference.position;
 
-        Vector2 mapPosition = new Vector2(positionOffset.x * unitScale.x * -1,
-            positionOffset.y * unitScale.y * -1) *minimapScale;
+        _mapPosition.x = positionOffset.x * _unitScale.x * -1 * minimapScale;
+        _mapPosition.y = positionOffset.y * _unitScale.y * -1 * minimapScale;
 
-        _playerIndicator.localPosition = mapPosition;
+        _playerIndicator.localPosition = _mapPosition;
 
     }
 
