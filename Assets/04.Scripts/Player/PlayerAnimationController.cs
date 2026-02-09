@@ -13,5 +13,24 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator = PlayerManager.Instance.Animator;
         _playerEventController = PlayerManager.Instance.PlayerEventController;
+        AddToEvent();
+    }
+    
+    // 등록할 이벤트의 목록
+    private void AddToEvent()
+    {
+        _playerEventController.Hurt += OnEventHurt;
+    }
+    
+    // Hurt 이벤트에 추가할 메서드
+    private void OnEventHurt()
+    {
+        _animator.SetTrigger("isHurt");
+    }
+    
+    // Death 이벤트에 추가할 메서드
+    private void OnEventDeath()
+    {
+        _animator.SetBool("isDead", true);
     }
 }
