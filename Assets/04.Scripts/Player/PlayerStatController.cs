@@ -170,8 +170,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     
     private IEnumerator AfterReviveDelay()
     {
-        Animator animator = PlayerManager.Instance.Animator;
-        
         yield return _reviveDelayWaitAction;
         PlayerReviveStatusSetting();
     }
@@ -185,7 +183,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             Life -= 1;
             Dead = false;
             // 사망 애니메이션 출력을 위한 설정
-            PlayerManager.Instance.Animator.SetBool("isDead", false);
+            _animator.SetBool("isDead", false);
             // 체력 최대 체력으로 초기화
             CurrentHp = MaxHp;
             Debug.Log($"부활 후 남은 목숨: {Life}, 플레이어 부활함");
