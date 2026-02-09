@@ -179,7 +179,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     // 플레이어 부활시킬 때 스탯 변화를 적용할 메서드
     private void PlayerReviveStatusSetting()
     {
-        if (CheckRevivable() == true)
+        if (CheckRevivable())
         {
             // 목숨 차감
             Life -= 1;
