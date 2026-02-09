@@ -171,7 +171,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     private IEnumerator AfterReviveDelay()
     {
         Animator animator = PlayerManager.Instance.Animator;
-        animator.SetBool("isDead", true);
         
         yield return _reviveDelayWaitAction;
         PlayerReviveStatusSetting();
