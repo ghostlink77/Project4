@@ -7,9 +7,11 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator _animator;
+    private PlayerEventController _playerEventController;
 
     public void SetUp()
     {
         _animator = PlayerManager.Instance.Animator;
+        _playerEventController = PlayerManager.Instance.PlayerEventController;
     }
 }
