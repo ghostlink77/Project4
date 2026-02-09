@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
             PlayerStatController = GetComponent<PlayerStatController>();
             PlayerItemController = GetComponent<PlayerItemController>();
             PlayerAnimationController = GetComponent<PlayerAnimationController>();
+            PlayerEventController = GetComponent<PlayerEventController>();
             Animator = GetComponent<Animator>();
         }
     }
