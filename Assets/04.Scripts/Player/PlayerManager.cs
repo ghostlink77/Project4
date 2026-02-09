@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerStatController PlayerStatController { get; private set; }
     public PlayerItemController PlayerItemController { get; private set; }
     public PlayerAnimationController PlayerAnimationController { get; private set; }
+    public PlayerEventController PlayerEventController{ get; private set; }
     public SoundManager SoundManager { get; private set; } 
     public Animator Animator { get; private set; }
 
