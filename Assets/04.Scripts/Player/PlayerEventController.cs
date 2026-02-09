@@ -9,7 +9,7 @@ public class PlayerEventController : MonoBehaviour
 {
     public event Action Death, Revive, Hurt;
     
-    public void CallDeath() => Death.Invoke();
-    public void CallRevive() => Revive.Invoke();
-    public void CallHurt() => Hurt.Invoke();
+    public void CallDeath() => Death?.Invoke();
+    public void CallRevive() => Revive?.Invoke();
+    public void CallHurt() => Hurt?.Invoke();
 }
