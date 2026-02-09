@@ -2,6 +2,7 @@
 플레이어 캐릭터의 게임 플레이 도중의 상태 변화, 성장 등을 관리하는 스크립트
 */
 using System;
+using System.Collections;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +15,10 @@ public class PlayerStatController : MonoBehaviour, IDamageable
 
     [SerializeField]
     private SoundData playerSound;
+    
+    // 제미나이의 조언으로 추가.
+    // 사망 후 부활 전에 사망 애니메이션이 출력되는 시간을 마련하기 위해 캐싱해두는 변수
+    private WaitForSeconds _reviveDelayWaitAction;
     
     // 플레이어 스탯
     
@@ -45,6 +50,15 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public int Life {get => _life; set => _life = value;}
     private bool _dead = false;
     public bool Dead {get => _dead; set => _dead = value;}
+    
+    // 플레이어 부활까지 걸리는 시간이기 때문에 조정할 필요가 있음. 따라서 SerializeField를 적용함.
+    [SerializeField]
+    private float _reviveDelayTime = 1.5f;
+    public float ReviveDelayTime
+    {
+        get => _reviveDelayTime;
+        set => _reviveDelayTime = (value <= 0) ? 0 : value;
+    }
     private int _weaponSlotSize;
     public int WeaponSlotSize {get => _weaponSlotSize; set => _weaponSlotSize = value;}
     private int _passiveItemSlotSize;
@@ -61,6 +75,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         resetPlayerStat();
         _animator = PlayerManager.Instance.Animator;
         _sm = SoundManager.Instance;
+        
+        // 부활까지 걸리는 시간 캐싱하여 재사용
+        _reviveDelayWaitAction = new WaitForSeconds(ReviveDelayTime);
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
@@ -148,5 +165,41 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         // 플레이어 애니메이터 사망 트리거 실행
         _animator.SetBool("isDead", Dead);
         PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
+        StartCoroutine(AfterReviveDelay());
+    }
+    
+    private IEnumerator AfterReviveDelay()
+    {
+        yield return _reviveDelayWaitAction;
+        PlayerReviveStatusSetting();
+    }
+
+    // 플레이어 부활시킬 때 스탯 변화를 적용할 메서드
+    private void PlayerReviveStatusSetting()
+    {
+        if (CheckRevivable())
+        {
+            // 목숨 차감
+            Life -= 1;
+            Dead = false;
+            // 사망 애니메이션 출력을 위한 설정
+            _animator.SetBool("isDead", false);
+            // 체력 최대 체력으로 초기화
+            CurrentHp = MaxHp;
+            Debug.Log($"부활 후 남은 목숨: {Life}, 플레이어 부활함");
+        }
+        else
+        {
+            Debug.Log("플레이어 사망");
+            // TODO: 게임 오버 알리는 이벤트 추가
+        }
+    }
+    
+    // 부활 가능한지 판단하는 메서드
+    private bool CheckRevivable()
+    {
+        bool canRevive = Life > 0;
+        Debug.Log($"목숨 {Life}개, 부활 {(canRevive ? "가능" : "불가능")}");
+        return canRevive;
     }
 }
