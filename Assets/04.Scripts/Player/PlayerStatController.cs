@@ -200,5 +200,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         bool canRevive = Life > 0;
         Debug.Log($"목숨 {Life}개, 부활 {(canRevive ? "가능" : "불가능")}");
+        return canRevive;
     }
 }
