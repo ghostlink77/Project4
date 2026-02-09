@@ -25,12 +25,14 @@ public class PlayerAnimationController : MonoBehaviour
     // Hurt 이벤트에 추가할 메서드
     private void OnEventHurt()
     {
+        Debug.Log("플레이어 피격 애니메이션 재생");
         _animator.SetTrigger("isHurt");
     }
     
     // Death 이벤트에 추가할 메서드
     private void OnEventDeath()
     {
+        Debug.Log("플레이어 사망 애니메이션 재생");
         _animator.SetBool("isDead", true);
     }
 }
