@@ -2,6 +2,7 @@
 플레이어 캐릭터의 게임 플레이 도중의 상태 변화, 성장 등을 관리하는 스크립트
 */
 using System;
+using System.Collections;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -35,6 +36,17 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public int WeaponSlotSize{get; set;}
     public int PassiveItemSlotSize{get; set;}
     public int TurretSlotSize {get; set;}
+
+    // 플레이어 부활까지 걸리는 시간이기 때문에 조정할 필요가 있음. 따라서 SerializeField를 적용함
+    [SerializeField]
+    private float _reviveDelayTime = 1.5f;
+    private float ReviveDelayTime
+    {
+        get => _reviveDelayTime;
+        set => _reviveDelayTime = (value <= 0) ? 0 : value;
+    }
+    
+    private WaitForSeconds _reviveDelayAction;
     
     private PlayerEventController _playerEventController;
 
@@ -45,18 +57,30 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         resetPlayerStat();
         _playerEventController = PlayerManager.Instance.PlayerEventController;
         AddToEvent();
+        _reviveDelayAction = new WaitForSeconds(ReviveDelayTime);
     }
     
     // 이벤트에 추가하는 함수들
     private void AddToEvent()
     {
         _playerEventController.Death += AddToDeath;
+        _playerEventController.Revive += AddToRevive;
     }
     
     // Death 이벤트 활성화 시 작동할 메서드
     private void AddToDeath()
     {
-        CheckDead();
+        Debug.Log("플레이어 사망");
+        Dead = true;
+        StartCoroutine(AfterDead());
+    }
+    
+    // Revive 이벤트 활성화 시 작동할 메서드
+    private void AddToRevive()
+    {
+        Debug.Log("플레이어 부활");
+        Life = Math.Max(0, Life - 1);
+        Dead = false;
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
@@ -97,7 +121,11 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         CurrentHp -= calcDmg;
         Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
-        if (CurrentHp <= 0) CurrentHp = 0;
+        if (CurrentHp <= 0)
+        {
+            CurrentHp = 0;
+            _playerEventController.CallDeath();
+        }
     }
     int CalculateReducedDmg(int damage, int defense)
     {
@@ -105,6 +133,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         return (int)Math.Round(value);
     }
     
-    //플레이어 죽음 상태 설정하는 메서드
-    private void CheckDead() => Dead = CurrentHp <= 0;
+    private IEnumerator AfterDead()
+    {
+        yield return _reviveDelayAction;
+        if (Life > 0) _playerEventController.CallRevive();
+    }
 }
