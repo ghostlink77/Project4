@@ -17,40 +17,24 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     
     // 플레이어 스탯
     
-    private int _currentLevel;
-    public int CurrentLevel {get => _currentLevel; set => _currentLevel = value;}
+    public int CurrentLevel {get; set;}
     public int CurrentExp { get; private set; }
-    private int _maxHp;
-    public int MaxHp {get => _maxHp; set => _maxHp = value;}
-    private int _currentHp;
-    public int CurrentHp {get => _currentHp; set => _currentHp = value;}
-    private int _defense;
-    public int Defense {get => _defense; set => _defense = value;}
-    private int _hpGenSpeed;
-    public int HpGenSpeed {get => _hpGenSpeed; set => _hpGenSpeed = value;}
-    private float _moveSpeed;
+    public int MaxHp {get; set;}
+    public int CurrentHp {get; set;}
+    public int Defense  {get; set;}
+    public int HpGenSpeed {get; set;}
     // 플레이어 스탯 반환 및 설정하는 함수
-    public float MoveSpeed {get => _moveSpeed; set => _moveSpeed = value;}
-    private float _itemGetRadius;
-    public float ItemGetRadius {get => _itemGetRadius; set => _itemGetRadius = value;}
-    private float _luck;
-    public float Luck {get => _luck; set => _luck = value;}
-    private float _growth;
-    public float Growth {get => _growth; set => _growth = value;}
-    private float _greed;
-    public float Greed {get => _greed; set => _greed = value;}
-    private float _curse;
-    public float Curse {get => _curse; set => _curse = value;}
-    private int _life;
-    public int Life {get => _life; set => _life = value;}
-    private bool _dead = false;
-    public bool Dead {get => _dead; set => _dead = value;}
-    private int _weaponSlotSize;
-    public int WeaponSlotSize {get => _weaponSlotSize; set => _weaponSlotSize = value;}
-    private int _passiveItemSlotSize;
-    public int PassiveItemSlotSize {get => _passiveItemSlotSize; set => _passiveItemSlotSize = value;}
-    private int _turretSlotSize;
-    public int TurretSlotSize {get => _turretSlotSize; set => _turretSlotSize = value;}
+    public float MoveSpeed {get; set;}
+    public float ItemGetRadius {get; set;}
+    public float Luck {get; set;}
+    public float Growth {get; set;}
+    public float Greed {get; set;}
+    public float Curse {get; set;}
+    public int Life {get; set;}
+    public bool Dead {get; set;}
+    public int WeaponSlotSize{get; set;}
+    public int PassiveItemSlotSize{get; set;}
+    public int TurretSlotSize {get; set;}
 
     private Animator _animator;
     private SoundManager _sm;
