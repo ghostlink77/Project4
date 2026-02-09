@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
             PlayerMoveController = GetComponent<PlayerMoveController>();
             PlayerStatController = GetComponent<PlayerStatController>();
             PlayerItemController = GetComponent<PlayerItemController>();
+            PlayerAnimationController = GetComponent<PlayerAnimationController>();
             Animator = GetComponent<Animator>();
         }
     }
@@ -56,6 +57,7 @@ public class PlayerManager : MonoBehaviour
         PlayerStatController.SetUp();
         PlayerMoveController.SetUp();
         PlayerItemController.SetUp();
+        PlayerAnimationController.SetUp();
     }
 
     void Update()
