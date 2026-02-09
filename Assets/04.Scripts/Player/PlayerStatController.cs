@@ -16,6 +16,10 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     [SerializeField]
     private SoundData playerSound;
     
+    // 제미나이의 조언으로 추가.
+    // 사망 후 부활 전에 사망 애니메이션이 출력되는 시간을 마련하기 위해 캐싱해두는 변수
+    private WaitForSeconds _reviveDelayWaitAction;
+    
     // 플레이어 스탯
     
     private int _currentLevel;
@@ -71,6 +75,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         resetPlayerStat();
         _animator = PlayerManager.Instance.Animator;
         _sm = SoundManager.Instance;
+        
+        // 부활까지 걸리는 시간 캐싱하여 재사용
+        _reviveDelayWaitAction = new WaitForSeconds(ReviveDelayTime);
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
@@ -166,7 +173,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         Animator animator = PlayerManager.Instance.Animator;
         animator.SetBool("isDead", true);
         
-        yield return new WaitForSeconds(ReviveDelayTime);
+        yield return _reviveDelayWaitAction;
         PlayerReviveStatusSetting();
     }
 
