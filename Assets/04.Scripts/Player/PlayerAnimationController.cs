@@ -20,6 +20,8 @@ public class PlayerAnimationController : MonoBehaviour
     private void AddToEvent()
     {
         _playerEventController.Hurt += OnEventHurt;
+        _playerEventController.Death += OnEventDeath;
+        _playerEventController.Revive+= OnEventRevive;
     }
     
     // Hurt 이벤트에 추가할 메서드
