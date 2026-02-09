@@ -198,15 +198,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     // 부활 가능한지 판단하는 메서드
     private bool CheckRevivable()
     {
-        if (Life > 0)
-        {
-            Debug.Log($"목숨 {Life}개, 부활 가능");
-            return true;
-        }
-        else
-        {
-            Debug.Log($"목숨 {Life}개, 부활 불가능");
-            return false;
-        }
+        bool canRevive = Life > 0;
+        Debug.Log($"목숨 {Life}개, 부활 {(canRevive ? "가능" : "불가능")}");
     }
 }
