@@ -35,4 +35,11 @@ public class PlayerAnimationController : MonoBehaviour
         Debug.Log("플레이어 사망 애니메이션 재생");
         _animator.SetBool("isDead", true);
     }
+    
+    // Revive 이벤트에 추가할 메서드
+    private void OnEventRevive()
+    {
+        Debug.Log("플레이어 사망 애니메이션 종료");
+        _animator.SetBool("isDead", false);
+    }
 }
