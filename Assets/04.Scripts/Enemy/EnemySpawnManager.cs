@@ -4,34 +4,41 @@
  * EnemySpawnPoint들을 EnemySpawnManager 오브젝트의 자식 오브젝트로 두는 방식으로 구현
  */
 using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
+
+public enum EnemyType
+{
+    Drone1,
+    Drone2,
+}
 
 public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
 {
-    private EnemySpawnPoint[] spawnPoints;
+    private List<EnemySpawnPoint> _spawnPoints;
     private void Start()
     {
-        spawnPoints = GetComponentsInChildren<EnemySpawnPoint>();
+        _spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
         StartSpawnAllPoints();
     }
     public void StartSpawnAllPoints()
     {
-        foreach (var sp in spawnPoints)
+        foreach (var sp in _spawnPoints)
         {
             sp.StartSpawn();
         }
     }
     public void StopSpawnAllPoints()
     {
-        foreach (var sp in spawnPoints)
+        foreach (var sp in _spawnPoints)
         {
             sp.StopSpawn();
         }
     }
 
-    public void ChangeSpawningEnemyType(string newEnemyType)
+    public void ChangeSpawningEnemyType(EnemyType newEnemyType)
     {
-        foreach (var sp in spawnPoints)
+        foreach (var sp in _spawnPoints)
         {
             sp.EnemyType = newEnemyType;
         }

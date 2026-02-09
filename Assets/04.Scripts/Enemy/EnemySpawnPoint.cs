@@ -6,44 +6,44 @@ using UnityEngine;
 
 public class EnemySpawnPoint : MonoBehaviour
 {
-    [SerializeField] private string enemyType;
-    public string EnemyType { get => enemyType; set => enemyType = value; }
+    [SerializeField] private EnemyType _enemyType = EnemyType.Drone1;
+    public EnemyType EnemyType { get => _enemyType; set => _enemyType = value; }
     [SerializeField] private float spawnInterval = 1f;
 
-    private bool isSpawning = false;
+    private bool _isSpawning = false;
 
-    private EnemySpawner spawner;
-    private CircleCollider2D spawnRangeCollider;
+    private EnemySpawner _spawner;
+    private CircleCollider2D _spawnRangeCollider;
 
     private void Awake()
     {
-        spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
+        _spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
     private void Start()
     {
-        spawner = EnemySpawner.Instance;
+        _spawner = EnemySpawner.Instance;
     }
 
     public void StartSpawn()
     {
-        isSpawning = true;
+        _isSpawning = true;
         StartCoroutine(SpawnLoop());
     }
     public void StopSpawn()
     {
-        isSpawning = false;
+        _isSpawning = false;
         StopCoroutine(SpawnLoop());
     }
 
     IEnumerator SpawnLoop()
     {
-        while (isSpawning)
+        while (_isSpawning)
         {
             yield return new WaitForSeconds(GetRandomInterval());
-            if (spawner != null)
+            if (_spawner != null)
             {
-                spawner.SpawnEnemy(enemyType, GetRandomPosition());
+                _spawner.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
             }
             else
             {
@@ -54,7 +54,7 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        float radius = spawnRangeCollider.radius;
+        float radius = _spawnRangeCollider.radius;
         Vector2 randomPoint = Random.insideUnitCircle * radius;
         return transform.position + new Vector3(randomPoint.x, randomPoint.y, 0f);
     }
