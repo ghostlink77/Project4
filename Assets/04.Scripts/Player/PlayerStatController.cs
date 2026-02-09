@@ -35,16 +35,27 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public int WeaponSlotSize{get; set;}
     public int PassiveItemSlotSize{get; set;}
     public int TurretSlotSize {get; set;}
+    
+    private PlayerEventController _playerEventController;
 
-    private Animator _animator;
-    private SoundManager _sm;
     // 필요한 데이터를 PlayerManager에서 받아오는 메서드
     // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
     public void SetUp()
     {
         resetPlayerStat();
-        _animator = PlayerManager.Instance.Animator;
-        _sm = SoundManager.Instance;
+        _playerEventController = PlayerManager.Instance.PlayerEventController;
+    }
+    
+    // 이벤트에 추가하는 함수들
+    private void AddToEvent()
+    {
+        CheckDead();
+    }
+    
+    // Hurt 이벤트 활성화 시 작동할 메서드
+    private void AddToHurt()
+    {
+        
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
@@ -76,9 +87,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;
-        
-        // 애니메이션 재생을 위한 트리거
-        _animator.SetTrigger("isHurt");
+
+        // 플레이어 피격 이벤트 실행
+        _playerEventController.CallHurt();
         
         // 방어력 적용해서 데미지 적용
         int calcDmg = CalculateReducedDmg(damage, Defense);
@@ -86,11 +97,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
         if (CurrentHp <= 0) CurrentHp = 0;
-
-        // 플레이어 죽었는지 확인
-        CheckDead();
-        // 플레이어 피격 이펙트 출력
-        ActivateHurtAnimation();
     }
     int CalculateReducedDmg(int damage, int defense)
     {
@@ -98,39 +104,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         return (int)Math.Round(value);
     }
     
-    // 플레이어 다치는 애니메이션 실행
-    void ActivateHurtAnimation()
-    {
-        if (_animator == null)
-        {
-            Debug.LogError("애니메이터 비어있음");
-            return;
-        }
-
-        if (_sm != null && playerSound != null) _sm.PlayPlayerSFX(playerSound.GetClip(0));
-        else if (_sm == null) Debug.LogError("사운드매니저 null");
-        else if (playerSound == null) Debug.LogError("플레이어 사운드 null");
-    }
-    
-    // 플레이어의 현재 hp가 0 이하인지 확인하는 메서드
-    bool CheckHpZero()
-    {
-        if (CurrentHp <= 0) return true;
-        else return false;
-    }
-    
     //플레이어 죽음 상태 설정하는 메서드
-    public void CheckDead()
-    {
-        Dead = CheckHpZero();
-        if (Dead == true) PlayerDeadSequence();
-    }
-    
-    // 플레이어가 죽으면 실행할 효과들
-    public void PlayerDeadSequence()
-    {
-        // 플레이어 애니메이터 사망 트리거 실행
-        _animator.SetBool("isDead", Dead);
-        PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
-    }
+    private void CheckDead() => Dead = CurrentHp <= 0;
 }
