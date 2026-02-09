@@ -44,18 +44,19 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         resetPlayerStat();
         _playerEventController = PlayerManager.Instance.PlayerEventController;
+        AddToEvent();
     }
     
     // 이벤트에 추가하는 함수들
     private void AddToEvent()
     {
-        CheckDead();
+        _playerEventController.Death += AddToDeath;
     }
     
-    // Hurt 이벤트 활성화 시 작동할 메서드
-    private void AddToHurt()
+    // Death 이벤트 활성화 시 작동할 메서드
+    private void AddToDeath()
     {
-        
+        CheckDead();
     }
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
