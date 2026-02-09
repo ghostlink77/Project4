@@ -71,6 +71,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     private void AddToDeath()
     {
         Debug.Log("플레이어 사망");
+        PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
         Dead = true;
         StartCoroutine(AfterDead());
     }
@@ -79,6 +80,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     private void AddToRevive()
     {
         Debug.Log("플레이어 부활");
+        CurrentHp = MaxHp;
         Life = Math.Max(0, Life - 1);
         Dead = false;
     }
