@@ -87,7 +87,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6474817916930609645, guid: f3e92c3f113506a438f3bd5b409e66b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatController
   playerDefaultData: {fileID: 11400000, guid: 91a7ab7f2fe6ce94fb60d9cbe4ce99d9, type: 2}
   playerSound: {fileID: 11400000, guid: 5274b4dede7502041b907bbc31ec4aee, type: 2}
+  _reviveDelayTime: 1.5
 --- !u!114 &3279161529823316723
 MonoBehaviour:
   m_ObjectHideFlags: 0
