@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ebc03abb4007647a5cc8761c78e05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  damage: 2
-  damageDelay: 0.3
-  speed: 1
-  maxHp: 1
-  enemyType: Drone1
+  _damage: 2
+  _damageDelay: 0.2
+  _speed: 0.7
+  _maxHp: 1
+  _enemyType: 0
 --- !u!1 &7941980596950222767
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: b302efdba50b7324aacb8cd8e1e7357c
   m_currentHash:
     serializedVersion: 2
-    Hash: 68bdf890c223f7199993a84c8e141cc5
+    Hash: a286005197dfab1ff1cf032358bc6f1c
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - EnemyPrefabs
+    - Item_Grounded
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 1cde1748524f69d4ca2bf6e229d8c81c, type: 2}

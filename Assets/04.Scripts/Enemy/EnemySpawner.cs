@@ -1,6 +1,6 @@
 ﻿/*
  * 적 스폰 및 오브젝트 풀 관리
- * 스폰된 적의 정보 유지
+ * 스폰된 적의 Transform 정보 유지
  */
 using System.Collections.Generic;
 using UnityEngine;

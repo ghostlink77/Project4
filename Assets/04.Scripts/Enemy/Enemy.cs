@@ -2,36 +2,36 @@
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int damage;
-    [SerializeField] private float damageDelay; // 데미지가 들어가는 간격
-    private float currentDamageDelay;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _damageDelay;
+    private float _currentDamageDelay;
 
-    [SerializeField] private float speed;
-    [SerializeField] private int maxHp;
-    [SerializeField] private string enemyType;
-    private int currentHp;
-    private bool isLive;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _maxHp;
+    [SerializeField] private EnemyType _enemyType;
+    private int _currentHp;
+    private bool _isLive;
 
-    private EnemySpawner spawner;
+    private EnemySpawner _spawner;
 
-    private Rigidbody2D rigid;
-    private CapsuleCollider2D collider;
-    private Rigidbody2D target;
+    private Rigidbody2D _rigid;
+    private CapsuleCollider2D _collider;
+    private Rigidbody2D _target;
 
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
-        spawner = spawner = EnemySpawner.Instance;
-        collider = GetComponent<CapsuleCollider2D>();
+        _rigid = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _spawner = _spawner = EnemySpawner.Instance;
+        _collider = GetComponent<CapsuleCollider2D>();
     }
     private void Update()
     {
-        if (isLive) 
+        if (_isLive) 
         {
             ElapseTime();
         }
@@ -41,72 +41,72 @@ public class Enemy : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         TrackTarget();
-        rigid.linearVelocity = Vector2.zero;
+        _rigid.linearVelocity = Vector2.zero;
     }
 
     private void LateUpdate()
     {
-        if (target != null && isLive)
+        if (_target != null && _isLive)
         {
-            spriteRenderer.flipX = target.position.x < rigid.position.x;
+            _spriteRenderer.flipX = _target.position.x < _rigid.position.x;
         }
     }
 
     public void Initialize()
     {
-        currentHp = maxHp;
-        isLive = true;
-        collider.enabled = true;
+        _currentHp = _maxHp;
+        _isLive = true;
+        _collider.enabled = true;
 
-        animator.Play("Walk", 0, 0f);
+        _animator.Play("Walk", 0, 0f);
     }
 
     private void TrackTarget()
     {
-        if (target != null && isLive)
+        if (_target != null && _isLive)
         {
-            Vector2 direction = (target.position - rigid.position).normalized;
-            Vector2 moveAmount = direction * speed * Time.fixedDeltaTime;
-            rigid.MovePosition(rigid.position + moveAmount);
+            Vector2 direction = (_target.position - _rigid.position).normalized;
+            Vector2 moveAmount = direction * _speed * Time.fixedDeltaTime;
+            _rigid.MovePosition(_rigid.position + moveAmount);
         }
     }
     public void SetTarget(Rigidbody2D targetRigidbody)
     {
-        target = targetRigidbody;
+        _target = targetRigidbody;
     }
 
     // 일정 시간마다 데미지 입히기 위한 시간 경과 처리
     private void ElapseTime()
     {
-        if (!isLive)
+        if (!_isLive)
             return;
 
-        if (currentDamageDelay > 0f)
+        if (_currentDamageDelay > 0f)
         {
-            currentDamageDelay -= Time.deltaTime;
+            _currentDamageDelay -= Time.deltaTime;
         }
     }
 
     // 적과 닿아있으면 지속적으로 데미지 입히기
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(!isLive)
+        if(!_isLive)
             return;
 
         if (collision.collider.CompareTag("Agit") || collision.collider.CompareTag("Player"))
         {
-            if (currentDamageDelay <= 0f)
+            if (_currentDamageDelay <= 0f)
             {
-                currentDamageDelay = damageDelay;
-                collision.collider.GetComponent<IDamageable>()?.TakeDamage(damage);
+                _currentDamageDelay = _damageDelay;
+                collision.collider.GetComponent<IDamageable>()?.TakeDamage(_damage);
             }
         }
     }
 
     public void TakeDamage(int damage)
     {
-        currentHp -= damage;
-        if (currentHp <= 0 && isLive)
+        _currentHp -= damage;
+        if (_currentHp <= 0 && _isLive)
         {
             Die();
         }
@@ -114,16 +114,21 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        isLive = false;
-        collider.enabled = false;
-        rigid.linearVelocity = Vector2.zero;
-        animator.SetTrigger("Dead");
-        // 경험치 오브젝트 드랍
+        _isLive = false;
+        _collider.enabled = false;
+        _rigid.linearVelocity = Vector2.zero;
+        _animator.SetTrigger("Dead");
     }
 
     // 애니메이션이 끝난 후 Animation Event 호출
     public void OnDeathAnimationEnd()
     {
-        spawner.ReturnToPool(enemyType, gameObject);
+        _spawner.ReturnToPool(_enemyType.ToString(), gameObject);
+        DropExpObject();
+    }
+
+    private void DropExpObject()
+    {
+        ExpObjectSpawner.Instance.SpawnExpObject(transform.position);
     }
 }
