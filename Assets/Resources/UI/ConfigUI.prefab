@@ -72,7 +72,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b543b0f243859e4a8ce4e686fc5d5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConfigUI
-  FadeIn: {fileID: 6707328240831250515}
-  FadeOut: {fileID: 8274944822049937879}
+  FadeIn: {fileID: 0}
+  FadeOut: {fileID: 0}
   BGMSlider: {fileID: 5815110636083230447}
   SFXSlider: {fileID: 3378901831978900178}
   BGM: {fileID: 279405973464073152}
@@ -806,23 +806,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6117677649209531662, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6117677649209531662, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181745923819199944, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_FillAmount
@@ -1204,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2146768561657478173, guid: 2952d120f48b49040a1afd4f0159a7d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2146768561657478173, guid: 2952d120f48b49040a1afd4f0159a7d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1212,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 3292189052601691096}
     - target: {fileID: 2146768561657478173, guid: 2952d120f48b49040a1afd4f0159a7d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClickCloseButton
+      value: Close
       objectReference: {fileID: 0}
     - target: {fileID: 4181414340750009018, guid: 2952d120f48b49040a1afd4f0159a7d7, type: 3}
       propertyPath: m_Color.a
@@ -1380,23 +1380,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5502335410768470591, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6117677649209531662, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6117677649209531662, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7181745923819199944, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_FillAmount

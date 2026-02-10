@@ -25,7 +25,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
         PlayTime = 0;
         AudioManager.Instance.StopAll();
-        //AudioManager.Instance.Play("InGameBGM");
+        AudioManager.Instance.Play(AudioType.BGM, "InGameBGM");
     }
     private void Update()
     {
