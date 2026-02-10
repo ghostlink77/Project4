@@ -2,13 +2,9 @@
 이 스크립트는 플레이어 이동을 관리함
 플레이어 이동과 관련이 없는 스크립트는 이 코드에 작성하면 안된다.
 */
-using System.Reflection;
-using NUnit.Framework;
-using UnityEditor.PackageManager.Requests;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Scripting.APIUpdating;
-using UnityEngine.UIElements.Experimental;
 
 public class PlayerMoveController : MonoBehaviour
 {
@@ -33,18 +29,6 @@ public class PlayerMoveController : MonoBehaviour
 #endregion
     
 #region properties
-    // 프로퍼티
-    public Vector2 MoveVector
-    {
-        get {return _moveVector;}
-        set
-        {
-            // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
-            if (_playerStatController.Dead == true) _moveVector = Vector2.zero;
-            else _moveVector = value;
-        }
-    }
-    
     public Vector2 InputVector
     {
         get {return _inputVector;}
@@ -91,13 +75,7 @@ public class PlayerMoveController : MonoBehaviour
     
     private void OnEventDeath()
     {
-        MoveVector = Vector2.zero;
         InputVector = Vector2.zero;
-    }
-    
-    private void OnEventMove()
-    {
-        MovePlayer();
     }
 #endregion
 
@@ -107,32 +85,40 @@ public class PlayerMoveController : MonoBehaviour
     {
         if (_playerStatController.Dead) return;
         InputVector = context.ReadValue<Vector2>();
-        
-        // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector2.zero를 대입한다.
-        MoveVector = new Vector2(InputVector.x, InputVector.y) * _moveSpeed;
-
-        // 플레이어가 움직이기 시작했는지, 멈추기 시작했는지 알리기
-        if (MoveVector == Vector2.zero) _playerEventController.CallStop();
-        else _playerEventController.CallMove();
     }
 #endregion
 
-    // 매 프레임마다 플레이어를 이동시키는 메서드(PlayerManager에 선언해야 함)
+#region 메서드들
+    // 매 프레임마다 플레이어를 이동시키는 메서드(PlayerManager의 Update()에 선언해야 함)
     public void MovePlayer()
     {
-        _currentPos += new Vector2(MoveVector.x, MoveVector.y) * Time.deltaTime;
-        if (_lastPos != _currentPos) UpdatePosition();
+        
+        _currentPos += new Vector2(InputVector.x, InputVector.y) * _moveSpeed * Time.deltaTime;
+
+        bool isMoving = CheckMove();
+        if (isMoving == false) return;
         transform.position = _currentPos;
+        UpdatePosition();
+        InvokeMoveEvents(isMoving);
     }
     
+    // 이전 위치와 현재 위치가 다르다면 true, 아니라면 false를 반환하는 메서드
+    private bool CheckMove()
+    {
+        return (_lastPos != _currentPos) ? true : false;
+    }
+    
+    // 위치 업데이트하는 메서드
     private void UpdatePosition()
     {
         _lastPos = _currentPos;
     }
 
-    public void DefinePlayerPosition()
+    // 플레이어 이동 관련 이벤트 판단해서 실행시키는 메서드
+    public void InvokeMoveEvents(bool isMoving)
     {
-        if (_currentPos != _lastPos) _playerEventController.CallMove();
+        if (isMoving == true) _playerEventController.CallMove();
         else _playerEventController.CallStop();
     }
+#endregion
 }

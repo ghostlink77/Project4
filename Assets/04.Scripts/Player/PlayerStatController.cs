@@ -71,7 +71,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     private void AddToDeath()
     {
         Debug.Log("플레이어 사망");
-        PlayerManager.Instance.PlayerMoveController.MoveVector = Vector2.zero;
+        PlayerManager.Instance.PlayerMoveController.InputVector = Vector2.zero;
         Dead = true;
         StartCoroutine(AfterDead());
     }
