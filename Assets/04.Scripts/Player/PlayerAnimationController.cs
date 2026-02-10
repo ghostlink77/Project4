@@ -54,7 +54,7 @@ public class PlayerAnimationController : MonoBehaviour
     
     private void OnEventMove()
     {
-        Debug.Log("플레이어 이동 시작");
+        // Debug.Log("플레이어 이동 시작");
         _animator.SetBool("isMoving", true);
         if (_playerMoveController.InputVector.x < 0) _spriteRenderer.flipX = true;
         else if (_playerMoveController.InputVector.x > 0) _spriteRenderer.flipX = false;
@@ -62,7 +62,7 @@ public class PlayerAnimationController : MonoBehaviour
     
     private void OnEventStop()
     {
-        Debug.Log("플레이어 이동 멈춤");
+        // Debug.Log("플레이어 이동 멈춤");
         _animator.SetBool("isMoving", false);
     }
 #endregion

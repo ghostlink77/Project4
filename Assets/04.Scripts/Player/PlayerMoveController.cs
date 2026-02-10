@@ -4,6 +4,7 @@
 */
 using System.Reflection;
 using NUnit.Framework;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Scripting.APIUpdating;
@@ -76,6 +77,7 @@ public class PlayerMoveController : MonoBehaviour
     private void normalVariableSetup()
     {
         _moveSpeed = _playerStatController.MoveSpeed;
+        Debug.Log($"플레이어 속도: {_moveSpeed}");
         _currentPos = _playerManager.gameObject.transform.position;
         _lastPos = _playerManager.gameObject.transform.position;
     }
@@ -92,21 +94,45 @@ public class PlayerMoveController : MonoBehaviour
         MoveVector = Vector2.zero;
         InputVector = Vector2.zero;
     }
+    
+    private void OnEventMove()
+    {
+        MovePlayer();
+    }
 #endregion
 
 #region Input System Package 메서드
     // 플레이어 이동 처리하는 메서드
     public void OnMove(InputAction.CallbackContext context)
     {
-        InputVector = context.ReadValue<Vector2>();
         if (_playerStatController.Dead) return;
+        InputVector = context.ReadValue<Vector2>();
         
         // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector2.zero를 대입한다.
-        MoveVector = new Vector2(InputVector.x, InputVector.y);
+        MoveVector = new Vector2(InputVector.x, InputVector.y) * _moveSpeed;
 
         // 플레이어가 움직이기 시작했는지, 멈추기 시작했는지 알리기
         if (MoveVector == Vector2.zero) _playerEventController.CallStop();
         else _playerEventController.CallMove();
     }
 #endregion
+
+    // 매 프레임마다 플레이어를 이동시키는 메서드(PlayerManager에 선언해야 함)
+    public void MovePlayer()
+    {
+        _currentPos += new Vector2(MoveVector.x, MoveVector.y) * Time.deltaTime;
+        if (_lastPos != _currentPos) UpdatePosition();
+        transform.position = _currentPos;
+    }
+    
+    private void UpdatePosition()
+    {
+        _lastPos = _currentPos;
+    }
+
+    public void DefinePlayerPosition()
+    {
+        if (_currentPos != _lastPos) _playerEventController.CallMove();
+        else _playerEventController.CallStop();
+    }
 }

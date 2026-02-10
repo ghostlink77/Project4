@@ -42,6 +42,11 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        PlayerMoveController.MovePlayer();
+    }
+
     bool SingleTonGenerate()
     {
         if (Instance != null && Instance != this)
@@ -60,12 +65,6 @@ public class PlayerManager : MonoBehaviour
         PlayerMoveController.SetUp();
         PlayerItemController.SetUp();
         PlayerAnimationController.SetUp();
-    }
-
-    void Update()
-    {
-        // 플레이어 이동 애니메이션 설정
-        PlayerMoveController.SetMoveAnimation();
     }
 
     // 플레이어에게 데미지 입히는 메서드
