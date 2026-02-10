@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+#region variables
     private Animator _animator;
     private PlayerEventController _playerEventController;
     private PlayerManager _playerManager;
     private PlayerMoveController _playerMoveController;
     private SpriteRenderer _spriteRenderer;
+#endregion
 
     public void SetUp()
     {
@@ -31,25 +33,22 @@ public class PlayerAnimationController : MonoBehaviour
         _playerEventController.Move += OnEventMove;
         _playerEventController.Stop += OnEventStop;
     }
-    
+#region OnEventMethods
     // Hurt 이벤트에 추가할 메서드
     private void OnEventHurt()
     {
-        Debug.Log("플레이어 피격 애니메이션 재생");
         _animator.SetTrigger("isHurt");
     }
     
     // Death 이벤트에 추가할 메서드
     private void OnEventDeath()
     {
-        Debug.Log("플레이어 사망 애니메이션 재생");
         _animator.SetBool("isDead", true);
     }
     
     // Revive 이벤트에 추가할 메서드
     private void OnEventRevive()
     {
-        Debug.Log("플레이어 사망 애니메이션 종료");
         _animator.SetBool("isDead", false);
     }
     
@@ -66,4 +65,7 @@ public class PlayerAnimationController : MonoBehaviour
         Debug.Log("플레이어 이동 멈춤");
         _animator.SetBool("isMoving", false);
     }
+#endregion
+
+
 }
