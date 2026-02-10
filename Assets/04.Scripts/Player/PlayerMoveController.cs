@@ -11,6 +11,7 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerMoveController : MonoBehaviour
 {
+#region variables
     // 플레이어 스프라이트 뒤집힘 여부 판단하기 위해서 가져옴
     private SpriteRenderer _spriteRenderer;
 
@@ -28,7 +29,9 @@ public class PlayerMoveController : MonoBehaviour
     private PlayerManager _playerManager;
     private PlayerStatController _playerStatController;
     private PlayerEventController _playerEventController;
+#endregion
     
+#region properties
     // 프로퍼티
     public Vector2 MoveVector
     {
@@ -51,27 +54,47 @@ public class PlayerMoveController : MonoBehaviour
             else _inputVector = value;
         }
     }
+#endregion
     
+#region 메인 변수들
     public void SetUp()
+    {
+        ScriptVariableSetup();
+        normalVariableSetup();
+        AddToEvent();
+    }
+    
+    // 스크립트 변수들에 할당하는 코드 모아둔 메서드
+    private void ScriptVariableSetup()
     {
         _playerManager = PlayerManager.Instance;
         _playerStatController = _playerManager.PlayerStatController;
         _playerEventController = _playerManager.PlayerEventController;
-        _moveSpeed = _playerStatController.MoveSpeed;
-        Debug.Log($"플레이어 속도 {_moveSpeed}");
-        _currentPos = _playerManager.gameObject.transform.position;
-        _lastPos = _playerManager.gameObject.transform.position;
-        _spriteRenderer = _playerManager.gameObject.GetComponent<SpriteRenderer>();
-    }
-
-    // 플레이어 위치를 가져와서 애니메이션 처리를 하도록 하는 메서드
-    public void SetMoveAnimation()
-    {
-        _currentPos = gameObject.transform.position;
-        transform.Translate(MoveVector.normalized * _moveSpeed * Time.deltaTime);
-        _lastPos = _currentPos;
     }
     
+    // 일반 변수들에 할당하는 코드 모아둔 메서드
+    private void normalVariableSetup()
+    {
+        _moveSpeed = _playerStatController.MoveSpeed;
+        _currentPos = _playerManager.gameObject.transform.position;
+        _lastPos = _playerManager.gameObject.transform.position;
+    }
+#endregion
+    
+#region 이벤트 변수들
+    private void AddToEvent()
+    {
+        _playerEventController.Death += OnEventDeath;
+    }
+    
+    private void OnEventDeath()
+    {
+        MoveVector = Vector2.zero;
+        InputVector = Vector2.zero;
+    }
+#endregion
+
+#region Input System Package 메서드
     // 플레이어 이동 처리하는 메서드
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -85,12 +108,5 @@ public class PlayerMoveController : MonoBehaviour
         if (MoveVector == Vector2.zero) _playerEventController.CallStop();
         else _playerEventController.CallMove();
     }
-    
-    // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
-    private void FlipCharacter(Vector2 input)
-    {
-        if (input.x == 0) return;
-        else if (input.x < 0) _spriteRenderer.flipX = true;
-        else if (input.x > 0) _spriteRenderer.flipX = false;
-    }
+#endregion
 }
