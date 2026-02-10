@@ -1,6 +1,3 @@
-/*
- * 적 스폰 지점 관리 스크립트
- */
 using System.Collections;
 using UnityEngine;
 
@@ -33,7 +30,7 @@ public class EnemySpawnPoint : MonoBehaviour
     public void StopSpawn()
     {
         _isSpawning = false;
-        StopCoroutine(SpawnLoop());
+        StopCoroutine("SpawnLoop");
     }
 
     IEnumerator SpawnLoop()

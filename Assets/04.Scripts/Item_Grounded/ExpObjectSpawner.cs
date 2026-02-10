@@ -1,7 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Pool;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
 {
@@ -17,18 +18,32 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
         LoadExpObjectPrefab();
     }
 
-    private void LoadExpObjectPrefab()
+    private async void LoadExpObjectPrefab()
     {
-        _expObjectPrefab = Addressables.LoadAssetAsync<GameObject>("Prefabs/Item_Grounded/ExpObject").WaitForCompletion();
+        AsyncOperationHandle<GameObject> handle =
+            Addressables.LoadAssetAsync<GameObject>("Prefabs/Item_Grounded/ExpObject");
+
+        await handle.Task;
+
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            _expObjectPrefab = handle.Result;
+        }
+        else
+        {
+            Debug.LogError("Failed to load ExpObject prefab.");
+        }
+
+        CreatePool();
     }
 
-    private void Start()
+    private void CreatePool()
     {
         _expObjectPool = new ObjectPool<GameObject>(
                 createFunc: () => Instantiate(_expObjectPrefab),
-                actionOnGet: Activateexp,
-                actionOnRelease: Disableexp,
-                actionOnDestroy: Destroyexp,
+                actionOnGet: ActivateExpObject,
+                actionOnRelease: DisableExpObject,
+                actionOnDestroy: DestroyExpObject,
                 collectionCheck: false,
                 defaultCapacity: InitSize,
                 maxSize: MaxSize
@@ -41,20 +56,20 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
         expObject.transform.position = position;
         return expObject;
     }
-    public void ReturunToPool(GameObject expObject)
+    public void ReturnToPool(GameObject expObject)
     {
         _expObjectPool.Release(expObject);
     }
 
-    private void Activateexp(GameObject obj)
+    private void ActivateExpObject(GameObject obj)
     {
         obj.SetActive(true);
     }
-    private void Disableexp(GameObject obj)
+    private void DisableExpObject(GameObject obj)
     {
         obj.SetActive(false);
     }
-    private void Destroyexp(GameObject obj)
+    private void DestroyExpObject(GameObject obj)
     {
         Destroy(obj);
     }

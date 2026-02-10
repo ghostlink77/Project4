@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Threading.Tasks;
 
 public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 {
@@ -22,17 +24,21 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         base.Init();
 
         LoadEnemyPrefabs();
-        CreatePools();
     }
 
-    private void LoadEnemyPrefabs()
+    private async void LoadEnemyPrefabs()
     {
-        GameObject[] prefabs = Addressables.LoadAssetAsync<GameObject[]>("EnemyPrefabs").WaitForCompletion();
+        AsyncOperationHandle<GameObject[]> handle = 
+            Addressables.LoadAssetAsync<GameObject[]>("EnemyPrefabs");
 
-        foreach (var prefab in prefabs)
+        await handle.Task;
+
+        foreach (var prefab in handle.Result)
         {
             _enemyPrefabs[prefab.name] = prefab;
         }
+
+        CreatePools();
     }
     private void CreatePools()
     {

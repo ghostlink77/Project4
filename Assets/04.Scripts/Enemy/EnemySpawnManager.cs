@@ -1,9 +1,8 @@
-/*
- * EnemySpawnPoointµéÀ» °ü¸®ÇÏ´Â ¸Å´ÏÀú
- * ÀûÀÇ ½ºÆùÀ» ½ÃÀÛ/ÁßÁöÇÏ°í, ½ºÆùµÇ´Â ÀûÀÇ Å¸ÀÔÀ» º¯°æ
- * EnemySpawnPointµéÀ» EnemySpawnManager ¿ÀºêÁ§Æ®ÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ®·Î µÎ´Â ¹æ½ÄÀ¸·Î ±¸Çö
+ï»¿/*
+ * EnemySpawnPoointë“¤ì„ ê´€ë¦¬í•˜ëŠ” ë§¤ë‹ˆì €
+ * ì ì˜ ìŠ¤í°ì„ ì‹œì‘/ì¤‘ì§€í•˜ê³ , ìŠ¤í°ë˜ëŠ” ì ì˜ íƒ€ì…ì„ ë³€ê²½
+ * EnemySpawnPointë“¤ì„ EnemySpawnManager ì˜¤ë¸Œì íŠ¸ì˜ ìì‹ ì˜¤ë¸Œì íŠ¸ë¡œ ë‘ëŠ” ë°©ì‹ìœ¼ë¡œ êµ¬í˜„
  */
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
