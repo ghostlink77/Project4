@@ -40,6 +40,8 @@ public class BaseUI : MonoBehaviour
             Debug.Log("FadeOUt Ω««‡¡ﬂ..");
             FadeOut.Play();
         }
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+        Close(true);
         
     }
 

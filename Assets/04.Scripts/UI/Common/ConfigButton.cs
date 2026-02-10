@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler
+public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image _selectedImage;
     [SerializeField] private Image _btnImage;
@@ -15,12 +15,12 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        ChangeButtonEffect(false);
+        //ChangeButtonEffect(false);
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        ChangeButtonEffect(true);
+        //ChangeButtonEffect(true);
     }
 
     private void ChangeButtonEffect(bool isSelected)
@@ -33,6 +33,12 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        //EventSystem.current.SetSelectedGameObject(gameObject);
+        ChangeButtonEffect(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ChangeButtonEffect(false);
     }
 }
