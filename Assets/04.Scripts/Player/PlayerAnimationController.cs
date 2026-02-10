@@ -8,11 +8,17 @@ public class PlayerAnimationController : MonoBehaviour
 {
     private Animator _animator;
     private PlayerEventController _playerEventController;
+    private PlayerManager _playerManager;
+    private PlayerMoveController _playerMoveController;
+    private SpriteRenderer _spriteRenderer;
 
     public void SetUp()
     {
-        _animator = PlayerManager.Instance.Animator;
-        _playerEventController = PlayerManager.Instance.PlayerEventController;
+        _playerManager = PlayerManager.Instance;
+        _playerEventController = _playerManager.PlayerEventController;
+        _playerMoveController = _playerManager.PlayerMoveController;
+        _animator = _playerManager.Animator;
+        _spriteRenderer = _playerManager.GetComponent<SpriteRenderer>();
         AddToEvent();
     }
     
@@ -51,6 +57,8 @@ public class PlayerAnimationController : MonoBehaviour
     {
         Debug.Log("플레이어 이동 시작");
         _animator.SetBool("isMoving", true);
+        if (_playerMoveController.InputVector.x < 0) _spriteRenderer.flipX = true;
+        else if (_playerMoveController.InputVector.x > 0) _spriteRenderer.flipX = false;
     }
     
     private void OnEventStop()
