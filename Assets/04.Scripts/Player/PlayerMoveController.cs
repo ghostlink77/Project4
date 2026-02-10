@@ -27,6 +27,9 @@ public class PlayerMoveController : MonoBehaviour
     // 현재 위치
     private Vector2 _currentPos;
     
+    private PlayerManager _playerManager;
+    private PlayerStatController _playerStatController;
+    
     // 프로퍼티
     public Vector2 MoveVector
     {
@@ -34,7 +37,7 @@ public class PlayerMoveController : MonoBehaviour
         set
         {
             // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
-            if (PlayerManager.Instance.PlayerStatController.Dead == true) _moveVector = Vector2.zero;
+            if (_playerManager.PlayerStatController.Dead == true) _moveVector = Vector2.zero;
             else _moveVector = value;
         }
     }
@@ -45,19 +48,20 @@ public class PlayerMoveController : MonoBehaviour
         set
         {
             // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
-            if (PlayerManager.Instance.PlayerStatController.Dead == true) _inputVector = Vector2.zero;
+            if (_playerManager.PlayerStatController.Dead == true) _inputVector = Vector2.zero;
             else _inputVector = value;
         }
     }
     
     public void SetUp()
     {
-        _animator = PlayerManager.Instance.Animator;
-        _moveSpeed = PlayerManager.Instance.PlayerStatController.MoveSpeed;
+        _playerManager = PlayerManager.Instance;
+        _animator = _playerManager.Animator;
+        _moveSpeed = _playerManager.PlayerStatController.MoveSpeed;
         Debug.Log($"플레이어 속도 {_moveSpeed}");
-        _currentPos = PlayerManager.Instance.gameObject.transform.position;
-        _lastPos = PlayerManager.Instance.gameObject.transform.position;
-        _spriteRenderer = PlayerManager.Instance.gameObject.GetComponent<SpriteRenderer>();
+        _currentPos = _playerManager.gameObject.transform.position;
+        _lastPos = _playerManager.gameObject.transform.position;
+        _spriteRenderer = _playerManager.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // 플레이어 위치를 가져와서 애니메이션 처리를 하도록 하는 메서드
@@ -73,7 +77,7 @@ public class PlayerMoveController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         InputVector = context.ReadValue<Vector2>();
-        if (PlayerManager.Instance.PlayerStatController.Dead) return;
+        if (_playerManager.PlayerStatController.Dead) return;
         
         // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector2.zero를 대입한다.
         MoveVector = new Vector2(InputVector.x, InputVector.y);
