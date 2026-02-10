@@ -22,6 +22,8 @@ public class PlayerAnimationController : MonoBehaviour
         _playerEventController.Hurt += OnEventHurt;
         _playerEventController.Death += OnEventDeath;
         _playerEventController.Revive+= OnEventRevive;
+        _playerEventController.Move += OnEventMove;
+        _playerEventController.Stop += OnEventStop;
     }
     
     // Hurt 이벤트에 추가할 메서드
@@ -43,5 +45,17 @@ public class PlayerAnimationController : MonoBehaviour
     {
         Debug.Log("플레이어 사망 애니메이션 종료");
         _animator.SetBool("isDead", false);
+    }
+    
+    private void OnEventMove()
+    {
+        Debug.Log("플레이어 이동 시작");
+        _animator.SetBool("isMoving", true);
+    }
+    
+    private void OnEventStop()
+    {
+        Debug.Log("플레이어 이동 멈춤");
+        _animator.SetBool("isMoving", false);
     }
 }

@@ -14,8 +14,6 @@ public class PlayerMoveController : MonoBehaviour
     // 플레이어 스프라이트 뒤집힘 여부 판단하기 위해서 가져옴
     private SpriteRenderer _spriteRenderer;
 
-    // 플레이어 애니메이션 패러미터를 수정하기 위한 애니메이터
-    private Animator _animator;
     // 플레이어 이동 속도를 저장할 변수
     private float _moveSpeed;
     // 유저 입력을 저장할 2차원 벡터 변수
@@ -29,6 +27,7 @@ public class PlayerMoveController : MonoBehaviour
     
     private PlayerManager _playerManager;
     private PlayerStatController _playerStatController;
+    private PlayerEventController _playerEventController;
     
     // 프로퍼티
     public Vector2 MoveVector
@@ -57,7 +56,7 @@ public class PlayerMoveController : MonoBehaviour
     {
         _playerManager = PlayerManager.Instance;
         _playerStatController = _playerManager.PlayerStatController;
-        _animator = _playerManager.Animator;
+        _playerEventController = _playerManager.PlayerEventController;
         _moveSpeed = _playerStatController.MoveSpeed;
         Debug.Log($"플레이어 속도 {_moveSpeed}");
         _currentPos = _playerManager.gameObject.transform.position;
@@ -70,7 +69,6 @@ public class PlayerMoveController : MonoBehaviour
     {
         _currentPos = gameObject.transform.position;
         transform.Translate(MoveVector.normalized * _moveSpeed * Time.deltaTime);
-        DefinePlayerAnimation(_currentPos, _lastPos);
         _lastPos = _currentPos;
     }
     
@@ -82,6 +80,10 @@ public class PlayerMoveController : MonoBehaviour
         
         // 프로퍼티에서 set 로직에 선언한 대로, 죽은 상태라면 알아서 Vector2.zero를 대입한다.
         MoveVector = new Vector2(InputVector.x, InputVector.y);
+
+        // 플레이어가 움직이기 시작했는지, 멈추기 시작했는지 알리기
+        if (MoveVector == Vector2.zero) _playerEventController.CallStop();
+        else _playerEventController.CallMove();
     }
     
     // 플레이어 입력에 따라 애니메이션 스프라이트를 뒤집는 메서드
@@ -90,12 +92,5 @@ public class PlayerMoveController : MonoBehaviour
         if (input.x == 0) return;
         else if (input.x < 0) _spriteRenderer.flipX = true;
         else if (input.x > 0) _spriteRenderer.flipX = false;
-    }
-    
-    // 플레이어 이동 관리하는 메서드
-    void DefinePlayerAnimation(Vector2 lastPosition, Vector2 nowPosition)
-    {
-        _animator.SetBool("isMoving", (lastPosition != nowPosition));
-        FlipCharacter(InputVector);
     }
 }
