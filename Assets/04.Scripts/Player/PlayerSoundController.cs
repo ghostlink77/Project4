@@ -34,11 +34,4 @@ public class PlayerSoundController : MonoBehaviour
         else Debug.LogError($"{_hurtClip.name}가 null임");
     }
 #endregion
-
-#region 메서드들
-    private void ActivateHurtSound()
-    {
-        _soundManager.GetComponent<GameObject>();
-    }
-#endregion
 }
