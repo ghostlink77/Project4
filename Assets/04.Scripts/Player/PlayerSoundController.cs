@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class PlayerSoundController : MonoBehaviour
 {
-#region 변수들
+#region 스크립트 참조 변수들
     private SoundManager _soundManager;
     private PlayerManager _playerManager;
     private PlayerEventController _playerEventController;
+#endregion
+
+#region 사운드 클립들
+    [Header("플레이어 피해 입는 사운드 클립")]
+    [SerializeField]
+    private AudioClip _hurtClip;
 #endregion
     
 #region SetUp 함수
@@ -14,6 +20,7 @@ public class PlayerSoundController : MonoBehaviour
         _soundManager = SoundManager.Instance;
         _playerManager = PlayerManager.Instance;
         _playerEventController = _playerManager.PlayerEventController;
+        AddOnEvent();
     }
     
     public void AddOnEvent()
@@ -23,7 +30,15 @@ public class PlayerSoundController : MonoBehaviour
     
     private void OnEventHurt()
     {
-        
+        if (_hurtClip != null) _soundManager.PlayPlayerSFX(_hurtClip);
+        else Debug.LogError($"{_hurtClip.name}가 null임");
+    }
+#endregion
+
+#region 메서드들
+    private void ActivateHurtSound()
+    {
+        _soundManager.GetComponent<GameObject>();
     }
 #endregion
 }
