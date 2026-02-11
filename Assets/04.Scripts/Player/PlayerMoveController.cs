@@ -38,9 +38,21 @@ public class PlayerMoveController : MonoBehaviour
             else _inputVector = value;
         }
     }
-#endregion
-    
-#region 메인 변수들
+    #endregion
+
+    #region 유니티 생명주기 메서드
+    private void OnEnable()
+    {
+        if (_playerEventController != null) AddToEvent();
+    }
+
+    private void OnDisable()
+    {
+        RemoveFromEvent();
+    }
+    #endregion
+
+    #region 메인 변수들
     public void SetUp()
     {
         ScriptVariableSetup();
@@ -70,6 +82,11 @@ public class PlayerMoveController : MonoBehaviour
     private void AddToEvent()
     {
         _playerEventController.Death += OnEventDeath;
+    }
+    
+    private void RemoveFromEvent()
+    {
+        _playerEventController.Death -= OnEventDeath;
     }
     
     private void OnEventDeath()
