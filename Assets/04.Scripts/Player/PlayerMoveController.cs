@@ -36,6 +36,7 @@ public class PlayerMoveController : MonoBehaviour
             // 사망 상태라면 외부에서 어떤 값을 넣으려고 해도 0으로 고정
             if (_playerStatController.Dead == true) _inputVector = Vector2.zero;
             else _inputVector = value;
+            _inputVector.Normalize();
         }
     }
     #endregion
