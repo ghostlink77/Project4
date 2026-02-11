@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
             PlayerItemController = GetComponent<PlayerItemController>();
             PlayerAnimationController = GetComponent<PlayerAnimationController>();
             PlayerEventController = GetComponent<PlayerEventController>();
+            PlayerSoundController = GetComponent<PlayerSoundController>();
             Animator = GetComponent<Animator>();
         }
     }
@@ -66,6 +67,7 @@ public class PlayerManager : MonoBehaviour
         PlayerMoveController.SetUp();
         PlayerItemController.SetUp();
         PlayerAnimationController.SetUp();
+        PlayerSoundController.SetUp();
     }
 
     // 플레이어에게 데미지 입히는 메서드
