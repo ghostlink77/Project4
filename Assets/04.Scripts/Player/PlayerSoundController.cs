@@ -50,7 +50,7 @@ public class PlayerSoundController : MonoBehaviour
     private void OnEventHurt()
     {
         if (_hurtClip != null) _soundManager.PlayPlayerSFX(_hurtClip);
-        else Debug.LogError($"{_hurtClip.name}가 null임");
+        else Debug.LogError($"_hurtClip이 null임");
     }
 #endregion
 }
