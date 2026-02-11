@@ -13,6 +13,18 @@ public class PlayerAnimationController : MonoBehaviour
     private PlayerMoveController _playerMoveController;
     private SpriteRenderer _spriteRenderer;
 #endregion
+#region 유니티 생명주기 변수들
+    private void OnEnable()
+    {
+        if(_playerEventController != null) AddToEvent();
+    }
+
+    private void OnDisable()
+    {
+        RemoveFromEvent();
+    }
+
+#endregion
 
     public void SetUp()
     {
@@ -23,7 +35,8 @@ public class PlayerAnimationController : MonoBehaviour
         _spriteRenderer = _playerManager.GetComponent<SpriteRenderer>();
         AddToEvent();
     }
-    
+
+#region 이벤트 메서드
     // 등록할 이벤트의 목록
     private void AddToEvent()
     {
@@ -33,7 +46,15 @@ public class PlayerAnimationController : MonoBehaviour
         _playerEventController.Move += OnEventMove;
         _playerEventController.Stop += OnEventStop;
     }
-#region OnEventMethods
+    
+    private void RemoveFromEvent()
+    {
+        _playerEventController.Hurt -= OnEventHurt;
+        _playerEventController.Death -= OnEventDeath;
+        _playerEventController.Revive -= OnEventRevive;
+        _playerEventController.Move -= OnEventMove;
+        _playerEventController.Stop -= OnEventStop;
+    }
     // Hurt 이벤트에 추가할 메서드
     private void OnEventHurt()
     {
@@ -66,6 +87,4 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetBool("isMoving", false);
     }
 #endregion
-
-
 }
