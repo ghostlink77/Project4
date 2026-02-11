@@ -12,9 +12,21 @@ public class PlayerSoundController : MonoBehaviour
     [Header("플레이어 피해 입는 사운드 클립")]
     [SerializeField]
     private AudioClip _hurtClip;
-#endregion
-    
-#region SetUp 함수
+    #endregion
+
+    #region 이벤트 생명주기 함수
+    private void OnEnable()
+    {
+        if (_playerEventController != null) AddOnEvent();
+    }
+
+    private void OnDisable()
+    {
+        RemoveFromEvent();
+    }
+    #endregion
+
+    #region SetUp 함수
     public void SetUp()
     {
         _soundManager = SoundManager.Instance;
@@ -23,9 +35,16 @@ public class PlayerSoundController : MonoBehaviour
         AddOnEvent();
     }
     
-    public void AddOnEvent()
+    #endregion
+    #region 이벤트 관련 메서드
+    private void AddOnEvent()
     {
         _playerEventController.Hurt += OnEventHurt;
+    }
+    
+    private void RemoveFromEvent()
+    {
+        _playerEventController.Hurt -= OnEventHurt;
     }
     
     private void OnEventHurt()
