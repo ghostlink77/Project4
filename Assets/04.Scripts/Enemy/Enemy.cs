@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _spawner = _spawner = EnemySpawner.Instance;
+        _spawner = EnemySpawner.Instance;
         _collider = GetComponent<CapsuleCollider2D>();
     }
     private void Update()
