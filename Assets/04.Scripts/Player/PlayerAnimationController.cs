@@ -32,7 +32,7 @@ public class PlayerAnimationController : MonoBehaviour
         _playerEventController = _playerManager.PlayerEventController;
         _playerMoveController = _playerManager.PlayerMoveController;
         _animator = _playerManager.Animator;
-        _spriteRenderer = _playerManager.GetComponent<SpriteRenderer>();
+        _spriteRenderer = _playerManager.SpriteRenderer;
         AddToEvent();
     }
 

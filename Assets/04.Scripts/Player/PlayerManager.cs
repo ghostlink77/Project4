@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerSoundController PlayerSoundController { get; private set; }
     public SoundManager SoundManager { get; private set; } 
     public Animator Animator { get; private set; }
+    public SpriteRenderer SpriteRenderer {get; private set; }
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
             PlayerEventController = GetComponent<PlayerEventController>();
             PlayerSoundController = GetComponent<PlayerSoundController>();
             Animator = GetComponent<Animator>();
+            SpriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
 
