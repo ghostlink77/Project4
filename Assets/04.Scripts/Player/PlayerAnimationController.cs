@@ -22,7 +22,12 @@ public class PlayerAnimationController : MonoBehaviour
 #region 유니티 생명주기 변수들
     private void OnEnable()
     {
-        if(_playerEventController != null) AddToEvent();
+        if(_playerEventController != null)
+        {
+            // 중복 구독 문제를 피하기 위함
+            RemoveFromEvent();
+            AddToEvent();
+        }
     }
 
     private void OnDisable()
