@@ -11,7 +11,6 @@ public class PlayerAnimationController : MonoBehaviour
     private static readonly int isDeadHash = Animator.StringToHash("isDead");
     private static readonly int isMovingHash = Animator.StringToHash("isMoving");
     #endregion
-
 #region variables
     private Animator _animator;
     private PlayerEventController _playerEventController;
@@ -64,29 +63,25 @@ public class PlayerAnimationController : MonoBehaviour
     // Hurt 이벤트에 추가할 메서드
     private void OnEventHurt()
     {
-        // _animator.SetTrigger("isHurt");
-        _animator.SetTrigger(isHurtHash);
+        _animator.SetTrigger("isHurt");
     }
     
     // Death 이벤트에 추가할 메서드
     private void OnEventDeath()
     {
-        // _animator.SetBool("isDead", true);
-        _animator.SetBool(isDeadHash, true);
+        _animator.SetBool("isDead", true);
     }
     
     // Revive 이벤트에 추가할 메서드
     private void OnEventRevive()
     {
-        // _animator.SetBool("isDead", false);
-        _animator.SetBool(isDeadHash, false);
+        _animator.SetBool("isDead", false);
     }
     
     private void OnEventMove()
     {
         // Debug.Log("플레이어 이동 시작");
-        // _animator.SetBool("isMoving", true);
-        _animator.SetBool(isMovingHash, true);
+        _animator.SetBool("isMoving", true);
         if (_playerMoveController.InputVector.x < 0) _spriteRenderer.flipX = true;
         else if (_playerMoveController.InputVector.x > 0) _spriteRenderer.flipX = false;
     }
@@ -94,8 +89,7 @@ public class PlayerAnimationController : MonoBehaviour
     private void OnEventStop()
     {
         // Debug.Log("플레이어 이동 멈춤");
-        // _animator.SetBool("isMoving", false);
-        _animator.SetBool(isMovingHash, false);
+        _animator.SetBool("isMoving", false);
     }
 #endregion
 }
