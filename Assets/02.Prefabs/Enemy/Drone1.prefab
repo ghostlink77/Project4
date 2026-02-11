@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 381585008423835657}
   - component: {fileID: 5834294517814774301}
   - component: {fileID: 3538558558491683659}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Drone1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.92, y: -1.68, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3193292146876135035}
@@ -152,8 +152,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -9.65894e-10, y: -0.008102507}
-  m_Size: {x: 0.8750005, y: 0.62640744}
+  m_Offset: {x: -0.026308274, y: -0.13525817}
+  m_Size: {x: 0.62946177, y: 0.37210009}
   m_Direction: 1
 --- !u!50 &5834294517814774301
 Rigidbody2D:
@@ -194,11 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ebc03abb4007647a5cc8761c78e05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  damage: 2
-  damageDelay: 0.3
-  speed: 1
-  maxHp: 1
-  enemyType: Drone1
+  _damage: 2
+  _damageDelay: 0.2
+  _speed: 0.7
+  _maxHp: 1
+  _enemyType: 0
 --- !u!1 &7941980596950222767
 GameObject:
   m_ObjectHideFlags: 0

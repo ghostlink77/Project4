@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Enemies
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Default Local Group
-  m_GUID: b302efdba50b7324aacb8cd8e1e7357c
+  m_GroupName: Enemies
+  m_GUID: df4833cf7349a46469c6be1ecfff0239
   m_SerializeEntries:
-  - m_GUID: 0b307dd7c929923449f8610c067c9791
-    m_Address: Prefabs/Item_Grounded/ExpObject
+  - m_GUID: 031ba117d235aa1418392a60433f566b
+    m_Address: Prefabs/Enemy/Drone1
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Item_Grounded
+    - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 40db0097b4d34d041b55480b2328da0c, type: 2}
-    - {fileID: 11400000, guid: 899c2bcd979bc1347a57571ea0fab8df, type: 2}
+    - {fileID: 11400000, guid: 7dfd1cfd68d654d4897543903772e05d, type: 2}
+    - {fileID: 11400000, guid: f520101a26c651c488c3e9675b8c5c30, type: 2}
