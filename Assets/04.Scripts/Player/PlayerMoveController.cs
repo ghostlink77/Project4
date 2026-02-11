@@ -99,13 +99,21 @@ public class PlayerMoveController : MonoBehaviour
         if (isMoving == false) return;
         transform.position = _currentPos;
         UpdatePosition();
-        InvokeMoveEvents(isMoving);
     }
     
     // 이전 위치와 현재 위치가 다르다면 true, 아니라면 false를 반환하는 메서드
     private bool CheckMove()
     {
-        return (_lastPos != _currentPos) ? true : false;
+        if (_lastPos != _currentPos)
+        {
+            _playerEventController.CallMove();
+            return true;
+        }
+        else
+        {
+            _playerEventController.CallStop();
+            return false;
+        }
     }
     
     // 위치 업데이트하는 메서드
