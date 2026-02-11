@@ -110,7 +110,7 @@ public class PlayerMoveController : MonoBehaviour
     public void MovePlayer()
     {
         
-        _currentPos += new Vector2(InputVector.x, InputVector.y) * _moveSpeed * Time.deltaTime;
+        _currentPos += InputVector * _moveSpeed * Time.deltaTime;
 
         bool isMoving = CheckMove();
         if (isMoving == false) return;
