@@ -70,6 +70,7 @@ public class LobbyUIController : MonoBehaviour
 
     public void EndFadeIn()
     {
+        AudioManager.Instance.StopAll();
         AudioManager.Instance.Play(AudioType.BGM, "LobbyBGM");
         EventSystem.current.SetSelectedGameObject(_firstBtn);
     }
