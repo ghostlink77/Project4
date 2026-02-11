@@ -15,8 +15,12 @@ public class PlayerManager : MonoBehaviour
     public PlayerMoveController PlayerMoveController { get; private set; }
     public PlayerStatController PlayerStatController { get; private set; }
     public PlayerItemController PlayerItemController { get; private set; }
+    public PlayerAnimationController PlayerAnimationController { get; private set; }
+    public PlayerEventController PlayerEventController { get; private set; }
+    public PlayerSoundController PlayerSoundController { get; private set; }
     public SoundManager SoundManager { get; private set; } 
     public Animator Animator { get; private set; }
+    public SpriteRenderer SpriteRenderer {get; private set; }
 
     void Awake()
     {
@@ -25,7 +29,11 @@ public class PlayerManager : MonoBehaviour
             PlayerMoveController = GetComponent<PlayerMoveController>();
             PlayerStatController = GetComponent<PlayerStatController>();
             PlayerItemController = GetComponent<PlayerItemController>();
+            PlayerAnimationController = GetComponent<PlayerAnimationController>();
+            PlayerEventController = GetComponent<PlayerEventController>();
+            PlayerSoundController = GetComponent<PlayerSoundController>();
             Animator = GetComponent<Animator>();
+            SpriteRenderer = GetComponent<SpriteRenderer>();
         }
     }
 
@@ -36,6 +44,11 @@ public class PlayerManager : MonoBehaviour
             SoundManager = SoundManager.Instance;
             PlayerComponentSetup();
         }
+    }
+
+    void Update()
+    {
+        PlayerMoveController.MovePlayer();
     }
 
     bool SingleTonGenerate()
@@ -55,12 +68,8 @@ public class PlayerManager : MonoBehaviour
         PlayerStatController.SetUp();
         PlayerMoveController.SetUp();
         PlayerItemController.SetUp();
-    }
-
-    void Update()
-    {
-        // 플레이어 이동 애니메이션 설정
-        PlayerMoveController.SetMoveAnimation();
+        PlayerAnimationController.SetUp();
+        PlayerSoundController.SetUp();
     }
 
     // 플레이어에게 데미지 입히는 메서드
