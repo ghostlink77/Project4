@@ -6,18 +6,18 @@ using System.Collections;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerStatController : MonoBehaviour, IDamageable
 {
+    #region 스크립터블 오브젝트
     [Header("스크립터블 오브젝트들")]
     [SerializeField]
     private PlayerDefaultData playerDefaultData;
-
-    [SerializeField]
-    private SoundData playerSound;
+    #endregion
     
+    #region 플레이어 스탯 변수들
     // 플레이어 스탯
-    
     public int CurrentLevel {get; set;}
     public int CurrentExp { get; private set; }
     public int MaxHp {get; set;}
@@ -36,7 +36,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public int WeaponSlotSize{get; set;}
     public int PassiveItemSlotSize{get; set;}
     public int TurretSlotSize {get; set;}
+    #endregion
 
+    #region 플레이어 부활 시간 관련 변수
     // 플레이어 부활까지 걸리는 시간이기 때문에 조정할 필요가 있음. 따라서 SerializeField를 적용함
     [SerializeField]
     private float _reviveDelayTime = 1.5f;
@@ -47,8 +49,22 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     }
     
     private WaitForSeconds _reviveDelayAction;
+    #endregion
     
+    #region 스크립트 참조변수
     private PlayerEventController _playerEventController;
+    #endregion
+
+    # region 유니티 생명주기 함수들
+    private void OnEnable()
+    {
+        if (_playerEventController != null) AddToEvent();
+    }
+
+    private void OnDisable()
+    {
+        RemoveFromEvent();
+    }
 
     // 필요한 데이터를 PlayerManager에서 받아오는 메서드
     // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
@@ -59,7 +75,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         AddToEvent();
         _reviveDelayAction = new WaitForSeconds(ReviveDelayTime);
     }
+    #endregion
     
+    #region 이벤트 관련 메서드
     // 이벤트에 추가하는 함수들
     private void AddToEvent()
     {
@@ -67,6 +85,12 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         _playerEventController.Revive += AddToRevive;
     }
     
+    private void RemoveFromEvent()
+    {
+        _playerEventController.Death -= AddToDeath;
+        _playerEventController.Revive -= AddToRevive;
+    }
+
     // Death 이벤트 활성화 시 작동할 메서드
     private void AddToDeath()
     {
@@ -84,6 +108,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         Life = Math.Max(0, Life - 1);
         Dead = false;
     }
+    #endregion
 
     //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
     private void resetPlayerStat()
@@ -108,6 +133,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         TurretSlotSize = playerDefaultData.DefaultTurretSlotSize;
     }
     
+    #region 플레이어 데미지 관련 메서드
     //플레이어 hp에 데미지 가하는 함수
     // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
     public void TakeDamage(int damage)
@@ -134,10 +160,13 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         float value = damage * 100 / (100 + defense);
         return (int)Math.Round(value);
     }
+    #endregion
     
+    #region 플레이어 사망 관련 메서드
     private IEnumerator AfterDead()
     {
         yield return _reviveDelayAction;
         if (Life > 0) _playerEventController.CallRevive();
     }
+    #endregion
 }
