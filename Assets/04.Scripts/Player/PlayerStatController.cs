@@ -58,7 +58,12 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     # region 유니티 생명주기 함수들
     private void OnEnable()
     {
-        if (_playerEventController != null) AddToEvent();
+        if (_playerEventController != null)
+        {
+            // 혹시 모를 중복 구독 방지를 위함
+            RemoveFromEvent();
+            AddToEvent();
+        }
     }
 
     private void OnDisable()
@@ -72,7 +77,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         resetPlayerStat();
         _playerEventController = PlayerManager.Instance.PlayerEventController;
-        AddToEvent();
         _reviveDelayAction = new WaitForSeconds(ReviveDelayTime);
     }
     #endregion
