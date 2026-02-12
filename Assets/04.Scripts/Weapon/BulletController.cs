@@ -6,10 +6,11 @@ using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
 {
-    // 사운드 에셋들
+    #region 사운드 에셋들
     [Header("발사음")]
     [SerializeField]
-    private WeaponSoundData _weaponSounds;
+    private AudioClip _shootSound;
+    #endregion
 
     private float _projectileSpeed;
     private int _projectileDmg;
@@ -36,7 +37,7 @@ public class BulletController : MonoBehaviour
 
         StartCoroutine(DeactivateAfterTime());
 
-        PlaySound(_weaponSounds.ShootSound);
+        PlaySound(_shootSound);
     }
 
     void OnDisable()
@@ -93,11 +94,9 @@ public class BulletController : MonoBehaviour
     // 총알 사운드 출력하는 메서드
     private void PlaySound(AudioClip clip)
     {
-        // if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
-        // if (clip == null) Debug.LogError("오디오 클립 없음");
+        if (_audioSource == null) Debug.LogError("오디오소스 비어있음");
         _audioSource.clip = clip;
         if (CheckAbleToShoot(_audioSource.clip) == false) return;
-        // Debug.Log($"{audioSource.clip.name} 파일 재생");
         _audioSource.Play();
     }
     
@@ -108,7 +107,7 @@ public class BulletController : MonoBehaviour
         // 사운드 클립이 존재하는지 확인
         if (clip == null)
         {
-            Debug.LogError($"AudioClip이 존재하지 않음");
+            Debug.Log($"AudioClip이 존재하지 않음");
             return false;
         }
         return true;
