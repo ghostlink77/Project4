@@ -94,22 +94,19 @@ public class BulletController : MonoBehaviour
     // 총알 사운드 출력하는 메서드
     private void PlaySound(AudioClip clip)
     {
-        if (_audioSource == null) Debug.LogError("오디오소스 비어있음");
-        _audioSource.clip = clip;
-        if (CheckAbleToShoot(_audioSource.clip) == false) return;
+        if (NullAudioSource()) return;
+        if (_audioSource.clip != clip) _audioSource.clip = clip;
         _audioSource.Play();
     }
     
-    // 사격이 가능한지 확인하는 메서드
-    // 사격이 가능하면 true 반환
-    private bool CheckAbleToShoot(AudioClip clip)
+    #region null 점검 스크립트
+    // 오디오 소스가 null인지 확인하는 메서드
+    private bool NullAudioSource()
     {
-        // 사운드 클립이 존재하는지 확인
-        if (clip == null)
-        {
-            Debug.Log($"AudioClip이 존재하지 않음");
-            return false;
-        }
-        return true;
+        if (_audioSource == null) return true;
+        Debug.LogError("오디오소스가 null임");
+        return false;
     }
+    
+    #endregion
 }
