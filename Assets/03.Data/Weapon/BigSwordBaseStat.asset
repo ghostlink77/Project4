@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7e0e8ab78922745a2ba1a3065f12e5, type: 3}
   m_Name: BigSwordBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
-  weaponName: 
+  weaponName: "\uC9C4\uC9DC \uB300\uAC80"
   icon: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  level: 0
+  level: 1
   type: 0
-  atk: 0
-  critRate: 0
-  critMultiplier: 0
-  effectRate: 0
-  atkSpeed: 0
-  atkRange: 0
+  atk: 50
+  critRate: 50
+  critMultiplier: 3
+  effectRate: 50
+  atkSpeed: 3
+  atkRange: 1
   projectileSpeed: 0
-  projectileCount: 0
+  projectileCount: 1
