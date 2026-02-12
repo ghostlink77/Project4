@@ -55,7 +55,7 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
         GameObject expObject = _expObjectPool.Get();
         expObject.transform.position = position;
         ExpObject expObjComponent = expObject.GetComponent<ExpObject>();
-        expObjComponent.Initialize(this);
+        expObjComponent.Initialize();
         return expObject;
     }
     public void ReturnToPool(GameObject expObject)

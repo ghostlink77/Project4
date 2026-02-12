@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Item_Grounded
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 457d2216108d9d544a39a554bbab683f
+    m_Address: Prefabs/Item_Grounded/Scrap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item_Grounded
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
   m_SchemaSet:

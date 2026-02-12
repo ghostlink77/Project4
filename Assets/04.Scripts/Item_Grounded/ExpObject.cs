@@ -1,59 +1,16 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
-public class ExpObject : MonoBehaviour, IItemGrounded
+public class ExpObject : ItemGroundedBase
 {
     [SerializeField] private int _expAmount;
 
-    [SerializeField] private float _defaultSpeed = 5f;
-    [SerializeField] private float _acceleration = 10f;
-    private float _currentSpeed = 0f;
-
-    private bool _isMovingToPlayer = false;
-    private ExpObjectSpawner _spawner;
-    private Transform _playerTransform;
-
-    private void Update()
+    protected override void OnCollectedByPlayer()
     {
-        if (_isMovingToPlayer && _playerTransform != null)
-        {
-            MoveToPlayer();
-        }
-    }
-    public void Initialize(ExpObjectSpawner expObjectSpawner)
-    {
-        _spawner = expObjectSpawner;
-        _playerTransform = null;
-        _currentSpeed = _defaultSpeed;
-        _isMovingToPlayer = false;
+        Debug.Log($"Exp ÌöçÎìù: {_expAmount}");
     }
 
-    public void CollectItem(Transform playerTransform)
+    protected override void ReturnToPool()
     {
-        if (_isMovingToPlayer)
-        {
-            return;
-        }
-
-        _isMovingToPlayer = true;
-        _playerTransform = playerTransform;
-
-    }
-
-    private void MoveToPlayer()
-    {
-        _currentSpeed += _acceleration * Time.deltaTime;
-        Vector3 direction = (_playerTransform.position - transform.position).normalized;
-        transform.position += direction * _currentSpeed * Time.deltaTime;
-    }
-
-
-    // TODO: «√∑π¿ÃæÓ ∞Ê«Ëƒ° ¡ı∞°
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            _spawner.ReturnToPool(gameObject);
-            Debug.Log($"Player gained {_expAmount} EXP.");
-        }
+        ExpObjectSpawner.Instance.ReturnToPool(gameObject);
     }
 }
