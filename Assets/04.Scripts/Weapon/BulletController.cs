@@ -103,8 +103,11 @@ public class BulletController : MonoBehaviour
     // 오디오 소스가 null인지 확인하는 메서드
     private bool NullAudioSource()
     {
-        if (_audioSource == null) return true;
-        Debug.LogError("오디오소스가 null임");
+        if (_audioSource == null)
+        {
+            Debug.LogError("오디오소스가 null임");
+            return true;
+        }
         return false;
     }
     
