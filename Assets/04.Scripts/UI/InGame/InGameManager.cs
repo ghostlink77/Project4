@@ -37,4 +37,18 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         PlayTime += Time.deltaTime;
         InGameUIController.ShowPlayTime();
     }
+
+    public void OpenLevelUpUI()
+    {
+        {
+            if(InGameUIController != null)
+            {
+                InGameUIController.OpenLevelupUI();
+            }
+            else
+            {
+                Debug.LogError("UI 컨트롤러가 연결되지 않았습니다.");
+            }
+        }
+    }
 }
