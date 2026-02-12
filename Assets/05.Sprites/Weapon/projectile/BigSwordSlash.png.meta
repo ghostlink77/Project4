@@ -1,0 +1,3627 @@
+fileFormatVersion: 2
+guid: 72baa810952f3644a99db2c41ecdd6a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2819069142081647323
+    second: BigSwordSlash_0
+  - first:
+      213: 6399690890039670573
+    second: BigSwordSlash_1
+  - first:
+      213: 9041117933722849224
+    second: BigSwordSlash_2
+  - first:
+      213: 6115594451075385492
+    second: BigSwordSlash_3
+  - first:
+      213: -7723057500321711444
+    second: BigSwordSlash_4
+  - first:
+      213: -2942398821234448220
+    second: BigSwordSlash_5
+  - first:
+      213: 5725178476458815351
+    second: BigSwordSlash_6
+  - first:
+      213: -1412426309433772354
+    second: BigSwordSlash_7
+  - first:
+      213: 8663771191609532017
+    second: BigSwordSlash_8
+  - first:
+      213: 124674026012485168
+    second: BigSwordSlash_9
+  - first:
+      213: 5277512119902694985
+    second: BigSwordSlash_10
+  - first:
+      213: 1753721138106958069
+    second: BigSwordSlash_11
+  - first:
+      213: 5507565123168350838
+    second: BigSwordSlash_12
+  - first:
+      213: -7849604121383265788
+    second: BigSwordSlash_13
+  - first:
+      213: 2442833125628655525
+    second: BigSwordSlash_14
+  - first:
+      213: 1449529734497843361
+    second: BigSwordSlash_15
+  - first:
+      213: -5219491559922267587
+    second: BigSwordSlash_16
+  - first:
+      213: -1302960028497124665
+    second: BigSwordSlash_17
+  - first:
+      213: 1264856096685667251
+    second: BigSwordSlash_18
+  - first:
+      213: -3450503821279983036
+    second: BigSwordSlash_19
+  - first:
+      213: -53500583009841603
+    second: BigSwordSlash_20
+  - first:
+      213: -6020517049125846808
+    second: BigSwordSlash_21
+  - first:
+      213: 8051922870017432761
+    second: BigSwordSlash_22
+  - first:
+      213: 4763188648493144788
+    second: BigSwordSlash_23
+  - first:
+      213: 8544247477699170143
+    second: BigSwordSlash_24
+  - first:
+      213: 29840842625312224
+    second: BigSwordSlash_25
+  - first:
+      213: -3333915140868765923
+    second: BigSwordSlash_26
+  - first:
+      213: -8614217080310537332
+    second: BigSwordSlash_27
+  - first:
+      213: 9216186886698898765
+    second: BigSwordSlash_28
+  - first:
+      213: 14499110036478138
+    second: BigSwordSlash_29
+  - first:
+      213: -2082462456722107991
+    second: BigSwordSlash_30
+  - first:
+      213: -4888787003708227255
+    second: BigSwordSlash_31
+  - first:
+      213: 5626306019958336246
+    second: BigSwordSlash_32
+  - first:
+      213: -7818623694024548026
+    second: BigSwordSlash_33
+  - first:
+      213: 6252223700811529575
+    second: BigSwordSlash_34
+  - first:
+      213: -2546732245261189896
+    second: BigSwordSlash_35
+  - first:
+      213: -4782906649696483154
+    second: BigSwordSlash_36
+  - first:
+      213: -9045230060032748110
+    second: BigSwordSlash_37
+  - first:
+      213: 8772075499468697652
+    second: BigSwordSlash_38
+  - first:
+      213: -1870351299124531047
+    second: BigSwordSlash_39
+  - first:
+      213: 3766908598100356566
+    second: BigSwordSlash_40
+  - first:
+      213: 6395864753692005448
+    second: BigSwordSlash_41
+  - first:
+      213: -5572207856335492424
+    second: BigSwordSlash_42
+  - first:
+      213: -8512147679198813955
+    second: BigSwordSlash_43
+  - first:
+      213: -4986402540744281412
+    second: BigSwordSlash_44
+  - first:
+      213: 6033630653881732421
+    second: BigSwordSlash_45
+  - first:
+      213: -7329889164952842880
+    second: BigSwordSlash_46
+  - first:
+      213: 4600022956483282274
+    second: BigSwordSlash_47
+  - first:
+      213: 7315142981432323730
+    second: BigSwordSlash_48
+  - first:
+      213: -8656941746979318313
+    second: BigSwordSlash_49
+  - first:
+      213: 8207578808375505970
+    second: BigSwordSlash_50
+  - first:
+      213: 7584090981741863834
+    second: BigSwordSlash_51
+  - first:
+      213: -6445486554004148340
+    second: BigSwordSlash_52
+  - first:
+      213: -5755090710033428484
+    second: BigSwordSlash_53
+  - first:
+      213: -8660153296084302310
+    second: BigSwordSlash_54
+  - first:
+      213: -1383542335892904872
+    second: BigSwordSlash_55
+  - first:
+      213: -5633526412267939076
+    second: BigSwordSlash_56
+  - first:
+      213: -692369062850954487
+    second: BigSwordSlash_57
+  - first:
+      213: -8505487325577590910
+    second: BigSwordSlash_58
+  - first:
+      213: 8666700921440460366
+    second: BigSwordSlash_59
+  - first:
+      213: -4803280456045770572
+    second: BigSwordSlash_60
+  - first:
+      213: 89809021211578058
+    second: BigSwordSlash_61
+  - first:
+      213: 3746624698116176748
+    second: BigSwordSlash_62
+  - first:
+      213: 1989991081251230614
+    second: BigSwordSlash_63
+  - first:
+      213: -6551902854980977736
+    second: BigSwordSlash_64
+  - first:
+      213: 8528227351041336860
+    second: BigSwordSlash_65
+  - first:
+      213: 5201335497888096702
+    second: BigSwordSlash_66
+  - first:
+      213: -7468214852090272700
+    second: BigSwordSlash_67
+  - first:
+      213: 3572741767471971850
+    second: BigSwordSlash_68
+  - first:
+      213: 5630745352311797704
+    second: BigSwordSlash_69
+  - first:
+      213: 8835697169963435127
+    second: BigSwordSlash_70
+  - first:
+      213: -2789286998174250
+    second: BigSwordSlash_71
+  - first:
+      213: -6081985709251798123
+    second: BigSwordSlash_72
+  - first:
+      213: 921780667687445378
+    second: BigSwordSlash_73
+  - first:
+      213: -1821497055893202947
+    second: BigSwordSlash_74
+  - first:
+      213: 423529560469102795
+    second: BigSwordSlash_75
+  - first:
+      213: -5973071043766935013
+    second: BigSwordSlash_76
+  - first:
+      213: -7603973485017242387
+    second: BigSwordSlash_77
+  - first:
+      213: 9152590665592888728
+    second: BigSwordSlash_78
+  - first:
+      213: -1258030040444988151
+    second: BigSwordSlash_79
+  - first:
+      213: 8340231111959367091
+    second: BigSwordSlash_80
+  - first:
+      213: 2475065746866334411
+    second: BigSwordSlash_81
+  - first:
+      213: -3690746058912814019
+    second: BigSwordSlash_82
+  - first:
+      213: -4012327549555413199
+    second: BigSwordSlash_83
+  - first:
+      213: -5201915865199470484
+    second: BigSwordSlash_84
+  - first:
+      213: -7269218363972688350
+    second: BigSwordSlash_85
+  - first:
+      213: 336395435366309197
+    second: BigSwordSlash_86
+  - first:
+      213: -1234219362437246675
+    second: BigSwordSlash_87
+  - first:
+      213: 2828615438800430387
+    second: BigSwordSlash_88
+  - first:
+      213: 8361034568283235431
+    second: BigSwordSlash_89
+  - first:
+      213: -7158986862399328638
+    second: BigSwordSlash_90
+  - first:
+      213: -4720829929203940334
+    second: BigSwordSlash_91
+  - first:
+      213: 8664686656564358411
+    second: BigSwordSlash_92
+  - first:
+      213: 2619681841602067806
+    second: BigSwordSlash_93
+  - first:
+      213: -4147663006464820289
+    second: BigSwordSlash_94
+  - first:
+      213: 6292526148477274209
+    second: BigSwordSlash_95
+  - first:
+      213: 8427993047509963954
+    second: BigSwordSlash_96
+  - first:
+      213: 3199468333877864559
+    second: BigSwordSlash_97
+  - first:
+      213: -2489335951856022937
+    second: BigSwordSlash_98
+  - first:
+      213: -7835650649236841927
+    second: BigSwordSlash_99
+  - first:
+      213: -7192664648538928662
+    second: BigSwordSlash_100
+  - first:
+      213: 45774715981184978
+    second: BigSwordSlash_101
+  - first:
+      213: 3096800453486583841
+    second: BigSwordSlash_102
+  - first:
+      213: 1216433659848212511
+    second: BigSwordSlash_103
+  - first:
+      213: -3006284363931766972
+    second: BigSwordSlash_104
+  - first:
+      213: -3531595756859636330
+    second: BigSwordSlash_105
+  - first:
+      213: 4753238983456225416
+    second: BigSwordSlash_106
+  - first:
+      213: -1166224318835065929
+    second: BigSwordSlash_107
+  - first:
+      213: -241828502720161266
+    second: BigSwordSlash_108
+  - first:
+      213: 8180622919713271026
+    second: BigSwordSlash_109
+  - first:
+      213: -901708507819595754
+    second: BigSwordSlash_110
+  - first:
+      213: 1181905898869579199
+    second: BigSwordSlash_111
+  - first:
+      213: -762363678065095936
+    second: BigSwordSlash_112
+  - first:
+      213: -1731123066096357299
+    second: BigSwordSlash_113
+  - first:
+      213: 2912032199402918708
+    second: BigSwordSlash_114
+  - first:
+      213: 3731363765240081584
+    second: BigSwordSlash_115
+  - first:
+      213: -4953194680994476983
+    second: BigSwordSlash_116
+  - first:
+      213: -8164324420945963952
+    second: BigSwordSlash_117
+  - first:
+      213: 3662205891147044004
+    second: BigSwordSlash_118
+  - first:
+      213: 2919066283806401836
+    second: BigSwordSlash_119
+  - first:
+      213: 1592922481823096544
+    second: BigSwordSlash_120
+  - first:
+      213: -1486578893655553651
+    second: BigSwordSlash_121
+  - first:
+      213: 7191426485340460674
+    second: BigSwordSlash_122
+  - first:
+      213: -933495880979612322
+    second: BigSwordSlash_123
+  - first:
+      213: -959668566778018760
+    second: BigSwordSlash_124
+  - first:
+      213: -8237413600883769625
+    second: BigSwordSlash_125
+  - first:
+      213: -6527803143153836779
+    second: BigSwordSlash_126
+  - first:
+      213: 1545482189079265618
+    second: BigSwordSlash_127
+  - first:
+      213: 9118528429689511252
+    second: BigSwordSlash_128
+  - first:
+      213: -415274009788994247
+    second: BigSwordSlash_129
+  - first:
+      213: -4409407045602326098
+    second: BigSwordSlash_130
+  - first:
+      213: 6745859810151648904
+    second: BigSwordSlash_131
+  - first:
+      213: 4122687269955608512
+    second: BigSwordSlash_132
+  - first:
+      213: 652213439768068836
+    second: BigSwordSlash_133
+  - first:
+      213: 6960470495214375810
+    second: BigSwordSlash_134
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BigSwordSlash_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 550
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52d45f42d87a0e8d0800000000000000
+      internalID: -2819069142081647323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 553
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d273e1d15f440d850800000000000000
+      internalID: 6399690890039670573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 556
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cfc6fbdbd0887d70800000000000000
+      internalID: 9041117933722849224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 550
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 498c2be50c4fed450800000000000000
+      internalID: 6115594451075385492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_4
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 536
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caa78693f1032d490800000000000000
+      internalID: -7723057500321711444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 524
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8eac09cdf7a27d0800000000000000
+      internalID: -2942398821234448220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_6
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 520
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f2a05bd7be37f40800000000000000
+      internalID: 5725178476458815351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_7
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 543
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb6b8c241cd066ce0800000000000000
+      internalID: -1412426309433772354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_8
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 24
+        width: 87
+        height: 534
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e16230ff5eb3870800000000000000
+      internalID: 8663771191609532017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_9
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 520
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0362139bd5eeab100800000000000000
+      internalID: 124674026012485168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_10
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 540
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94e6e94cf4d7d3940800000000000000
+      internalID: 5277512119902694985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_11
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 520
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f085ff5518765810800000000000000
+      internalID: 1753721138106958069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_12
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 521
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 672b7c79c4dce6c40800000000000000
+      internalID: 5507565123168350838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_13
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 526
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a128df3aa901390800000000000000
+      internalID: -7849604121383265788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_14
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 527
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a737aaf8cfa6e120800000000000000
+      internalID: 2442833125628655525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_15
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 486
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a83c141d93cd1410800000000000000
+      internalID: 1449529734497843361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_16
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 489
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a0fae8414a097b0800000000000000
+      internalID: -5219491559922267587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_17
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 492
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c265e8e1c4faede0800000000000000
+      internalID: -1302960028497124665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 486
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b3bfee1bebad8110800000000000000
+      internalID: 1264856096685667251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_19
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 472
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a8a7c5e095d10d0800000000000000
+      internalID: -3450503821279983036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_20
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 460
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3e0c62d08de14ff0800000000000000
+      internalID: -53500583009841603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_21
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 456
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0cba254a3d27ca0800000000000000
+      internalID: -6020517049125846808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_22
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 479
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc9b3a703d2ebf60800000000000000
+      internalID: 8051922870017432761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_23
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 483
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da5b9fd6de3a1240800000000000000
+      internalID: 4763188648493144788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_24
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 456
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5f4945cfc3439670800000000000000
+      internalID: 8544247477699170143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_25
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 476
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5ea7896140a6000800000000000000
+      internalID: 29840842625312224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_26
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 456
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d17883dd7dd8bb1d0800000000000000
+      internalID: -3333915140868765923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_27
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 457
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c83ecfd9437247880800000000000000
+      internalID: -8614217080310537332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_28
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 462
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d451d4dd42976ef70800000000000000
+      internalID: 9216186886698898765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_29
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 463
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8984f1dd2833000800000000000000
+      internalID: 14499110036478138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_30
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 422
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1ddf0dd6b9913e0800000000000000
+      internalID: -2082462456722107991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_31
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 425
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941cc6d3f1a872cb0800000000000000
+      internalID: -4888787003708227255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_32
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 428
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa22450487a41e40800000000000000
+      internalID: 5626306019958336246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 422
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 641e635dc2bae7390800000000000000
+      internalID: -7818623694024548026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_34
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 408
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d3627845c54c650800000000000000
+      internalID: 6252223700811529575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_35
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 396
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc7c2f148038acd0800000000000000
+      internalID: -2546732245261189896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_36
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 392
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8ccf63eb3bf9db0800000000000000
+      internalID: -4782906649696483154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_37
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 415
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b510102f23e87280800000000000000
+      internalID: -9045230060032748110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_38
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 419
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4303db8b03cacb970800000000000000
+      internalID: 8772075499468697652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_39
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 392
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 990fd7a276d2b06e0800000000000000
+      internalID: -1870351299124531047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_40
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 412
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dde22b796fb64430800000000000000
+      internalID: 3766908598100356566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_41
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 392
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 844d0435b1da2c850800000000000000
+      internalID: 6395864753692005448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_42
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 393
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba6b7c3a7a8ba2b0800000000000000
+      internalID: -5572207856335492424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_43
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 398
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df060b9f8c6ced980800000000000000
+      internalID: -8512147679198813955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_44
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 399
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb2f4dbee4dbccab0800000000000000
+      internalID: -4986402540744281412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_45
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 358
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54d4786bc13cbb350800000000000000
+      internalID: 6033630653881732421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_46
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 361
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d4000d3a0074a90800000000000000
+      internalID: -7329889164952842880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_47
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 364
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26504d7c18096df30800000000000000
+      internalID: 4600022956483282274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_48
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 358
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e2779c8cb948560800000000000000
+      internalID: 7315142981432323730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_49
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 344
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d55c0af85d5cd780800000000000000
+      internalID: -8656941746979318313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_50
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 332
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 234fe3bc07d27e170800000000000000
+      internalID: 8207578808375505970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_51
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 328
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93a7fec09a104960800000000000000
+      internalID: 7584090981741863834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_52
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 351
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8fa608f0280d86a0800000000000000
+      internalID: -6445486554004148340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_53
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 355
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cff8e42bd7fc120b0800000000000000
+      internalID: -5755090710033428484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_54
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 328
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16877ee574f0d780800000000000000
+      internalID: -8660153296084302310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_55
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 348
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854a369639baccce0800000000000000
+      internalID: -1383542335892904872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_56
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 328
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa1df36391b1d1b0800000000000000
+      internalID: -5633526412267939076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_57
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 329
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b7c4371063466f0800000000000000
+      internalID: -692369062850954487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_58
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 334
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2874c55675076f980800000000000000
+      internalID: -8505487325577590910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_59
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 335
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e5205e19e464870800000000000000
+      internalID: 8666700921440460366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_60
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 294
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b8c0d4cfd1575db0800000000000000
+      internalID: -4803280456045770572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_61
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 297
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ace01f634d01f3100800000000000000
+      internalID: 89809021211578058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_62
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 300
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6b7bedff4faef330800000000000000
+      internalID: 3746624698116176748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_63
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 294
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693dc20585edd9b10800000000000000
+      internalID: 1989991081251230614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_64
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 280
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bbbdfd1117f215a0800000000000000
+      internalID: -6551902854980977736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_65
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 268
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16e69e57995a5670800000000000000
+      internalID: 8528227351041336860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_66
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 264
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb1ef35d31bde2840800000000000000
+      internalID: 5201335497888096702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_67
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 287
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 444ecda09229b5890800000000000000
+      internalID: -7468214852090272700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_68
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 291
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0e3e5455bde49130800000000000000
+      internalID: 3572741767471971850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_69
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 264
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c7f931a01d642e40800000000000000
+      internalID: 5630745352311797704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_70
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 284
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774489633c3be9a70800000000000000
+      internalID: 8835697169963435127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_71
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 264
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d51c43882716fff0800000000000000
+      internalID: -2789286998174250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_72
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 265
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b5b0f9832789ba0800000000000000
+      internalID: -6081985709251798123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_73
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 270
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283255a22a2dacc00800000000000000
+      internalID: 921780667687445378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_74
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 271
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df7d010141eb8b6e0800000000000000
+      internalID: -1821497055893202947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_75
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 230
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc063ab24eda0e500800000000000000
+      internalID: 423529560469102795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_76
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 233
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b12a91a48836b1da0800000000000000
+      internalID: -5973071043766935013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_77
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 236
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4ee082762497690800000000000000
+      internalID: -7603973485017242387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_78
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 230
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d5835c7b8840f70800000000000000
+      internalID: 9152590665592888728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_79
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 216
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9059182f7549a8ee0800000000000000
+      internalID: -1258030040444988151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_80
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 204
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bdcff402047eb370800000000000000
+      internalID: 8340231111959367091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_81
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 200
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca64bdee23395220800000000000000
+      internalID: 2475065746866334411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_82
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 223
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c245a8306d7ccc0800000000000000
+      internalID: -3690746058912814019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_83
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 227
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f6c361a595158c0800000000000000
+      internalID: -4012327549555413199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_84
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 200
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68115fd4151fc7b0800000000000000
+      internalID: -5201915865199470484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_85
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 220
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22669a4796c8e1b90800000000000000
+      internalID: -7269218363972688350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_86
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 200
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d521dbddd1ba400800000000000000
+      internalID: 336395435366309197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_87
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 201
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21d40f670c2fdee0800000000000000
+      internalID: -1234219362437246675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_88
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 206
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335a2e341c2414720800000000000000
+      internalID: 2828615438800430387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_89
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 207
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 764a84524ac580470800000000000000
+      internalID: 8361034568283235431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_90
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 166
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28eeffae06b26ac90800000000000000
+      internalID: -7158986862399328638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_91
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 169
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21444c0013e3c7eb0800000000000000
+      internalID: -4720829929203940334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_92
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 172
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0de59e4b962f3870800000000000000
+      internalID: 8664686656564358411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_93
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 166
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d7b3951cafa5420800000000000000
+      internalID: 2619681841602067806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_94
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 152
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbbb2ab887a8076c0800000000000000
+      internalID: -4147663006464820289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_95
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 140
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16848db513b835750800000000000000
+      internalID: 6292526148477274209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_96
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 136
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b41b46f50f36f470800000000000000
+      internalID: 8427993047509963954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_97
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 159
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68a6e68f7bc66c20800000000000000
+      internalID: 3199468333877864559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_98
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 163
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a430f042a147dd0800000000000000
+      internalID: -2489335951856022937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_99
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 136
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93add24ef3d224390800000000000000
+      internalID: -7835650649236841927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_100
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 156
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae9c35b4c958e2c90800000000000000
+      internalID: -7192664648538928662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_101
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 136
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dfb0c59cdf92a000800000000000000
+      internalID: 45774715981184978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_102
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 137
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120265ada9b0afa20800000000000000
+      internalID: 3096800453486583841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_103
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 142
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10c41cf7f3a1e010800000000000000
+      internalID: 1216433659848212511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_104
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 143
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f290a8c488746d0800000000000000
+      internalID: -3006284363931766972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_105
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 102
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695ca1ece504dfec0800000000000000
+      internalID: -3531595756859636330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_106
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 105
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8887275fba5e6f140800000000000000
+      internalID: 4753238983456225416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_107
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 108
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbf963392db0dfe0800000000000000
+      internalID: -1166224318835065929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_108
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 102
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0adcce024ad4acf0800000000000000
+      internalID: -241828502720161266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_109
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 88
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcade2e339678170800000000000000
+      internalID: 8180622919713271026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_110
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 76
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618277cb3ec7c73f0800000000000000
+      internalID: -901708507819595754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_111
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 72
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd5f0c2729f66010800000000000000
+      internalID: 1181905898869579199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_112
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 95
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00b0543264a8b65f0800000000000000
+      internalID: -762363678065095936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_113
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 99
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4077d64eb0d9f7e0800000000000000
+      internalID: -1731123066096357299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_114
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 72
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43319e35bdd996820800000000000000
+      internalID: 2912032199402918708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_115
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 92
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bc26ea239778c330800000000000000
+      internalID: 3731363765240081584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_116
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 72
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c48f74ea7b24bb0800000000000000
+      internalID: -4953194680994476983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_117
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 73
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0541872123e72be80800000000000000
+      internalID: -8164324420945963952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_118
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 78
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a49924dad4c2d230800000000000000
+      internalID: 3662205891147044004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_119
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 79
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c25a91ab15b928820800000000000000
+      internalID: 2919066283806401836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_120
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 38
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee9ccbbe823b1610800000000000000
+      internalID: 1592922481823096544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_121
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 41
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8941195f5c9e5be0800000000000000
+      internalID: -1486578893655553651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_122
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 44
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286dd0f59441dc360800000000000000
+      internalID: 7191426485340460674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_123
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 38
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d7bee217e8b03f0800000000000000
+      internalID: -933495880979612322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_124
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 24
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8348617e5829ea2f0800000000000000
+      internalID: -959668566778018760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_125
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 12
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eef95349f3dead80800000000000000
+      internalID: -8237413600883769625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_126
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 8
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51d13a880a59865a0800000000000000
+      internalID: -6527803143153836779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_127
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 31
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25143c6dcd7a27510800000000000000
+      internalID: 1545482189079265618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_128
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 35
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45d91f57b458b8e70800000000000000
+      internalID: 9118528429689511252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_129
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 8
+        width: 50
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93d23120d76ac3af0800000000000000
+      internalID: -415274009788994247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_130
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 28
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9c4c077a3aec2c0800000000000000
+      internalID: -4409407045602326098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_131
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 8
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e4ca891cb1e9d50800000000000000
+      internalID: 6745859810151648904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_132
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 9
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cf9ab5aa3ab63930800000000000000
+      internalID: 4122687269955608512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_133
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 14
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e28c1bfaa02d0900800000000000000
+      internalID: 652213439768068836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BigSwordSlash_134
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 15
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28317d8890f889060800000000000000
+      internalID: 6960470495214375810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BigSwordSlash_0: -2819069142081647323
+      BigSwordSlash_1: 6399690890039670573
+      BigSwordSlash_10: 5277512119902694985
+      BigSwordSlash_100: -7192664648538928662
+      BigSwordSlash_101: 45774715981184978
+      BigSwordSlash_102: 3096800453486583841
+      BigSwordSlash_103: 1216433659848212511
+      BigSwordSlash_104: -3006284363931766972
+      BigSwordSlash_105: -3531595756859636330
+      BigSwordSlash_106: 4753238983456225416
+      BigSwordSlash_107: -1166224318835065929
+      BigSwordSlash_108: -241828502720161266
+      BigSwordSlash_109: 8180622919713271026
+      BigSwordSlash_11: 1753721138106958069
+      BigSwordSlash_110: -901708507819595754
+      BigSwordSlash_111: 1181905898869579199
+      BigSwordSlash_112: -762363678065095936
+      BigSwordSlash_113: -1731123066096357299
+      BigSwordSlash_114: 2912032199402918708
+      BigSwordSlash_115: 3731363765240081584
+      BigSwordSlash_116: -4953194680994476983
+      BigSwordSlash_117: -8164324420945963952
+      BigSwordSlash_118: 3662205891147044004
+      BigSwordSlash_119: 2919066283806401836
+      BigSwordSlash_12: 5507565123168350838
+      BigSwordSlash_120: 1592922481823096544
+      BigSwordSlash_121: -1486578893655553651
+      BigSwordSlash_122: 7191426485340460674
+      BigSwordSlash_123: -933495880979612322
+      BigSwordSlash_124: -959668566778018760
+      BigSwordSlash_125: -8237413600883769625
+      BigSwordSlash_126: -6527803143153836779
+      BigSwordSlash_127: 1545482189079265618
+      BigSwordSlash_128: 9118528429689511252
+      BigSwordSlash_129: -415274009788994247
+      BigSwordSlash_13: -7849604121383265788
+      BigSwordSlash_130: -4409407045602326098
+      BigSwordSlash_131: 6745859810151648904
+      BigSwordSlash_132: 4122687269955608512
+      BigSwordSlash_133: 652213439768068836
+      BigSwordSlash_134: 6960470495214375810
+      BigSwordSlash_14: 2442833125628655525
+      BigSwordSlash_15: 1449529734497843361
+      BigSwordSlash_16: -5219491559922267587
+      BigSwordSlash_17: -1302960028497124665
+      BigSwordSlash_18: 1264856096685667251
+      BigSwordSlash_19: -3450503821279983036
+      BigSwordSlash_2: 9041117933722849224
+      BigSwordSlash_20: -53500583009841603
+      BigSwordSlash_21: -6020517049125846808
+      BigSwordSlash_22: 8051922870017432761
+      BigSwordSlash_23: 4763188648493144788
+      BigSwordSlash_24: 8544247477699170143
+      BigSwordSlash_25: 29840842625312224
+      BigSwordSlash_26: -3333915140868765923
+      BigSwordSlash_27: -8614217080310537332
+      BigSwordSlash_28: 9216186886698898765
+      BigSwordSlash_29: 14499110036478138
+      BigSwordSlash_3: 6115594451075385492
+      BigSwordSlash_30: -2082462456722107991
+      BigSwordSlash_31: -4888787003708227255
+      BigSwordSlash_32: 5626306019958336246
+      BigSwordSlash_33: -7818623694024548026
+      BigSwordSlash_34: 6252223700811529575
+      BigSwordSlash_35: -2546732245261189896
+      BigSwordSlash_36: -4782906649696483154
+      BigSwordSlash_37: -9045230060032748110
+      BigSwordSlash_38: 8772075499468697652
+      BigSwordSlash_39: -1870351299124531047
+      BigSwordSlash_4: -7723057500321711444
+      BigSwordSlash_40: 3766908598100356566
+      BigSwordSlash_41: 6395864753692005448
+      BigSwordSlash_42: -5572207856335492424
+      BigSwordSlash_43: -8512147679198813955
+      BigSwordSlash_44: -4986402540744281412
+      BigSwordSlash_45: 6033630653881732421
+      BigSwordSlash_46: -7329889164952842880
+      BigSwordSlash_47: 4600022956483282274
+      BigSwordSlash_48: 7315142981432323730
+      BigSwordSlash_49: -8656941746979318313
+      BigSwordSlash_5: -2942398821234448220
+      BigSwordSlash_50: 8207578808375505970
+      BigSwordSlash_51: 7584090981741863834
+      BigSwordSlash_52: -6445486554004148340
+      BigSwordSlash_53: -5755090710033428484
+      BigSwordSlash_54: -8660153296084302310
+      BigSwordSlash_55: -1383542335892904872
+      BigSwordSlash_56: -5633526412267939076
+      BigSwordSlash_57: -692369062850954487
+      BigSwordSlash_58: -8505487325577590910
+      BigSwordSlash_59: 8666700921440460366
+      BigSwordSlash_6: 5725178476458815351
+      BigSwordSlash_60: -4803280456045770572
+      BigSwordSlash_61: 89809021211578058
+      BigSwordSlash_62: 3746624698116176748
+      BigSwordSlash_63: 1989991081251230614
+      BigSwordSlash_64: -6551902854980977736
+      BigSwordSlash_65: 8528227351041336860
+      BigSwordSlash_66: 5201335497888096702
+      BigSwordSlash_67: -7468214852090272700
+      BigSwordSlash_68: 3572741767471971850
+      BigSwordSlash_69: 5630745352311797704
+      BigSwordSlash_7: -1412426309433772354
+      BigSwordSlash_70: 8835697169963435127
+      BigSwordSlash_71: -2789286998174250
+      BigSwordSlash_72: -6081985709251798123
+      BigSwordSlash_73: 921780667687445378
+      BigSwordSlash_74: -1821497055893202947
+      BigSwordSlash_75: 423529560469102795
+      BigSwordSlash_76: -5973071043766935013
+      BigSwordSlash_77: -7603973485017242387
+      BigSwordSlash_78: 9152590665592888728
+      BigSwordSlash_79: -1258030040444988151
+      BigSwordSlash_8: 8663771191609532017
+      BigSwordSlash_80: 8340231111959367091
+      BigSwordSlash_81: 2475065746866334411
+      BigSwordSlash_82: -3690746058912814019
+      BigSwordSlash_83: -4012327549555413199
+      BigSwordSlash_84: -5201915865199470484
+      BigSwordSlash_85: -7269218363972688350
+      BigSwordSlash_86: 336395435366309197
+      BigSwordSlash_87: -1234219362437246675
+      BigSwordSlash_88: 2828615438800430387
+      BigSwordSlash_89: 8361034568283235431
+      BigSwordSlash_9: 124674026012485168
+      BigSwordSlash_90: -7158986862399328638
+      BigSwordSlash_91: -4720829929203940334
+      BigSwordSlash_92: 8664686656564358411
+      BigSwordSlash_93: 2619681841602067806
+      BigSwordSlash_94: -4147663006464820289
+      BigSwordSlash_95: 6292526148477274209
+      BigSwordSlash_96: 8427993047509963954
+      BigSwordSlash_97: 3199468333877864559
+      BigSwordSlash_98: -2489335951856022937
+      BigSwordSlash_99: -7835650649236841927
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
