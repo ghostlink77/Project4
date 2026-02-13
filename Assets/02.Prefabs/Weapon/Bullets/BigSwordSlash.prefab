@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   _shootSound: {fileID: 8300000, guid: 32ba729671790be46b1a1e936f3c3663, type: 3}
+  _animationClip: {fileID: 7400000, guid: 47b5daf98f5859243a02d8039c19c4d8, type: 2}
   _lifeTime: 3
 --- !u!95 &8710815965194665149
 Animator:
