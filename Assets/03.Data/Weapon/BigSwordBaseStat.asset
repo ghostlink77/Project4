@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BigSwordBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
   weaponName: "\uC9C4\uC9DC \uB300\uAC80"
-  icon: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  icon: {fileID: -1905373116180802945, guid: dc6cdb6294bac8245b91f86dea0a8b0f, type: 3}
+  projectilePrefab: {fileID: 6880329312469885530, guid: 1e8a0163fe2be094f8b430b1628dcec3, type: 3}
   level: 1
   type: 0
   atk: 50
