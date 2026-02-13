@@ -121,7 +121,7 @@ public class BulletController : MonoBehaviour
     {
         if (clip == null)
         {
-            Debug.LogError($"오디오클립이 null임");
+            Debug.Log($"오디오클립이 null임");
             return true;
         }
         return false;
@@ -131,7 +131,7 @@ public class BulletController : MonoBehaviour
     {
         if (_audioSource == null)
         {
-            Debug.LogError("오디오소스가 null임");
+            Debug.Log("오디오소스가 null임");
             return true;
         }
         return false;
