@@ -11,6 +11,10 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private AudioClip _shootSound;
     #endregion
+    [Header("애니메이션 클립(등록 전 툴팁 읽어주세요)")]
+    [Tooltip("애니메이션을 한번만 출력하고 없앨 경우에만 등록. 이외에는 등록할 필요 없음.")]
+    [SerializeField]
+    private AnimationClip _animationClip;
 
     private float _projectileSpeed;
     private int _projectileDmg;
@@ -18,6 +22,7 @@ public class BulletController : MonoBehaviour
     private AudioSource _audioSource;
 
     [SerializeField]
+    [Header("총알 수명(초)")]
     private float _lifeTime = 3f;
 
     private IObjectPool<GameObject> _projectilePool;
@@ -27,8 +32,10 @@ public class BulletController : MonoBehaviour
     void Awake()
     {
         if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
+        SetDeleteTime();
     }
 
+    #region 유니티 생명주기 메서드
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
@@ -51,17 +58,33 @@ public class BulletController : MonoBehaviour
     {
         transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     }
+    #endregion
     
     // 투사체 데미지 받아오는 스크립트
     public void SetDmg(int dmg) => _projectileDmg = dmg;
     public void SetProjectileSpeed(float projSpeed) => _projectileSpeed = projSpeed;
     
+    #region 코루틴 함수
     private IEnumerator DeactivateAfterTime()
     {
         yield return new WaitForSeconds(_lifeTime);
         ReturnToPool();
         
     }
+    
+    private IEnumerator DelayedRelease()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        
+        if (_audioSource != null && _audioSource.clip != null)
+        {
+            yield return new WaitWhile(() => _audioSource.isPlaying);
+        }
+        
+        _projectilePool.Release(gameObject);
+    }
+    #endregion
     
     void ReturnToPool()
     {
@@ -78,17 +101,10 @@ public class BulletController : MonoBehaviour
         }
     }
     
-    private IEnumerator DelayedRelease()
+    // 애니메이션이 사라지는 시간을 결정하는 함수
+    private void SetDeleteTime()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        
-        if (_audioSource != null && _audioSource.clip != null)
-        {
-            yield return new WaitWhile(() => _audioSource.isPlaying);
-        }
-        
-        _projectilePool.Release(gameObject);
+        if (_animationClip != null) _lifeTime = _animationClip.length;
     }
 
     // 총알 사운드 출력하는 메서드
