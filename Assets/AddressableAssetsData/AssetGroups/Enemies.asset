@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Enemies
   m_GUID: df4833cf7349a46469c6be1ecfff0239
-  m_SerializeEntries:
-  - m_GUID: 031ba117d235aa1418392a60433f566b
-    m_Address: Prefabs/Enemy/Drone1
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - EnemyPrefabs
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
   m_SchemaSet:

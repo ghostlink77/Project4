@@ -44,6 +44,7 @@ public class PlayerAnimationController : MonoBehaviour
         _playerMoveController = _playerManager.PlayerMoveController;
         _animator = _playerManager.Animator;
         _spriteRenderer = _playerManager.SpriteRenderer;
+        AddToEvent();
     }
 
 #region 이벤트 메서드
