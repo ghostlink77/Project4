@@ -1,3 +1,4 @@
+// NOTE: 바닥 아이템의 플레이어 흡수 이동 및 수집 처리를 담당하는 추상 베이스 클래스
 using UnityEngine;
 
 public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
@@ -16,12 +17,14 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
             MoveToPlayer();
         }
     }
+
     public virtual void Initialize()
     {
         _playerTransform = null;
         _currentSpeed = 0f;
         _isMovingToPlayer = false;
     }
+
     public void CollectItem(Transform playerTransform)
     {
         if (_isMovingToPlayer)
@@ -32,6 +35,7 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
         _playerTransform = playerTransform;
         _currentSpeed = _defaultSpeed;
     }
+
     private void MoveToPlayer()
     {
         _currentSpeed += _acceleration * Time.deltaTime;
@@ -49,5 +53,6 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
     }
 
     protected abstract void OnCollectedByPlayer(Collider2D playerColl);
+
     protected abstract void ReturnToPool();
 }

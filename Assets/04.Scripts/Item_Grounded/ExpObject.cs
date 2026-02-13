@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+// NOTE: 경험치 오브젝트, 플레이어 수집 시 경험치 추가
+using UnityEngine;
 
 public class ExpObject : ItemGroundedBase
 {

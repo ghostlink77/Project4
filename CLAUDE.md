@@ -36,7 +36,7 @@ Numbered prefix directories under `Assets/`: `01.Scenes`, `02.Prefabs`, `03.Data
 
 ### Core Patterns
 
-**Singleton:** `SingletonBehaviour<T>` with `DontDestroyOnLoad` — used by `SceneLoader`, `DataTableManager`, `UIManager`, `AudioManager`, `InGameManager`, `EnemySpawner`, `EnemySpawnManager`.
+**Singleton:** `SingletonBehaviour<T>` with `DontDestroyOnLoad` — used by `Scene Loader`, `DataTableManager`, `UIManager`, `AudioManager`, `InGameManager`, `EnemySpawner`, `EnemySpawnManager`.
 
 **Manager-Controller:** `PlayerManager` (Singleton) aggregates `PlayerMoveController`, `PlayerStatController`, `PlayerItemController`, `PlayerAnimationController`, `PlayerEventController`, `PlayerSoundController`.
 
@@ -54,7 +54,7 @@ Numbered prefix directories under `Assets/`: `01.Scenes`, `02.Prefabs`, `03.Data
 
 ### Scene Flow
 
-`Title` → `Lobby` → `InGame`. Loaded via `SceneLoader.LoadScene(ESceneType)`. Test scenes live in `Assets/01.Scenes/TestScenes/`. `SceneLoader` appends `_` suffix to scene names when loading test variants.
+`Title` → `Lobby` → `InGame`. `SceneLoader` (Singleton) provides `LoadScene(ESceneType)`, `LoadSceneAsync(ESceneType)`, `ReloadScene()`. 씬 이름은 `ESceneType` enum의 `ToString()`을 그대로 사용. Test scenes live in `Assets/01.Scenes/TestScenes/`.
 
 ### Audio
 

@@ -1,3 +1,4 @@
+// NOTE: 플레이어 주변 아이템 자동 수집 범위를 담당하는 스크립트
 using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
