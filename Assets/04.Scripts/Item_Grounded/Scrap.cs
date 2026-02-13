@@ -10,10 +10,12 @@ public class Scrap : ItemGroundedBase
         _spawner = scrapSpawner;
     }
 
-    protected override void OnCollectedByPlayer()
+    protected override void OnCollectedByPlayer(Collider2D playercoll)
     {
         // TODO: 고철 재화 획득
-        Debug.Log("고철 획득");
+        TurretPlacer turretPlacer = playercoll.GetComponent<TurretPlacer>();
+        turretPlacer.CollectScrap();
+
     }
 
     protected override void ReturnToPool()

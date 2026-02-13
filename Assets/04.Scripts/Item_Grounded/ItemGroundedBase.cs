@@ -43,11 +43,11 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
     {
         if (collision.CompareTag("Player"))
         {
-            OnCollectedByPlayer();
+            OnCollectedByPlayer(collision);
             ReturnToPool();
         }
     }
 
-    protected abstract void OnCollectedByPlayer();
+    protected abstract void OnCollectedByPlayer(Collider2D playerColl);
     protected abstract void ReturnToPool();
 }

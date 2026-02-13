@@ -12,21 +12,22 @@ using UnityEngine.InputSystem;
 
 public class TurretPlacer : MonoBehaviour
 {
+    [SerializeField] private LayerMask _tileLayer;
+    [SerializeField] private TurretData[] _turrets = new TurretData[4];
 
-    [SerializeField] private LayerMask tileLayer;
-    [SerializeField] private TurretData[] turrets = new TurretData[4];
+    public TurretData[] Turrets { get { return _turrets; } }
 
-    public TurretData[] Turrets { get { return turrets; } }
+    private Tile _currentTile;
+    private int _selectedTurretIndex = -1;
+    private Vector2 _startMousePos;
+    private float _selectThreshold = 10f;
 
-    private Tile currentTile;
-    private int selectedTurretIndex = -1;
-    private Vector2 startMousePos;
-    private float selectThreshold = 10f;
+    private bool _isSelecting = false;
 
-    private bool isSelecting = false;
+    private int _scrap = 0;
 
     [Header("UI")]
-    [SerializeField] private TurretSelectUI turretSelectUI;
+    [SerializeField] private TurretSelectUI _turretSelectUI;
 
     void Update()
     {
@@ -35,21 +36,27 @@ public class TurretPlacer : MonoBehaviour
             TrySelect();
         }
 
-        if (isSelecting)
+        if (_isSelecting)
         {
             UpdateMouseDirection();
         }
 
-        if (Keyboard.current.spaceKey.wasReleasedThisFrame && isSelecting)
+        if (Keyboard.current.spaceKey.wasReleasedThisFrame && _isSelecting)
         {
             ConfirmSelect();
         }
     }
 
-    void TrySelect()
+    public void CollectScrap()
     {
-        currentTile = GetTilePlayerPosition();
-        if (currentTile == null || !currentTile.CanPlaceTurret())
+        _scrap++;
+        Debug.Log($"고철 획득: {_scrap}");
+    }
+
+    private void TrySelect()
+    {
+        _currentTile = GetTilePlayerPosition();
+        if (_currentTile == null || !_currentTile.CanPlaceTurret())
         {
             Debug.Log("No valid tile to place turret.");
             return;
@@ -57,18 +64,18 @@ public class TurretPlacer : MonoBehaviour
 
         GetPlayerTurret();
 
-        startMousePos = Mouse.current.position.ReadValue();
-        isSelecting = true;
-        turretSelectUI?.Show(startMousePos);
+        _startMousePos = Mouse.current.position.ReadValue();
+        _isSelecting = true;
+        _turretSelectUI?.Show(_startMousePos);
     }
-    void UpdateMouseDirection()
+    private void UpdateMouseDirection()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector2 delta = mousePos - startMousePos;
+        Vector2 delta = mousePos - _startMousePos;
 
-        if (delta.magnitude < selectThreshold)
+        if (delta.magnitude < _selectThreshold)
         {
-            selectedTurretIndex = -1;
+            _selectedTurretIndex = -1;
             return;
         }
 
@@ -77,52 +84,57 @@ public class TurretPlacer : MonoBehaviour
         
         if(angle >= 45 && angle < 135)
         {
-            selectedTurretIndex = 0; // Up
+            _selectedTurretIndex = 0;
         }
         else if(angle >= 135 && angle < 225)
         {
-            selectedTurretIndex = 1; // Left
+            _selectedTurretIndex = 1;
         }
         else if(angle >= 225 && angle < 315)
         {
-            selectedTurretIndex = 2; // Down
+            _selectedTurretIndex = 2;
         }
         else
         {
-            selectedTurretIndex = 3; // Right
+            _selectedTurretIndex = 3;
         }
     }
 
-    void ConfirmSelect()
+    private void ConfirmSelect()
     {
-        isSelecting = false;
-        if(selectedTurretIndex != -1)
+        _isSelecting = false;
+        if(_selectedTurretIndex != -1)
         {
             TryBuildTurret();
         }
-        selectedTurretIndex = -1;
-        turretSelectUI?.Hide();
+        _selectedTurretIndex = -1;
+        _turretSelectUI?.Hide();
     }
 
-    void TryBuildTurret()
+    private void TryBuildTurret()
     {
         Tile tile = GetTilePlayerPosition();
         if(tile != null && tile.CanPlaceTurret())
         {
-            if(turrets[selectedTurretIndex] == null)
+            if(_turrets[_selectedTurretIndex] == null)
             {
                 Debug.Log("No turret in selected slot.");
                 return;
             }
-            TurretData selectedTurret = turrets[selectedTurretIndex];
+            if(_scrap < _turrets[_selectedTurretIndex].scrapCost)
+            {
+                Debug.Log("Not enough scrap to build turret.");
+                return;
+            }
+            TurretData selectedTurret = _turrets[_selectedTurretIndex];
             tile.PlaceTurret(selectedTurret.turretPrefab);
-
+            _scrap -= selectedTurret.scrapCost;
         }
     }   
 
-    Tile GetTilePlayerPosition()
+    private Tile GetTilePlayerPosition()
     {
-        Collider2D hit = Physics2D.OverlapPoint(transform.position, tileLayer);
+        Collider2D hit = Physics2D.OverlapPoint(transform.position, _tileLayer);
 
         if(hit != null)
         {
@@ -130,7 +142,7 @@ public class TurretPlacer : MonoBehaviour
         }
         return null;
     }
-    void GetPlayerTurret()
+    private void GetPlayerTurret()
     {
         // TODO: 추후 플레이어가 가진 포탑 정보를 가져오는 로직 추가
     }
