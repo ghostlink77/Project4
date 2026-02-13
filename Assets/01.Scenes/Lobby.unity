@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 1058677158}
   - component: {fileID: 1058677157}
   m_Layer: 5
-  m_Name: GlichBTNBox
+  m_Name: GlitchBTNBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

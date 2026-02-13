@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class LobbyButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
+public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Image _buttonImage;
@@ -18,18 +18,6 @@ public class LobbyButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoi
     private void Awake()
     {
         Anim = GetComponent<Animator>();
-
-        //ChangeButtonEffect(false);
-    }
-
-    public void OnDeselect(BaseEventData eventData)
-    {
-        //ChangeButtonEffect(false);
-    }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        //ChangeButtonEffect(true);
     }
 
     private void ChangeButtonEffect(bool isSelected)
@@ -45,12 +33,10 @@ public class LobbyButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPoi
     public void OnPointerEnter(PointerEventData eventData)
     {
         ChangeButtonEffect(true);
-        //EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ChangeButtonEffect(false);
-        //throw new System.NotImplementedException();
     }
 }
