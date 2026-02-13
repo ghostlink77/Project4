@@ -94,12 +94,22 @@ public class BulletController : MonoBehaviour
     // 총알 사운드 출력하는 메서드
     private void PlaySound(AudioClip clip)
     {
+        if (NullAudioClip(clip)) return;
         if (NullAudioSource()) return;
         if (_audioSource.clip != clip) _audioSource.clip = clip;
         _audioSource.Play();
     }
     
     #region null 점검 스크립트
+    private bool NullAudioClip(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            Debug.LogError($"오디오클립이 null임");
+            return true;
+        }
+        return false;
+    }
     // 오디오 소스가 null인지 확인하는 메서드
     private bool NullAudioSource()
     {
