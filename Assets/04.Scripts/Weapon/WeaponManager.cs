@@ -9,7 +9,6 @@ using UnityEngine.Pool;
 [RequireComponent(typeof(WeaponStatData))]
 // 스크립트 참조변수
 [RequireComponent(typeof(WeaponShootController))]
-[RequireComponent(typeof(BulletController))]
 [RequireComponent(typeof(WeaponStatController))]
 [RequireComponent(typeof(WeaponEventController))]
 [RequireComponent(typeof(WeaponSoundController))]

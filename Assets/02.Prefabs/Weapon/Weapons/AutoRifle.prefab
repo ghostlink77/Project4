@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8099240881842937928}
   - component: {fileID: 5700628673114457835}
   - component: {fileID: 3069123647983538369}
+  - component: {fileID: 4165855992570876612}
   - component: {fileID: 8324327203860504292}
   - component: {fileID: 8544294808717868412}
   - component: {fileID: 5751310512860791070}
@@ -87,6 +88,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
   _projectilePrefab: {fileID: 8740604490144623316, guid: fb8d6eb891538344fb197629efe1b660, type: 3}
   _baseStat: {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}
+--- !u!114 &4165855992570876612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434694142653457009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
+  _weaponShootSound: {fileID: 8300000, guid: 191ea8dda64216044b2f21b45da2bb32, type: 3}
 --- !u!114 &8324327203860504292
 MonoBehaviour:
   m_ObjectHideFlags: 0
