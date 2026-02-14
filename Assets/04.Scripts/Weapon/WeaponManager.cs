@@ -3,8 +3,6 @@ using Game.Types;
 using UnityEngine;
 using UnityEngine.Pool;
 
-// 스크립터블 오브젝트
-[RequireComponent(typeof(WeaponStatData))]
 // 스크립트 참조변수
 [RequireComponent(typeof(WeaponShootController))]
 [RequireComponent(typeof(WeaponStatController))]
