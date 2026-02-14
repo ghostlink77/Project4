@@ -21,9 +21,11 @@ public class WeaponManager : MonoBehaviour
     WeaponShootController _weaponShootController;
     BulletController _bulletController;
     WeaponStatController _weaponStatController;
+    WeaponEventController _weaponEventController;
     #endregion
     
     #region 무기 스탯 변수
+
     // 무기 스탯 변수
     int _dmg;
     float _atkSpeed, _projectileSpeed;
@@ -42,13 +44,14 @@ public class WeaponManager : MonoBehaviour
 
     void OnEnable()
     {
-        _weaponStatController.OnStatChanged += HandleStatChanged;
+        _weaponEventController.OnStatChanged += HandleStatChanged;
     }
 
     void OnDisable()
     {
-        _weaponStatController.OnStatChanged -= HandleStatChanged;
+        _weaponEventController.OnStatChanged -= HandleStatChanged;
     }
+
 
     void Update()
     {
@@ -77,7 +80,9 @@ public class WeaponManager : MonoBehaviour
     {
         _weaponShootController = GetComponent<WeaponShootController>();
         _weaponStatController = GetComponent<WeaponStatController>();
+        _weaponEventController = GetComponent<WeaponEventController>();
         _weaponRangeCollider = GetComponent<CircleCollider2D>();
+
         
         // 스탯 먼저 초기화
         _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);

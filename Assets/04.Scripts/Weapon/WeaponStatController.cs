@@ -5,38 +5,41 @@
 using System;
 using UnityEngine;
 
-public enum WeaponStat {Level, Atk, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount}
-
 public class WeaponStatController : MonoBehaviour
 {
-    public event Action<WeaponStat> OnStatChanged;
+    private WeaponEventController _weaponEventController;
+
+    private void Awake()
+    {
+        _weaponEventController = GetComponent<WeaponEventController>();
+    }
 
     [SerializeField] private int level;
-    public int Level { get => level; set { level = value; OnStatChanged?.Invoke(WeaponStat.Level); } }
+    public int Level { get => level; set { level = value; _weaponEventController.CallOnStatChanged(WeaponStat.Level); } }
 
     [SerializeField] private int atk;
-    public int Atk { get => atk; set { atk = value; OnStatChanged?.Invoke(WeaponStat.Atk); } }
+    public int Atk { get => atk; set { atk = value; _weaponEventController.CallOnStatChanged(WeaponStat.Atk); } }
 
     [SerializeField] private float critRate;
-    public float CritRate { get => critRate; set { critRate = value; OnStatChanged?.Invoke(WeaponStat.CritRate); } }
+    public float CritRate { get => critRate; set { critRate = value; _weaponEventController.CallOnStatChanged(WeaponStat.CritRate); } }
 
     [SerializeField] private float critMultiplier;
-    public float CritMultiplier { get => critMultiplier; set { critMultiplier = value; OnStatChanged?.Invoke(WeaponStat.CritMultiplier); } }
+    public float CritMultiplier { get => critMultiplier; set { critMultiplier = value; _weaponEventController.CallOnStatChanged(WeaponStat.CritMultiplier); } }
 
     [SerializeField] private float effectRate;
-    public float EffectRate { get => effectRate; set { effectRate = value; OnStatChanged?.Invoke(WeaponStat.EffectRate); } }
+    public float EffectRate { get => effectRate; set { effectRate = value; _weaponEventController.CallOnStatChanged(WeaponStat.EffectRate); } }
 
     [SerializeField] private float atkSpeed;
-    public float AtkSpeed { get => atkSpeed; set { atkSpeed = value; OnStatChanged?.Invoke(WeaponStat.AtkSpeed); } }
+    public float AtkSpeed { get => atkSpeed; set { atkSpeed = value; _weaponEventController.CallOnStatChanged(WeaponStat.AtkSpeed); } }
 
     [SerializeField] private float atkRange;
-    public float AtkRange { get => atkRange; set { atkRange = value; OnStatChanged?.Invoke(WeaponStat.AtkRange); } }
+    public float AtkRange { get => atkRange; set { atkRange = value; _weaponEventController.CallOnStatChanged(WeaponStat.AtkRange); } }
 
     [SerializeField] private float projectileSpeed;
-    public float ProjectileSpeed { get => projectileSpeed; set { projectileSpeed = value; OnStatChanged?.Invoke(WeaponStat.ProjectileSpeed); } }
+    public float ProjectileSpeed { get => projectileSpeed; set { projectileSpeed = value; _weaponEventController.CallOnStatChanged(WeaponStat.ProjectileSpeed); } }
 
     [SerializeField] private float projectileCount;
-    public float ProjectileCount { get => projectileCount; set { projectileCount = value; OnStatChanged?.Invoke(WeaponStat.ProjectileCount); } }
+    public float ProjectileCount { get => projectileCount; set { projectileCount = value; _weaponEventController.CallOnStatChanged(WeaponStat.ProjectileCount); } }
 
     // 무기 범위로 사용되는 콜라이더
     private CircleCollider2D _weaponRangeCollider;
