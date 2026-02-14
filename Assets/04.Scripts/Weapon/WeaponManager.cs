@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Game.Types;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -61,16 +60,15 @@ public class WeaponManager : MonoBehaviour
     {
         if (type == WeaponStat.AtkSpeed)
         {
-            _atkSpeed = _weaponStatController.GetStat(WeaponStat.AtkSpeed);
+            _atkSpeed = _weaponStatController.AtkSpeed;
         }
         else if (type == WeaponStat.Atk)
         {
-            _dmg = (int)_weaponStatController.GetStat(WeaponStat.Atk);
+            _dmg = _weaponStatController.Atk;
         }
         else if (type == WeaponStat.ProjectileSpeed)
         {
-            _projectileSpeed = _weaponStatController.GetStat(WeaponStat.ProjectileSpeed);
-            
+            _projectileSpeed = _weaponStatController.ProjectileSpeed;
         }
     }
 
@@ -93,9 +91,9 @@ public class WeaponManager : MonoBehaviour
     
     void GetWeaponStats()
     {
-        _dmg = (int)_weaponStatController.GetStat(WeaponStat.Atk);
-        _atkSpeed = _weaponStatController.GetStat(WeaponStat.AtkSpeed);
-        _projectileSpeed = _weaponStatController.GetStat(WeaponStat.ProjectileSpeed);
+        _dmg = _weaponStatController.Atk;
+        _atkSpeed = _weaponStatController.AtkSpeed;
+        _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }
 
     // 총알 프리팹이 있는지 확인하고, 안에 BulletController 스크립트까지 있는지 확인하는 메서드
