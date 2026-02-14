@@ -3,6 +3,16 @@ using Game.Types;
 using UnityEngine;
 using UnityEngine.Pool;
 
+// 컴포넌트
+[RequireComponent(typeof(CircleCollider2D))]
+// 스크립터블 오브젝트
+[RequireComponent(typeof(WeaponStatData))]
+// 스크립트 참조변수
+[RequireComponent(typeof(WeaponShootController))]
+[RequireComponent(typeof(BulletController))]
+[RequireComponent(typeof(WeaponStatController))]
+[RequireComponent(typeof(WeaponEventController))]
+[RequireComponent(typeof(WeaponSoundController))]
 public class WeaponManager : MonoBehaviour
 {
     IObjectPool<GameObject> _projectilePool;
@@ -22,6 +32,7 @@ public class WeaponManager : MonoBehaviour
     BulletController _bulletController;
     WeaponStatController _weaponStatController;
     WeaponEventController _weaponEventController;
+    WeaponSoundController _weaponSoundController;
     #endregion
     
     #region 무기 스탯 변수
@@ -82,6 +93,7 @@ public class WeaponManager : MonoBehaviour
         _weaponStatController = GetComponent<WeaponStatController>();
         _weaponEventController = GetComponent<WeaponEventController>();
         _weaponRangeCollider = GetComponent<CircleCollider2D>();
+        _weaponSoundController = GetComponent<WeaponSoundController>();
 
         
         // 스탯 먼저 초기화
@@ -90,6 +102,7 @@ public class WeaponManager : MonoBehaviour
         
         // ShootController 초기화
         _weaponShootController.SetUp(_projectilePrefab);
+        _weaponSoundController.SetUp();
 
         _projectilePool = _weaponShootController.ReturnObjectPool();
     }
