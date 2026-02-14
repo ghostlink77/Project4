@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
-  _weaponShootSound: {fileID: 0}
+  _weaponShootSound: {fileID: 8300000, guid: 24cac47d3834bf742a64c6a22cda00e2, type: 3}
 --- !u!114 &2214003800823418775
 MonoBehaviour:
   m_ObjectHideFlags: 0
