@@ -13,11 +13,10 @@ public class Enemy : MonoBehaviour, IDamageable
     private int _currentHp;
     private bool _isLive;
 
-    private EnemySpawner _spawner;
-
     private Rigidbody2D _rigid;
     private CapsuleCollider2D _collider;
     private Rigidbody2D _target;
+    private EnemyTargetSetter _targetSetter;
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
@@ -29,8 +28,8 @@ public class Enemy : MonoBehaviour, IDamageable
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _spawner = EnemySpawner.Instance;
         _collider = GetComponent<CapsuleCollider2D>();
+        _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
     }
 
     private void Update()
@@ -55,13 +54,16 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void Initialize()
+    public void Initialize(Rigidbody2D agitRigidbody)
     {
         _currentHp = _maxHp;
         _isLive = true;
         _collider.enabled = true;
 
         _animator.Play("Walk", 0, 0f);
+
+        _targetSetter.Initialize(agitRigidbody);
+        SetTarget(agitRigidbody);
     }
 
     private void TrackTarget()
@@ -127,7 +129,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
-        _spawner.ReturnToPool(_enemyType.ToString(), gameObject);
+        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
         DropExpObject();
     }
 

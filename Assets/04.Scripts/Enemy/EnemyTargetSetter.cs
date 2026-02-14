@@ -7,18 +7,17 @@ using UnityEngine;
 
 public class EnemyTargetSetter : MonoBehaviour
 {
-    private Rigidbody2D _agit;
+    private Rigidbody2D _agitRigidbody;
     private Enemy _enemy;
 
     private void Awake()
     {
         _enemy = GetComponentInParent<Enemy>();
-        _agit = GameObject.FindGameObjectWithTag("Agit").GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    public void Initialize(Rigidbody2D agit)
     {
-        _enemy.SetTarget(_agit);
+        _agitRigidbody = agit;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +32,7 @@ public class EnemyTargetSetter : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _enemy.SetTarget(_agit);
+            _enemy.SetTarget(_agitRigidbody);
         }
     }
 }

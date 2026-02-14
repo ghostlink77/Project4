@@ -19,11 +19,14 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
     private List<Transform> _activeEnemies = new List<Transform>();
 
+    private Rigidbody2D _agitRigidbody;
+
     protected override void Init()
     {
         base.Init();
 
         LoadEnemyPrefabs();
+        _agitRigidbody = GameObject.FindGameObjectWithTag("Agit").GetComponent<Rigidbody2D>();
     }
 
     private async void LoadEnemyPrefabs()
@@ -71,8 +74,9 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         }
         GameObject enemy = _enemyPools[enemyType].Get();
         enemy.transform.position = position;
+
         Enemy enemyComponent = enemy.GetComponent<Enemy>();
-        enemyComponent.Initialize();
+        enemyComponent.Initialize(_agitRigidbody);
         return enemy;
     }
 
