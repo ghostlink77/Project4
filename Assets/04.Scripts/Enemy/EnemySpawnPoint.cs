@@ -1,3 +1,4 @@
+// NOTE: 개별 스폰 포인트에서 적을 주기적으로 생성하는 스크립트
 using System.Collections;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private EnemyType _enemyType = EnemyType.Drone1;
     public EnemyType EnemyType { get => _enemyType; set => _enemyType = value; }
-    [SerializeField] private float spawnInterval = 1f;
+
+    [SerializeField] private float _spawnInterval = 1f;
 
     private bool _isSpawning = false;
 
@@ -27,13 +29,14 @@ public class EnemySpawnPoint : MonoBehaviour
         _isSpawning = true;
         StartCoroutine(SpawnLoop());
     }
+
     public void StopSpawn()
     {
         _isSpawning = false;
         StopCoroutine("SpawnLoop");
     }
 
-    IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop()
     {
         while (_isSpawning)
         {
@@ -58,7 +61,6 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private float GetRandomInterval()
     {
-        return Random.Range(spawnInterval * 0.5f, spawnInterval * 2f);
-    }   
+        return Random.Range(_spawnInterval * 0.5f, _spawnInterval * 2f);
+    }
 }
-

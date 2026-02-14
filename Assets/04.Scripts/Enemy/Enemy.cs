@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+// NOTE: 적 유닛의 이동, 전투, 사망 처리를 담당하는 스크립트
+using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -12,30 +13,31 @@ public class Enemy : MonoBehaviour, IDamageable
     private int _currentHp;
     private bool _isLive;
 
-    private EnemySpawner _spawner;
-
     private Rigidbody2D _rigid;
     private CapsuleCollider2D _collider;
     private Rigidbody2D _target;
+    private EnemyTargetSetter _targetSetter;
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+
+    private static readonly int DeadHash = Animator.StringToHash("Dead");
 
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _spawner = _spawner = EnemySpawner.Instance;
         _collider = GetComponent<CapsuleCollider2D>();
+        _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
     }
+
     private void Update()
     {
-        if (_isLive) 
+        if (_isLive)
         {
             ElapseTime();
         }
-
     }
 
     private void FixedUpdate()
@@ -52,13 +54,16 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void Initialize()
+    public void Initialize(Rigidbody2D agitRigidbody)
     {
         _currentHp = _maxHp;
         _isLive = true;
         _collider.enabled = true;
 
         _animator.Play("Walk", 0, 0f);
+
+        _targetSetter.Initialize(agitRigidbody);
+        SetTarget(agitRigidbody);
     }
 
     private void TrackTarget()
@@ -70,12 +75,13 @@ public class Enemy : MonoBehaviour, IDamageable
             _rigid.MovePosition(_rigid.position + moveAmount);
         }
     }
+
     public void SetTarget(Rigidbody2D targetRigidbody)
     {
         _target = targetRigidbody;
     }
 
-    // 일정 시간마다 데미지 입히기 위한 시간 경과 처리
+    // NOTE: 일정 시간마다 데미지 입히기 위한 시간 경과 처리
     private void ElapseTime()
     {
         if (!_isLive)
@@ -87,7 +93,7 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    // 적과 닿아있으면 지속적으로 데미지 입히기
+    // NOTE: 적과 닿아있으면 지속적으로 데미지 입히기
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(!_isLive)
@@ -117,13 +123,13 @@ public class Enemy : MonoBehaviour, IDamageable
         _isLive = false;
         _collider.enabled = false;
         _rigid.linearVelocity = Vector2.zero;
-        _animator.SetTrigger("Dead");
+        _animator.SetTrigger(DeadHash);
     }
 
-    // 애니메이션이 끝난 후 Animation Event 호출
+    // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
-        _spawner.ReturnToPool(_enemyType.ToString(), gameObject);
+        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
         DropExpObject();
     }
 

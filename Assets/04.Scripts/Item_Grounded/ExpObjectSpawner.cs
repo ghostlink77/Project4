@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+// NOTE: 경험치 오브젝트 풀링 및 스폰 관리
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Pool;
@@ -54,8 +55,11 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
     {
         GameObject expObject = _expObjectPool.Get();
         expObject.transform.position = position;
+        ExpObject expObjComponent = expObject.GetComponent<ExpObject>();
+        expObjComponent.Initialize();
         return expObject;
     }
+
     public void ReturnToPool(GameObject expObject)
     {
         _expObjectPool.Release(expObject);
@@ -65,10 +69,12 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
     {
         obj.SetActive(true);
     }
+
     private void DisableExpObject(GameObject obj)
     {
         obj.SetActive(false);
     }
+
     private void DestroyExpObject(GameObject obj)
     {
         Destroy(obj);

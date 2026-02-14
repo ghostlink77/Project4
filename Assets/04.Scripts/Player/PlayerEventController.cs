@@ -19,8 +19,15 @@ public class PlayerEventController : MonoBehaviour
 #region PlayerMoveEvents
     // 플레이어 이동 관련 이벤트
     public event Action Move, Stop;
-    
+
     public void CallMove() => Move?.Invoke();
     public void CallStop() => Stop?.Invoke();
+#endregion
+
+#region PlayerItemEvents
+    // 플레이어 아이템 수집 관련 이벤트
+    public event Action ScrapCollected;
+
+    public void CallScrapCollected() => ScrapCollected?.Invoke();
 #endregion
 }
