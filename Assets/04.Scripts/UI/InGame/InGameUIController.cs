@@ -201,7 +201,6 @@ public class InGameUIController : MonoBehaviour
         {
             case "Weapon":
                 PlayerManager.Instance.PlayerItemController.AddWeaponToSlot(newWeaponData);
-                CloseLevelupUI();
                 break;
             default:
                 Debug.Log("Doesn't Contains ItemType.");
