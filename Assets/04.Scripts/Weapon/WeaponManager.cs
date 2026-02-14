@@ -15,18 +15,22 @@ public class WeaponManager : MonoBehaviour
     [Header("무기 기본 데이터")]
     [SerializeField]
     WeaponStatData _baseStat;
-
     CircleCollider2D _weaponRangeCollider;
     
+    #region 스크립트 참조변수
     // 스크립트 참조 변수
     WeaponShootController _weaponShootController;
     BulletController _bulletController;
     WeaponStatController _weaponStatController;
+    #endregion
     
+    #region 무기 스탯 변수
     // 무기 스탯 변수
     int _dmg;
     float _atkSpeed, _projectileSpeed;
+    #endregion
 
+    #region 유니티 생명주기 함수
     void Awake()
     {
         _bulletController = InspectNullAndGetPrefabComponent();
@@ -46,6 +50,12 @@ public class WeaponManager : MonoBehaviour
     {
         _weaponStatController.OnStatChanged -= HandleStatChanged;
     }
+
+    void Update()
+    {
+        _weaponShootController.ShootProcedurePerUpdate(_dmg, _atkSpeed, _projectileSpeed);
+    }
+    #endregion
     
     void HandleStatChanged(WeaponStat type)
     {
@@ -86,11 +96,6 @@ public class WeaponManager : MonoBehaviour
         _dmg = (int)_weaponStatController.GetStat(WeaponStat.Atk);
         _atkSpeed = _weaponStatController.GetStat(WeaponStat.AtkSpeed);
         _projectileSpeed = _weaponStatController.GetStat(WeaponStat.ProjectileSpeed);
-    }
-
-    void Update()
-    {
-        _weaponShootController.ShootProcedurePerUpdate(_dmg, _atkSpeed, _projectileSpeed);
     }
 
     // 총알 프리팹이 있는지 확인하고, 안에 BulletController 스크립트까지 있는지 확인하는 메서드
