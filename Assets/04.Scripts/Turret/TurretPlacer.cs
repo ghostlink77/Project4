@@ -29,6 +29,16 @@ public class TurretPlacer : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TurretSelectUI _turretSelectUI;
 
+    void OnEnable()
+    {
+        PlayerManager.Instance.PlayerEventController.ScrapCollected += CollectScrap;
+    }
+
+    void OnDisable()
+    {
+        PlayerManager.Instance.PlayerEventController.ScrapCollected -= CollectScrap;
+    }
+
     void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)

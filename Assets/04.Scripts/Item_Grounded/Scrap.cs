@@ -13,9 +13,7 @@ public class Scrap : ItemGroundedBase
 
     protected override void OnCollectedByPlayer(Collider2D playerColl)
     {
-        // TODO: 고철 재화 획득
-        TurretPlacer turretPlacer = playerColl.GetComponent<TurretPlacer>();
-        turretPlacer.CollectScrap();
+        PlayerManager.Instance.PlayerEventController.CallScrapCollected();
     }
 
     protected override void ReturnToPool()
