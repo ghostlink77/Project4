@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1939181245287107129}
   - component: {fileID: 2214003800823418775}
   - component: {fileID: 3427295095969404082}
+  - component: {fileID: -5654382924020200263}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -118,3 +119,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312475b04dbc72a41b63a5470d827998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShootController
+--- !u!114 &-5654382924020200263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8596312975404698146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd4cc7723692644f8727ec258560fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponEventController
