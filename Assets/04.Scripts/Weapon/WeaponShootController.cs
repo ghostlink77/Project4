@@ -35,6 +35,7 @@ public class WeaponShootController : MonoBehaviour
     public void SetUp(GameObject bulletPrefab)
     {
         _bulletPrefab = bulletPrefab;
+        _weaponStatController = GetComponent<WeaponStatController>();
     }
 
     // 오브젝트 풀을 반환하는 메서드
