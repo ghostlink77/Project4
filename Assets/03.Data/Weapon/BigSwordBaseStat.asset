@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7e0e8ab78922745a2ba1a3065f12e5, type: 3}
+  m_Name: BigSwordBaseStat
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
+  weaponName: "\uC9C4\uC9DC \uB300\uAC80"
+  icon: {fileID: -1905373116180802945, guid: dc6cdb6294bac8245b91f86dea0a8b0f, type: 3}
+  projectilePrefab: {fileID: 6880329312469885530, guid: 1e8a0163fe2be094f8b430b1628dcec3, type: 3}
+  level: 1
+  type: 0
+  atk: 50
+  critRate: 50
+  critMultiplier: 3
+  effectRate: 50
+  atkSpeed: 3
+  atkRange: 1
+  projectileSpeed: 0
+  projectileCount: 1

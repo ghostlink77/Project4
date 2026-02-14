@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class ConfigUI : BaseUI
@@ -14,26 +13,27 @@ public class ConfigUI : BaseUI
     private readonly float _defaultSoundValueScale = 0.01f;
 
     private GameObject LastSelectedBtn;
-    private void OnEnable()
+
+    public void SelectBtn()
     {
-        StartCoroutine(SelectBtn());
+        if (EventSystem.current.currentSelectedGameObject != null)
+            LastSelectedBtn = EventSystem.current.currentSelectedGameObject;
     }
-    private IEnumerator SelectBtn()
+
+    private void KeepSelected()
     {
-        yield return null;
-        LastSelectedBtn = EventSystem.current.currentSelectedGameObject;
-        if (LastSelectedBtn != null)
+        if (EventSystem.current.currentSelectedGameObject == null)
         {
-            Debug.Log(LastSelectedBtn.name);
+            if (LastSelectedBtn != null) 
+                EventSystem.current.SetSelectedGameObject(LastSelectedBtn);
         }
-        
-        EventSystem.current.SetSelectedGameObject(BGMSlider);
     }
 
     private void Update()
     {
         InputHandle();
         SetVolume();
+        KeepSelected();
     }
 
     private void InputHandle()

@@ -35,11 +35,19 @@ public class BaseUI : MonoBehaviour
 
     public virtual void OnClickCloseButton()
     {
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+
         if (FadeOut != null)
         {
             Debug.Log("FadeOUt Ω««‡¡ﬂ..");
             FadeOut.Play();
         }
+        else
+        {
+            Close(true);
+        }
+        
+
         
     }
 

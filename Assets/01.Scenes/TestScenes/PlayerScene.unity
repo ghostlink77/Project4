@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &42683053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+  m_PrefabInstance: {fileID: 4514501564446909417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &357175858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,9 +376,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2786458683079629028, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 42683053}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+--- !u!4 &1484458801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2786458683079629028, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+  m_PrefabInstance: {fileID: 1235735846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1671227263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -675,6 +688,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4ac6e84d832e94ebcbdeaa236966be, type: 3}
+--- !u!1001 &4514501564446909417
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1484458801}
+    m_Modifications:
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 713991351289623398, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119465782883865832, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
+      propertyPath: m_Name
+      value: BigSword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3574e1e10a8e5304789d2a344a2973b5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

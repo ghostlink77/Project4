@@ -1,0 +1,486 @@
+fileFormatVersion: 2
+guid: 95fc13f0b4f720f4e9356812f6d36adc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1344504883115180662
+    second: NormalBigSwordSlash_0
+  - first:
+      213: 7289802541378619132
+    second: NormalBigSwordSlash_1
+  - first:
+      213: 919294374889913590
+    second: NormalBigSwordSlash_2
+  - first:
+      213: -5213779178142067057
+    second: NormalBigSwordSlash_3
+  - first:
+      213: -3360714849858469672
+    second: NormalBigSwordSlash_4
+  - first:
+      213: 6915366455953524375
+    second: NormalBigSwordSlash_5
+  - first:
+      213: -3413704012147269600
+    second: NormalBigSwordSlash_6
+  - first:
+      213: -7199223387011151844
+    second: NormalBigSwordSlash_7
+  - first:
+      213: 3523397313615950609
+    second: NormalBigSwordSlash_8
+  - first:
+      213: -2427120260977771178
+    second: NormalBigSwordSlash_9
+  - first:
+      213: -6777871414463588102
+    second: NormalBigSwordSlash_10
+  - first:
+      213: -6769811678934919183
+    second: NormalBigSwordSlash_11
+  - first:
+      213: -7278500190272806807
+    second: NormalBigSwordSlash_12
+  - first:
+      213: -7122424837477885988
+    second: NormalBigSwordSlash_13
+  - first:
+      213: 5149534352650154332
+    second: NormalBigSwordSlash_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 832
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29492652cce2bd4c96e99f652e48ae2
+      internalID: -1344504883115180662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 768
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d71d5d57f0aca459643cd91407e717
+      internalID: 7289802541378619132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 704
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b9aa2acab2bd14997e5017f03ef559
+      internalID: 919294374889913590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 640
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ad39f58be92ad40ba7b512b5b842b4
+      internalID: -5213779178142067057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 576
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91aea1eb7c6ed7d478cd5940439679a0
+      internalID: -3360714849858469672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 512
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9d94766cf4dfc469fbce3a5a1752a4
+      internalID: 6915366455953524375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 448
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6aa93949b3a984f95ea0c9423a6669
+      internalID: -3413704012147269600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 384
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54406710e65fad47926b328ecb938c0
+      internalID: -7199223387011151844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 320
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3c89429c197ae4a966593ac6c9335c
+      internalID: 3523397313615950609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 256
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e84d18ea118642428648466c528c332
+      internalID: -2427120260977771178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_10
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 192
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13438f12cd2b5404090d4001d4c50e7a
+      internalID: -6777871414463588102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 128
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1a06cdbc8f0464b9ef40d8b78dbae7
+      internalID: -6769811678934919183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 64
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4d33aff96e07442b83a221b79382de
+      internalID: -7278500190272806807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalBigSwordSlash_13
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd1d048ddb4d4041a71776d4fec4462
+      internalID: -7122424837477885988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c09abc41085b3ca46aa90c104ab3a0a5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":45.0,"y":64.0},"gridSpriteOffset":{"x":7.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      NormalBigSwordSlash_0: -1344504883115180662
+      NormalBigSwordSlash_1: 7289802541378619132
+      NormalBigSwordSlash_10: -6777871414463588102
+      NormalBigSwordSlash_11: -6769811678934919183
+      NormalBigSwordSlash_12: -7278500190272806807
+      NormalBigSwordSlash_13: -7122424837477885988
+      NormalBigSwordSlash_2: 919294374889913590
+      NormalBigSwordSlash_3: -5213779178142067057
+      NormalBigSwordSlash_4: -3360714849858469672
+      NormalBigSwordSlash_5: 6915366455953524375
+      NormalBigSwordSlash_6: -3413704012147269600
+      NormalBigSwordSlash_7: -7199223387011151844
+      NormalBigSwordSlash_8: 3523397313615950609
+      NormalBigSwordSlash_9: -2427120260977771178
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
