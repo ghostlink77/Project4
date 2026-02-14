@@ -3,8 +3,6 @@ using Game.Types;
 using UnityEngine;
 using UnityEngine.Pool;
 
-// 컴포넌트
-[RequireComponent(typeof(CircleCollider2D))]
 // 스크립터블 오브젝트
 [RequireComponent(typeof(WeaponStatData))]
 // 스크립트 참조변수
