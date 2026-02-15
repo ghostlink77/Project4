@@ -34,6 +34,9 @@ public class InGameUIController : MonoBehaviour
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
+    [SerializeField] private DamageTextSpawner _damageTextSpawner;
+    [SerializeField] private List<GameObject> _testObject;
+
     private void Update()
     {
         HandleInput();
@@ -208,5 +211,18 @@ public class InGameUIController : MonoBehaviour
         }
 
         UpdateInventory();
+    }
+
+    public void ShowDamageText()
+    {
+        if (_testObject == null)
+        {
+            Debug.Log("No testObj.");
+            return;
+        }
+        foreach(var obj in _testObject)
+        {
+            _damageTextSpawner.ShowDamageText(10101, obj.transform.position);
+        }
     }
 }
