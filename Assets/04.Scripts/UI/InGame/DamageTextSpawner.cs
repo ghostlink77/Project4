@@ -5,7 +5,7 @@ using System.Collections;
 
 public class DamageTextSpawner : MonoBehaviour
 {
-    private IObjectPool<GameObject> _damageTextPool;
+    private IObjectPool<TextMeshProUGUI> _damageTextPool;
     [SerializeField] private GameObject _damageTextPrefab;
     [SerializeField] private Transform _parentTransform;
 
@@ -13,17 +13,20 @@ public class DamageTextSpawner : MonoBehaviour
     [SerializeField] private int _maxSize = 50;
 
     [SerializeField] private Camera _uiCamera;
+    private Camera _mainCamera;
 
     [SerializeField] private float _textAnimSpeed;
     private void Awake()
     {
+        _mainCamera = Camera.main;
         CreatePools();
     }
 
     private void CreatePools()
     {
-        var pool = new ObjectPool<GameObject>(
-            createFunc: () => Instantiate(_damageTextPrefab),
+        TextMeshProUGUI textObj = _damageTextPrefab.GetComponent<TextMeshProUGUI>();
+        var pool = new ObjectPool<TextMeshProUGUI>(
+            createFunc: () => Instantiate(textObj),
             actionOnGet: ActivateText,
             actionOnRelease: DisableText,
             collectionCheck: false,
@@ -32,14 +35,14 @@ public class DamageTextSpawner : MonoBehaviour
         _damageTextPool = pool;
     }
 
-    private void ActivateText(GameObject obj)
+    private void ActivateText(TextMeshProUGUI obj)
     {
-        obj.SetActive(true);
+        obj.gameObject.SetActive(true);
     }
 
-    private void DisableText(GameObject obj)
+    private void DisableText(TextMeshProUGUI obj)
     {
-        obj.SetActive(false);
+        obj.gameObject.SetActive(false);
     }
 
     public void ShowDamageText(float damage, Vector3 position)
@@ -53,7 +56,7 @@ public class DamageTextSpawner : MonoBehaviour
         var damageTextObj = _damageTextPool.Get();
 
         damageTextObj.transform.SetParent(_parentTransform, false);
-        Vector3 viewportPoint = Camera.main.WorldToViewportPoint(position);
+        Vector3 viewportPoint = _mainCamera.WorldToViewportPoint(position);
         Vector3 uiWorldPos = _uiCamera.ViewportToWorldPoint(new Vector3(viewportPoint.x, viewportPoint.y, 100));
         damageTextObj.transform.position = uiWorldPos;
 
@@ -61,15 +64,15 @@ public class DamageTextSpawner : MonoBehaviour
         StartCoroutine(ReturnPool(damageTextObj));
     }
 
-    private IEnumerator ReturnPool(GameObject obj)
+    private IEnumerator ReturnPool(TextMeshProUGUI obj)
     {
-        TextMeshProUGUI text = obj.GetComponent<TextMeshProUGUI>();
+        //TextMeshProUGUI text = obj.GetComponent<TextMeshProUGUI>();
 
-        float alpha = 1;
-        while (text.color.a > 0)
+        Color color = new Color(obj.color.r, obj.color.g, obj.color.b, 1);
+        while (obj.color.a > 0)
         {
-            alpha -= _textAnimSpeed;
-            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
+            color.a -= _textAnimSpeed;
+            obj.color = color;
             yield return null;
         }
         _damageTextPool.Release(obj);
