@@ -4366,7 +4366,7 @@ MonoBehaviour:
   _initSize: 1
   _maxSize: 50
   _uiCamera: {fileID: 1702394035}
-  _textAnimSpeed: 0.001
+  _textAnimSpeed: 0.005
 --- !u!4 &1177416567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
@@ -17348,7 +17348,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1638335297}
         m_TargetAssemblyTypeName: InGameUIController, Assembly-CSharp
-        m_MethodName: ShowDamageText
+        m_MethodName: ShowDamageTextDebug
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17554,7 +17554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2095661429}
   m_Layer: 5
-  m_Name: TestArea
+  m_Name: DebugZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -213,7 +213,17 @@ public class InGameUIController : MonoBehaviour
         UpdateInventory();
     }
 
-    public void ShowDamageText()
+    public void ShowDamageText(Vector3 position, float damage)
+    {
+        if (_testObject == null)
+        {
+            Debug.Log("No testObj.");
+            return;
+        }
+        _damageTextSpawner.ShowDamageText(damage, position);
+    }
+
+    public void ShowDamageTextDebug()
     {
         if (_testObject == null)
         {
@@ -222,7 +232,7 @@ public class InGameUIController : MonoBehaviour
         }
         foreach(var obj in _testObject)
         {
-            _damageTextSpawner.ShowDamageText(10101, obj.transform.position);
+            _damageTextSpawner.ShowDamageText(10110, obj.transform.position);
         }
     }
 }
