@@ -22,6 +22,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject _levelupUI;
     [SerializeField] private TextMeshProUGUI _playTimeUI;
     [SerializeField] private Image _expBar;
+    [SerializeField] private Minimap _minimap;
 
     [Header("ItemSelectBtn")]
     [SerializeField] private ItemSlotData[] _itemSelectBtnDatas = new ItemSlotData[3];
@@ -36,6 +37,9 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
     [SerializeField] private List<GameObject> _testObject;
+
+    [Header("TestObject")]
+    [SerializeField] private Transform _testEnemy;
 
     private void Update()
     {
@@ -234,5 +238,25 @@ public class InGameUIController : MonoBehaviour
         {
             _damageTextSpawner.ShowDamageText(10110, obj.transform.position);
         }
+    }
+
+    public void AddTracedEnemyInMinimap(Transform transform)
+    {
+        _minimap.AddTracedEnemy(transform);
+    }
+
+    public void AddTracedEnemyInMinimapDebug()
+    {
+        _minimap.AddTracedEnemy(_testEnemy);
+    }
+
+    public void RemoveTracedEnemyInMinimap(Transform transform)
+    {
+        _minimap.RemoveTracedEnemy(transform);
+    }
+
+    public void RemoveTracedEnemyInMinimapDebug()
+    {
+        _minimap.RemoveTracedEnemy(_testEnemy);
     }
 }

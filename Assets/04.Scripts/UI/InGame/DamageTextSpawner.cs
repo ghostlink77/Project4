@@ -42,6 +42,7 @@ public class DamageTextSpawner : MonoBehaviour
 
     private void DisableText(TextMeshProUGUI obj)
     {
+        obj.StopAllCoroutines();
         obj.gameObject.SetActive(false);
     }
 
@@ -66,9 +67,8 @@ public class DamageTextSpawner : MonoBehaviour
 
     private IEnumerator ReturnPool(TextMeshProUGUI obj)
     {
-        //TextMeshProUGUI text = obj.GetComponent<TextMeshProUGUI>();
-
         Color color = new Color(obj.color.r, obj.color.g, obj.color.b, 1);
+        obj.color = color;
         while (obj.color.a > 0)
         {
             color.a -= _textAnimSpeed;
