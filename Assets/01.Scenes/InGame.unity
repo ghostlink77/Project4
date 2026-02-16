@@ -3550,7 +3550,7 @@ GameObject:
   - component: {fileID: 700367470}
   - component: {fileID: 700367469}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: PassiveSlot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3563,18 +3563,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700367467}
-  m_LocalRotation: {x: -0, y: -0, z: 0.3398794, w: 0.940469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1664631592}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 39.739}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -102.89661, y: 21.600098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &700367469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,7 +4131,7 @@ GameObject:
   - component: {fileID: 1011512162}
   - component: {fileID: 1011512161}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PassiveSlot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4144,18 +4144,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011512159}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1664631592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0017089844, y: 35.2995}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1011512161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4320,7 +4320,7 @@ GameObject:
   - component: {fileID: 1049329289}
   - component: {fileID: 1049329288}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: PassiveSlot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4333,18 +4333,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049329286}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1664631592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.199585, y: 35.2995}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1049329288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5239,6 +5239,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
   m_PrefabInstance: {fileID: 1035851163}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1276714786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1276714787}
+  - component: {fileID: 1276714789}
+  - component: {fileID: 1276714788}
+  m_Layer: 5
+  m_Name: PassiveSlot6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1276714787
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276714786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1664631592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -150, y: -50}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1276714788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276714786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -8503755939039759202, guid: 3ba77e35f5707f24a89cbdfbe7b17856, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1276714789
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276714786}
+  m_CullTransparentMesh: 1
 --- !u!4 &1287521865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
@@ -5256,7 +5331,7 @@ GameObject:
   - component: {fileID: 1288294740}
   - component: {fileID: 1288294739}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: PassiveSlot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5269,18 +5344,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288294737}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6109724, w: 0.79165196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.00008, y: 1.00008, z: 1.0000798}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1664631592}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 75.32}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -130.10242, y: -16.996273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -100, y: -50}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1288294739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5933,7 +6008,7 @@ GameObject:
   - component: {fileID: 1478483251}
   - component: {fileID: 1478483250}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: PassiveSlot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5946,18 +6021,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478483248}
-  m_LocalRotation: {x: -0, y: -0, z: 0.12094339, w: 0.99265945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000798, y: 1.0000798, z: 1.0000798}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1664631592}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 13.893}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65.996826, y: 34.20166}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -150, y: 0}
   m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1478483250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6846,6 +6921,35 @@ MonoBehaviour:
     ItemNameText: {fileID: 514348740}
     ItemLevelText: {fileID: 514348739}
     ItemDescriptionText: {fileID: 514348738}
+  _passiveInventorySlot:
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
+  - ItemImage: {fileID: 0}
+    ItemNameText: {fileID: 0}
+    ItemLevelText: {fileID: 0}
+    ItemDescriptionText: {fileID: 0}
   _itemSelectBtns:
   - {fileID: 1263408462379609955}
   - {fileID: 1625839965}
@@ -6868,7 +6972,7 @@ GameObject:
   - component: {fileID: 1664631594}
   - component: {fileID: 1664631593}
   m_Layer: 5
-  m_Name: passiveSlot1
+  m_Name: passive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6891,6 +6995,7 @@ RectTransform:
   - {fileID: 1478483249}
   - {fileID: 700367468}
   - {fileID: 1288294738}
+  - {fileID: 1276714787}
   m_Father: {fileID: 5477312749948123952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -27084,7 +27189,7 @@ GameObject:
   - component: {fileID: 6244127424645016379}
   - component: {fileID: 8304745245245623419}
   m_Layer: 5
-  m_Name: passiveSlot2
+  m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
