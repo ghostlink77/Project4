@@ -12,6 +12,7 @@ public class Minimap : MonoBehaviour
     [Header("References - UI")]
     [SerializeField] private RectTransform _playerIndicator;
     [SerializeField] private GameObject _enemyIndicatorPrefab;
+    [SerializeField] private GameObject _turretIndicatorPrefab;
     [SerializeField] private RectTransform MinimapContainer;
 
     [Header("Object Pool Settings")]
@@ -19,7 +20,10 @@ public class Minimap : MonoBehaviour
     [SerializeField] private int _maxSize;
     private IObjectPool<RectTransform> _enemyIndicatorPool;
     private Dictionary<Transform, RectTransform> _enemyIndicatorPools = new Dictionary<Transform, RectTransform>();
-   
+    private IObjectPool<RectTransform> _turretIndicatorPool;
+    private Dictionary<Transform, RectTransform> _turretIndicatorPools = new Dictionary<Transform, RectTransform>();
+
+
     [Header("Parameters")]
     [SerializeField] private Vector2 _mapTextureSize = new Vector2(1024, 1024);
     [SerializeField] private Bounds _mapBounds;
@@ -63,15 +67,35 @@ public class Minimap : MonoBehaviour
 
     private void CreatePools()
     {
-        RectTransform _enemyIndicatorObj = _enemyIndicatorPrefab.GetComponent<RectTransform>();
-        var pool = new ObjectPool<RectTransform>(
-            createFunc: () => Instantiate(_enemyIndicatorObj),
+        if (_enemyIndicatorPrefab == null)
+        {
+            Debug.Log("No EnemyIndicator Prefab.");
+            return;
+        }
+        RectTransform enemyIndicatorObj = _enemyIndicatorPrefab.GetComponent<RectTransform>();
+        var enemyPool = new ObjectPool<RectTransform>(
+            createFunc: () => Instantiate(enemyIndicatorObj),
             actionOnGet: ActivateIndicator,
             actionOnRelease: DisableIndicator,
             collectionCheck: false,
             defaultCapacity: _initSize,
             maxSize: _maxSize);
-        _enemyIndicatorPool = pool;
+        _enemyIndicatorPool = enemyPool;
+
+        if (_turretIndicatorPrefab == null)
+        {
+            Debug.Log("No TurretIndicator Prefab.");
+            return;
+        }
+        RectTransform turretIndicatorObj = _turretIndicatorPrefab.GetComponent<RectTransform>();
+        var turretPool = new ObjectPool<RectTransform>(
+            createFunc: () => Instantiate(turretIndicatorObj),
+            actionOnGet: ActivateIndicator,
+            actionOnRelease: DisableIndicator,
+            collectionCheck: false,
+            defaultCapacity: _initSize,
+            maxSize: _maxSize);
+        _turretIndicatorPool = turretPool;
     }
 
     private void ActivateIndicator(RectTransform obj)
@@ -115,6 +139,23 @@ public class Minimap : MonoBehaviour
         {
             _enemyIndicatorPool.Release(indicator);
             _enemyIndicatorPools.Remove(transform);
+        }
+    }
+
+    public void AddTracedTurret(Transform transform)
+    {
+        if (_turretIndicatorPools.ContainsKey(transform)) return;
+        var turretIndicator = _turretIndicatorPool.Get();
+        turretIndicator.SetParent(MinimapContainer, false);
+        _turretIndicatorPools[transform] = turretIndicator;
+    }
+
+    public void RemoveTracedTurret(Transform transform)
+    {
+        if (_turretIndicatorPools.TryGetValue(transform, out var indicator))
+        {
+            _turretIndicatorPool.Release(indicator);
+            _turretIndicatorPools.Remove(transform);
         }
     }
 }

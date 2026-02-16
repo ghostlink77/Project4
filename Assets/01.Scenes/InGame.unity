@@ -18257,6 +18257,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 8659552871012397998}
   _playerIndicator: {fileID: 986678847}
   _enemyIndicatorPrefab: {fileID: 5840119094998994879, guid: 08ce4b513e8f07b4cbb71fb844e17aac, type: 3}
+  _turretIndicatorPrefab: {fileID: 5697420257673147318, guid: 8de2623affc15b54aa4864d9b83533c5, type: 3}
   MinimapContainer: {fileID: 1467343429}
   _initSize: 3
   _maxSize: 50
