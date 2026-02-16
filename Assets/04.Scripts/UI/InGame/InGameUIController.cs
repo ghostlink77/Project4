@@ -29,6 +29,7 @@ public class InGameUIController : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] private ItemSlotData[] _inventorySlot = new ItemSlotData[7];
+    [SerializeField] private ItemSlotData[] _passiveInventorySlot = new ItemSlotData[7];
 
     public readonly string IMAGE_PATH = "Sprite";
 

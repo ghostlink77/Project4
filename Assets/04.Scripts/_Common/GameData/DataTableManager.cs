@@ -51,4 +51,25 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         }
         return null;
     }
+
+    public T GetSelectableItem<T>(List<T> itemDataList)
+    {
+        List<T> itemDatas = new List<T>(itemDataList);
+        while (itemDatas.Count > 0)
+        {
+            int index = Random.Range(0, itemDatas.Count);
+            T newItemData = itemDatas[index];
+
+            const int maxLevel = 10;
+            //int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newPassiveData);
+
+            /*if (currentPassiveLevel < maxLevel)
+            {
+                return newItemData;
+            }*/
+
+            itemDatas.RemoveAt(index);
+        }
+        return default(T);
+    }
 }
