@@ -1,0 +1,5805 @@
+fileFormatVersion: 2
+guid: 761e72a3c9b029c44afb47acbba0d6c4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1028906776217498605
+    second: enemies x1_0
+  - first:
+      213: 2036491347197328970
+    second: enemies x1_1
+  - first:
+      213: 8929869714847962509
+    second: enemies x1_2
+  - first:
+      213: 5516282512296413326
+    second: enemies x1_3
+  - first:
+      213: -6680914717463380333
+    second: enemies x1_4
+  - first:
+      213: 7156078263350859390
+    second: enemies x1_5
+  - first:
+      213: -4295751151474661902
+    second: enemies x1_6
+  - first:
+      213: -7610935670013792252
+    second: enemies x1_7
+  - first:
+      213: -1928838196782258123
+    second: enemies x1_8
+  - first:
+      213: 4301160887145273575
+    second: enemies x1_9
+  - first:
+      213: 4187957417227709813
+    second: enemies x1_10
+  - first:
+      213: 1015434522403502873
+    second: enemies x1_11
+  - first:
+      213: 6040386164655006208
+    second: enemies x1_12
+  - first:
+      213: -4305850055565830866
+    second: enemies x1_13
+  - first:
+      213: 6395957502474251662
+    second: enemies x1_14
+  - first:
+      213: 2027959625109638627
+    second: enemies x1_15
+  - first:
+      213: 5060107664560174048
+    second: enemies x1_16
+  - first:
+      213: -7903935610622776859
+    second: enemies x1_17
+  - first:
+      213: -5746148589120784303
+    second: enemies x1_18
+  - first:
+      213: 8109942612873468646
+    second: enemies x1_19
+  - first:
+      213: -4411641589049943450
+    second: enemies x1_20
+  - first:
+      213: 8970026905722591726
+    second: enemies x1_21
+  - first:
+      213: -4807200150559036923
+    second: enemies x1_22
+  - first:
+      213: -8372351035667416067
+    second: enemies x1_23
+  - first:
+      213: 6380237431933264986
+    second: enemies x1_24
+  - first:
+      213: -3101705904248489468
+    second: enemies x1_25
+  - first:
+      213: 5070005387798493920
+    second: enemies x1_26
+  - first:
+      213: 6521721565252294039
+    second: enemies x1_27
+  - first:
+      213: 3307585669675529756
+    second: enemies x1_28
+  - first:
+      213: 7617403611008385243
+    second: enemies x1_29
+  - first:
+      213: 6484827310579986974
+    second: enemies x1_30
+  - first:
+      213: 6445837661772093963
+    second: enemies x1_31
+  - first:
+      213: -895792847845037918
+    second: enemies x1_32
+  - first:
+      213: -8060872064401433072
+    second: enemies x1_33
+  - first:
+      213: 4080924890819197828
+    second: enemies x1_34
+  - first:
+      213: 6237551986028231360
+    second: enemies x1_35
+  - first:
+      213: 3783281957993339202
+    second: enemies x1_36
+  - first:
+      213: -4070211106327911971
+    second: enemies x1_37
+  - first:
+      213: 4915780630896623503
+    second: enemies x1_38
+  - first:
+      213: -4460332256371348798
+    second: enemies x1_39
+  - first:
+      213: -1703467117994440722
+    second: enemies x1_40
+  - first:
+      213: 977623243501051508
+    second: enemies x1_41
+  - first:
+      213: 5535141247235889088
+    second: enemies x1_42
+  - first:
+      213: -5751116512881032407
+    second: enemies x1_43
+  - first:
+      213: -215868753522690547
+    second: enemies x1_44
+  - first:
+      213: 7988034935308457957
+    second: enemies x1_45
+  - first:
+      213: -3749379633731375033
+    second: enemies x1_46
+  - first:
+      213: -4086219931996227907
+    second: enemies x1_47
+  - first:
+      213: -7558172330886306258
+    second: enemies x1_48
+  - first:
+      213: 504427151711172027
+    second: enemies x1_49
+  - first:
+      213: -5894268667158457974
+    second: enemies x1_50
+  - first:
+      213: 1355737573367148668
+    second: enemies x1_51
+  - first:
+      213: -6813633662863961539
+    second: enemies x1_52
+  - first:
+      213: 2183272343997004228
+    second: enemies x1_53
+  - first:
+      213: 3732542195413597077
+    second: enemies x1_54
+  - first:
+      213: 161913765198160563
+    second: enemies x1_55
+  - first:
+      213: -5796336401979585534
+    second: enemies x1_56
+  - first:
+      213: 8115100068425246020
+    second: enemies x1_57
+  - first:
+      213: -5205761926841082292
+    second: enemies x1_58
+  - first:
+      213: 2706758319501065720
+    second: enemies x1_59
+  - first:
+      213: 8149960636404559273
+    second: enemies x1_60
+  - first:
+      213: -2325310136321451180
+    second: enemies x1_61
+  - first:
+      213: -4636911678880754629
+    second: enemies x1_62
+  - first:
+      213: 3967520625569853377
+    second: enemies x1_63
+  - first:
+      213: -4978227667247119863
+    second: enemies x1_64
+  - first:
+      213: 6301544469107940346
+    second: enemies x1_65
+  - first:
+      213: 6675991022347420147
+    second: enemies x1_66
+  - first:
+      213: -5377158841501324195
+    second: enemies x1_67
+  - first:
+      213: -2873618789462803232
+    second: enemies x1_68
+  - first:
+      213: -3104286039754271109
+    second: enemies x1_69
+  - first:
+      213: -3924097988741207057
+    second: enemies x1_70
+  - first:
+      213: -2496493023873709385
+    second: enemies x1_71
+  - first:
+      213: 1545732929948856323
+    second: enemies x1_72
+  - first:
+      213: -8447423193763620356
+    second: enemies x1_73
+  - first:
+      213: 2113190560723820244
+    second: enemies x1_74
+  - first:
+      213: 7670728605649536051
+    second: enemies x1_75
+  - first:
+      213: -5663720763543458911
+    second: enemies x1_76
+  - first:
+      213: 487180775386833493
+    second: enemies x1_77
+  - first:
+      213: -1089550130380273168
+    second: enemies x1_78
+  - first:
+      213: -6874982776673678146
+    second: enemies x1_79
+  - first:
+      213: -4841658116209921163
+    second: enemies x1_80
+  - first:
+      213: 5335449641594571849
+    second: enemies x1_81
+  - first:
+      213: 4288106372279277731
+    second: enemies x1_82
+  - first:
+      213: -7362529959174327377
+    second: enemies x1_83
+  - first:
+      213: -387586665495588001
+    second: enemies x1_84
+  - first:
+      213: -4667751733465828562
+    second: enemies x1_85
+  - first:
+      213: 2075606741954989941
+    second: enemies x1_86
+  - first:
+      213: 1699322925847068044
+    second: enemies x1_87
+  - first:
+      213: 182861247191217100
+    second: enemies x1_88
+  - first:
+      213: -1548837685672425413
+    second: enemies x1_89
+  - first:
+      213: -1407880561706915431
+    second: enemies x1_90
+  - first:
+      213: -6514019335055350521
+    second: enemies x1_91
+  - first:
+      213: -2643371018644622171
+    second: enemies x1_92
+  - first:
+      213: 7302337616372261222
+    second: enemies x1_93
+  - first:
+      213: 181347818660876291
+    second: enemies x1_94
+  - first:
+      213: 3854168602650552308
+    second: enemies x1_95
+  - first:
+      213: -2319954301027702219
+    second: enemies x1_96
+  - first:
+      213: -8964984223679995738
+    second: enemies x1_97
+  - first:
+      213: 7276268735905085406
+    second: enemies x1_98
+  - first:
+      213: -2697716328171351458
+    second: enemies x1_99
+  - first:
+      213: -5703753961975428872
+    second: enemies x1_100
+  - first:
+      213: 5491844805936308745
+    second: enemies x1_101
+  - first:
+      213: -6182524093977611993
+    second: enemies x1_102
+  - first:
+      213: -4721388236923660287
+    second: enemies x1_103
+  - first:
+      213: 1050234777428529476
+    second: enemies x1_104
+  - first:
+      213: 2737201909956815029
+    second: enemies x1_105
+  - first:
+      213: -3461268507394236478
+    second: enemies x1_106
+  - first:
+      213: -8363382718170560834
+    second: enemies x1_107
+  - first:
+      213: 2735091689218125786
+    second: enemies x1_108
+  - first:
+      213: -3337104649062109973
+    second: enemies x1_109
+  - first:
+      213: -3409768184026089531
+    second: enemies x1_110
+  - first:
+      213: 2874108520795961482
+    second: enemies x1_111
+  - first:
+      213: -5989185532309576347
+    second: enemies x1_112
+  - first:
+      213: -1963548260389759142
+    second: enemies x1_113
+  - first:
+      213: -981629035180266602
+    second: enemies x1_114
+  - first:
+      213: 631841356780363194
+    second: enemies x1_115
+  - first:
+      213: -4852915445394485600
+    second: enemies x1_116
+  - first:
+      213: 2110480226980006021
+    second: enemies x1_117
+  - first:
+      213: 3286710719361955265
+    second: enemies x1_118
+  - first:
+      213: -8106178512490342173
+    second: enemies x1_119
+  - first:
+      213: 1915655070311059366
+    second: enemies x1_120
+  - first:
+      213: -5891320411608849068
+    second: enemies x1_121
+  - first:
+      213: -2050701252839078033
+    second: enemies x1_122
+  - first:
+      213: -7403754481742975474
+    second: enemies x1_123
+  - first:
+      213: 5427570832986298324
+    second: enemies x1_124
+  - first:
+      213: -792834815815339665
+    second: enemies x1_125
+  - first:
+      213: 3447098903086617700
+    second: enemies x1_126
+  - first:
+      213: -7589783054577505372
+    second: enemies x1_127
+  - first:
+      213: -6925603033914935460
+    second: enemies x1_128
+  - first:
+      213: 4325310802645696094
+    second: enemies x1_129
+  - first:
+      213: -1397744430147639698
+    second: enemies x1_130
+  - first:
+      213: -799458600114066560
+    second: enemies x1_131
+  - first:
+      213: 3551702440929676888
+    second: enemies x1_132
+  - first:
+      213: -1885296312663869836
+    second: enemies x1_133
+  - first:
+      213: 5933028376547258129
+    second: enemies x1_134
+  - first:
+      213: -7230093862871226793
+    second: enemies x1_135
+  - first:
+      213: 3182379819940228207
+    second: enemies x1_136
+  - first:
+      213: 8595795565803272944
+    second: enemies x1_137
+  - first:
+      213: -5780366336169995295
+    second: enemies x1_138
+  - first:
+      213: 6650811121209978988
+    second: enemies x1_139
+  - first:
+      213: 364767341493832023
+    second: enemies x1_140
+  - first:
+      213: -8640600167047001057
+    second: enemies x1_141
+  - first:
+      213: 6479918289544315901
+    second: enemies x1_142
+  - first:
+      213: -7574149487232261951
+    second: enemies x1_143
+  - first:
+      213: -1457212150824194189
+    second: enemies x1_144
+  - first:
+      213: 7078091110914798096
+    second: enemies x1_145
+  - first:
+      213: -6817729608930122041
+    second: enemies x1_146
+  - first:
+      213: 7667687163565156986
+    second: enemies x1_147
+  - first:
+      213: 6935765309684584960
+    second: enemies x1_148
+  - first:
+      213: -4048980090053859109
+    second: enemies x1_149
+  - first:
+      213: -8611130574108553193
+    second: enemies x1_150
+  - first:
+      213: -3560086308963035859
+    second: enemies x1_151
+  - first:
+      213: 8058335797630047716
+    second: enemies x1_152
+  - first:
+      213: 4793875918440806242
+    second: enemies x1_153
+  - first:
+      213: -6340477885902445476
+    second: enemies x1_154
+  - first:
+      213: 6963029107990155051
+    second: enemies x1_155
+  - first:
+      213: -4502786734312710724
+    second: enemies x1_156
+  - first:
+      213: -7686498897857730934
+    second: enemies x1_157
+  - first:
+      213: -7402801378607150385
+    second: enemies x1_158
+  - first:
+      213: 6419326184644464261
+    second: enemies x1_159
+  - first:
+      213: -8880115705470668687
+    second: enemies x1_160
+  - first:
+      213: -4085481221892918583
+    second: enemies x1_161
+  - first:
+      213: 2591097588865518832
+    second: enemies x1_162
+  - first:
+      213: 3950728884727779137
+    second: enemies x1_163
+  - first:
+      213: -9031987298612674468
+    second: enemies x1_164
+  - first:
+      213: -7579496296413533240
+    second: enemies x1_165
+  - first:
+      213: -242954809045128786
+    second: enemies x1_166
+  - first:
+      213: 6672332770261109654
+    second: enemies x1_167
+  - first:
+      213: 7406267680144645826
+    second: enemies x1_168
+  - first:
+      213: 8268809360784176272
+    second: enemies x1_169
+  - first:
+      213: -1866617180805745738
+    second: enemies x1_170
+  - first:
+      213: -2343534376404378411
+    second: enemies x1_171
+  - first:
+      213: 1594409044583314554
+    second: enemies x1_172
+  - first:
+      213: -1289618261064849282
+    second: enemies x1_173
+  - first:
+      213: 6605497105692410497
+    second: enemies x1_174
+  - first:
+      213: 2992167521241359150
+    second: enemies x1_175
+  - first:
+      213: -5422558055650809783
+    second: enemies x1_176
+  - first:
+      213: 2747473614686903076
+    second: enemies x1_177
+  - first:
+      213: -6487045961113381289
+    second: enemies x1_178
+  - first:
+      213: -3599550228082276726
+    second: enemies x1_179
+  - first:
+      213: -4615896357240069485
+    second: enemies x1_180
+  - first:
+      213: -3145445085775585093
+    second: enemies x1_181
+  - first:
+      213: -8319220066101473391
+    second: enemies x1_182
+  - first:
+      213: 4057158260469274451
+    second: enemies x1_183
+  - first:
+      213: -4733417528958351652
+    second: enemies x1_184
+  - first:
+      213: -2669342794874624352
+    second: enemies x1_185
+  - first:
+      213: -6663655613963099607
+    second: enemies x1_186
+  - first:
+      213: -2313429183577522020
+    second: enemies x1_187
+  - first:
+      213: 1725232449993312196
+    second: enemies x1_188
+  - first:
+      213: -1470776853901633066
+    second: enemies x1_189
+  - first:
+      213: -441061880884335799
+    second: enemies x1_190
+  - first:
+      213: -1522625673083626720
+    second: enemies x1_191
+  - first:
+      213: -8742478564091567596
+    second: enemies x1_192
+  - first:
+      213: -7668066614563706382
+    second: enemies x1_193
+  - first:
+      213: -7562099625803234484
+    second: enemies x1_194
+  - first:
+      213: 1553700871272746586
+    second: enemies x1_195
+  - first:
+      213: 2343935112936246021
+    second: enemies x1_196
+  - first:
+      213: 846844941657425551
+    second: enemies x1_197
+  - first:
+      213: 4980452800665355123
+    second: enemies x1_198
+  - first:
+      213: 6080503694666185745
+    second: enemies x1_199
+  - first:
+      213: 3296288788082756558
+    second: enemies x1_200
+  - first:
+      213: -8972888781129766540
+    second: enemies x1_201
+  - first:
+      213: 1586711062802892980
+    second: enemies x1_202
+  - first:
+      213: -3228200149557500987
+    second: enemies x1_203
+  - first:
+      213: -6272944727507720926
+    second: enemies x1_204
+  - first:
+      213: 2525748202585795109
+    second: enemies x1_205
+  - first:
+      213: 2634806498098423172
+    second: enemies x1_206
+  - first:
+      213: -6661788865184352740
+    second: enemies x1_207
+  - first:
+      213: -7440609955877286034
+    second: enemies x1_208
+  - first:
+      213: -4690886420034139781
+    second: enemies x1_209
+  - first:
+      213: -4287447014929740489
+    second: enemies x1_210
+  - first:
+      213: -4844096617562766961
+    second: enemies x1_211
+  - first:
+      213: 4784686550889690557
+    second: enemies x1_212
+  - first:
+      213: 4850012530224105285
+    second: enemies x1_213
+  - first:
+      213: -7268197610616993600
+    second: enemies x1_214
+  - first:
+      213: -1902404699957113001
+    second: enemies x1_215
+  - first:
+      213: 7244570212195291552
+    second: enemies x1_216
+  - first:
+      213: 5129316397253286540
+    second: enemies x1_217
+  - first:
+      213: 3794875020378369612
+    second: enemies x1_218
+  - first:
+      213: -1030743412795499767
+    second: enemies x1_219
+  - first:
+      213: -3866991762892840222
+    second: enemies x1_220
+  - first:
+      213: 2648484582466595652
+    second: enemies x1_221
+  - first:
+      213: -3644741485320977973
+    second: enemies x1_222
+  - first:
+      213: 4650986221139849156
+    second: enemies x1_223
+  - first:
+      213: -6321443134608932173
+    second: enemies x1_224
+  - first:
+      213: -3500548717530079823
+    second: enemies x1_225
+  - first:
+      213: 4552316538921827681
+    second: enemies x1_226
+  - first:
+      213: -1881044149094817338
+    second: enemies x1_227
+  - first:
+      213: 8156423953594116887
+    second: enemies x1_228
+  - first:
+      213: 151841682415415217
+    second: enemies x1_229
+  - first:
+      213: -300324878794700446
+    second: enemies x1_230
+  - first:
+      213: -6852056487620984889
+    second: enemies x1_231
+  - first:
+      213: -1402946470562791187
+    second: enemies x1_232
+  - first:
+      213: -2854593820577015460
+    second: enemies x1_233
+  - first:
+      213: -1362471661018039910
+    second: enemies x1_234
+  - first:
+      213: -1537357465181083758
+    second: enemies x1_235
+  - first:
+      213: 7354393858974311594
+    second: enemies x1_236
+  - first:
+      213: -771952501672174932
+    second: enemies x1_237
+  - first:
+      213: 8901213185548282088
+    second: enemies x1_238
+  - first:
+      213: -1578149970096554038
+    second: enemies x1_239
+  - first:
+      213: -3355054162677049313
+    second: enemies x1_240
+  - first:
+      213: -7906189100504641063
+    second: enemies x1_241
+  - first:
+      213: -5571780897003100684
+    second: enemies x1_242
+  - first:
+      213: -4433307631201009134
+    second: enemies x1_243
+  - first:
+      213: 6579198734300919714
+    second: enemies x1_244
+  - first:
+      213: 290286761779386901
+    second: enemies x1_245
+  - first:
+      213: -4453331953910385140
+    second: enemies x1_246
+  - first:
+      213: -8190173941515487277
+    second: enemies x1_247
+  - first:
+      213: -3118331219388963321
+    second: enemies x1_248
+  - first:
+      213: 1094995074556204880
+    second: enemies x1_249
+  - first:
+      213: -8760460921144050142
+    second: enemies x1_250
+  - first:
+      213: 7695967114060044162
+    second: enemies x1_251
+  - first:
+      213: -331854924923644368
+    second: enemies x1_252
+  - first:
+      213: -649204947222821178
+    second: enemies x1_253
+  - first:
+      213: -1025754037679211309
+    second: enemies x1_254
+  - first:
+      213: 4484300036970428334
+    second: enemies x1_255
+  - first:
+      213: 7312351184360705313
+    second: enemies x1_256
+  - first:
+      213: -3807651147325091175
+    second: enemies x1_257
+  - first:
+      213: 403781715744429236
+    second: enemies x1_258
+  - first:
+      213: 875683455564992526
+    second: enemies x1_259
+  - first:
+      213: -2255236300321510903
+    second: enemies x1_260
+  - first:
+      213: -4356030261366272139
+    second: enemies x1_261
+  - first:
+      213: 9140153404188177460
+    second: enemies x1_262
+  - first:
+      213: -7778945606562390319
+    second: enemies x1_263
+  - first:
+      213: 6244517794773786732
+    second: enemies x1_264
+  - first:
+      213: -1460993313350602744
+    second: enemies x1_265
+  - first:
+      213: -8656929453447334210
+    second: enemies x1_266
+  - first:
+      213: -4762995500768961224
+    second: enemies x1_267
+  - first:
+      213: 6368935212209812114
+    second: enemies x1_268
+  - first:
+      213: -7784280637847041666
+    second: enemies x1_269
+  - first:
+      213: 5675798820345383836
+    second: enemies x1_270
+  - first:
+      213: -7113247942525883243
+    second: enemies x1_271
+  - first:
+      213: 2141448515310541212
+    second: enemies x1_272
+  - first:
+      213: -1544473042538185699
+    second: enemies x1_273
+  - first:
+      213: -3691713954873445694
+    second: enemies x1_274
+  - first:
+      213: 3319638528601145026
+    second: enemies x1_275
+  - first:
+      213: 3671518155061253239
+    second: enemies x1_276
+  - first:
+      213: 3284880888143913398
+    second: enemies x1_277
+  - first:
+      213: -7683369067179938694
+    second: enemies x1_278
+  - first:
+      213: -5973585869216515194
+    second: enemies x1_279
+  - first:
+      213: -3689370926839001816
+    second: enemies x1_280
+  - first:
+      213: -6797498276033885348
+    second: enemies x1_281
+  - first:
+      213: 4164845761129313694
+    second: enemies x1_282
+  - first:
+      213: 2496964998624855037
+    second: enemies x1_283
+  - first:
+      213: -8255308385117626361
+    second: enemies x1_284
+  - first:
+      213: -7322670506526271368
+    second: enemies x1_285
+  - first:
+      213: -3601800133902104676
+    second: enemies x1_286
+  - first:
+      213: -106874875469736444
+    second: enemies x1_287
+  - first:
+      213: -5788913402081854305
+    second: enemies x1_288
+  - first:
+      213: 3395281072480197393
+    second: enemies x1_289
+  - first:
+      213: 5240052136381744675
+    second: enemies x1_290
+  - first:
+      213: 2012311864033834658
+    second: enemies x1_291
+  - first:
+      213: -361952162869465208
+    second: enemies x1_292
+  - first:
+      213: -2611366815348874876
+    second: enemies x1_293
+  - first:
+      213: -1333846470598084633
+    second: enemies x1_294
+  - first:
+      213: -8461980580549894425
+    second: enemies x1_295
+  - first:
+      213: 6266377145653915766
+    second: enemies x1_296
+  - first:
+      213: -6427648095847118669
+    second: enemies x1_297
+  - first:
+      213: 5912544064107661872
+    second: enemies x1_298
+  - first:
+      213: -3987132594700114268
+    second: enemies x1_299
+  - first:
+      213: -7453966798155263039
+    second: enemies x1_300
+  - first:
+      213: -7845637931155021049
+    second: enemies x1_301
+  - first:
+      213: 1135041321745806690
+    second: enemies x1_302
+  - first:
+      213: 4752379230900663725
+    second: enemies x1_303
+  - first:
+      213: 8540322713721166577
+    second: enemies x1_304
+  - first:
+      213: -4259986425978163546
+    second: enemies x1_305
+  - first:
+      213: 928989757633857571
+    second: enemies x1_306
+  - first:
+      213: -6709753734613018616
+    second: enemies x1_307
+  - first:
+      213: -6757849091546641946
+    second: enemies x1_308
+  - first:
+      213: 252397027873217810
+    second: enemies x1_309
+  - first:
+      213: -275109080289192617
+    second: enemies x1_310
+  - first:
+      213: 6742520617541105560
+    second: enemies x1_311
+  - first:
+      213: 3821168755203108701
+    second: enemies x1_312
+  - first:
+      213: -3641789506092538377
+    second: enemies x1_313
+  - first:
+      213: -1593299314967315609
+    second: enemies x1_314
+  - first:
+      213: 625835177821299361
+    second: enemies x1_315
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: enemies x1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1184
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de3bf67f249674e00800000000000000
+      internalID: 1028906776217498605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1184
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e7ad92712134c10800000000000000
+      internalID: 2036491347197328970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1184
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d85180471354deb70800000000000000
+      internalID: 8929869714847962509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1184
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e88802ae7b5cd8c40800000000000000
+      internalID: 5516282512296413326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1184
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39e7ae2267f9843a0800000000000000
+      internalID: -6680914717463380333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e761ce7144f7f4360800000000000000
+      internalID: 7156078263350859390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f5a0ec661d6264c0800000000000000
+      internalID: -4295751151474661902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4007a742556806690800000000000000
+      internalID: -7610935670013792252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538a69321e36b35e0800000000000000
+      internalID: -1928838196782258123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1152
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e81910d90bc0bb30800000000000000
+      internalID: 4301160887145273575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1120
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57de15c051d9e1a30800000000000000
+      internalID: 4187957417227709813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1120
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b7780715c871e00800000000000000
+      internalID: 1015434522403502873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1120
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0022272a633c3d350800000000000000
+      internalID: 6040386164655006208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1120
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2517e5103c8e34c0800000000000000
+      internalID: -4305850055565830866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1120
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8de875167103c850800000000000000
+      internalID: 6395957502474251662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ed8e71d882c42c10800000000000000
+      internalID: 2027959625109638627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e3375f7c1d193640800000000000000
+      internalID: 5060107664560174048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e9e44160749f4290800000000000000
+      internalID: -7903935610622776859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158f7d67d449140b0800000000000000
+      internalID: -5746148589120784303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ea502d86dd4c8070800000000000000
+      internalID: 8109942612873468646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_20
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a96504953b6c2c0800000000000000
+      internalID: -4411641589049943450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee99a4d02ffeb7c70800000000000000
+      internalID: 8970026905722591726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_22
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50a69b5cee4694db0800000000000000
+      internalID: -4807200150559036923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1088
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb7b28771f6fcb80800000000000000
+      internalID: -8372351035667416067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a546801f3282b8850800000000000000
+      internalID: 6380237431933264986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a7983e9e684f4d0800000000000000
+      internalID: -3101705904248489468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eabb05c9074c5640800000000000000
+      internalID: 5070005387798493920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7951ed4c53fc18a50800000000000000
+      internalID: 6521721565252294039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16be2964a7e6ed20800000000000000
+      internalID: 3307585669675529756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd0cee8b93476b960800000000000000
+      internalID: 7617403611008385243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_30
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e123fd4b41cbef950800000000000000
+      internalID: 6484827310579986974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0a92cda337347950800000000000000
+      internalID: 6445837661772093963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_32
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a86cd7a6218193f0800000000000000
+      internalID: -895792847845037918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_33
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e9b75d097022090800000000000000
+      internalID: -8060872064401433072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_34
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48bf358019b52a830800000000000000
+      internalID: 4080924890819197828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_35
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cabe3bbb7c309650800000000000000
+      internalID: 6237551986028231360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_36
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249565765eae08430800000000000000
+      internalID: 3783281957993339202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd1a97e4094b387c0800000000000000
+      internalID: -4070211106327911971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_38
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8fb65a507c583440800000000000000
+      internalID: 4915780630896623503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cae4c6d177b912c0800000000000000
+      internalID: -4460332256371348798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_40
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee702697ea11c58e0800000000000000
+      internalID: -1703467117994440722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_41
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47e9b090927319d00800000000000000
+      internalID: 977623243501051508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_42
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c79b1f43a5c0dc40800000000000000
+      internalID: 5535141247235889088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_43
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 923c7d3900eef20b0800000000000000
+      internalID: -5751116512881032407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_44
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d067c2c2384110df0800000000000000
+      internalID: -215868753522690547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e7987483733bde60800000000000000
+      internalID: 7988034935308457957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_46
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7407b53961787fbc0800000000000000
+      internalID: -3749379633731375033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_47
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db67e3f1f94da47c0800000000000000
+      internalID: -4086219931996227907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_48
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e26e55a5f4afb1790800000000000000
+      internalID: -7558172330886306258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_49
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb57ec862d5100700800000000000000
+      internalID: 504427151711172027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a811e4b50e9533ea0800000000000000
+      internalID: -5894268667158457974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_51
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70f235d32c80d210800000000000000
+      internalID: 1355737573367148668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d329957a84c1171a0800000000000000
+      internalID: -6813633662863961539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_53
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c930ef11aa8c4e10800000000000000
+      internalID: 2183272343997004228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_54
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bb8c2d957acc330800000000000000
+      internalID: 3732542195413597077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2e1ea26bb3f3200800000000000000
+      internalID: 161913765198160563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_56
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c4751b0c64f8fa0800000000000000
+      internalID: -5796336401979585534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_57
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4452c3f3480ae9070800000000000000
+      internalID: 8115100068425246020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_58
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4e526ddb1b61c7b0800000000000000
+      internalID: -5205761926841082292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_59
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fdb1beb956509520800000000000000
+      internalID: 2706758319501065720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_60
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad6f4ab40a7a1170800000000000000
+      internalID: 8149960636404559273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_61
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45bd1f340c6dabfd0800000000000000
+      internalID: -2325310136321451180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_62
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34d37d356166afb0800000000000000
+      internalID: -4636911678880754629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_63
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cf6026fcf67f0730800000000000000
+      internalID: 3967520625569853377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902c6baff48c9eab0800000000000000
+      internalID: -4978227667247119863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_65
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afb9181ce45937750800000000000000
+      internalID: 6301544469107940346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_66
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f107b2c672e5ac50800000000000000
+      internalID: 6675991022347420147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c6677e58e7065b0800000000000000
+      internalID: -5377158841501324195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_68
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec7e22afeade18d0800000000000000
+      internalID: -2873618789462803232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_69
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b761e374b4c5be4d0800000000000000
+      internalID: -3104286039754271109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_70
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 768
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb61458badca89c0800000000000000
+      internalID: -3924097988741207057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_71
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba44cf52dcaa5dd0800000000000000
+      internalID: -2496493023873709385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_72
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 768
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300b93ff8eb837510800000000000000
+      internalID: 1545732929948856323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_73
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf9d2549c59b4ca80800000000000000
+      internalID: -8447423193763620356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_74
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ded6aa6e9f835d10800000000000000
+      internalID: 2113190560723820244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_75
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3340b2c8607e37a60800000000000000
+      internalID: 7670728605649536051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_76
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1abecf529fb6661b0800000000000000
+      internalID: -5663720763543458911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_77
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552e4528550d2c600800000000000000
+      internalID: 487180775386833493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_78
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 736
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f904b9dde321e0f0800000000000000
+      internalID: -1089550130380273168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_79
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebccf6ff6972790a0800000000000000
+      internalID: -6874982776673678146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_80
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573bb637899feccb0800000000000000
+      internalID: -4841658116209921163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_81
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94cca3c3e235b0a40800000000000000
+      internalID: 5335449641594571849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_82
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a89bc6b60a628b30800000000000000
+      internalID: 4288106372279277731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_83
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa33e3fa20a03d990800000000000000
+      internalID: -7362529959174327377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_84
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5315733bf30f9af0800000000000000
+      internalID: -387586665495588001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_85
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e233e0b7780d83fb0800000000000000
+      internalID: -4667751733465828562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_86
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f02a3b5590ecc10800000000000000
+      internalID: 2075606741954989941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_87
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 704
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8dbac99235359710800000000000000
+      internalID: 1699322925847068044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_88
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc37402e557a98200800000000000000
+      internalID: 182861247191217100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_89
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 640
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b38c1cab45c618ae0800000000000000
+      internalID: -1548837685672425413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_90
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 640
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9992841a614367ce0800000000000000
+      internalID: -1407880561706915431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_91
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 705eff17ded8995a0800000000000000
+      internalID: -6514019335055350521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_92
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a4ff10501cd05bd0800000000000000
+      internalID: -2643371018644622171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_93
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66167d56f5d175560800000000000000
+      internalID: 7302337616372261222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_94
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300d21851e6448200800000000000000
+      internalID: 181347818660876291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_95
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 608
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f723718ce1cc7530800000000000000
+      internalID: 3854168602650552308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53aaa18daddddcfd0800000000000000
+      internalID: -2319954301027702219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_97
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a0a29ad85af59380800000000000000
+      internalID: -8964984223679995738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_98
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed737ed2ddf7af460800000000000000
+      internalID: 7276268735905085406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_99
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52539aea49cf8ad0800000000000000
+      internalID: -2697716328171351458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_100
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 576
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f84a3acdf138d0b0800000000000000
+      internalID: -5703753961975428872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_101
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 902686301c3f63c40800000000000000
+      internalID: 5491844805936308745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_102
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 721bb2bc713433aa0800000000000000
+      internalID: -6182524093977611993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_103
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 108157bd9624a7eb0800000000000000
+      internalID: -4721388236923660287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_104
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 441936737fe239e00800000000000000
+      internalID: 1050234777428529476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_105
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b82f7182ae7cf520800000000000000
+      internalID: 2737201909956815029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_106
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf158091aa17ffc0800000000000000
+      internalID: -3461268507394236478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_107
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb68dca9abb4feb80800000000000000
+      internalID: -8363382718170560834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_108
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf28f3766ff4f520800000000000000
+      internalID: 2735091689218125786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_109
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 544
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec295e900930b1d0800000000000000
+      internalID: -3337104649062109973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c732b007e11ea0d0800000000000000
+      internalID: -3409768184026089531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_111
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 512
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8877f3d872e2e720800000000000000
+      internalID: 2874108520795961482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_112
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56567cc8d7322eca0800000000000000
+      internalID: -5989185532309576347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_113
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a57d120b24310c4e0800000000000000
+      internalID: -1963548260389759142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_114
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69beed8e79d8062f0800000000000000
+      internalID: -981629035180266602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_115
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd5b49cd50c4c800800000000000000
+      internalID: 631841356780363194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_116
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ae41404d1bf6acb0800000000000000
+      internalID: -4852915445394485600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_117
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58801aaa59ee94d10800000000000000
+      internalID: 2110480226980006021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_118
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5b90b4cfdbc9d20800000000000000
+      internalID: 3286710719361955265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_119
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8db1d5791118f80800000000000000
+      internalID: -8106178512490342173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_120
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6af011a0326c59a10800000000000000
+      internalID: 1915655070311059366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_121
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 455eb089c43dd3ea0800000000000000
+      internalID: -5891320411608849068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_122
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67041c53127a83e0800000000000000
+      internalID: -2050701252839078033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_123
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0ee08f8684904990800000000000000
+      internalID: -7403754481742975474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_124
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d75b658aea925b40800000000000000
+      internalID: 5427570832986298324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_125
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61b3c58fe84ff4f0800000000000000
+      internalID: -792834815815339665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_126
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464dd18503e86df20800000000000000
+      internalID: 3447098903086617700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_127
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4abe0a5368caba690800000000000000
+      internalID: -7589783054577505372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_128
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c57f12cebb053ef90800000000000000
+      internalID: -6925603033914935460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_129
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e3bde2247960c30800000000000000
+      internalID: 4325310802645696094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_130
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66e44aa8d63a9ce0800000000000000
+      internalID: -1397744430147639698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_131
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08be19f83a0c7e4f0800000000000000
+      internalID: -799458600114066560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_132
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e40836d8e2a4130800000000000000
+      internalID: 3551702440929676888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_133
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476f05b0ef416d5e0800000000000000
+      internalID: -1885296312663869836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_134
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f696abfd9565250800000000000000
+      internalID: 5933028376547258129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_135
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75624da30fb89ab90800000000000000
+      internalID: -7230093862871226793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_136
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ca8e3d5951a2c20800000000000000
+      internalID: 3182379819940228207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_137
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0faf49d46866a4770800000000000000
+      internalID: 8595795565803272944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_138
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e316f4617308cfa0800000000000000
+      internalID: -5780366336169995295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_139
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6030fb2a7d6c4c50800000000000000
+      internalID: 6650811121209978988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7594767e6f9ef0500800000000000000
+      internalID: 364767341493832023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_141
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c8bfc8deb661880800000000000000
+      internalID: -8640600167047001057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_142
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df388dd2a5b4de950800000000000000
+      internalID: 6479918289544315901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_143
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c060d1cb2733e690800000000000000
+      internalID: -7574149487232261951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_144
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37fadbbf441f6cbe0800000000000000
+      internalID: -1457212150824194189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_145
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0123de13d5e6a3260800000000000000
+      internalID: 7078091110914798096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_146
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6ae05ea0f8261a0800000000000000
+      internalID: -6817729608930122041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_147
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7aaf11a9d8196a60800000000000000
+      internalID: 7667687163565156986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_148
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0021a394dc9c04060800000000000000
+      internalID: 6935765309684584960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_149
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd8e5bd7f022fc7c0800000000000000
+      internalID: -4048980090053859109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_150
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71011c7dd5e1f7880800000000000000
+      internalID: -8611130574108553193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_151
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d25d6883d58089ec0800000000000000
+      internalID: -3560086308963035859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_152
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e59d8a86b5f4df60800000000000000
+      internalID: 8058335797630047716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_153
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267b6ffafb4478240800000000000000
+      internalID: 4793875918440806242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c54a090c4f81208a0800000000000000
+      internalID: -6340477885902445476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_155
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f457ef416a1a060800000000000000
+      internalID: 6963029107990155051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_156
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd13f96253e281c0800000000000000
+      internalID: -4502786734312710724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_157
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8622ca2af1145590800000000000000
+      internalID: -7686498897857730934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_158
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca495d2e57f34990800000000000000
+      internalID: -7402801378607150385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_159
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58ec8156727061950800000000000000
+      internalID: 6419326184644464261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_160
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 170bd0390dd73c480800000000000000
+      internalID: -8880115705470668687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_161
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c23b8879747d47c0800000000000000
+      internalID: -4085481221892918583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_162
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc43b2678d65f320800000000000000
+      internalID: 2591097588865518832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_163
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f03122dfec3d630800000000000000
+      internalID: 3950728884727779137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_164
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c500a5ac76fe7a280800000000000000
+      internalID: -9031987298612674468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_165
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cbe1ebb64830d690800000000000000
+      internalID: -7579496296413533240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_166
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9646e63e9d0acf0800000000000000
+      internalID: -242954809045128786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_167
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b8c929d43e89c50800000000000000
+      internalID: 6672332770261109654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_168
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ce5a7a073958c660800000000000000
+      internalID: 7406267680144645826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_169
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09437f8bd46b0c270800000000000000
+      internalID: 8268809360784176272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_170
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b3be6650917816e0800000000000000
+      internalID: -1866617180805745738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_171
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc1087b6e71a7fd0800000000000000
+      internalID: -2343534376404378411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_172
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74fe09149a702610800000000000000
+      internalID: 1594409044583314554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_173
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e786f55360b5a1ee0800000000000000
+      internalID: -1289618261064849282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_174
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 182caa5ce907bab50800000000000000
+      internalID: 6605497105692410497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_175
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e236d04e180568920800000000000000
+      internalID: 2992167521241359150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_176
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9482007ad243fb4b0800000000000000
+      internalID: -5422558055650809783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_177
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42bdb2122bcf02620800000000000000
+      internalID: 2747473614686903076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_178
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7565436711269f5a0800000000000000
+      internalID: -6487045961113381289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_179
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86caf78324db0ec0800000000000000
+      internalID: -3599550228082276726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_180
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 392afaa18ba01ffb0800000000000000
+      internalID: -4615896357240069485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_181
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb029d91c522954d0800000000000000
+      internalID: -3145445085775585093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_182
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19f48bf4d613c8c80800000000000000
+      internalID: -8319220066101473391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_183
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35710d031fbed4830800000000000000
+      internalID: 4057158260469274451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_184
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd684dc06d58f4eb0800000000000000
+      internalID: -4733417528958351652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_185
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6efbfeed694fad0800000000000000
+      internalID: -2669342794874624352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_186
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92221305680f583a0800000000000000
+      internalID: -6663655613963099607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_187
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9007d32a6c05efd0800000000000000
+      internalID: -2313429183577522020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_188
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c704d8c5c141f710800000000000000
+      internalID: 1725232449993312196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_189
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d9935f6e30c69be0800000000000000
+      internalID: -1470776853901633066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_190
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b6ce16e8801e9f0800000000000000
+      internalID: -441061880884335799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_191
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02bd5fd740c8edae0800000000000000
+      internalID: -1522625673083626720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_192
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412eadac01a7ca680800000000000000
+      internalID: -8742478564091567596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_193
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f9e5ec8a0e859590800000000000000
+      internalID: -7668066614563706382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_194
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4342efb4760e0790800000000000000
+      internalID: -7562099625803234484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_195
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5e4d67e5badf8510800000000000000
+      internalID: 1553700871272746586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_196
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b41270194578020800000000000000
+      internalID: 2343935112936246021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_197
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86c357dcf890cb00800000000000000
+      internalID: 846844941657425551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_198
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37302444f6f1e1540800000000000000
+      internalID: 4980452800665355123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_199
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c3708f4e9426450800000000000000
+      internalID: 6080503694666185745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_200
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb86c23035cebd20800000000000000
+      internalID: 3296288788082756558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_201
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4792ca7a135e97380800000000000000
+      internalID: -8972888781129766540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_202
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b88c8b0e41250610800000000000000
+      internalID: 1586711062802892980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_203
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c323c551112333d0800000000000000
+      internalID: -3228200149557500987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_204
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2252e3d710602f8a0800000000000000
+      internalID: -6272944727507720926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies x1_205
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a2537bb924d0320800000000000000
+      internalID: 2525748202585795109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8533cad762e5fda47807455cfe8f23e3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      enemies x1_0: 1028906776217498605
+      enemies x1_1: 2036491347197328970
+      enemies x1_10: 4187957417227709813
+      enemies x1_100: -5703753961975428872
+      enemies x1_101: 5491844805936308745
+      enemies x1_102: -6182524093977611993
+      enemies x1_103: -4721388236923660287
+      enemies x1_104: 1050234777428529476
+      enemies x1_105: 2737201909956815029
+      enemies x1_106: -3461268507394236478
+      enemies x1_107: -8363382718170560834
+      enemies x1_108: 2735091689218125786
+      enemies x1_109: -3337104649062109973
+      enemies x1_11: 1015434522403502873
+      enemies x1_110: -3409768184026089531
+      enemies x1_111: 2874108520795961482
+      enemies x1_112: -5989185532309576347
+      enemies x1_113: -1963548260389759142
+      enemies x1_114: -981629035180266602
+      enemies x1_115: 631841356780363194
+      enemies x1_116: -4852915445394485600
+      enemies x1_117: 2110480226980006021
+      enemies x1_118: 3286710719361955265
+      enemies x1_119: -8106178512490342173
+      enemies x1_12: 6040386164655006208
+      enemies x1_120: 1915655070311059366
+      enemies x1_121: -5891320411608849068
+      enemies x1_122: -2050701252839078033
+      enemies x1_123: -7403754481742975474
+      enemies x1_124: 5427570832986298324
+      enemies x1_125: -792834815815339665
+      enemies x1_126: 3447098903086617700
+      enemies x1_127: -7589783054577505372
+      enemies x1_128: -6925603033914935460
+      enemies x1_129: 4325310802645696094
+      enemies x1_13: -4305850055565830866
+      enemies x1_130: -1397744430147639698
+      enemies x1_131: -799458600114066560
+      enemies x1_132: 3551702440929676888
+      enemies x1_133: -1885296312663869836
+      enemies x1_134: 5933028376547258129
+      enemies x1_135: -7230093862871226793
+      enemies x1_136: 3182379819940228207
+      enemies x1_137: 8595795565803272944
+      enemies x1_138: -5780366336169995295
+      enemies x1_139: 6650811121209978988
+      enemies x1_14: 6395957502474251662
+      enemies x1_140: 364767341493832023
+      enemies x1_141: -8640600167047001057
+      enemies x1_142: 6479918289544315901
+      enemies x1_143: -7574149487232261951
+      enemies x1_144: -1457212150824194189
+      enemies x1_145: 7078091110914798096
+      enemies x1_146: -6817729608930122041
+      enemies x1_147: 7667687163565156986
+      enemies x1_148: 6935765309684584960
+      enemies x1_149: -4048980090053859109
+      enemies x1_15: 2027959625109638627
+      enemies x1_150: -8611130574108553193
+      enemies x1_151: -3560086308963035859
+      enemies x1_152: 8058335797630047716
+      enemies x1_153: 4793875918440806242
+      enemies x1_154: -6340477885902445476
+      enemies x1_155: 6963029107990155051
+      enemies x1_156: -4502786734312710724
+      enemies x1_157: -7686498897857730934
+      enemies x1_158: -7402801378607150385
+      enemies x1_159: 6419326184644464261
+      enemies x1_16: 5060107664560174048
+      enemies x1_160: -8880115705470668687
+      enemies x1_161: -4085481221892918583
+      enemies x1_162: 2591097588865518832
+      enemies x1_163: 3950728884727779137
+      enemies x1_164: -9031987298612674468
+      enemies x1_165: -7579496296413533240
+      enemies x1_166: -242954809045128786
+      enemies x1_167: 6672332770261109654
+      enemies x1_168: 7406267680144645826
+      enemies x1_169: 8268809360784176272
+      enemies x1_17: -7903935610622776859
+      enemies x1_170: -1866617180805745738
+      enemies x1_171: -2343534376404378411
+      enemies x1_172: 1594409044583314554
+      enemies x1_173: -1289618261064849282
+      enemies x1_174: 6605497105692410497
+      enemies x1_175: 2992167521241359150
+      enemies x1_176: -5422558055650809783
+      enemies x1_177: 2747473614686903076
+      enemies x1_178: -6487045961113381289
+      enemies x1_179: -3599550228082276726
+      enemies x1_18: -5746148589120784303
+      enemies x1_180: -4615896357240069485
+      enemies x1_181: -3145445085775585093
+      enemies x1_182: -8319220066101473391
+      enemies x1_183: 4057158260469274451
+      enemies x1_184: -4733417528958351652
+      enemies x1_185: -2669342794874624352
+      enemies x1_186: -6663655613963099607
+      enemies x1_187: -2313429183577522020
+      enemies x1_188: 1725232449993312196
+      enemies x1_189: -1470776853901633066
+      enemies x1_19: 8109942612873468646
+      enemies x1_190: -441061880884335799
+      enemies x1_191: -1522625673083626720
+      enemies x1_192: -8742478564091567596
+      enemies x1_193: -7668066614563706382
+      enemies x1_194: -7562099625803234484
+      enemies x1_195: 1553700871272746586
+      enemies x1_196: 2343935112936246021
+      enemies x1_197: 846844941657425551
+      enemies x1_198: 4980452800665355123
+      enemies x1_199: 6080503694666185745
+      enemies x1_2: 8929869714847962509
+      enemies x1_20: -4411641589049943450
+      enemies x1_200: 3296288788082756558
+      enemies x1_201: -8972888781129766540
+      enemies x1_202: 1586711062802892980
+      enemies x1_203: -3228200149557500987
+      enemies x1_204: -6272944727507720926
+      enemies x1_205: 2525748202585795109
+      enemies x1_21: 8970026905722591726
+      enemies x1_22: -4807200150559036923
+      enemies x1_23: -8372351035667416067
+      enemies x1_24: 6380237431933264986
+      enemies x1_25: -3101705904248489468
+      enemies x1_26: 5070005387798493920
+      enemies x1_27: 6521721565252294039
+      enemies x1_28: 3307585669675529756
+      enemies x1_29: 7617403611008385243
+      enemies x1_3: 5516282512296413326
+      enemies x1_30: 6484827310579986974
+      enemies x1_31: 6445837661772093963
+      enemies x1_32: -895792847845037918
+      enemies x1_33: -8060872064401433072
+      enemies x1_34: 4080924890819197828
+      enemies x1_35: 6237551986028231360
+      enemies x1_36: 3783281957993339202
+      enemies x1_37: -4070211106327911971
+      enemies x1_38: 4915780630896623503
+      enemies x1_39: -4460332256371348798
+      enemies x1_4: -6680914717463380333
+      enemies x1_40: -1703467117994440722
+      enemies x1_41: 977623243501051508
+      enemies x1_42: 5535141247235889088
+      enemies x1_43: -5751116512881032407
+      enemies x1_44: -215868753522690547
+      enemies x1_45: 7988034935308457957
+      enemies x1_46: -3749379633731375033
+      enemies x1_47: -4086219931996227907
+      enemies x1_48: -7558172330886306258
+      enemies x1_49: 504427151711172027
+      enemies x1_5: 7156078263350859390
+      enemies x1_50: -5894268667158457974
+      enemies x1_51: 1355737573367148668
+      enemies x1_52: -6813633662863961539
+      enemies x1_53: 2183272343997004228
+      enemies x1_54: 3732542195413597077
+      enemies x1_55: 161913765198160563
+      enemies x1_56: -5796336401979585534
+      enemies x1_57: 8115100068425246020
+      enemies x1_58: -5205761926841082292
+      enemies x1_59: 2706758319501065720
+      enemies x1_6: -4295751151474661902
+      enemies x1_60: 8149960636404559273
+      enemies x1_61: -2325310136321451180
+      enemies x1_62: -4636911678880754629
+      enemies x1_63: 3967520625569853377
+      enemies x1_64: -4978227667247119863
+      enemies x1_65: 6301544469107940346
+      enemies x1_66: 6675991022347420147
+      enemies x1_67: -5377158841501324195
+      enemies x1_68: -2873618789462803232
+      enemies x1_69: -3104286039754271109
+      enemies x1_7: -7610935670013792252
+      enemies x1_70: -3924097988741207057
+      enemies x1_71: -2496493023873709385
+      enemies x1_72: 1545732929948856323
+      enemies x1_73: -8447423193763620356
+      enemies x1_74: 2113190560723820244
+      enemies x1_75: 7670728605649536051
+      enemies x1_76: -5663720763543458911
+      enemies x1_77: 487180775386833493
+      enemies x1_78: -1089550130380273168
+      enemies x1_79: -6874982776673678146
+      enemies x1_8: -1928838196782258123
+      enemies x1_80: -4841658116209921163
+      enemies x1_81: 5335449641594571849
+      enemies x1_82: 4288106372279277731
+      enemies x1_83: -7362529959174327377
+      enemies x1_84: -387586665495588001
+      enemies x1_85: -4667751733465828562
+      enemies x1_86: 2075606741954989941
+      enemies x1_87: 1699322925847068044
+      enemies x1_88: 182861247191217100
+      enemies x1_89: -1548837685672425413
+      enemies x1_9: 4301160887145273575
+      enemies x1_90: -1407880561706915431
+      enemies x1_91: -6514019335055350521
+      enemies x1_92: -2643371018644622171
+      enemies x1_93: 7302337616372261222
+      enemies x1_94: 181347818660876291
+      enemies x1_95: 3854168602650552308
+      enemies x1_96: -2319954301027702219
+      enemies x1_97: -8964984223679995738
+      enemies x1_98: 7276268735905085406
+      enemies x1_99: -2697716328171351458
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,7 +11,6 @@ public class EnemySpawnPoint : MonoBehaviour
 
     private bool _isSpawning = false;
 
-    private EnemySpawner _spawner;
     private CircleCollider2D _spawnRangeCollider;
 
     private void Awake()
@@ -19,15 +18,10 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
-    private void Start()
-    {
-        _spawner = EnemySpawner.Instance;
-    }
-
-    public void StartSpawn()
+    public void StartSpawn(EnemyType enemyType)
     {
         _isSpawning = true;
-        StartCoroutine(SpawnLoop());
+        StartCoroutine(SpawnLoop(enemyType));
     }
 
     public void StopSpawn()
@@ -36,14 +30,14 @@ public class EnemySpawnPoint : MonoBehaviour
         StopCoroutine("SpawnLoop");
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop(EnemyType enemyType)
     {
         while (_isSpawning)
         {
             yield return new WaitForSeconds(GetRandomInterval());
-            if (_spawner != null)
+            if (EnemySpawner.Instance != null)
             {
-                _spawner.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
+                EnemySpawner.Instance.SpawnEnemy(enemyType.ToString(), GetRandomPosition());
             }
             else
             {

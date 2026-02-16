@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54059a84087bc3242bdf198df01100cc
+    m_Address: Prefabs/Enemy/Robot1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefabs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
   m_SchemaSet:

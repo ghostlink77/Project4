@@ -9,12 +9,13 @@ using UnityEngine;
 public enum EnemyType
 {
     Drone1,
-    Drone2,
+    Robot1,
 }
 
 public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
 {
     private List<EnemySpawnPoint> _spawnPoints;
+    [SerializeField] private EnemyType _currentEnemyType = EnemyType.Drone1;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
     {
         foreach (var sp in _spawnPoints)
         {
-            sp.StartSpawn();
+            sp.StartSpawn(_currentEnemyType);
         }
     }
 
@@ -40,6 +41,7 @@ public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
 
     public void ChangeSpawningEnemyType(EnemyType newEnemyType)
     {
+        _currentEnemyType = newEnemyType;
         foreach (var sp in _spawnPoints)
         {
             sp.EnemyType = newEnemyType;

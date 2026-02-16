@@ -31,11 +31,12 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
     private async void LoadEnemyPrefabs()
     {
-        AsyncOperationHandle<GameObject[]> handle =
-            Addressables.LoadAssetAsync<GameObject[]>("EnemyPrefabs");
+        AsyncOperationHandle<IList<GameObject>> handle =
+            Addressables.LoadAssetsAsync<GameObject>("EnemyPrefabs", null);
 
         await handle.Task;
 
+        Debug.Log($"적 프리팹 로드 완료: {handle.Result.Count}개");
         foreach (var prefab in handle.Result)
         {
             _enemyPrefabs[prefab.name] = prefab;
