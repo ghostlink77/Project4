@@ -1,17 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TurretStatData", menuName = "Scriptable Objects/TurretStatData")]
-public class TurretStatData : ScriptableObject, IItemStatData
+[CreateAssetMenu(fileName = "PassiveStatData", menuName = "Scriptable Objects/PassiveStatData")]
+public class PassiveStatData : ScriptableObject, IItemStatData
 {
-    [Header("터렛 이름")]
+    [Header("이름")]
     [SerializeField]
-    private string turretName;
-    public string TurretName => turretName;
+    private string _passiveName;
+    public string PassiveName => _passiveName;
 
     [Header("터렛 아이콘")]
     [SerializeField]
-    private Sprite icon;
-    public Sprite Icon => icon;
+    private Sprite _icon;
+    public Sprite Icon => _icon;
 
     [Header("투사체 프리팹")]
     [SerializeField]
@@ -70,6 +70,11 @@ public class TurretStatData : ScriptableObject, IItemStatData
 
     public string GetName()
     {
-        return turretName;
+        return _passiveName;
+    }
+
+    public Sprite GetIcon()
+    {
+        return _icon;
     }
 }

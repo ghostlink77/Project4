@@ -15,6 +15,7 @@ MonoBehaviour:
   turretName: MachineGun
   turretPrefab: {fileID: 7089152318147423349, guid: eedc4945236ae6646a373927a1038f29, type: 3}
   icon: {fileID: 3346027255627122803, guid: eedc4945236ae6646a373927a1038f29, type: 3}
+  _icon: {fileID: -2138698884186886829, guid: 4ac16e5aeb31b904e9278905602c73e9, type: 3}
   scrapCost: 5
   damage: 3
   range: 3

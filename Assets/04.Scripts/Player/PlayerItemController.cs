@@ -3,25 +3,24 @@
 아이템을 바꾸는 메서드나 각종 아이템 업그레이드 기능은 무기 개발이 끝나고 구현하도록 함
 */
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
 {
     [Header("플레이어 무기 슬롯")]
-    public IReadOnlyList<GameObject> WeaponSlot { get { return _weaponSlot.AsReadOnly(); } }
     private List<GameObject> _weaponSlot = new List<GameObject>();
+    private Dictionary<string, GameObject> _weaponSlots = new Dictionary<string, GameObject>();
+    [SerializeField] private int _weaponSlotMaxCount = 7;
 
     [Header("플레이어 패시브 아이템 슬롯")]
-    public IReadOnlyList<GameObject> PassiveSlot { get { return _passiveItemSlot.AsReadOnly(); } }
     private List<GameObject> _passiveItemSlot = new List<GameObject>();
+    private Dictionary<string, GameObject> _passiveSlots = new Dictionary<string, GameObject>();
+    [SerializeField] private int _passiveSlotMaxCount = 6;
 
     [Header("플레이어 포탑 슬롯")]
-    public IReadOnlyList<GameObject> TurretSlot { get { return _turretSlot.AsReadOnly(); } }
     private List<GameObject> _turretSlot = new List<GameObject>();
+    private Dictionary<string, GameObject> _turretSlots = new Dictionary<string, GameObject>();
+    [SerializeField] private int _turretSlotMaxCount = 7;
 
     // 초기 설정 PlayerManager에서 받아오기
     public void SetUp()
@@ -62,6 +61,45 @@ public class PlayerItemController : MonoBehaviour
 
         }
         else Debug.Log($"weaponSlots에 남은 자리 없음");
+    }
+
+    public void AddItemToSlot<T>(T newItemData) where T : IItemStatData
+    {
+        Dictionary<string, GameObject> slots = GetSlots<T>();
+
+        if (slots.ContainsKey(newItemData.GetName()))
+        {
+            slots[newItemData.GetName()].GetComponent<IItemStatController>().LevelUp();
+            return;
+        }
+        else if (CheckSlotEmptySpace<T>(slots.Count))
+        {
+            string path = "";
+            if (typeof(T) == typeof(WeaponStatData)) path = "Weapon";
+            else if (typeof(T) == typeof(PassiveStatData)) path = "Passive";
+            else if (typeof(T) == typeof(TurretData)) path = "Turret";
+            GameObject newWeapon = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
+            slots[newItemData.GetName()] = newWeapon;
+        }
+        else Debug.Log("weaponSlots에 남은 자리 없음");
+    }
+
+    public Dictionary<string, GameObject> GetSlots<T>()
+    {
+        if (typeof(T) == typeof(WeaponStatData)) return _weaponSlots;
+        else if (typeof(T) == typeof(PassiveStatData)) return _passiveSlots;
+        else if (typeof(T) == typeof(TurretData)) return _turretSlots;
+        else return null;
+    }
+
+    private bool CheckSlotEmptySpace<T>(int count)
+    {
+        int maxcount = 0;
+        if (typeof(T) == typeof(WeaponStatData)) maxcount = _weaponSlotMaxCount;
+        else if (typeof(T) == typeof(PassiveStatData)) maxcount = _passiveSlotMaxCount;
+        else if (typeof(T) == typeof(TurretData)) maxcount = _turretSlotMaxCount;
+
+        return maxcount > count;
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드
@@ -119,57 +157,13 @@ public class PlayerItemController : MonoBehaviour
     }
 
     // 슬롯에 추가할 무기가 현재 슬롯에 있는지, 그리고 슬롯에 있다면 레벨은 몇인지 반환함.
-    public int GetWeaponLevelInSlot(WeaponStatData weaponData)
-    {
-        if (_weaponSlot == null) return -1;
-
-        foreach (var weapon in _weaponSlot)
-        {
-            if (weapon == null) break;
-            if (weapon.name == weaponData.WeaponName)
-            {
-                return weapon.GetComponent<WeaponStatController>().Level;
-            }
-        }
-        return -1;
-    }
-
     public int GetItemLevelInSlot<T>(T itemData) where T : IItemStatData
     {
-        IReadOnlyList<GameObject> itemList = null;
-       
-        if (typeof(T) == typeof(WeaponStatData)) itemList = _weaponSlot;
-        else if (typeof(T) == typeof(PassiveStatData)) itemList = _passiveItemSlot;
-        else if (typeof(T) == typeof(TurretStatData)) itemList = _turretSlot;
+        Dictionary<string, GameObject> itemDict = GetSlots<T>();
 
-        if (itemList == null) return -1;
-
-        foreach (var item in itemList)
-        {
-            if (item == null) break;
-            if (item.name == itemData.GetName())
-            {
-                return item.GetComponent<IItemStatController>().GetLevel();
-            }
-        }
-        return -1;
-    }
-
-    public int GetItemIndexInSlot<T>(T itemData) where T : IItemStatData
-    {
-        IReadOnlyList<GameObject> itemList = null;
-        if (typeof(T) == typeof(WeaponStatData)) itemList = _weaponSlot;
-        else if (typeof(T) == typeof(PassiveStatData)) itemList = _passiveItemSlot;
-        else if (typeof(T) == typeof(TurretStatData)) itemList = _turretSlot;
-
-        if (itemList == null) return -1;
-
-        for (int index = 0; index < itemList.Count; index++)
-        {
-            if (itemList[index] == null) break;
-            if (itemList[index].name == itemData.GetName())
-                return index;
-        }
+        if (itemDict == null) return -1;
+        if (itemDict.ContainsKey(itemData.GetName())) 
+            return itemDict[itemData.GetName()].GetComponent<IItemStatController>().GetLevel();
         return -1;
     }
 

@@ -7,11 +7,11 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
     public List<IGameData> GameDataList { get; private set; } = new();
 
     [SerializeField]
-    private List<WeaponStatData> WeaponDatas = new List<WeaponStatData>();
-    /*[SerializeField]
+    private List<WeaponStatData> _weaponDatas = new List<WeaponStatData>();
+    [SerializeField]
     private List<PassiveStatData> _passiveDatas = new List<PassiveStatData>();
     [SerializeField]
-    private List<TurretStatData> _turretDatas = new List<TurretStatData>();*/ 
+    private List<TurretData> _turretDatas = new List<TurretData>();
     
     protected override void Init()
     {
@@ -34,47 +34,27 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
             data.SetData();
         }
     }
-
-    public WeaponStatData GetSelectableWeapon()
+    public T GetSelectableItem<T>() where T : IItemStatData
     {
-        List<WeaponStatData> weaponDatas = new List<WeaponStatData>(WeaponDatas);
-        while (weaponDatas.Count > 0)
-        {
-            int index = Random.Range(0, weaponDatas.Count);
-            WeaponStatData newWeaponData = weaponDatas[index];
+        IEnumerable<T> sourceDatas = GetSourceList<T>();
 
-            const int maxLevel = 10;
-            int currentWeaponLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newWeaponData);
+        if (sourceDatas == null) return default(T);
 
-            if (currentWeaponLevel < maxLevel)
-            {
-                return newWeaponData;
-            }
+        const int maxLevel = 10;
+        var availableItems = sourceDatas.Where(data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= maxLevel).ToList();
+        if (availableItems.Count == 0) return default(T);
 
-            weaponDatas.RemoveAt(index);
-        }
-        return null;
+        int index = Random.Range(0, availableItems.Count);
+        return availableItems[index];
     }
 
-    public T GetSelectableItem<T>(List<T> itemDataList)
+    private IEnumerable<T> GetSourceList<T>() where T : IItemStatData
     {
-        List<T> itemDatas = new List<T>(itemDataList);
-        while (itemDatas.Count > 0)
-        {
-            int index = Random.Range(0, itemDatas.Count);
-            T newItemData = itemDatas[index];
-
-            const int maxLevel = 10;
-            //int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
-            //int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newPassiveData);
-
-            /*if (currentPassiveLevel < maxLevel)
-            {
-                return newItemData;
-            }*/
-
-            itemDatas.RemoveAt(index);
-        }
-        return default(T);
+        if (typeof(T) == typeof(WeaponStatData)) return _weaponDatas as IEnumerable<T>;
+        else if (typeof(T) == typeof(PassiveStatData)) return _passiveDatas as IEnumerable<T>;
+        else if (typeof(T) == typeof(TurretData)) return _turretDatas as IEnumerable<T>;
+        else return null;
     }
+
+
 }

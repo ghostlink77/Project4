@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class PassiveStatController : MonoBehaviour, IItemStatController
 {
-    [SerializeField] private TurretStatData _turretStatData;
+    [SerializeField] private PassiveStatData _passiveStatData;
 
-    private int level;
+    private int level = 1;
     public int GetLevel()
     {
-        return 1;
+        return level;
+    }
+
+    public void LevelUp()
+    {
+        level++;
     }
 }

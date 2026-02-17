@@ -16,18 +16,18 @@ public class Inventory : MonoBehaviour
 
     public void UpdateSlot()
     {
-        IReadOnlyList<GameObject> items = null;
-
-        if (type == InventoryType.Weapon) items = PlayerManager.Instance.PlayerItemController.WeaponSlot;
-        else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.PassiveSlot;
-        else if (type == InventoryType.Turret) items = PlayerManager.Instance.PlayerItemController.TurretSlot;
+        Dictionary<string, GameObject> items = null;
+        if (type == InventoryType.Weapon) items = PlayerManager.Instance.PlayerItemController.GetSlots<WeaponStatData>();
+        else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.GetSlots<PassiveStatData>();
+        else if (type == InventoryType.Turret) items = PlayerManager.Instance.PlayerItemController.GetSlots<TurretData>();
 
         if (items == null) return;
 
-        for (int index = 0; index < items.Count; index++)
+        int index = 0;
+        foreach(var item in items)
         {
-            if (items[index] == null) return;
-            _inventorySlot[index].SetSlot(items[index].name, items[index].GetComponent<IItemStatController>().GetLevel(), "");
-        }
+            _inventorySlot[0].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
+            index++;
+        }   
     }
 }

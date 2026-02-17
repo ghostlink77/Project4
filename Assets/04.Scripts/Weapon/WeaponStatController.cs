@@ -93,4 +93,9 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     {
         level++;
     }
+
+    public void LevelUp()
+    {
+        level++;
+    }
 }

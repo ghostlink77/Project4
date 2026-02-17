@@ -74,4 +74,9 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     {
         return WeaponName;
     }
+
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
 }
