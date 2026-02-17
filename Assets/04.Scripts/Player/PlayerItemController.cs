@@ -16,9 +16,11 @@ public class PlayerItemController : MonoBehaviour
     private List<GameObject> _weaponSlot = new List<GameObject>();
 
     [Header("플레이어 패시브 아이템 슬롯")]
+    public IReadOnlyList<GameObject> PassiveSlot { get { return _passiveItemSlot.AsReadOnly(); } }
     private List<GameObject> _passiveItemSlot = new List<GameObject>();
 
     [Header("플레이어 포탑 슬롯")]
+    public IReadOnlyList<GameObject> TurretSlot { get { return _turretSlot.AsReadOnly(); } }
     private List<GameObject> _turretSlot = new List<GameObject>();
 
     // 초기 설정 PlayerManager에서 받아오기

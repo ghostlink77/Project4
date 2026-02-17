@@ -13,7 +13,6 @@ public struct ItemSlotData
     public TextMeshProUGUI ItemDescriptionText;
 }
 
-
 public class InGameUIController : MonoBehaviour
 {
     [Header("UI")]
@@ -28,8 +27,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private ItemSlotData[] _itemSelectBtnDatas = new ItemSlotData[3];
 
     [Header("Inventory")]
-    [SerializeField] private ItemSlotData[] _inventorySlot = new ItemSlotData[7];
-    [SerializeField] private ItemSlotData[] _passiveInventorySlot = new ItemSlotData[7];
+    [SerializeField] private List<Inventory> _inventories = new List<Inventory>();
 
     public readonly string IMAGE_PATH = "Sprite";
 
@@ -187,16 +185,9 @@ public class InGameUIController : MonoBehaviour
 
     private void UpdateInventory()
     {
-        IReadOnlyList<GameObject> weaponSlot = PlayerManager.Instance.PlayerItemController.WeaponSlot;
-        if (weaponSlot == null) return;
-        for (int index = 0; index < weaponSlot.Count; index++)
+        foreach (var inventory in _inventories)
         {
-            if (weaponSlot[index] == null) return;
-            ItemSlotData itemSlot = _inventorySlot[index];
-            itemSlot.ItemImage.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/{weaponSlot[index].name}");
-            itemSlot.ItemImage.color = Color.white;
-            itemSlot.ItemLevelText.text = weaponSlot[index].GetComponent<WeaponStatController>().Level.ToString();
-            itemSlot.ItemDescriptionText.text = "";
+            inventory.UpdateSlot();
         }
     }
 
