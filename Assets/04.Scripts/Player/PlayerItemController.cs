@@ -133,7 +133,46 @@ public class PlayerItemController : MonoBehaviour
         }
         return -1;
     }
-    
+
+    public int GetItemLevelInSlot<T>(T itemData) where T : IItemStatData
+    {
+        IReadOnlyList<GameObject> itemList = null;
+       
+        if (typeof(T) == typeof(WeaponStatData)) itemList = _weaponSlot;
+        else if (typeof(T) == typeof(PassiveStatData)) itemList = _passiveItemSlot;
+        else if (typeof(T) == typeof(TurretStatData)) itemList = _turretSlot;
+
+        if (itemList == null) return -1;
+
+        foreach (var item in itemList)
+        {
+            if (item == null) break;
+            if (item.name == itemData.GetName())
+            {
+                return item.GetComponent<IItemStatController>().GetLevel();
+            }
+        }
+        return -1;
+    }
+
+    public int GetItemIndexInSlot<T>(T itemData) where T : IItemStatData
+    {
+        IReadOnlyList<GameObject> itemList = null;
+        if (typeof(T) == typeof(WeaponStatData)) itemList = _weaponSlot;
+        else if (typeof(T) == typeof(PassiveStatData)) itemList = _passiveItemSlot;
+        else if (typeof(T) == typeof(TurretStatData)) itemList = _turretSlot;
+
+        if (itemList == null) return -1;
+
+        for (int index = 0; index < itemList.Count; index++)
+        {
+            if (itemList[index] == null) break;
+            if (itemList[index].name == itemData.GetName())
+                return index;
+        }
+        return -1;
+    }
+
     // 슬롯에 추가할 무기가 현재 슬롯에 있는지, 있다면 무기의 위치를 반환. 
     public int GetWeaponIndexInSlot(WeaponStatData weaponData)
     {

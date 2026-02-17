@@ -8,6 +8,10 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
 
     [SerializeField]
     private List<WeaponStatData> WeaponDatas = new List<WeaponStatData>();
+    /*[SerializeField]
+    private List<PassiveStatData> _passiveDatas = new List<PassiveStatData>();
+    [SerializeField]
+    private List<TurretStatData> _turretDatas = new List<TurretStatData>();*/ 
     
     protected override void Init()
     {
@@ -61,6 +65,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
             T newItemData = itemDatas[index];
 
             const int maxLevel = 10;
+            //int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
             //int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newPassiveData);
 
             /*if (currentPassiveLevel < maxLevel)
