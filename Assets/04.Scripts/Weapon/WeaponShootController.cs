@@ -91,6 +91,7 @@ public class WeaponShootController : MonoBehaviour
         Vector2 targetPos = Vector2.zero;
         for (int i = 0; i < enemiesInRange.Count; i++)
         {
+            if (enemiesInRange[i] == null) continue;
             Vector2 targetCandidatePos = enemiesInRange[i].transform.position;
             float oneEnemyDistance = GetDirectionVector(playerPos,targetCandidatePos).sqrMagnitude;
             if (smallestDistance > oneEnemyDistance)
@@ -110,10 +111,6 @@ public class WeaponShootController : MonoBehaviour
     GameObject OnCreateBullet()
     {
         GameObject obj = Instantiate(_bulletPrefab);
-        BulletController bulletController = obj.GetComponent<BulletController>();
-        bulletController.SetDmg(_dmg);
-        bulletController.SetProjectileSpeed(_projectileSpeed);
-        if (bulletController != null) bulletController.SetProjectilePool(_projectilePool);
         return obj;
     }
     
@@ -138,20 +135,20 @@ public class WeaponShootController : MonoBehaviour
         Vector2 direction = GetDirectionVector(playerPos, targetPos).normalized;
         obj.transform.right = direction;
         
+        // 총알 스탯 결정
+        if (obj.TryGetComponent<BulletController>(out var bulletController))
+        {
+            bulletController.SetUp(_dmg, _projectileSpeed, _projectilePool);
+        }
+        
         // 총알 오브젝트 활성화
         obj.SetActive(true);
-        
-        // 총알 스탯 결정
-        BulletController bulletController = obj.GetComponent<BulletController>();
-        bulletController.SetDmg(_dmg);
-        bulletController.SetProjectileSpeed(_projectileSpeed);
     }
 
     // 총알 없앨 때 적용할 메서드(오브젝트 풀로 다시 넣을 때)
     void OnReleaseBullet(GameObject obj)
     {
         obj.SetActive(false);
-        obj.GetComponent<BulletController>().StopAllCoroutines();
     }
     
     // 총알 삭제할 때
