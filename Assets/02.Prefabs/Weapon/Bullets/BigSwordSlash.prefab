@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 596999080202338209}
   - component: {fileID: 7683079884353576315}
   - component: {fileID: 7600669412002984863}
+  - component: {fileID: 4319109244842216995}
   - component: {fileID: 8710815965194665149}
   - component: {fileID: 8751097914261429408}
   - component: {fileID: 7994673433551392534}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 6880329312469885530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.039, y: -0.015, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _animationClip: {fileID: 7400000, guid: 47b5daf98f5859243a02d8039c19c4d8, type: 2}
   _lifeTime: 3
   _deleteAfterAnimation: 1
 --- !u!114 &7600669412002984863
@@ -125,6 +125,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
   _audioSource: {fileID: 7994673433551392534}
   _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
+--- !u!114 &4319109244842216995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880329312469885530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06dbcbd0cc8042d40ac18ba641f5842c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletAnimationController
+  _bulletAnimationClip: {fileID: 7400000, guid: 47b5daf98f5859243a02d8039c19c4d8, type: 2}
 --- !u!95 &8710815965194665149
 Animator:
   serializedVersion: 7
