@@ -13,42 +13,67 @@ public class BulletController : MonoBehaviour
     public void EventInvoke(Action eventName) => eventName?.Invoke();
     #endregion
 
-    #region 사운드 에셋들
-    [Header("발사음")]
-    [SerializeField]
-    private AudioClip _hitSound;
-    #endregion
     [Header("애니메이션 클립(등록 전 툴팁 읽어주세요)")]
     [Tooltip("애니메이션을 한번만 출력하고 없앨 경우에만 등록. 이외에는 등록할 필요 없음.")]
     [SerializeField]
     private AnimationClip _animationClip;
 
+    #region 투사체 스탯
     private float _projectileSpeed;
     private int _projectileDmg;
+    #endregion
     
-    private AudioSource _audioSource;
-
     [SerializeField]
     [Header("총알 수명(초)")]
     private float _lifeTime = 3f;
+    
+    [Header("한번만 재생하고 삭제 여부")]
+    [SerializeField]
+    private bool _deleteAfterAnimation;
 
+    #region 오브젝트 풀링
     private IObjectPool<GameObject> _projectilePool;
-
     public void SetProjectilePool(IObjectPool<GameObject> pool) => _projectilePool = pool;
+    #endregion
+    
+    #region 참조변수
+    SpriteRenderer _spriteRenderer;
+    Collider2D _collider2D;
+    BulletSoundController _bulletSoundController;
+    WaitForSeconds _delayForBulletDisable;
+    #warning 적 피격음만큼 기다리게 하는 WaitForSeconds()를 캐싱해두는 변수가 있었으나, 일단은 임시로 사운드매니저에서 출력을 담당하므로 쓸 일이 없어 숨겨둠. 이후에 총알 착탄지점에서 소리가 들리도록 만들려면 이것을 사용하도록 함.
+    // WaitForSeconds _delayForHitSound;
+    #endregion
 
     void Awake()
     {
-        if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
+        CashingComponents();
+        _bulletSoundController = GetComponent<BulletSoundController>();
         SetDeleteTime();
+        CashingWaitForSeconds();
     }
+
+    #region 캐싱 메서드
+    // 각종 컴포넌트들을 캐싱하는 메서드들
+    private void CashingComponents()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2D = GetComponent<Collider2D>();
+    }
+
+    private void CashingWaitForSeconds()
+    {
+        _delayForBulletDisable = new WaitForSeconds(_lifeTime);
+        // if (_bulletSoundController.HitSound != null) _delayForHitSound = new WaitForSeconds(_bulletSoundController.HitSound.length);
+    }
+    #endregion
 
     #region 유니티 생명주기 메서드
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
-        AddOnEvent();
+        _spriteRenderer.enabled = true;
+        _collider2D.enabled = true;
 
         StartCoroutine(DeactivateAfterTime());
     }
@@ -56,9 +81,8 @@ public class BulletController : MonoBehaviour
     void OnDisable()
     {
         StopAllCoroutines();
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
-        RemoveFromEvent();
+        _spriteRenderer.enabled = true;
+        _collider2D.enabled = true;
     }
 
     void Update()
@@ -66,49 +90,43 @@ public class BulletController : MonoBehaviour
         transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     }
     #endregion
-    
-    #region 이벤트 메서드
-    private void AddOnEvent()
-    {
-        Hit += OnEventHit;
-    }
-    
-    private void RemoveFromEvent()
-    {
-        Hit -= OnEventHit;
-    }
-    
-    private void OnEventHit()
-    {
-        PlaySound(_hitSound);
-    }
-    #endregion
 
+    #region 스탯 설정 메서드
     // 투사체 데미지 받아오는 스크립트
     public void SetDmg(int dmg) => _projectileDmg = dmg;
     public void SetProjectileSpeed(float projSpeed) => _projectileSpeed = projSpeed;
+    #endregion
     
     #region 코루틴 함수
     private IEnumerator DeactivateAfterTime()
     {
-        yield return new WaitForSeconds(_lifeTime);
+        yield return _delayForBulletDisable;
         ReturnToPool();
         
     }
     
+    #warning 임시방편으로 사운드매니저를 사용하기 때문에 착탄지점에서 완전히 비활성화하지 않고 남겨둘 필요가 없으므로 주석처리해둠
+    /*
     private IEnumerator DelayedRelease()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
+        _spriteRenderer.enabled = false;
+        _collider2D.enabled = false;
         
-        if (_audioSource != null && _audioSource.clip != null)
-        {
-            yield return new WaitWhile(() => _audioSource.isPlaying);
-        }
+        // yield return new WaitWhile(() => SoundManager.Instance.GetAudioSource(SoundType.Enemy).isPlaying);
+        // yield return _delayForHitSound;
         
         _projectilePool.Release(gameObject);
     }
+    */
     #endregion
+    
+    #warning 코루틴을 사용하지 않으므로 임시로 추가한 오브젝트 오브젝트 풀링으로 총알 넣는 함수
+    private void ImmediateRelease()
+    {
+        _spriteRenderer.enabled = false;
+        _collider2D.enabled = false;
+        _projectilePool.Release(gameObject);
+    }
     
     void ReturnToPool()
     {
@@ -120,7 +138,9 @@ public class BulletController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             if (!gameObject.activeSelf) return;
-            StartCoroutine(DelayedRelease());
+            // StartCoroutine(DelayedRelease());
+            ImmediateRelease();
+            
             other.GetComponent<IDamageable>().TakeDamage(_projectileDmg);
             EventInvoke(Hit);
         }
@@ -129,38 +149,7 @@ public class BulletController : MonoBehaviour
     // 애니메이션이 사라지는 시간을 결정하는 함수
     private void SetDeleteTime()
     {
+        if (!_deleteAfterAnimation) return;
         if (_animationClip != null) _lifeTime = _animationClip.length;
     }
-
-    // 총알 사운드 출력하는 메서드
-    private void PlaySound(AudioClip clip)
-    {
-        if (NullAudioClip(clip)) return;
-        if (NullAudioSource()) return;
-        if (_audioSource.clip != clip) _audioSource.clip = clip;
-        _audioSource.Play();
-    }
-    
-    #region null 점검 스크립트
-    private bool NullAudioClip(AudioClip clip)
-    {
-        if (clip == null)
-        {
-            Debug.Log($"오디오클립이 null임");
-            return true;
-        }
-        return false;
-    }
-    // 오디오 소스가 null인지 확인하는 메서드
-    private bool NullAudioSource()
-    {
-        if (_audioSource == null)
-        {
-            Debug.Log("오디오소스가 null임");
-            return true;
-        }
-        return false;
-    }
-    
-    #endregion
 }

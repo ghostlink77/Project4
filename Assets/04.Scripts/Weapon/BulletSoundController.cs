@@ -14,6 +14,7 @@ public class BulletSoundController : MonoBehaviour
     [Header("적 맞췄을 때 나는 소리")]
     [SerializeField]
     private AudioClip _hitSound;
+    public AudioClip HitSound {get => _hitSound; private set=> _hitSound = value;}
     #endregion
     
     #region 스크립트 참조

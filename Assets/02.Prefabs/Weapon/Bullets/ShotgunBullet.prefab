@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _hitSound: {fileID: 0}
   _animationClip: {fileID: 0}
   _lifeTime: 3
+  _deleteAfterAnimation: 0
 --- !u!114 &-6844152525991266679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
   _audioSource: {fileID: 6784223452123157467}
+  _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!61 &7697141031111498146
 BoxCollider2D:
   m_ObjectHideFlags: 0
