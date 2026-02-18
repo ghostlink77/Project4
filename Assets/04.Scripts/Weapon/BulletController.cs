@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
-    public event Action Hit;
+    public event Action Generate, Hit, Remove;
     public void EventInvoke(Action eventName) => eventName?.Invoke();
     #endregion
 
