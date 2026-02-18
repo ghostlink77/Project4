@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -6,10 +8,15 @@ using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
 {
+    #region 이벤트
+    public event Action Hit;
+    public void EventInvoke(Action eventName) => eventName?.Invoke();
+    #endregion
+
     #region 사운드 에셋들
     [Header("발사음")]
     [SerializeField]
-    private AudioClip _shootSound;
+    private AudioClip _hitSound;
     #endregion
     [Header("애니메이션 클립(등록 전 툴팁 읽어주세요)")]
     [Tooltip("애니메이션을 한번만 출력하고 없앨 경우에만 등록. 이외에는 등록할 필요 없음.")]
@@ -41,10 +48,9 @@ public class BulletController : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
+        AddOnEvent();
 
         StartCoroutine(DeactivateAfterTime());
-
-        PlaySound(_shootSound);
     }
 
     void OnDisable()
@@ -52,6 +58,7 @@ public class BulletController : MonoBehaviour
         StopAllCoroutines();
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<Collider2D>().enabled = true;
+        RemoveFromEvent();
     }
 
     void Update()
@@ -60,6 +67,23 @@ public class BulletController : MonoBehaviour
     }
     #endregion
     
+    #region 이벤트 메서드
+    private void AddOnEvent()
+    {
+        Hit += OnEventHit;
+    }
+    
+    private void RemoveFromEvent()
+    {
+        Hit -= OnEventHit;
+    }
+    
+    private void OnEventHit()
+    {
+        PlaySound(_hitSound);
+    }
+    #endregion
+
     // 투사체 데미지 받아오는 스크립트
     public void SetDmg(int dmg) => _projectileDmg = dmg;
     public void SetProjectileSpeed(float projSpeed) => _projectileSpeed = projSpeed;
@@ -98,6 +122,7 @@ public class BulletController : MonoBehaviour
             if (!gameObject.activeSelf) return;
             StartCoroutine(DelayedRelease());
             other.GetComponent<IDamageable>().TakeDamage(_projectileDmg);
+            EventInvoke(Hit);
         }
     }
     

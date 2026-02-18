@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6580507157682595236}
   - component: {fileID: 119052148539259410}
   - component: {fileID: 1239158515339091101}
+  - component: {fileID: -3673833467466675828}
   - component: {fileID: 78060522483258619}
   m_Layer: 0
   m_Name: AutoRIfleBullet
@@ -166,9 +167,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _shootSound: {fileID: 8300000, guid: 191ea8dda64216044b2f21b45da2bb32, type: 3}
+  _hitSound: {fileID: 0}
   _animationClip: {fileID: 0}
   _lifeTime: 3
+--- !u!114 &-3673833467466675828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740604490144623316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c280c909d53dd6a429a8eac71b595d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
+  _audioSource: {fileID: 78060522483258619}
 --- !u!82 &78060522483258619
 AudioSource:
   m_ObjectHideFlags: 0
@@ -181,7 +195,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4091822556456845848}
   - component: {fileID: 596999080202338209}
   - component: {fileID: 7683079884353576315}
+  - component: {fileID: 7600669412002984863}
   - component: {fileID: 8710815965194665149}
   - component: {fileID: 8751097914261429408}
   - component: {fileID: 7994673433551392534}
@@ -107,9 +108,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _shootSound: {fileID: 8300000, guid: 32ba729671790be46b1a1e936f3c3663, type: 3}
+  _hitSound: {fileID: 0}
   _animationClip: {fileID: 7400000, guid: 47b5daf98f5859243a02d8039c19c4d8, type: 2}
   _lifeTime: 3
+--- !u!114 &7600669412002984863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6880329312469885530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c280c909d53dd6a429a8eac71b595d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
+  _audioSource: {fileID: 7994673433551392534}
 --- !u!95 &8710815965194665149
 Animator:
   serializedVersion: 7
@@ -204,7 +218,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
