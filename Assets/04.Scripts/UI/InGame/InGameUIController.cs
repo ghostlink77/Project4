@@ -22,6 +22,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject _levelupUI;
     [SerializeField] private TextMeshProUGUI _playTimeUI;
     [SerializeField] private Image _expBar;
+    [SerializeField] private Minimap _minimap;
 
     [Header("ItemSelectBtn")]
     [SerializeField] private ItemSlotData[] _itemSelectBtnDatas = new ItemSlotData[3];
@@ -33,6 +34,9 @@ public class InGameUIController : MonoBehaviour
 
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
+
+    [SerializeField] private DamageTextSpawner _damageTextSpawner;
+
 
     private void Update()
     {
@@ -209,4 +213,68 @@ public class InGameUIController : MonoBehaviour
 
         UpdateInventory();
     }
+
+    public void ShowDamageText(Vector3 position, float damage)
+    {
+        if (_damageTextSpawner == null)
+        {
+            Debug.Log("No DamageTextSpanwer.");
+            return;
+        }
+        _damageTextSpawner.ShowDamageText(damage, position);
+    }
+
+    public void AddTracedEnemyInMinimap(Transform transform)
+    {
+        _minimap.AddTracedEnemy(transform);
+    }
+
+    public void RemoveTracedEnemyInMinimap(Transform transform)
+    {
+        _minimap.RemoveTracedEnemy(transform);
+    }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    [Header("TestObject")]
+    [SerializeField] private List<GameObject> _testEnemies;
+
+    public void ShowDamageTextDebug()
+    {
+        if (_testEnemies == null)
+        {
+            Debug.Log("No testObj.");
+            return;
+        }
+        foreach (var obj in _testEnemies)
+        {
+            _damageTextSpawner.ShowDamageText(10110, obj.transform.position);
+        }
+    }
+
+    public void AddTracedEnemiesInMinimapDebug()
+    {
+        if (_testEnemies == null)
+        {
+            Debug.Log("No testObj.");
+            return;
+        }
+        foreach (var obj in _testEnemies)
+        {
+            _minimap.AddTracedEnemy(obj.transform);
+        }
+    }
+
+    public void RemoveTracedEnemiesInMinimapDebug()
+    {
+        if (_testEnemies == null)
+        {
+            Debug.Log("No testObj.");
+            return;
+        }
+        foreach (var obj in _testEnemies)
+        {
+            _minimap.RemoveTracedEnemy(obj.transform);
+        }
+    }
+#endif
 }
