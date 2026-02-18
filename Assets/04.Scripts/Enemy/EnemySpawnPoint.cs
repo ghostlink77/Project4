@@ -8,6 +8,7 @@ public class EnemySpawnPoint : MonoBehaviour
     public EnemyType EnemyType { get => _enemyType; set => _enemyType = value; }
 
     [SerializeField] private float _spawnInterval = 1f;
+    public float SpawnInterval { get => _spawnInterval; set => _spawnInterval = value; }
 
     private bool _isSpawning = false;
 
@@ -21,7 +22,8 @@ public class EnemySpawnPoint : MonoBehaviour
     public void StartSpawn(EnemyType enemyType)
     {
         _isSpawning = true;
-        StartCoroutine(SpawnLoop(enemyType));
+        _enemyType = enemyType;
+        StartCoroutine(SpawnLoop());
     }
 
     public void StopSpawn()
@@ -30,14 +32,14 @@ public class EnemySpawnPoint : MonoBehaviour
         StopCoroutine("SpawnLoop");
     }
 
-    private IEnumerator SpawnLoop(EnemyType enemyType)
+    private IEnumerator SpawnLoop()
     {
         while (_isSpawning)
         {
             yield return new WaitForSeconds(GetRandomInterval());
             if (EnemySpawner.Instance != null)
             {
-                EnemySpawner.Instance.SpawnEnemy(enemyType.ToString(), GetRandomPosition());
+                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
             }
             else
             {

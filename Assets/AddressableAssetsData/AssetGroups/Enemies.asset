@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2d15bddbb8693c4fb35f3c1fb60cb3f
+    m_Address: Prefabs/Enemy/Drone2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefabs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8f5792be46dc5f246b2c6467cfa7a8af, type: 2}
   m_SchemaSet:

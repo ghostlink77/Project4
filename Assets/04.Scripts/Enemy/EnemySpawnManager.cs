@@ -9,25 +9,51 @@ using UnityEngine;
 public enum EnemyType
 {
     Drone1,
+    Drone2,
     Robot1,
 }
 
-public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
+public class EnemySpawnManager : MonoBehaviour
 {
     private List<EnemySpawnPoint> _spawnPoints;
-    [SerializeField] private EnemyType _currentEnemyType = EnemyType.Drone1;
+
+    [SerializeField] private Wavedata _waveData;
+    private Wave _currentWave;
 
     private void Start()
     {
+        _currentWave = _waveData.GetCurrentWave(0);
         _spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
-        StartSpawnAllPoints();
+        StartSpawnAllPoints(_currentWave.enemyType);
     }
 
-    public void StartSpawnAllPoints()
+    private void Update()
+    {
+        UpdateWave();
+    }
+
+    private void UpdateWave()
+    {
+        float playTime = InGameManager.Instance.PlayTime;
+        Wave newWave = _waveData.GetCurrentWave(playTime);
+        if (newWave != _currentWave)
+        {
+            _currentWave = newWave;
+            Debug.Log($"Wave changed: EnemyType={_currentWave.enemyType}, SpawnInterval={_currentWave.spawnInterval}");
+            StopSpawnAllPoints();
+            foreach (var sp in _spawnPoints)
+            {
+                sp.SpawnInterval = _currentWave.spawnInterval;
+            }
+            StartSpawnAllPoints(_currentWave.enemyType);
+        }
+    }
+
+    public void StartSpawnAllPoints(EnemyType enemyType)
     {
         foreach (var sp in _spawnPoints)
         {
-            sp.StartSpawn(_currentEnemyType);
+            sp.StartSpawn(enemyType);
         }
     }
 
@@ -38,13 +64,5 @@ public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
             sp.StopSpawn();
         }
     }
-
-    public void ChangeSpawningEnemyType(EnemyType newEnemyType)
-    {
-        _currentEnemyType = newEnemyType;
-        foreach (var sp in _spawnPoints)
-        {
-            sp.EnemyType = newEnemyType;
-        }
-    }
+    
 }

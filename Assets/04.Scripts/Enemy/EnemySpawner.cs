@@ -17,8 +17,6 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
     private Dictionary<string, ObjectPool<GameObject>> _enemyPools = new Dictionary<string, ObjectPool<GameObject>>();
     private Dictionary<string, GameObject> _enemyPrefabs = new Dictionary<string, GameObject>();
 
-    private List<Transform> _activeEnemies = new List<Transform>();
-
     private Rigidbody2D _agitRigidbody;
 
     protected override void Init()
@@ -93,27 +91,17 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         }
     }
 
-    public List<Transform> GetActiveEnemies()
-    {
-        return _activeEnemies;
-    }
 
     // NOTE: 오브젝트 풀 콜백 메서드들
 
     private void ActivateEnemy(GameObject enemy)
     {
         enemy.SetActive(true);
-        _activeEnemies.Add(enemy.transform);
-        Debug.Log($"적 활성화. 현재 활성 적 수: {_activeEnemies.Count}");
     }
 
     private void DisableEnemy(GameObject enemy)
     {
         enemy.SetActive(false);
-        if (_activeEnemies.Contains(enemy.transform))
-        {
-            _activeEnemies.Remove(enemy.transform);
-        }
     }
 
     private void DestroyEnemy(GameObject enemy)
