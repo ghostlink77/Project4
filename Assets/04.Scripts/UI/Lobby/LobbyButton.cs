@@ -39,4 +39,9 @@ public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         ChangeButtonEffect(false);
     }
+
+    public void OnClickBtn()
+    {
+        ChangeButtonEffect(false);
+    }
 }
