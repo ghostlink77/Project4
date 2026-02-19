@@ -1,23 +1,28 @@
+using System;
 using UnityEngine;
 
 public class PlayerLevelControl : MonoBehaviour
 {
     [Header("Player Status")]
-    public int currentLevel = 1;
-    public float currentXP = 0;
+    [SerializeField] public int currentLevel = 1;
+    [SerializeField] public float currentXP = 0;
     public float requiredXP = 0;
+
+    public event Action<int> OnLevelUp;
 
     void Start()
     {
         UpdateRequiredXP();
     }
 
+#if UNITY_EDITOR
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) AddXP(1);
         if (Input.GetKeyDown(KeyCode.W)) AddXP(2);
         if (Input.GetKeyDown(KeyCode.E)) AddXP(4);
     }
+#endif
 
     public void AddXP(float amount)
     {
@@ -37,7 +42,7 @@ public class PlayerLevelControl : MonoBehaviour
         UpdateRequiredXP();
 
         Debug.Log($"LEVEL UP! 현재 레벨: {currentLevel}");
-
+        /*
         if (InGameManager.Instance != null)
         {
             InGameManager.Instance.OpenLevelUpUI();
@@ -46,21 +51,27 @@ public class PlayerLevelControl : MonoBehaviour
         {
             Debug.LogError("InGameManager가 씬에 없습니다!");
         }
+        */
+        OnLevelUp?.Invoke(currentLevel);
     }
 
     void UpdateRequiredXP()
     {
+        const int MaxLevelTier1 = 15;
+        const int MaxLevelTier2 = 30;
+        const int MaxLevelTier3 = 50;
+
         int L = currentLevel;
 
-        if (L >= 1 && L <= 15)
+        if (L <= MaxLevelTier1)
         {
             requiredXP = 8 * L + 10;
         }
-        else if (L >= 16 && L <= 30)
+        else if (L <= MaxLevelTier2)
         {
             requiredXP = 15 * L + 120;
         }
-        else if (L >= 31 && L <= 50)
+        else if (L <= MaxLevelTier3)
         {
             requiredXP = 30 * L + 300;
         }
