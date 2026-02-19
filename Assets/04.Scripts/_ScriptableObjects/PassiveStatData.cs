@@ -1,82 +1,80 @@
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WeaponStatData", menuName = "Scriptable Objects/WeaponStatData")]
-public class WeaponStatData : ScriptableObject, IItemStatData
+[CreateAssetMenu(fileName = "PassiveStatData", menuName = "Scriptable Objects/PassiveStatData")]
+public class PassiveStatData : ScriptableObject, IItemStatData
 {
-    [Header("ë¬´ê¸° ì´ë¦„")]
+    [Header("ÀÌ¸§")]
     [SerializeField]
-    private string weaponName;
-    public string WeaponName => weaponName;
-    
-    [Header("ë¬´ê¸° ì•„ì´ì½˜")]
-    [SerializeField]
-    private Sprite icon;
-    public Sprite Icon => icon;
+    private string _passiveName;
+    public string PassiveName => _passiveName;
 
-    [Header("íˆ¬ì‚¬ì²´ í”„ë¦¬íŒ¹")]
+    [Header("ÅÍ·¿ ¾ÆÀÌÄÜ")]
+    [SerializeField]
+    private Sprite _icon;
+    public Sprite Icon => _icon;
+
+    [Header("Åõ»çÃ¼ ÇÁ¸®ÆÕ")]
     [SerializeField]
     private GameObject projectilePrefab;
     public GameObject ProjectilePrefab => projectilePrefab;
 
-    [Header("ë¬´ê¸° ë ˆë²¨")]
+    [Header("ÅÍ·¿ ·¹º§")]
     [SerializeField]
     private int level;
     public int Level => level;
-    
-    [Header("ë¬´ê¸° íƒ€ìž…")]
+
+    [Header("ÅÍ·¿ Å¸ÀÔ")]
     [SerializeField]
     private Game.Types.WeaponType type;
     public Game.Types.WeaponType Type => type;
-    
-    [Header("ë¬´ê¸° ê³µê²©ë ¥")]
+
+    [Header("ÅÍ·¿ °ø°Ý·Â")]
     [SerializeField]
     private int atk;
     public int Atk => atk;
-    
-    [Header("ë¬´ê¸° ì¹˜ëª…íƒ€ í™•ë¥ ")]
+
+    [Header("ÅÍ·¿ Ä¡¸íÅ¸ È®·ü")]
     [SerializeField]
     private float critRate;
     public float CritRate => critRate;
 
-    [Header("ë¬´ê¸° ì¹˜ëª…íƒ€ ë°°ìˆ˜")]
+    [Header("ÅÍ·¿ Ä¡¸íÅ¸ ¹è¼ö")]
     [SerializeField]
     private float critMultiplier;
     public float CritMultiplier => critMultiplier;
 
-    [Header("ìƒíƒœ ì´ìƒ í™•ë¥ ")]
+    [Header("»óÅÂ ÀÌ»ó È®·ü")]
     [SerializeField]
     private float effectRate;
     public float EffectRate => effectRate;
 
-    [Header("ê³µê²© ì¿¨íƒ€ìž„(ê³µê²© ì†ë„)")]
+    [Header("°ø°Ý ÄðÅ¸ÀÓ(°ø°Ý ¼Óµµ)")]
     [SerializeField]
     private float atkSpeed;
     public float AtkSpeed => atkSpeed;
 
-    [Header("ê³µê²© ì‚¬ê±°ë¦¬")]
+    [Header("°ø°Ý »ç°Å¸®")]
     [SerializeField]
     private float atkRange;
     public float AtkRange => atkRange;
 
-    [Header("íˆ¬ì‚¬ì²´ ì†ë„")]
+    [Header("Åõ»çÃ¼ ¼Óµµ")]
     [SerializeField]
     private float projectileSpeed;
     public float ProjectileSpeed => projectileSpeed;
-    
-    [Header("íˆ¬ì‚¬ì²´ ê°œìˆ˜")]
+
+    [Header("Åõ»çÃ¼ °³¼ö")]
     [SerializeField]
     private int projectileCount;
     public int ProjectileCount => projectileCount;
 
     public string GetName()
     {
-        return WeaponName;
+        return _passiveName;
     }
 
     public Sprite GetIcon()
     {
-        return icon;
+        return _icon;
     }
 }

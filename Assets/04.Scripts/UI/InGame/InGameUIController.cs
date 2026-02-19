@@ -13,7 +13,6 @@ public struct ItemSlotData
     public TextMeshProUGUI ItemDescriptionText;
 }
 
-
 public class InGameUIController : MonoBehaviour
 {
     [Header("UI")]
@@ -28,7 +27,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private ItemSlotData[] _itemSelectBtnDatas = new ItemSlotData[3];
 
     [Header("Inventory")]
-    [SerializeField] private ItemSlotData[] _inventorySlot = new ItemSlotData[7];
+    [SerializeField] private List<Inventory> _inventories = new List<Inventory>();
 
     public readonly string IMAGE_PATH = "Sprite";
 
@@ -151,66 +150,50 @@ public class InGameUIController : MonoBehaviour
 
     private void UpdateSelectableItemInUI()
     {
-        WeaponStatData newWeaponData = DataTableManager.Instance.GetSelectableWeapon();
-        if (newWeaponData == null)
+        UpdateSelectableItemBtn<WeaponStatData>(0);
+        UpdateSelectableItemBtn<PassiveStatData>(1);
+        UpdateSelectableItemBtn<TurretData>(2);
+    }
+
+    private void UpdateSelectableItemBtn<T>(int index) where T : IItemStatData
+    {
+        T newItemData = DataTableManager.Instance.GetSelectableItem<T>();
+        if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
         {
-            Debug.Log("No Selectable Weapon.");
-            _itemSelectBtnDatas[0].ItemNameText.text = "";
-            _itemSelectBtnDatas[0].ItemImage.sprite = null;
-            _itemSelectBtnDatas[0].ItemImage.color = new Color(1, 1, 1, 0);
-            _itemSelectBtnDatas[0].ItemLevelText.text = "";
-            //_itemSelectBtnDatas[0].ItemDescriptionText.text = randomWeapon.Description;
-            _itemSelectBtnDatas[0].ItemDescriptionText.text = "";
-            _itemSelectBtns[0].onClick.RemoveAllListeners();
+            Debug.Log("No Selectable Item.");
+            _itemSelectBtnDatas[index].ItemNameText.text = "";
+            _itemSelectBtnDatas[index].ItemImage.sprite = null;
+            _itemSelectBtnDatas[index].ItemImage.color = new Color(1, 1, 1, 0);
+            _itemSelectBtnDatas[index].ItemLevelText.text = "";
+            _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
+            _itemSelectBtns[index].onClick.RemoveAllListeners();
             return;
         }
-        int currentWeaponLevel = PlayerManager.Instance.PlayerItemController.GetWeaponLevelInSlot(newWeaponData);
+        int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
 
-        int weaponLevel = 1;
-        if (currentWeaponLevel != -1)
+        int ItemLevel = 1;
+        if (currentItemLevel != -1)
         {
-            weaponLevel = currentWeaponLevel + 1;
+            ItemLevel = currentItemLevel + 1;
         }
-            
-        _itemSelectBtnDatas[0].ItemNameText.text = newWeaponData.WeaponName;
-        _itemSelectBtnDatas[0].ItemImage.sprite = newWeaponData.Icon;
-        _itemSelectBtnDatas[0].ItemLevelText.text = weaponLevel.ToString();
-        //_itemSelectBtnDatas[0].ItemDescriptionText.text = randomWeapon.Description;
-        _itemSelectBtnDatas[0].ItemDescriptionText.text = "";
-        _itemSelectBtns[0].onClick.RemoveAllListeners();
-        _itemSelectBtns[0].onClick.AddListener(() => OnClickItemSelectBtn(
-            newWeaponData,
-            "Weapon"
-            ));
+        _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
+        _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+        _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
+        _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
+        _itemSelectBtns[index].onClick.RemoveAllListeners();
+        _itemSelectBtns[index].onClick.AddListener(() => OnClickItemSelectBtn<T>(newItemData));
     }
 
     private void UpdateInventory()
     {
-        IReadOnlyList<GameObject> weaponSlot = PlayerManager.Instance.PlayerItemController.WeaponSlot;
-        if (weaponSlot == null) return;
-        for (int index = 0; index < weaponSlot.Count; index++)
+        foreach (var inventory in _inventories)
         {
-            if (weaponSlot[index] == null) return;
-            ItemSlotData itemSlot = _inventorySlot[index];
-            itemSlot.ItemImage.sprite = Resources.Load<Sprite>($"{IMAGE_PATH}/{weaponSlot[index].name}");
-            itemSlot.ItemImage.color = Color.white;
-            itemSlot.ItemLevelText.text = weaponSlot[index].GetComponent<WeaponStatController>().Level.ToString();
-            itemSlot.ItemDescriptionText.text = "";
+            inventory.UpdateSlot();
         }
     }
-
-    private void OnClickItemSelectBtn(WeaponStatData newWeaponData, string itemType)
+    private void OnClickItemSelectBtn<T>(T newItemData) where T : IItemStatData
     {
-        switch(itemType)
-        {
-            case "Weapon":
-                PlayerManager.Instance.PlayerItemController.AddWeaponToSlot(newWeaponData);
-                break;
-            default:
-                Debug.Log("Doesn't Contains ItemType.");
-                break;
-        }
-
+        PlayerManager.Instance.PlayerItemController.AddItemToSlot<T>(newItemData);
         UpdateInventory();
     }
 

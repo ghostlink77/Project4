@@ -11,7 +11,7 @@ using UnityEngine;
 
 public enum WeaponStat {Level, Atk, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount}
 
-public class WeaponStatController : MonoBehaviour
+public class WeaponStatController : MonoBehaviour, IItemStatController
 {
     public event Action<WeaponStat> OnStatChanged;
 
@@ -30,6 +30,10 @@ public class WeaponStatController : MonoBehaviour
     // 무기 범위로 사용되는 콜라이더
     private CircleCollider2D _weaponRangeCollider;
     
+    public int GetLevel()
+    {
+        return level;
+    }
     public void SetUp(WeaponStatData baseStat, CircleCollider2D weaponRange)
     {
         _weaponRangeCollider = weaponRange;
@@ -86,6 +90,11 @@ public class WeaponStatController : MonoBehaviour
     }
 
     public void LevelUpWeaponLevel()
+    {
+        level++;
+    }
+
+    public void LevelUp()
     {
         level++;
     }
