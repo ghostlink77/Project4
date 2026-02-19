@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private EnemyType _enemyType = EnemyType.Drone1;
-    public EnemyType EnemyType { get => _enemyType; set => _enemyType = value; }
 
     [SerializeField] private float _spawnInterval = 1f;
     public float SpawnInterval { get => _spawnInterval; set => _spawnInterval = value; }
 
     private bool _isSpawning = false;
+    private Coroutine _spawnCoroutine;
 
     private CircleCollider2D _spawnRangeCollider;
 
@@ -23,13 +23,18 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         _isSpawning = true;
         _enemyType = enemyType;
-        StartCoroutine(SpawnLoop());
+        _spawnCoroutine = StartCoroutine(SpawnLoop());
     }
 
     public void StopSpawn()
     {
+        if (!_isSpawning || _spawnCoroutine == null)
+        {
+            return;
+        }
         _isSpawning = false;
-        StopCoroutine("SpawnLoop");
+        StopCoroutine(_spawnCoroutine);
+        _spawnCoroutine = null;
     }
 
     private IEnumerator SpawnLoop()

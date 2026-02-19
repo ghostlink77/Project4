@@ -19,12 +19,12 @@ public class EnemySpawnManager : MonoBehaviour
 
     [SerializeField] private Wavedata _waveData;
     private Wave _currentWave;
+    private int _waveIndex = -1;
 
     private void Start()
     {
-        _currentWave = _waveData.GetCurrentWave(0);
         _spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
-        StartSpawnAllPoints(_currentWave.enemyType);
+        UpdateWave();
     }
 
     private void Update()
@@ -35,16 +35,25 @@ public class EnemySpawnManager : MonoBehaviour
     private void UpdateWave()
     {
         float playTime = InGameManager.Instance.PlayTime;
-        Wave newWave = _waveData.GetCurrentWave(playTime);
-        if (newWave != _currentWave)
+        int nextWaveIndex = _waveIndex + 1;
+
+        if (nextWaveIndex < _waveData.Waves.Length && playTime >= _waveData.Waves[nextWaveIndex].startTime)
         {
-            _currentWave = newWave;
+            _waveIndex = nextWaveIndex;
+            _currentWave = _waveData.Waves[_waveIndex];
+
             Debug.Log($"Wave changed: EnemyType={_currentWave.enemyType}, SpawnInterval={_currentWave.spawnInterval}");
             StopSpawnAllPoints();
             foreach (var sp in _spawnPoints)
             {
                 sp.SpawnInterval = _currentWave.spawnInterval;
             }
+            StartSpawnAllPoints(_currentWave.enemyType);
+        }
+        else if (_waveIndex == -1 && _waveData.Waves.Length > 0)
+        {
+            _waveIndex = 0;
+            _currentWave = _waveData.GetCurrentWave(0);
             StartSpawnAllPoints(_currentWave.enemyType);
         }
     }
