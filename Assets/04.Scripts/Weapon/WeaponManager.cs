@@ -84,12 +84,16 @@ public class WeaponManager : MonoBehaviour
     // 필요한 스크립트들 참조하는 메서드
     void GetRequiredComponents()
     {
-        _weaponShootController = GetComponent<WeaponShootController>();
-        _weaponStatController = GetComponent<WeaponStatController>();
-        _weaponEventController = GetComponent<WeaponEventController>();
-        _weaponRangeCollider = GetComponent<CircleCollider2D>();
-        _weaponSoundController = GetComponent<WeaponSoundController>();
-
+        if (!TryGetComponent<WeaponShootController>(out _weaponShootController))
+        Debug.Log($"{nameof(_weaponShootController)}가 null임");
+        if (!TryGetComponent<WeaponStatController>(out _weaponStatController))
+        Debug.Log($"{nameof(_weaponStatController)}가 null임");
+        if (!TryGetComponent<WeaponEventController>(out _weaponEventController))
+        Debug.Log($"{nameof(_weaponEventController)}가 null임");
+        if (!TryGetComponent<CircleCollider2D>(out _weaponRangeCollider))
+        Debug.Log($"{nameof(_weaponRangeCollider)}가 null임");
+        if (!TryGetComponent<WeaponSoundController>(out _weaponSoundController))
+        Debug.Log($"{nameof(_weaponSoundController)}가 null임");
         
         // 스탯 먼저 초기화
         _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);
