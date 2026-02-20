@@ -84,17 +84,20 @@ public class InGameUIController : MonoBehaviour
     public void OnClickOpenPauseUI()
     {
         _pauseUI.SetActive(true);
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
         Time.timeScale = 0f;
     }
     
     public void OnClickClosePauseUI()
     {
         _pauseUI.SetActive(false);
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
         Time.timeScale = 1f;
     }
 
     public void OnClickOpenConfigUI()
     {
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
         UIManager.Instance.OpenUI<ConfigUI>();
     }
 
@@ -105,6 +108,7 @@ public class InGameUIController : MonoBehaviour
 
     public void OnClickGoLobby()
     {
+        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
         SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 
