@@ -29,7 +29,10 @@ public class Minimap : MonoBehaviour
     [SerializeField] private Bounds _mapBounds;
 
     [Header("Player Options")]
-    [SerializeField] private float minimapScale = 1.0f;
+    [SerializeField] private float _minimapScale = 1.0f;
+
+    [Header("Animation")]
+    [SerializeField] private Animator _anim;
 
     Vector2 _unitScale;
     Vector2 _mapPosition = Vector2.zero;
@@ -56,8 +59,8 @@ public class Minimap : MonoBehaviour
         Transform positionReference = _playerTransform;
         Vector3 positionOffset = _mapBounds.center - positionReference.position;
 
-        _mapPosition.x = positionOffset.x * _unitScale.x * -1 * minimapScale;
-        _mapPosition.y = positionOffset.y * _unitScale.y * -1 * minimapScale;
+        _mapPosition.x = positionOffset.x * _unitScale.x * -1 * _minimapScale;
+        _mapPosition.y = positionOffset.y * _unitScale.y * -1 * _minimapScale;
 
         _playerIndicator.localPosition = _mapPosition;
 
@@ -117,8 +120,8 @@ public class Minimap : MonoBehaviour
             Transform positionReference = tracedEnemy.Key;
             Vector3 positionOffset = _mapBounds.center - positionReference.position;
 
-            float x = positionOffset.x * _unitScale.x * -1 * minimapScale;
-            float y = positionOffset.y * _unitScale.y * -1 * minimapScale;
+            float x = positionOffset.x * _unitScale.x * -1 * _minimapScale;
+            float y = positionOffset.y * _unitScale.y * -1 * _minimapScale;
 
             tracedEnemy.Value.localPosition = new Vector2(x, y);
         }
@@ -157,5 +160,15 @@ public class Minimap : MonoBehaviour
             _turretIndicatorPool.Release(indicator);
             _turretIndicatorPools.Remove(transform);
         }
+    }
+
+    public void PlayWarningAnim()
+    {
+        AudioManager.Instance.Play(AudioType.SFX, "Warning");
+        _anim.enabled = true;
+    }
+    public void StopWarningAnim()
+    {
+        _anim.enabled = false;
     }
 }
