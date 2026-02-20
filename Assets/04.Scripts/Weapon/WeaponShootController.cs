@@ -3,6 +3,7 @@
 */
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -15,8 +16,11 @@ public class WeaponShootController : MonoBehaviour
     List<GameObject> enemiesInRange = new List<GameObject>();
     WeaponStatController _weaponStatController;
     
-    int _dmg;
+    int _dmg, _projectileCount;
     float _atkCoolTime, _projectileSpeed = 0f;
+    [SerializeField]
+    private float _dispersionAngle = 10f;
+
 
     void Awake()
     {   
@@ -73,7 +77,17 @@ public class WeaponShootController : MonoBehaviour
     {
         _dmg = dmg;
         _projectileSpeed = projSpeed;
-        GameObject bullet = _projectilePool.Get();
+        _projectileCount = (int)_weaponStatController.ProjectileCount;
+        for (int i = 0; i < _projectileCount; i++)
+        {
+            GameObject bullet = _projectilePool.Get();
+            if (_projectileCount >= 2)
+            {
+                float addedAngle = UnityEngine.Random.Range(-_dispersionAngle/2, _dispersionAngle/2);
+                bullet.transform.right = Quaternion.Euler(0, 0, addedAngle) * bullet.transform.right;
+            }
+            bullet.SetActive(true);
+        }
     }
     
     // 플레이어와 위치가 가장 가까운 타겟의 위치 벡터 구하는 방법
@@ -141,8 +155,8 @@ public class WeaponShootController : MonoBehaviour
             bulletController.SetUp(_dmg, _projectileSpeed, _projectilePool);
         }
         
-        // 총알 오브젝트 활성화
-        obj.SetActive(true);
+        // 총알 생성 후 활성화 단계인데, 산탄 기능 활성화를 위해 해당 코드를 Shoot()으로 옮길 예정. 임시로 주석처리함.
+        // obj.SetActive(true);
     }
 
     // 총알 없앨 때 적용할 메서드(오브젝트 풀로 다시 넣을 때)
