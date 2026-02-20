@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool _isLive;
 
     private Rigidbody2D _rigid;
-    private CapsuleCollider2D _collider;
+    private Collider2D _collider;
     private Rigidbody2D _target;
     private EnemyTargetSetter _targetSetter;
 
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _rigid = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _collider = GetComponent<CapsuleCollider2D>();
+        _collider = GetComponent<Collider2D>();
         _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
     }
 

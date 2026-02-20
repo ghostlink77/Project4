@@ -10,23 +10,59 @@ public enum EnemyType
 {
     Drone1,
     Drone2,
+    Robot1,
 }
 
-public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
+public class EnemySpawnManager : MonoBehaviour
 {
     private List<EnemySpawnPoint> _spawnPoints;
+
+    [SerializeField] private Wavedata _waveData;
+    private Wave _currentWave;
+    private int _waveIndex = -1;
 
     private void Start()
     {
         _spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
-        StartSpawnAllPoints();
+        UpdateWave();
     }
 
-    public void StartSpawnAllPoints()
+    private void Update()
+    {
+        UpdateWave();
+    }
+
+    private void UpdateWave()
+    {
+        float playTime = InGameManager.Instance.PlayTime;
+        int nextWaveIndex = _waveIndex + 1;
+
+        if (nextWaveIndex < _waveData.Waves.Length && playTime >= _waveData.Waves[nextWaveIndex].startTime)
+        {
+            _waveIndex = nextWaveIndex;
+            _currentWave = _waveData.Waves[_waveIndex];
+
+            Debug.Log($"Wave changed: EnemyType={_currentWave.enemyType}, SpawnInterval={_currentWave.spawnInterval}");
+            StopSpawnAllPoints();
+            foreach (var sp in _spawnPoints)
+            {
+                sp.SpawnInterval = _currentWave.spawnInterval;
+            }
+            StartSpawnAllPoints(_currentWave.enemyType);
+        }
+        else if (_waveIndex == -1 && _waveData.Waves.Length > 0)
+        {
+            _waveIndex = 0;
+            _currentWave = _waveData.GetCurrentWave(0);
+            StartSpawnAllPoints(_currentWave.enemyType);
+        }
+    }
+
+    public void StartSpawnAllPoints(EnemyType enemyType)
     {
         foreach (var sp in _spawnPoints)
         {
-            sp.StartSpawn();
+            sp.StartSpawn(enemyType);
         }
     }
 
@@ -37,12 +73,5 @@ public class EnemySpawnManager : SingletonBehaviour<EnemySpawnManager>
             sp.StopSpawn();
         }
     }
-
-    public void ChangeSpawningEnemyType(EnemyType newEnemyType)
-    {
-        foreach (var sp in _spawnPoints)
-        {
-            sp.EnemyType = newEnemyType;
-        }
-    }
+    
 }

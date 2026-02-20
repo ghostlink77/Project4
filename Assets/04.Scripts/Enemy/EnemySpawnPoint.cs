@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private EnemyType _enemyType = EnemyType.Drone1;
-    public EnemyType EnemyType { get => _enemyType; set => _enemyType = value; }
 
     [SerializeField] private float _spawnInterval = 1f;
+    public float SpawnInterval { get => _spawnInterval; set => _spawnInterval = value; }
 
     private bool _isSpawning = false;
+    private Coroutine _spawnCoroutine;
 
-    private EnemySpawner _spawner;
     private CircleCollider2D _spawnRangeCollider;
 
     private void Awake()
@@ -19,21 +19,22 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
-    private void Start()
-    {
-        _spawner = EnemySpawner.Instance;
-    }
-
-    public void StartSpawn()
+    public void StartSpawn(EnemyType enemyType)
     {
         _isSpawning = true;
-        StartCoroutine(SpawnLoop());
+        _enemyType = enemyType;
+        _spawnCoroutine = StartCoroutine(SpawnLoop());
     }
 
     public void StopSpawn()
     {
+        if (!_isSpawning || _spawnCoroutine == null)
+        {
+            return;
+        }
         _isSpawning = false;
-        StopCoroutine("SpawnLoop");
+        StopCoroutine(_spawnCoroutine);
+        _spawnCoroutine = null;
     }
 
     private IEnumerator SpawnLoop()
@@ -41,9 +42,9 @@ public class EnemySpawnPoint : MonoBehaviour
         while (_isSpawning)
         {
             yield return new WaitForSeconds(GetRandomInterval());
-            if (_spawner != null)
+            if (EnemySpawner.Instance != null)
             {
-                _spawner.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
+                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
             }
             else
             {
