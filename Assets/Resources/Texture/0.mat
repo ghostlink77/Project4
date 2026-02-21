@@ -54,8 +54,9 @@ Material:
     - _StencilWriteMask: 255
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
-    - _UnscaledTime: 57.525185
+    - _UnscaledTime: 27.99379
     m_Colors:
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
+    - _RepeatVector: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

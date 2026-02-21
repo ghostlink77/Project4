@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
             return false;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         return true;
     }
 
