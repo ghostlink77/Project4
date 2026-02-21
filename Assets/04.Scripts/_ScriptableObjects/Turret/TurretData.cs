@@ -9,6 +9,7 @@ public class TurretData : ScriptableObject, IItemStatData
     [SerializeField] private Sprite _icon;
     public int scrapCost;
 
+    public int maxHp;
     public int damage;
     public float range;
     public float fireRate;

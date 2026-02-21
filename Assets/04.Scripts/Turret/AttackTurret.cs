@@ -25,8 +25,7 @@ public class AttackTurret : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ProjectBullet();
     }
@@ -57,7 +56,6 @@ public class AttackTurret : MonoBehaviour
         _projectilePool = _weaponShootController.ReturnObjectPool();
     }
 
-    // 총알 프리팹이 있는지 확인하고, 안에 BulletController 스크립트까지 있는지 확인하는 메서드
     BulletController InspectNullAndGetPrefabComponent()
     {
         BulletController bulletController;
