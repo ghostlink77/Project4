@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 [Serializable]
@@ -23,6 +25,8 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Image _expBar;
     [SerializeField] private Minimap _minimap;
 
+    [SerializeField] private Volume _inGameVolume;
+
     [Header("ItemSelectBtn")]
     [SerializeField] private ItemSlotData[] _itemSelectBtnDatas = new ItemSlotData[3];
 
@@ -35,7 +39,6 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Button[] _itemSelectBtns;
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
-
 
     private void Update()
     {
@@ -219,6 +222,28 @@ public class InGameUIController : MonoBehaviour
     public void RemoveTracedEnemyInMinimap(Transform transform)
     {
         _minimap.RemoveTracedEnemy(transform);
+    }
+
+    public void ShowMinimapWarning()
+    {
+        _minimap.PlayWarningAnim();
+    }
+
+    public void HideMinimapWarning()
+    {
+        _minimap.StopWarningAnim();
+    }
+
+    public void ShowHealthLessWarning()
+    {
+        if (_inGameVolume.profile.TryGet<Vignette>(out var vignette))
+            vignette.intensity.value = 1;
+    }
+
+    public void HideHealthLessWarning()
+    {
+        if (_inGameVolume.profile.TryGet<Vignette>(out var vignette))
+            vignette.intensity.value = 0;
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

@@ -26,8 +26,8 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         }
 
         PlayTime = 0;
-        // AudioManager.Instance.StopAll();
-        // AudioManager.Instance.Play(AudioType.BGM, "InGameBGM");
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.Play(AudioType.BGM, "InGameBGM");
 
         _playerLevelControl = FindAnyObjectByType<PlayerLevelControl>();
         if (_playerLevelControl != null)
