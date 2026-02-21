@@ -54,7 +54,7 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     {
         _weaponRangeCollider = weaponRange;
         ResetWeaponData(baseStat);
-        AtkSpeed = baseStat.AtkSpeed;
+        //AtkSpeed = baseStat.AtkSpeed;
     }
 
     // 스크립터블 오브젝트에 저장한 대로 무기 데이터 설정 완료

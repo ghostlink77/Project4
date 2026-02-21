@@ -24,6 +24,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _playTimeUI;
     [SerializeField] private Image _expBar;
     [SerializeField] private Minimap _minimap;
+    [SerializeField] private GameObject _inGameUI;
 
     [SerializeField] private Volume _inGameVolume;
 
@@ -40,6 +41,14 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+        _pauseUI.SetActive(false);
+        _levelupUI.SetActive(false);
+        _endGameUI.SetActive(false);
+        _inGameUI.SetActive(true);
+    }
     private void Update()
     {
         HandleInput();
@@ -244,6 +253,13 @@ public class InGameUIController : MonoBehaviour
     {
         if (_inGameVolume.profile.TryGet<Vignette>(out var vignette))
             vignette.intensity.value = 0;
+    }
+
+    public void ShowEndGameUI()
+    {
+        AudioManager.Instance.StopAll();
+        _inGameUI.SetActive(false);
+        _endGameUI.SetActive(true);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

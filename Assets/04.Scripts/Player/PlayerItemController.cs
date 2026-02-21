@@ -78,8 +78,16 @@ public class PlayerItemController : MonoBehaviour
             if (typeof(T) == typeof(WeaponStatData)) path = "Weapon";
             else if (typeof(T) == typeof(PassiveStatData)) path = "Passive";
             else if (typeof(T) == typeof(TurretData)) path = "Turret";
-            GameObject newWeapon = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
-            slots[newItemData.GetName()] = newWeapon;
+            GameObject newWeaponPrefab = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
+            if (path == "Weapon")
+            {
+                GameObject newWeapon = Instantiate(newWeaponPrefab, transform);
+                slots[newItemData.GetName()] = newWeapon;
+            }
+            else
+            {
+                slots[newItemData.GetName()] = newWeaponPrefab;
+            }   
         }
         else Debug.Log("weaponSlots에 남은 자리 없음");
     }
