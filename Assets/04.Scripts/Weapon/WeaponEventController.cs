@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum WeaponStat { Level, Atk, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount }
+
 
 public class WeaponEventController : MonoBehaviour
 {
