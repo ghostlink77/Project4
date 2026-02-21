@@ -49,8 +49,20 @@ public class PlayerSoundController : MonoBehaviour
     
     private void OnEventHurt()
     {
-        if (_hurtClip != null) _soundManager.PlayPlayerSFX(_hurtClip);
-        else Debug.LogError($"_hurtClip이 null임");
+        if (IsNull(_hurtClip)) return;
+        _soundManager.PlaySFX(SoundType.Player, _hurtClip);
     }
-#endregion
+    #endregion
+    
+    #region null 점검 메서드
+    private bool IsNull<T>(T obj) where T : UnityEngine.Object
+    {
+        if (obj == null)
+        {
+            Debug.Log($"{nameof(obj)} 오브젝트 null임");
+            return true;
+        }
+        else return false;
+    }
+    #endregion
 }

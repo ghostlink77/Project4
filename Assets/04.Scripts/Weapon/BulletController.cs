@@ -1,141 +1,118 @@
+using System;
 using System.Collections;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
 {
-    #region 사운드 에셋들
-    [Header("발사음")]
-    [SerializeField]
-    private AudioClip _shootSound;
+    #region 이벤트
+    public event Action Generate, Hit, Remove;
+    public void CallEventGenerate() => Generate?.Invoke();
+    public void CallEventHit() => Hit?.Invoke();
+    public void CallEventRemove() => Remove?.Invoke();
     #endregion
-    [Header("애니메이션 클립(등록 전 툴팁 읽어주세요)")]
-    [Tooltip("애니메이션을 한번만 출력하고 없앨 경우에만 등록. 이외에는 등록할 필요 없음.")]
-    [SerializeField]
-    private AnimationClip _animationClip;
 
+    #region 투사체 스탯
     private float _projectileSpeed;
     private int _projectileDmg;
+    #endregion
     
-    private AudioSource _audioSource;
-
     [SerializeField]
     [Header("총알 수명(초)")]
     private float _lifeTime = 3f;
+    
+    [Header("한번만 재생하고 삭제 여부")]
+    [SerializeField]
+    private bool _deleteAfterAnimation;
+    public bool DeleteAfterAnimation {get => _deleteAfterAnimation; set => _deleteAfterAnimation = value;}
 
+    #region 오브젝트 풀링
     private IObjectPool<GameObject> _projectilePool;
-
     public void SetProjectilePool(IObjectPool<GameObject> pool) => _projectilePool = pool;
+    #endregion
+    
+    #region 참조변수
+    WaitForSeconds _delayForBulletDisable;
+    #warning 적 피격음만큼 기다리게 하는 WaitForSeconds()를 캐싱해두는 변수가 있었으나, 일단은 임시로 사운드매니저에서 출력을 담당하므로 쓸 일이 없어 숨겨둠. 이후에 총알 착탄지점에서 소리가 들리도록 만들려면 이것을 사용하도록 함.
+    // WaitForSeconds _delayForHitSound;
+    private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider2D;
+    #endregion
 
     void Awake()
     {
-        if (_audioSource == null) _audioSource = GetComponent<AudioSource>();
-        SetDeleteTime();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2D = GetComponent<Collider2D>();
+        CashingWaitForSeconds();
     }
+
+    #region 캐싱 메서드
+    // 각종 컴포넌트들을 캐싱하는 메서드들
+    private void CashingWaitForSeconds()
+    {
+        _delayForBulletDisable = new WaitForSeconds(_lifeTime);
+        // if (_bulletSoundController.HitSound != null) _delayForHitSound = new WaitForSeconds(_bulletSoundController.HitSound.length);
+    }
+    #endregion
 
     #region 유니티 생명주기 메서드
     // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
+        _spriteRenderer.enabled = true;
+        _collider2D.enabled = true;
 
+        CallEventGenerate();
         StartCoroutine(DeactivateAfterTime());
-
-        PlaySound(_shootSound);
     }
 
     void OnDisable()
     {
         StopAllCoroutines();
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = true;
+        CallEventRemove();
     }
 
-    void Update()
-    {
-        transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
-    }
+    void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     #endregion
+
+    #region 스탯 설정 및 반환 메서드
+    public void SetUp(int dmg, float speed, IObjectPool<GameObject> pool)
+    {
+        _projectileDmg = dmg;
+        _projectileSpeed = speed;
+        _projectilePool = pool;
+    }
     
-    // 투사체 데미지 받아오는 스크립트
-    public void SetDmg(int dmg) => _projectileDmg = dmg;
-    public void SetProjectileSpeed(float projSpeed) => _projectileSpeed = projSpeed;
+    public void SetLifeTime(float lifeTime) => _delayForBulletDisable = new WaitForSeconds(lifeTime);
+    #endregion
     
     #region 코루틴 함수
     private IEnumerator DeactivateAfterTime()
     {
-        yield return new WaitForSeconds(_lifeTime);
-        ReturnToPool();
-        
-    }
-    
-    private IEnumerator DelayedRelease()
-    {
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        
-        if (_audioSource != null && _audioSource.clip != null)
-        {
-            yield return new WaitWhile(() => _audioSource.isPlaying);
-        }
-        
-        _projectilePool.Release(gameObject);
+        yield return _delayForBulletDisable;
+        Release();
     }
     #endregion
     
-    void ReturnToPool()
+    private void Release()
     {
         if (gameObject.activeSelf) _projectilePool.Release(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && gameObject.activeSelf)
         {
-            if (!gameObject.activeSelf) return;
-            StartCoroutine(DelayedRelease());
-            other.GetComponent<IDamageable>().TakeDamage(_projectileDmg);
+            if (other.TryGetComponent<IDamageable>(out var target))
+            {
+                target.TakeDamage(_projectileDmg);
+            }
+            Hit?.Invoke();
+            Release();
         }
     }
-    
-    // 애니메이션이 사라지는 시간을 결정하는 함수
-    private void SetDeleteTime()
-    {
-        if (_animationClip != null) _lifeTime = _animationClip.length;
-    }
-
-    // 총알 사운드 출력하는 메서드
-    private void PlaySound(AudioClip clip)
-    {
-        if (NullAudioClip(clip)) return;
-        if (NullAudioSource()) return;
-        if (_audioSource.clip != clip) _audioSource.clip = clip;
-        _audioSource.Play();
-    }
-    
-    #region null 점검 스크립트
-    private bool NullAudioClip(AudioClip clip)
-    {
-        if (clip == null)
-        {
-            Debug.Log($"오디오클립이 null임");
-            return true;
-        }
-        return false;
-    }
-    // 오디오 소스가 null인지 확인하는 메서드
-    private bool NullAudioSource()
-    {
-        if (_audioSource == null)
-        {
-            Debug.Log("오디오소스가 null임");
-            return true;
-        }
-        return false;
-    }
-    
-    #endregion
 }

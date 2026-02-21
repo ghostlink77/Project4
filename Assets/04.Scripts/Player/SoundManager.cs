@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+
+public enum SoundType {Player, Enemy}
 
 public class SoundManager : MonoBehaviour
 {
@@ -6,8 +9,13 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance {get; private set;}
     
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource playerSource;
-    
+    [Tooltip("플레이어 관련 사운드 출력")]
+    [SerializeField]
+    private AudioSource playerSource;
+    [Tooltip("적 관련 사운드 출력")]
+    [SerializeField]
+    private AudioSource enemySource;
+
     private void Awake()
     {
         // 인스턴스가 비어있다면 자신을 할당
@@ -25,9 +33,16 @@ public class SoundManager : MonoBehaviour
         }
     }
     
-    // playerSource에서 사운드 클립 재생
-    public void PlayPlayerSFX(AudioClip clip)
+    public void PlaySFX(SoundType type, AudioClip clip)
     {
-        playerSource.PlayOneShot(clip);
+        switch(type)
+        {
+            case SoundType.Player:
+                playerSource.PlayOneShot(clip);
+                break;
+            case SoundType.Enemy:
+                enemySource.PlayOneShot(clip);
+                break;
+        }
     }
 }
