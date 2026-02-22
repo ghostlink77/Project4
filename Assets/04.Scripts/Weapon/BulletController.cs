@@ -9,13 +9,6 @@ using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
 {
-    #region 이벤트
-    public event Action Generate, Hit, Remove;
-    public void CallEventGenerate() => Generate?.Invoke();
-    public void CallEventHit() => Hit?.Invoke();
-    public void CallEventRemove() => Remove?.Invoke();
-    #endregion
-
     #region 투사체 스탯
     private float _projectileSpeed;
     private int _projectileDmg;
