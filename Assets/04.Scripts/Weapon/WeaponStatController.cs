@@ -53,7 +53,7 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     {
         _weaponRangeCollider = weaponRange;
         ResetWeaponData(baseStat);
-        AtkSpeed = baseStat.AtkSpeed;
+        //AtkSpeed = baseStat.AtkSpeed;
     }
 
     private void ResetWeaponData(WeaponStatData baseStat)
