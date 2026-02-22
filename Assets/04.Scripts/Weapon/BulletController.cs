@@ -37,8 +37,6 @@ public class BulletController : MonoBehaviour
     
     #region 참조변수
     WaitForSeconds _delayForBulletDisable;
-    #warning 적 피격음만큼 기다리게 하는 WaitForSeconds()를 캐싱해두는 변수가 있었으나, 일단은 임시로 사운드매니저에서 출력을 담당하므로 쓸 일이 없어 숨겨둠. 이후에 총알 착탄지점에서 소리가 들리도록 만들려면 이것을 사용하도록 함.
-    // WaitForSeconds _delayForHitSound;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
     #endregion
@@ -51,16 +49,13 @@ public class BulletController : MonoBehaviour
     }
 
     #region 캐싱 메서드
-    // 각종 컴포넌트들을 캐싱하는 메서드들
     private void CashingWaitForSeconds()
     {
         _delayForBulletDisable = new WaitForSeconds(_lifeTime);
-        // if (_bulletSoundController.HitSound != null) _delayForHitSound = new WaitForSeconds(_bulletSoundController.HitSound.length);
     }
     #endregion
 
     #region 유니티 생명주기 메서드
-    // 투사체가 발사 시작되었을 때 출력할 코드들
     void OnEnable()
     {
         _spriteRenderer.enabled = true;

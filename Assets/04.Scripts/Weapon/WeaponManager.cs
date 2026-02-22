@@ -3,7 +3,6 @@ using Game.Types;
 using UnityEngine;
 using UnityEngine.Pool;
 
-// 스크립트 참조변수
 [RequireComponent(typeof(WeaponShootController))]
 [RequireComponent(typeof(WeaponStatController))]
 [RequireComponent(typeof(WeaponEventController))]
@@ -22,7 +21,6 @@ public class WeaponManager : MonoBehaviour
     CircleCollider2D _weaponRangeCollider;
     
     #region 스크립트 참조변수
-    // 스크립트 참조 변수
     WeaponShootController _weaponShootController;
     BulletController _bulletController;
     WeaponStatController _weaponStatController;
@@ -31,9 +29,7 @@ public class WeaponManager : MonoBehaviour
     #endregion
     
     #region 무기 스탯 변수
-
-    // 무기 스탯 변수
-    int _dmg;
+    int _damage;
     float _atkSpeed, _projectileSpeed;
     #endregion
 
@@ -61,7 +57,7 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
-        _weaponShootController.ShootProcedurePerUpdate(_dmg, _atkSpeed, _projectileSpeed);
+        _weaponShootController.ShootProcedurePerUpdate(_damage, _atkSpeed, _projectileSpeed);
     }
     #endregion
     
@@ -73,7 +69,7 @@ public class WeaponManager : MonoBehaviour
         }
         else if (type == WeaponStat.Atk)
         {
-            _dmg = _weaponStatController.Atk;
+            _damage = _weaponStatController.Atk;
         }
         else if (type == WeaponStat.ProjectileSpeed)
         {
@@ -81,7 +77,6 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    // 필요한 스크립트들 참조하는 메서드
     void GetRequiredComponents()
     {
         if (!TryGetComponent<WeaponShootController>(out _weaponShootController))
@@ -95,11 +90,9 @@ public class WeaponManager : MonoBehaviour
         if (!TryGetComponent<WeaponSoundController>(out _weaponSoundController))
         Debug.Log($"{nameof(_weaponSoundController)}가 null임");
         
-        // 스탯 먼저 초기화
         _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);
         GetWeaponStats();
         
-        // ShootController 초기화
         _weaponShootController.SetUp(_projectilePrefab);
         _weaponSoundController.SetUp();
 
@@ -108,12 +101,11 @@ public class WeaponManager : MonoBehaviour
     
     void GetWeaponStats()
     {
-        _dmg = _weaponStatController.Atk;
+        _damage = _weaponStatController.Atk;
         _atkSpeed = _weaponStatController.AtkSpeed;
         _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }
 
-    // 총알 프리팹이 있는지 확인하고, 안에 BulletController 스크립트까지 있는지 확인하는 메서드
     BulletController InspectNullAndGetPrefabComponent()
     {
         BulletController bulletController;

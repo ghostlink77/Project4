@@ -36,19 +36,16 @@ public class WeaponSoundController : MonoBehaviour
     }
     
     #region 이벤트 관련 변수
-    // 이벤트 구독
     private void AddToEvent()
     {
         _weaponEventController.OnShoot += OnEventOnShoot;
     }
     
-    // 이벤트 구독 해제
     private void RemoveFromEvent()
     {
         _weaponEventController.OnShoot -= OnEventOnShoot;
     }
     
-    // 발사 시 사운드 출력
     private void OnEventOnShoot()
     {
         if (ObjectIsNull(_audioSource, "AudioSource")) return;
