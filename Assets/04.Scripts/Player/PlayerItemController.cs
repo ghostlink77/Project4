@@ -28,7 +28,7 @@ public class PlayerItemController : MonoBehaviour
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
     }
 
-    void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
+    private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
     {
         InitializeSlots(_weaponSlot, weaponSlotSize);
         InitializeSlots(_passiveItemSlot, passiveSlotSize);

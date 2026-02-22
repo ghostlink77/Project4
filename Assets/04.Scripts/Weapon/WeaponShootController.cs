@@ -10,19 +10,19 @@ using UnityEngine.Pool;
 
 public class WeaponShootController : MonoBehaviour
 {
-    IObjectPool<GameObject> _projectilePool;
-    GameObject _bulletPrefab;
-    CircleCollider2D _weaponRangeCollider;
-    List<GameObject> enemiesInRange = new List<GameObject>();
-    WeaponStatController _weaponStatController;
+    private IObjectPool<GameObject> _projectilePool;
+    private GameObject _bulletPrefab;
+    private CircleCollider2D _weaponRangeCollider;
+    private List<GameObject> enemiesInRange = new List<GameObject>();
+    private WeaponStatController _weaponStatController;
     
-    int _weaponDamage, _projectileCount;
-    float _atkCoolTime, _projectileSpeed = 0f;
+    private int _weaponDamage, _projectileCount;
+    private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
 
 
-    void Awake()
+    private void Awake()
     {   
         _projectilePool = new ObjectPool<GameObject>(
             createFunc: OnCreateBullet,
@@ -43,12 +43,12 @@ public class WeaponShootController : MonoBehaviour
 
     public IObjectPool<GameObject> ReturnObjectPool() => _projectilePool;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) enemiesInRange.Add(collision.gameObject);
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
     }
@@ -68,7 +68,7 @@ public class WeaponShootController : MonoBehaviour
         }
     }
 
-    void Shoot(int weaponDamage, float projSpeed)
+    private void Shoot(int weaponDamage, float projSpeed)
     {
         _weaponDamage = weaponDamage;
         _projectileSpeed = projSpeed;
@@ -85,7 +85,7 @@ public class WeaponShootController : MonoBehaviour
         }
     }
     
-    Vector2 FindClosestTargetVector(Vector2 playerPos)
+    private Vector2 FindClosestTargetVector(Vector2 playerPos)
     {
         if (enemiesInRange.Count == 0) return Vector2.zero;
         
@@ -107,15 +107,15 @@ public class WeaponShootController : MonoBehaviour
         return targetPos;
     }
 
-    Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos) => endPos - startPos;
+    private Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos) => endPos - startPos;
 
-    GameObject OnCreateBullet()
+    private GameObject OnCreateBullet()
     {
         GameObject obj = Instantiate(_bulletPrefab);
         return obj;
     }
     
-    void OnGetBullet(GameObject obj)
+    private void OnGetBullet(GameObject obj)
     {
         Vector2 playerPos = transform.position;
         obj.transform.position = playerPos;
@@ -138,10 +138,10 @@ public class WeaponShootController : MonoBehaviour
         }
     }
 
-    void OnReleaseBullet(GameObject obj)
+    private void OnReleaseBullet(GameObject obj)
     {
         obj.SetActive(false);
     }
     
-    void OnDestroyBullet(GameObject obj) => Destroy(obj);
+    private void OnDestroyBullet(GameObject obj) => Destroy(obj);
 }

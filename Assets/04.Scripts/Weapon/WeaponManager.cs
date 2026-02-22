@@ -9,7 +9,7 @@ using UnityEngine.Pool;
 [RequireComponent(typeof(WeaponSoundController))]
 public class WeaponManager : MonoBehaviour
 {
-    IObjectPool<GameObject> _projectilePool;
+    private IObjectPool<GameObject> _projectilePool;
     
     [Header("투사체")]
     [SerializeField]
@@ -17,51 +17,51 @@ public class WeaponManager : MonoBehaviour
     
     [Header("무기 기본 데이터")]
     [SerializeField]
-    WeaponStatData _baseStat;
-    CircleCollider2D _weaponRangeCollider;
+    private WeaponStatData _baseStat;
+    private CircleCollider2D _weaponRangeCollider;
     
     #region 스크립트 참조변수
-    WeaponShootController _weaponShootController;
-    BulletController _bulletController;
-    WeaponStatController _weaponStatController;
-    WeaponEventController _weaponEventController;
-    WeaponSoundController _weaponSoundController;
+    private WeaponShootController _weaponShootController;
+    private BulletController _bulletController;
+    private WeaponStatController _weaponStatController;
+    private WeaponEventController _weaponEventController;
+    private WeaponSoundController _weaponSoundController;
     #endregion
     
     #region 무기 스탯 변수
-    int _damage;
-    float _atkSpeed, _projectileSpeed;
+    private int _damage;
+    private float _atkSpeed, _projectileSpeed;
     #endregion
 
     #region 유니티 생명주기 함수
-    void Awake()
+    private void Awake()
     {
         _bulletController = InspectNullAndGetPrefabComponent();
         GetRequiredComponents();
     }
 
-    void Start()
+    private void Start()
     {
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         _weaponEventController.OnStatChanged += HandleStatChanged;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         _weaponEventController.OnStatChanged -= HandleStatChanged;
     }
 
 
-    void Update()
+    private void Update()
     {
         _weaponShootController.ShootProcedurePerUpdate(_damage, _atkSpeed, _projectileSpeed);
     }
     #endregion
     
-    void HandleStatChanged(WeaponStat type)
+    private void HandleStatChanged(WeaponStat type)
     {
         if (type == WeaponStat.AtkSpeed)
         {
@@ -77,7 +77,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    void GetRequiredComponents()
+    private void GetRequiredComponents()
     {
         if (!TryGetComponent<WeaponShootController>(out _weaponShootController))
         Debug.Log($"{nameof(_weaponShootController)}가 null임");
@@ -99,14 +99,14 @@ public class WeaponManager : MonoBehaviour
         _projectilePool = _weaponShootController.ReturnObjectPool();
     }
     
-    void GetWeaponStats()
+    private void GetWeaponStats()
     {
         _damage = _weaponStatController.Atk;
         _atkSpeed = _weaponStatController.AtkSpeed;
         _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }
 
-    BulletController InspectNullAndGetPrefabComponent()
+    private BulletController InspectNullAndGetPrefabComponent()
     {
         BulletController bulletController;
         if (_projectilePrefab == null)

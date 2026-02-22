@@ -36,12 +36,12 @@ public class BulletController : MonoBehaviour
     #endregion
     
     #region 참조변수
-    WaitForSeconds _delayForBulletDisable;
+    private WaitForSeconds _delayForBulletDisable;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
     #endregion
 
-    void Awake()
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
@@ -56,7 +56,7 @@ public class BulletController : MonoBehaviour
     #endregion
 
     #region 유니티 생명주기 메서드
-    void OnEnable()
+    private void OnEnable()
     {
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
@@ -65,13 +65,13 @@ public class BulletController : MonoBehaviour
         StartCoroutine(DeactivateAfterTime());
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         StopAllCoroutines();
         CallEventRemove();
     }
 
-    void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
+    private void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     #endregion
 
     #region 스탯 설정 및 반환 메서드
@@ -98,7 +98,7 @@ public class BulletController : MonoBehaviour
         if (gameObject.activeSelf) _projectilePool.Release(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && gameObject.activeSelf)
         {

@@ -143,7 +143,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             _playerEventController.CallDeath();
         }
     }
-    int CalculateReducedDmg(int damage, int defense)
+    private int CalculateReducedDmg(int damage, int defense)
     {
         float value = damage * 100 / (100 + defense);
         return (int)Math.Round(value);

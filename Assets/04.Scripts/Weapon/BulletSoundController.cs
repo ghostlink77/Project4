@@ -39,7 +39,7 @@ public class BulletSoundController : MonoBehaviour
     #endregion
 
     #region 유니티 생명주기 메서드
-    void Awake()
+    private void Awake()
     {
         _bulletController = GetComponent<BulletController>();
     }

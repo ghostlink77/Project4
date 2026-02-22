@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public Animator Animator { get; private set; }
     public SpriteRenderer SpriteRenderer {get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         if (SingleTonGenerate() == true)
         {
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (Instance == this)
         {
@@ -44,12 +44,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         PlayerMoveController.MovePlayer();
     }
 
-    bool SingleTonGenerate()
+    private bool SingleTonGenerate()
     {
         if (Instance != null && Instance != this)
         {
@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
-    void PlayerComponentSetup()
+    private void PlayerComponentSetup()
     {
         PlayerStatController.SetUp();
         PlayerMoveController.SetUp();
