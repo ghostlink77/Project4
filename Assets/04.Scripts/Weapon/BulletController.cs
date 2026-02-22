@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using Unity.VisualScripting;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -9,6 +10,11 @@ using UnityEngine.UIElements;
 
 public class BulletController : MonoBehaviour
 {
+    #region 이벤트
+    public event Action OnHit;
+    public void InvokeOnHit() => OnHit?.Invoke();
+    #endregion
+
     #region 투사체 스탯
     private float _projectileSpeed;
     private int _projectileDmg;
@@ -32,7 +38,6 @@ public class BulletController : MonoBehaviour
     private WaitForSeconds _delayForBulletDisable;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
-    private WeaponEventController _weaponEventController;
     #endregion
 
     private void Awake()
@@ -55,14 +60,12 @@ public class BulletController : MonoBehaviour
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
 
-        CallEventGenerate();
         StartCoroutine(DeactivateAfterTime());
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
-        CallEventRemove();
     }
 
     private void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
@@ -74,7 +77,6 @@ public class BulletController : MonoBehaviour
         _projectileDmg = dmg;
         _projectileSpeed = speed;
         _projectilePool = pool;
-        _weaponEventController = eventController;
     }
     
     public void SetLifeTime(float lifeTime) => _delayForBulletDisable = new WaitForSeconds(lifeTime);
@@ -101,7 +103,7 @@ public class BulletController : MonoBehaviour
             {
                 target.TakeDamage(_projectileDmg);
             }
-            Hit?.Invoke();
+            InvokeOnHit();
             Release();
         }
     }
