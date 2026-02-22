@@ -8,10 +8,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // 플레이어 매니저 싱글톤 전용
     public static PlayerManager Instance { get; private set; }
 
-    // 스크립트 컴포넌트들
     public PlayerMoveController PlayerMoveController { get; private set; }
     public PlayerStatController PlayerStatController { get; private set; }
     public PlayerItemController PlayerItemController { get; private set; }
@@ -22,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public Animator Animator { get; private set; }
     public SpriteRenderer SpriteRenderer {get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         if (SingleTonGenerate() == true)
         {
@@ -37,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (Instance == this)
         {
@@ -46,12 +44,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         PlayerMoveController.MovePlayer();
     }
 
-    bool SingleTonGenerate()
+    private bool SingleTonGenerate()
     {
         if (Instance != null && Instance != this)
         {
@@ -63,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         return true;
     }
 
-    void PlayerComponentSetup()
+    private void PlayerComponentSetup()
     {
         PlayerStatController.SetUp();
         PlayerMoveController.SetUp();
@@ -72,6 +70,5 @@ public class PlayerManager : MonoBehaviour
         PlayerSoundController.SetUp();
     }
 
-    // 플레이어에게 데미지 입히는 메서드
     public void GetHurt(int dmg) => PlayerStatController.TakeDamage(dmg);
 }

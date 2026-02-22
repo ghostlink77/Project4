@@ -34,13 +34,12 @@ public class BulletSoundController : MonoBehaviour
 
     private void OnEventHit()
     {
-        // 일단 임시로 사용. 지금은 방향에 맞춰 소리가 들리지 않는 모노 사운드로만 구현됨.
         SoundManager.Instance.PlaySFX(SoundType.Enemy, _hitSound);
     }
     #endregion
 
     #region 유니티 생명주기 메서드
-    void Awake()
+    private void Awake()
     {
         _bulletController = GetComponent<BulletController>();
     }

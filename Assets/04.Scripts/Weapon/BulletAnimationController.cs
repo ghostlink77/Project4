@@ -32,7 +32,6 @@ public class BulletAnimationController : MonoBehaviour
         _bulletController.Remove -= OnEventRemove;
     }
     
-    // 생성될 때 실행될 코드
     private void OnEventGenerate()
     {
         if (_bulletAnimationClip == null)
@@ -46,14 +45,12 @@ public class BulletAnimationController : MonoBehaviour
         if(_animator != null) _animator.Play(_bulletAnimationClip.name, 0, 0f);
     }
     
-    // 적 맞았을 때 실행될 코드
     private void OnEventHit()
     {
         _spriteRenderer.enabled = false;
         _collider2D.enabled = false;
     }
     
-    // 총알 없어질 때(오브젝트 풀로 돌아가거나 삭제될 때) 실행될 코드
     private void OnEventRemove()
     {
         _spriteRenderer.enabled = true;

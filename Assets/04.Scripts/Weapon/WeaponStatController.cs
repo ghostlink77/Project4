@@ -43,7 +43,6 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     [SerializeField] private float projectileCount;
     public float ProjectileCount { get => projectileCount; set { projectileCount = value; _weaponEventController.CallOnStatChanged(WeaponStat.ProjectileCount); } }
 
-    // 무기 범위로 사용되는 콜라이더
     private CircleCollider2D _weaponRangeCollider;
     
     public int GetLevel()
@@ -57,11 +56,10 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
         AtkSpeed = baseStat.AtkSpeed;
     }
 
-    // 스크립터블 오브젝트에 저장한 대로 무기 데이터 설정 완료
     private void ResetWeaponData(WeaponStatData baseStat)
     {
         level = baseStat.Level;
-        atk = baseStat.Atk;
+        atk = baseStat.Damage;
         critRate = baseStat.CritRate;
         critMultiplier = baseStat.CritMultiplier;
         effectRate = baseStat.EffectRate;
