@@ -9,7 +9,7 @@ public class ScrapSpawner : MonoBehaviour
 {
     private const int MaxSize = 30;
     private const int InitSize = 10;
-    private const float SpawnInterval = 5f;
+    private const float SpawnInterval = 1f;
 
     private ObjectPool<GameObject> _scrapPool;
     private GameObject _scrapPrefab;
