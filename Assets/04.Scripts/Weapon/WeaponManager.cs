@@ -40,10 +40,6 @@ public class WeaponManager : MonoBehaviour
         GetRequiredComponents();
     }
 
-    private void Start()
-    {
-    }
-
     private void OnEnable()
     {
         _weaponEventController.OnStatChanged += HandleStatChanged;
