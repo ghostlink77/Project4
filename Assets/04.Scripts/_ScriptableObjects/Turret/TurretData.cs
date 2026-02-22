@@ -3,9 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurretData", menuName = "Scriptable Objects/TurretData")]
 public class TurretData : ScriptableObject, IItemStatData
 {
-    public string turretName;
-    public GameObject turretPrefab;
-    public SpriteRenderer icon;
+    [SerializeField] private string turretName;
     [SerializeField] private Sprite _icon;
     public int scrapCost;
 

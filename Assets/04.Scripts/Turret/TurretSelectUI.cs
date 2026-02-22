@@ -13,7 +13,6 @@ public class TurretSelectUI : MonoBehaviour
 
     void OnEnable()
     {
-        SetTurretIcons(turretPlacer.Turrets);
     }
 
     public void Show(Vector3 pos)
@@ -38,8 +37,6 @@ public class TurretSelectUI : MonoBehaviour
                 continue;
             }
             
-            turretIcons[i].sprite = turrets[i].icon.sprite;
-            turretIcons[i].color = turrets[i].icon.color;
         }
     }
 }

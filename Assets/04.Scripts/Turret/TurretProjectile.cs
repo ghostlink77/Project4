@@ -19,17 +19,22 @@ public abstract class TurretProjectile : MonoBehaviour
         Destroy(gameObject, _lifetime);
     }
 
+    private void Update()
+    {
+        if (_isActive)
+        {
+            Move();
+        }
+    }
+
     protected abstract void Move();
 
-    protected virtual void DealDamage()
+    protected virtual void DealDamage(IDamageable target)
     {
         if (_target != null)
         {
-            IDamageable enemy = _target.GetComponent<IDamageable>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(_damage);
-            }
+            target.TakeDamage(_damage);
+            Destroy(gameObject);
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 660527123348498903}
   - component: {fileID: 8941689398102810654}
   - component: {fileID: 1026985713401195889}
-  - component: {fileID: 1713492533328916201}
+  - component: {fileID: -2227500766239947707}
   m_Layer: 0
   m_Name: Bullet_MachineGunTurret
   m_TagString: Untagged
@@ -130,7 +130,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 1}
   m_Direction: 1
---- !u!114 &1713492533328916201
+--- !u!114 &-2227500766239947707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8715470850634560764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d7ff8220393db74089c4b55e086666e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _weaponSounds: {fileID: 0}
-  _lifeTime: 3
+  m_EditorClassIdentifier: Assembly-CSharp::MachineGunTurretProjectile
+  _lifetime: 8

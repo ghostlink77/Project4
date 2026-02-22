@@ -5,6 +5,7 @@ using UnityEngine;
 public class TurretBase : MonoBehaviour, IDamageable
 {
     [SerializeField] private TurretData _turretData;
+    public TurretData TurretData => _turretData;
 
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private Transform _firePoint;
@@ -19,7 +20,7 @@ public class TurretBase : MonoBehaviour, IDamageable
     private void Start()
     {
         _currentHp = _turretData.maxHp;
-        _rangeCollider = GetComponent<CircleCollider2D>();
+        _rangeCollider.radius = _turretData.range;
     }
 
     private void Update()
@@ -39,6 +40,7 @@ public class TurretBase : MonoBehaviour, IDamageable
             _enemiesInRange.Add(collision.transform);
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Enemy"))
@@ -105,8 +107,12 @@ public class TurretBase : MonoBehaviour, IDamageable
 
     private void OnDestroyed()
     {
-        // TODO: ÅÍ·¿ÀÌ ÆÄ±«µÉ ¶§ÀÇ ·ÎÁ÷ (¿¹: ¾Ö´Ï¸ŞÀÌ¼Ç, »ç¿îµå µî)
+        // TODO: í„°ë ›ì´ íŒŒê´´ë  ë•Œì˜ ë¡œì§ (ì˜ˆ: ì• ë‹ˆë©”ì´ì…˜, ì‚¬ìš´ë“œ ë“±)
         Destroy(gameObject);
     }
 
+    public void LevelUP()
+    {
+        // TODO: í„°ë › ë ˆë²¨ì—… ì‹œì˜ ë¡œì§ (ì˜ˆ: ìƒˆë¡œìš´ ë°ì´í„° ì ìš©, ì• ë‹ˆë©”ì´ì…˜ ë“±)
+    }
 }
