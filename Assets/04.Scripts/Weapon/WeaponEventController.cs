@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-
-
 public class WeaponEventController : MonoBehaviour
 {
     public event Action<WeaponStat> OnStatChanged;
