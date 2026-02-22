@@ -17,14 +17,12 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     #endregion
     
     #region 플레이어 스탯 변수들
-    // 플레이어 스탯
     public int CurrentLevel {get; set;}
     public int CurrentExp { get; private set; }
     public int MaxHp {get; set;}
     public int CurrentHp {get; set;}
     public int Defense  {get; set;}
     public int HpGenSpeed {get; set;}
-    // 플레이어 스탯 반환 및 설정하는 함수
     public float MoveSpeed {get; set;}
     public float ItemGetRadius {get; set;}
     public float Luck {get; set;}
@@ -39,7 +37,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     #endregion
 
     #region 플레이어 부활 시간 관련 변수
-    // 플레이어 부활까지 걸리는 시간이기 때문에 조정할 필요가 있음. 따라서 SerializeField를 적용함
     [SerializeField]
     private float _reviveDelayTime = 1.5f;
     private float ReviveDelayTime
@@ -60,7 +57,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     {
         if (_playerEventController != null)
         {
-            // 혹시 모를 중복 구독 방지를 위함
             RemoveFromEvent();
             AddToEvent();
         }
@@ -71,8 +67,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         RemoveFromEvent();
     }
 
-    // 필요한 데이터를 PlayerManager에서 받아오는 메서드
-    // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
     public void SetUp()
     {
         resetPlayerStat();
@@ -82,7 +76,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     #endregion
     
     #region 이벤트 관련 메서드
-    // 이벤트에 추가하는 함수들
     private void AddToEvent()
     {
         _playerEventController.Death += AddToDeath;
@@ -95,7 +88,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         _playerEventController.Revive -= AddToRevive;
     }
 
-    // Death 이벤트 활성화 시 작동할 메서드
     private void AddToDeath()
     {
         Debug.Log("플레이어 사망");
@@ -104,7 +96,6 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         StartCoroutine(AfterDead());
     }
     
-    // Revive 이벤트 활성화 시 작동할 메서드
     private void AddToRevive()
     {
         Debug.Log("플레이어 부활");
@@ -114,10 +105,8 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     }
     #endregion
 
-    //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
     private void resetPlayerStat()
     {
-        // 플레이어 스테이터스
         CurrentLevel = playerDefaultData.DefaultLevel;
         MaxHp = playerDefaultData.DefaultMaxHP;
         CurrentHp = MaxHp;
@@ -131,24 +120,19 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         Curse = playerDefaultData.DefaultCurse;
         Life = playerDefaultData.DefaultLife;
         
-        // 슬롯들
         WeaponSlotSize = playerDefaultData.DefaultWeaponSlotSize;
         PassiveItemSlotSize = playerDefaultData.DefaultPassiveItemSlotSize;
         TurretSlotSize = playerDefaultData.DefaultTurretSlotSize;
     }
     
     #region 플레이어 데미지 관련 메서드
-    //플레이어 hp에 데미지 가하는 함수
     // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
     public void TakeDamage(int damage)
     {
-        // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;
 
-        // 플레이어 피격 이벤트 실행
         _playerEventController.CallHurt();
         
-        // 방어력 적용해서 데미지 적용
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
         Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
