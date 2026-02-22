@@ -39,6 +39,7 @@ public class BulletController : MonoBehaviour
     private WaitForSeconds _delayForBulletDisable;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
+    private WeaponEventController _weaponEventController;
     #endregion
 
     private void Awake()
@@ -75,11 +76,12 @@ public class BulletController : MonoBehaviour
     #endregion
 
     #region 스탯 설정 및 반환 메서드
-    public void SetUp(int dmg, float speed, IObjectPool<GameObject> pool)
+    public void GetNeededVariableForAttack(int dmg, float speed, IObjectPool<GameObject> pool, WeaponEventController eventController)
     {
         _projectileDmg = dmg;
         _projectileSpeed = speed;
         _projectilePool = pool;
+        _weaponEventController = eventController;
     }
     
     public void SetLifeTime(float lifeTime) => _delayForBulletDisable = new WaitForSeconds(lifeTime);
