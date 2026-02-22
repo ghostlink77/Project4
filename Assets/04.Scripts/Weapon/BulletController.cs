@@ -4,6 +4,7 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEditor.Build.Pipeline;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UIElements;
@@ -103,7 +104,7 @@ public class BulletController : MonoBehaviour
             {
                 target.TakeDamage(_projectileDmg);
             }
-            InvokeOnHit();
+            OnHit?.Invoke();
             Release();
         }
     }
