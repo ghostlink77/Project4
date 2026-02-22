@@ -16,7 +16,7 @@ public class WeaponShootController : MonoBehaviour
     List<GameObject> enemiesInRange = new List<GameObject>();
     WeaponStatController _weaponStatController;
     
-    int _dmg, _projectileCount;
+    int _weaponDamage, _projectileCount;
     float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
@@ -53,7 +53,7 @@ public class WeaponShootController : MonoBehaviour
         if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
     }
 
-    public void ShootProcedurePerUpdate(int dmg, float atkSpeed, float projectileSpeed)
+    public void ShootProcedurePerUpdate(int weaponDamage, float atkSpeed, float projectileSpeed)
     {
         if (atkSpeed <= 0.01f)
         {
@@ -64,13 +64,13 @@ public class WeaponShootController : MonoBehaviour
         if (enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
         {
             _atkCoolTime = 0f;
-            Shoot(dmg, projectileSpeed);
+            Shoot(weaponDamage, projectileSpeed);
         }
     }
 
-    void Shoot(int dmg, float projSpeed)
+    void Shoot(int weaponDamage, float projSpeed)
     {
-        _dmg = dmg;
+        _weaponDamage = weaponDamage;
         _projectileSpeed = projSpeed;
         _projectileCount = (int)_weaponStatController.ProjectileCount;
         for (int i = 0; i < _projectileCount; i++)
@@ -134,7 +134,7 @@ public class WeaponShootController : MonoBehaviour
         
         if (obj.TryGetComponent<BulletController>(out var bulletController))
         {
-            bulletController.SetUp(_dmg, _projectileSpeed, _projectilePool);
+            bulletController.SetUp(_weaponDamage, _projectileSpeed, _projectilePool);
         }
     }
 
