@@ -61,7 +61,7 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     private void ResetWeaponData(WeaponStatData baseStat)
     {
         level = baseStat.Level;
-        atk = baseStat.Atk;
+        atk = baseStat.Damage;
         critRate = baseStat.CritRate;
         critMultiplier = baseStat.CritMultiplier;
         effectRate = baseStat.EffectRate;
