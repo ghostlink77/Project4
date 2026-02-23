@@ -27,7 +27,7 @@ public class PlayerLevelControl : MonoBehaviour
     public void AddXP(float amount)
     {
         currentXP += amount;
-        Debug.Log($"����ġ {amount} ȹ�� (����: {currentXP} / {requiredXP})");
+        Debug.Log($"경험치 {amount} 휙득 (현재: {currentXP} / {requiredXP})");
 
         while (currentXP >= requiredXP)
         {
@@ -41,17 +41,8 @@ public class PlayerLevelControl : MonoBehaviour
         currentLevel++;
         UpdateRequiredXP();
 
-        Debug.Log($"LEVEL UP! ���� ����: {currentLevel}");
-        /*
-        if (InGameManager.Instance != null)
-        {
-            InGameManager.Instance.OpenLevelUpUI();
-        }
-        else
-        {
-            Debug.LogError("InGameManager�� ���� �����ϴ�!");
-        }
-        */
+        Debug.Log($"LEVEL UP! 현재 레벨 {currentLevel}");
+
         OnLevelUp?.Invoke(currentLevel);
     }
 
