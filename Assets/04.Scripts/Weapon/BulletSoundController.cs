@@ -34,6 +34,7 @@ public class BulletSoundController : MonoBehaviour
 
     private void WorkTodoOnEventOnHit()
     {
+        if (SoundManager.Instance == null) Debug.LogError("사운드매니저 인스턴스가 존재하지 않음");
         SoundManager.Instance.PlaySFX(SoundType.Enemy, _hitSound);
     }
     #endregion
