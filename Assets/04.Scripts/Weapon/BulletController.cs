@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using Unity.VisualScripting;
+using UnityEditor.Build.Pipeline;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UIElements;
@@ -10,10 +12,8 @@ using UnityEngine.UIElements;
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
-    public event Action Generate, Hit, Remove;
-    public void CallEventGenerate() => Generate?.Invoke();
-    public void CallEventHit() => Hit?.Invoke();
-    public void CallEventRemove() => Remove?.Invoke();
+    public event Action OnHit;
+    public void InvokeOnHit() => OnHit?.Invoke();
     #endregion
 
     #region 투사체 스탯
@@ -61,21 +61,19 @@ public class BulletController : MonoBehaviour
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
 
-        CallEventGenerate();
         StartCoroutine(DeactivateAfterTime());
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
-        CallEventRemove();
     }
 
     private void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     #endregion
 
     #region 스탯 설정 및 반환 메서드
-    public void SetUp(int dmg, float speed, IObjectPool<GameObject> pool)
+    public void GetNeededVariableForAttack(int dmg, float speed, IObjectPool<GameObject> pool, WeaponEventController eventController)
     {
         _projectileDmg = dmg;
         _projectileSpeed = speed;
@@ -106,7 +104,7 @@ public class BulletController : MonoBehaviour
             {
                 target.TakeDamage(_projectileDmg);
             }
-            Hit?.Invoke();
+            OnHit?.Invoke();
             Release();
         }
     }
