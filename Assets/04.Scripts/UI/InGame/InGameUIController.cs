@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,13 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Image _expBar;
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
+    [SerializeField] private Image _hpBar;
+    [SerializeField] private Image _hpAnimBar;
+
+    [Header("Hp Bar Animation Value")]
+    [SerializeField] private float _blendInTime;
+    [SerializeField] private float _animSpeed;
+    [SerializeField] private Coroutine _animCoroutine;
 
     [SerializeField] private Volume _inGameVolume;
 
@@ -48,6 +56,8 @@ public class InGameUIController : MonoBehaviour
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
         _inGameUI.SetActive(true);
+        _hpBar.fillAmount = 1f;
+        _hpAnimBar.fillAmount = 1f;
     }
     private void Update()
     {
@@ -162,6 +172,39 @@ public class InGameUIController : MonoBehaviour
         float currentExp = PlayerManager.Instance.PlayerStatController.CurrentExp;
         float maxExp = DataTableManager.Instance.GetGameData<ExpData>().GetExpData(currentLevel);
         _expBar.fillAmount = currentExp / maxExp;
+    }
+
+    public void UpdateHpBar()
+    {
+        float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
+        float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
+        _hpBar.fillAmount = currentHp / maxHp;
+
+        if (_animCoroutine != null)
+        {
+            StopCoroutine(_animCoroutine);
+            _animCoroutine = null;
+        }
+        _animCoroutine = StartCoroutine(PlayHpBarAnimation());
+
+    }
+
+    private IEnumerator PlayHpBarAnimation()
+    {
+        yield return new WaitForSeconds(_blendInTime);
+
+        while (_hpAnimBar.fillAmount > _hpBar.fillAmount)
+        {
+            _hpAnimBar.fillAmount = Mathf.Lerp(
+                _hpAnimBar.fillAmount,
+                _hpBar.fillAmount,
+                _animSpeed * Time.deltaTime
+                );
+
+            yield return null;
+        }
+
+        _hpAnimBar.fillAmount = _hpBar.fillAmount;
     }
 
     private void UpdateSelectableItemInUI()
