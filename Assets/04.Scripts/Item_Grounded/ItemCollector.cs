@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemCollector : MonoBehaviour
 {
-    private float _collectRadius = 1f;
+    private float _collectRadius = 0.8f;
     private CircleCollider2D _collider;
 
     private void Start()

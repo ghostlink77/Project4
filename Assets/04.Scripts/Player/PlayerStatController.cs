@@ -18,7 +18,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public Dictionary<Passive, int> passiveLevels = new Dictionary<Passive, int>();
 
     public int CurrentLevel { get; set; }
-    public int CurrentExp { get; private set; }
+    public int CurrentExp { get; set; }
     public int MaxHp { get; set; }
     public int CurrentHp { get; set; }
     public int Defense { get; set; }
@@ -225,6 +225,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
 
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
+        InGameManager.Instance.InGameUIController.UpdateHpBar();
 
         if (CurrentHp <= 0)
         {

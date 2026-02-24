@@ -7,18 +7,14 @@ public class DamageTextSpawner : MonoBehaviour
 {
     private IObjectPool<TextMeshProUGUI> _damageTextPool;
     [SerializeField] private GameObject _damageTextPrefab;
-    [SerializeField] private Transform _parentTransform;
 
     [SerializeField] private int _initSize = 10;
     [SerializeField] private int _maxSize = 50;
 
-    [SerializeField] private Camera _uiCamera;
-    private Camera _mainCamera;
-
     [SerializeField] private float _textAnimSpeed;
+    [SerializeField] private Transform _spawnParent;
     private void Awake()
     {
-        _mainCamera = Camera.main;
         CreatePools();
     }
 
@@ -55,13 +51,10 @@ public class DamageTextSpawner : MonoBehaviour
         }
 
         var damageTextObj = _damageTextPool.Get();
-
-        damageTextObj.transform.SetParent(_parentTransform, false);
-        Vector3 viewportPoint = _mainCamera.WorldToViewportPoint(position);
-        Vector3 uiWorldPos = _uiCamera.ViewportToWorldPoint(new Vector3(viewportPoint.x, viewportPoint.y, 100));
-        damageTextObj.transform.position = uiWorldPos;
-
-        damageTextObj.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+        if (_spawnParent != null)
+            damageTextObj.transform.SetParent(_spawnParent, false);
+        damageTextObj.transform.position = position;
+        damageTextObj.text = damage.ToString();
         StartCoroutine(ReturnPool(damageTextObj));
     }
 
