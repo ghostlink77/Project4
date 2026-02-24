@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -26,6 +27,13 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Image _expBar;
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
+    [SerializeField] private Image _hpBar;
+    [SerializeField] private Image _hpAnimBar;
+
+    [Header("Hp Bar Animation Value")]
+    [SerializeField] private float _blendInTime;
+    [SerializeField] private float _animSpeed;
+    [SerializeField] private Coroutine _animCoroutine;
 
     [SerializeField] private Volume _inGameVolume;
 
@@ -36,13 +44,14 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private List<Inventory> _inventories = new List<Inventory>();
 
     public readonly string IMAGE_PATH = "Sprite";
+    public const int FULL_FILL_AMOUNT = 1;
 
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
-    // ¡Ú »õ·Î¿î ·£´ı ÆĞ½Ãºê ½Ã½ºÅÛÀ» À§ÇÑ º¯¼öµé
+    // â˜… ìƒˆë¡œìš´ ëœë¤ íŒ¨ì‹œë¸Œ ì‹œìŠ¤í…œì„ ìœ„í•œ ë³€ìˆ˜ë“¤
     [Header("New Passive Data Pool")]
     public List<LevelUpPassive> allPassives;
 
@@ -53,11 +62,14 @@ public class InGameUIController : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        // ¡Ú ºó ¾À¿¡¼­ ¿¡·¯°¡ ³ªÁö ¾Êµµ·Ï ¹æ¾î¸·(null Ã¼Å©) Ãß°¡!
-        if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (_levelupUI != null) _levelupUI.SetActive(false);
-        if (_endGameUI != null) _endGameUI.SetActive(false);
-        if (_inGameUI != null) _inGameUI.SetActive(true);
+        _pauseUI.SetActive(false);
+        _levelupUI.SetActive(false);
+        _endGameUI.SetActive(false);
+        _inGameUI.SetActive(true);
+        _hpBar.fillAmount = FULL_FILL_AMOUNT;
+        _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
+
+        UpdateInventory();
     }
 
     private void Start()
@@ -67,7 +79,7 @@ public class InGameUIController : MonoBehaviour
 
         if (_playerLevelControl != null)
         {
-            _playerLevelControl.OnLevelUp += OpenLevelupUI; // Á¾¼Ò¸® ±¸µ¶
+            _playerLevelControl.OnLevelUp += OpenLevelupUI; // ì¢…ì†Œë¦¬ êµ¬ë…
         }
     }
 
@@ -89,7 +101,7 @@ public class InGameUIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Å×½ºÆ® ¾À¿¡ UIManager°¡ ¾øÀ» °æ¿ì¸¦ ´ëºñÇÑ ¾ÈÀüÀåÄ¡
+            // í…ŒìŠ¤íŠ¸ ì”¬ì— UIManagerê°€ ì—†ì„ ê²½ìš°ë¥¼ ëŒ€ë¹„í•œ ì•ˆì „ì¥ì¹˜
             if (UIManager.Instance != null)
             {
                 var frontUI = UIManager.Instance.GetFrontUI();
@@ -166,7 +178,7 @@ public class InGameUIController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // ¡Ú ·£´ı ÆĞ½Ãºê¸¦ ¶ç¿öÁÖ´Â ÇÙ½É ·ÎÁ÷
+    // â˜… ëœë¤ íŒ¨ì‹œë¸Œë¥¼ ë„ì›Œì£¼ëŠ” í•µì‹¬ ë¡œì§
     private void ShowRandomPassives()
     {
         if (_playerStat == null || allPassives == null) return;
@@ -196,7 +208,7 @@ public class InGameUIController : MonoBehaviour
                 LevelUpPassive selectedData = availablePassives[i];
                 int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passive) + 1;
 
-                // UI ¿¬°áÀÌ ÇÏ³ª¶óµµ ºüÁ®ÀÖ¾îµµ ±âÀıÇÏÁö ¾Êµµ·Ï ¹æ¾î ÄÚµå Ãß°¡
+                // UI ì—°ê²°ì´ í•˜ë‚˜ë¼ë„ ë¹ ì ¸ìˆì–´ë„ ê¸°ì ˆí•˜ì§€ ì•Šë„ë¡ ë°©ì–´ ì½”ë“œ ì¶”ê°€
                 if (_itemSelectBtnDatas.Length > i)
                 {
                     if (_itemSelectBtnDatas[i].ItemImage != null)
@@ -244,7 +256,7 @@ public class InGameUIController : MonoBehaviour
         _playTimeUI.text = $"{min} : {sec}";
     }
 
-    // ¡Ú ºó ¾À¿¡¼­ Á¦ÀÏ ¿¡·¯°¡ ¸¹ÀÌ ³ª´ø °æÇèÄ¡ ¹Ù ÇÔ¼ö ¿Ïº® ¹æ¾î
+    // â˜… ë¹ˆ ì”¬ì—ì„œ ì œì¼ ì—ëŸ¬ê°€ ë§ì´ ë‚˜ë˜ ê²½í—˜ì¹˜ ë°” í•¨ìˆ˜ ì™„ë²½ ë°©ì–´
     public void UpdateExpBar()
     {
         if (_expBar == null || DataTableManager.Instance == null || PlayerManager.Instance == null) return;
@@ -255,7 +267,38 @@ public class InGameUIController : MonoBehaviour
         _expBar.fillAmount = currentExp / maxExp;
     }
 
-    // ---- [ÀÌÇÏ ±âÁ¸ ¾ÆÀÌÅÛ/¹Ì´Ï¸Ê °ü·Ã ÄÚµåµéµµ ¾ÈÀüÇÏ°Ô ¹æ¾î¸· Ãß°¡] ----
+    public void UpdateHpBar()
+    {
+        float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
+        float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
+        _hpBar.fillAmount = currentHp / maxHp;
+
+        if (_animCoroutine != null)
+        {
+            StopCoroutine(_animCoroutine);
+            _animCoroutine = null;
+        }
+        _animCoroutine = StartCoroutine(PlayHpBarAnimation());
+
+    }
+
+    private IEnumerator PlayHpBarAnimation()
+    {
+        yield return new WaitForSeconds(_blendInTime);
+
+        while (_hpAnimBar.fillAmount > _hpBar.fillAmount)
+        {
+            _hpAnimBar.fillAmount = Mathf.Lerp(
+                _hpAnimBar.fillAmount,
+                _hpBar.fillAmount,
+                _animSpeed * Time.deltaTime
+                );
+
+            yield return null;
+        }
+    }
+
+    // ---- [ì´í•˜ ê¸°ì¡´ ì•„ì´í…œ/ë¯¸ë‹ˆë§µ ê´€ë ¨ ì½”ë“œë“¤ë„ ì•ˆì „í•˜ê²Œ ë°©ì–´ë§‰ ì¶”ê°€] ----
     private void UpdateSelectableItemInUI()
     {
         UpdateSelectableItemBtn<WeaponStatData>(0);
