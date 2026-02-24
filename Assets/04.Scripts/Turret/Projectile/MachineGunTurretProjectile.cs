@@ -2,7 +2,6 @@
 
 public class MachineGunTurretProjectile : TurretProjectile
 {
-    Vector2 _direction;
 
     protected override void Move()
     {
