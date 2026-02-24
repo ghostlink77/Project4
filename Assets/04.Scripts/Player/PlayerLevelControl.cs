@@ -10,13 +10,13 @@ public class PlayerLevelControl : MonoBehaviour
 
     public event Action<int> OnLevelUp;
 
-    void Start()
+    private void Start()
     {
         UpdateRequiredXP();
     }
 
 #if UNITY_EDITOR
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) AddXP(1);
         if (Input.GetKeyDown(KeyCode.W)) AddXP(2);
@@ -27,7 +27,7 @@ public class PlayerLevelControl : MonoBehaviour
     public void AddXP(float amount)
     {
         currentXP += amount;
-        Debug.Log($"°æÇèÄ¡ {amount} È¹µæ (ÇöÀç: {currentXP} / {requiredXP})");
+        Debug.Log($"ê²½í—˜ì¹˜ {amount} íœ™ë“ (í˜„ìž¬: {currentXP} / {requiredXP})");
 
         while (currentXP >= requiredXP)
         {
@@ -35,27 +35,18 @@ public class PlayerLevelControl : MonoBehaviour
         }
     }
 
-    void LevelUp()
+    private void LevelUp()
     {
         currentXP -= requiredXP;
         currentLevel++;
         UpdateRequiredXP();
 
-        Debug.Log($"LEVEL UP! ÇöÀç ·¹º§: {currentLevel}");
-        /*
-        if (InGameManager.Instance != null)
-        {
-            InGameManager.Instance.OpenLevelUpUI();
-        }
-        else
-        {
-            Debug.LogError("InGameManager°¡ ¾À¿¡ ¾ø½À´Ï´Ù!");
-        }
-        */
+        Debug.Log($"LEVEL UP! í˜„ìž¬ ë ˆë²¨ {currentLevel}");
+
         OnLevelUp?.Invoke(currentLevel);
     }
 
-    void UpdateRequiredXP()
+    private void UpdateRequiredXP()
     {
         const int MaxLevelTier1 = 15;
         const int MaxLevelTier2 = 30;

@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using Game.Types;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Pool;
 
+[RequireComponent(typeof(WeaponShootController))]
+[RequireComponent(typeof(WeaponStatController))]
+[RequireComponent(typeof(WeaponEventController))]
+[RequireComponent(typeof(WeaponSoundController))]
 public class WeaponManager : MonoBehaviour
 {
-    IObjectPool<GameObject> _projectilePool;
+    private IObjectPool<GameObject> _projectilePool;
     
     [Header("투사체")]
     [SerializeField]
@@ -14,87 +17,92 @@ public class WeaponManager : MonoBehaviour
     
     [Header("무기 기본 데이터")]
     [SerializeField]
-    WeaponStatData _baseStat;
-
-    CircleCollider2D _weaponRangeCollider;
+    private WeaponStatData _baseStat;
+    private CircleCollider2D _weaponRangeCollider;
     
-    // 스크립트 참조 변수
-    WeaponShootController _weaponShootController;
-    BulletController _bulletController;
-    WeaponStatController _weaponStatController;
+    #region 스크립트 참조변수
+    private WeaponShootController _weaponShootController;
+    private BulletController _bulletController;
+    private WeaponStatController _weaponStatController;
+    private WeaponEventController _weaponEventController;
+    private WeaponSoundController _weaponSoundController;
+    #endregion
     
-    // 무기 스탯 변수
-    int _dmg;
-    float _atkSpeed, _projectileSpeed;
+    #region 무기 스탯 변수
+    private int _damage;
+    private float _atkSpeed, _projectileSpeed;
+    #endregion
 
-    void Awake()
+    #region 유니티 생명주기 함수
+    private void Awake()
     {
         _bulletController = InspectNullAndGetPrefabComponent();
         GetRequiredComponents();
     }
 
-    void Start()
+    private void OnEnable()
     {
+        _weaponEventController.OnStatChanged += HandleStatChanged;
     }
 
-    void OnEnable()
+    private void OnDisable()
     {
-        _weaponStatController.OnStatChanged += HandleStatChanged;
+        _weaponEventController.OnStatChanged -= HandleStatChanged;
     }
 
-    void OnDisable()
+
+    private void Update()
     {
-        _weaponStatController.OnStatChanged -= HandleStatChanged;
+        _weaponShootController.ShootProcedurePerUpdate(_damage, _atkSpeed, _projectileSpeed);
     }
+    #endregion
     
-    void HandleStatChanged(WeaponStat type)
+    private void HandleStatChanged(WeaponStat type)
     {
         if (type == WeaponStat.AtkSpeed)
         {
-            _atkSpeed = _weaponStatController.GetStat(WeaponStat.AtkSpeed);
+            _atkSpeed = _weaponStatController.AtkSpeed;
         }
-        else if (type == WeaponStat.Atk)
+        else if (type == WeaponStat.Damage)
         {
-            _dmg = (int)_weaponStatController.GetStat(WeaponStat.Atk);
+            _damage = _weaponStatController.Damage;
         }
         else if (type == WeaponStat.ProjectileSpeed)
         {
-            _projectileSpeed = _weaponStatController.GetStat(WeaponStat.ProjectileSpeed);
-            
+            _projectileSpeed = _weaponStatController.ProjectileSpeed;
         }
     }
 
-    // 필요한 스크립트들 참조하는 메서드
-    void GetRequiredComponents()
+    private void GetRequiredComponents()
     {
-        _weaponShootController = GetComponent<WeaponShootController>();
-        _weaponStatController = GetComponent<WeaponStatController>();
-        _weaponRangeCollider = GetComponent<CircleCollider2D>();
+        if (!TryGetComponent<WeaponShootController>(out _weaponShootController))
+        Debug.Log($"{nameof(_weaponShootController)}가 null임");
+        if (!TryGetComponent<WeaponStatController>(out _weaponStatController))
+        Debug.Log($"{nameof(_weaponStatController)}가 null임");
+        if (!TryGetComponent<WeaponEventController>(out _weaponEventController))
+        Debug.Log($"{nameof(_weaponEventController)}가 null임");
+        if (!TryGetComponent<CircleCollider2D>(out _weaponRangeCollider))
+        Debug.Log($"{nameof(_weaponRangeCollider)}가 null임");
+        if (!TryGetComponent<WeaponSoundController>(out _weaponSoundController))
+        Debug.Log($"{nameof(_weaponSoundController)}가 null임");
         
-        // 스탯 먼저 초기화
         _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);
         GetWeaponStats();
         
-        // ShootController 초기화
         _weaponShootController.SetUp(_projectilePrefab);
+        _weaponSoundController.SetUp();
 
         _projectilePool = _weaponShootController.ReturnObjectPool();
     }
     
-    void GetWeaponStats()
+    private void GetWeaponStats()
     {
-        _dmg = (int)_weaponStatController.GetStat(WeaponStat.Atk);
-        _atkSpeed = _weaponStatController.GetStat(WeaponStat.AtkSpeed);
-        _projectileSpeed = _weaponStatController.GetStat(WeaponStat.ProjectileSpeed);
+        _damage = _weaponStatController.Damage;
+        _atkSpeed = _weaponStatController.AtkSpeed;
+        _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }
 
-    void Update()
-    {
-        _weaponShootController.ShootProcedurePerUpdate(_dmg, _atkSpeed, _projectileSpeed);
-    }
-
-    // 총알 프리팹이 있는지 확인하고, 안에 BulletController 스크립트까지 있는지 확인하는 메서드
-    BulletController InspectNullAndGetPrefabComponent()
+    private BulletController InspectNullAndGetPrefabComponent()
     {
         BulletController bulletController;
         if (_projectilePrefab == null)

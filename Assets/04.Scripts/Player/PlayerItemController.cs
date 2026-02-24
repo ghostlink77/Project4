@@ -23,15 +23,13 @@ public class PlayerItemController : MonoBehaviour
     private Dictionary<string, GameObject> _turretSlots = new Dictionary<string, GameObject>();
     [SerializeField] private int _turretSlotMaxCount = 7;
 
-    // 초기 설정 PlayerManager에서 받아오기
     public void SetUp()
     {
         PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
     }
 
-    // 아이템 슬롯 초기화하는 메서드
-    void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
+    private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
     {
         InitializeSlots(_weaponSlot, weaponSlotSize);
         InitializeSlots(_passiveItemSlot, passiveSlotSize);
@@ -39,7 +37,6 @@ public class PlayerItemController : MonoBehaviour
         Debug.Log("플레이어 아이템 슬롯 모두 초기화됨");
     }
 
-    // 빈 무기 슬롯이 있다면 아이템 넣는 메서드
     // 빈 무기 슬롯이 없다면 무기 교환해서 넣는 기능은 따로 구현하지 않는다.
     // 추가하려는 무기가 현재 무기 슬롯에 존재한다면 레벨만 올림.
     public void AddWeaponToSlot(WeaponStatData newWeaponData)

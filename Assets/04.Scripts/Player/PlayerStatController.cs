@@ -3,64 +3,65 @@
 */
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerStatController : MonoBehaviour, IDamageable
 {
     #region 스크립터블 오브젝트
     [Header("스크립터블 오브젝트들")]
-    [SerializeField]
-    private PlayerDefaultData playerDefaultData;
+    [SerializeField] private PlayerDefaultData playerDefaultData;
     #endregion
-    
+
     #region 플레이어 스탯 변수들
-    // 플레이어 스탯
-    public int CurrentLevel {get; set;}
+    public Dictionary<Passive, int> passiveLevels = new Dictionary<Passive, int>();
+
+    public int CurrentLevel { get; set; }
     public int CurrentExp { get; private set; }
-    public int MaxHp {get; set;}
-    public int CurrentHp {get; set;}
-    public int Defense  {get; set;}
-    public int HpGenSpeed {get; set;}
-    // 플레이어 스탯 반환 및 설정하는 함수
-    public float MoveSpeed {get; set;}
-    public float ItemGetRadius {get; set;}
-    public float Luck {get; set;}
-    public float Growth {get; set;}
-    public float Greed {get; set;}
-    public float Curse {get; set;}
-    public int Life {get; set;}
-    public bool Dead {get; set;}
-    public int WeaponSlotSize{get; set;}
-    public int PassiveItemSlotSize{get; set;}
-    public int TurretSlotSize {get; set;}
+    public int MaxHp { get; set; }
+    public int CurrentHp { get; set; }
+    public int Defense { get; set; }
+    public int HpGenSpeed { get; set; }
+
+    public float DamageMultiplier { get; set; } = 1.0f;
+    public float CriticalPercent { get; set; } = 0f;
+
+    public float MoveSpeed { get; set; }
+    public float ItemGetRadius { get; set; }
+    public float Luck { get; set; }
+    public float Growth { get; set; }
+    public float Greed { get; set; }
+    public float Curse { get; set; }
+    public int Life { get; set; }
+    public bool Dead { get; set; }
+
+    public int WeaponSlotSize { get; set; }
+    public int PassiveItemSlotSize { get; set; }
+    public int TurretSlotSize { get; set; }
+
+    public float AgitHp { get; set; }
+    public float AgitDef { get; set; }
+    public int AgitArea { get; set; }
+    public float TurretDmg { get; set; }
     #endregion
 
     #region 플레이어 부활 시간 관련 변수
-    // 플레이어 부활까지 걸리는 시간이기 때문에 조정할 필요가 있음. 따라서 SerializeField를 적용함
-    [SerializeField]
-    private float _reviveDelayTime = 1.5f;
+    [SerializeField] private float _reviveDelayTime = 1.5f;
     private float ReviveDelayTime
     {
         get => _reviveDelayTime;
         set => _reviveDelayTime = (value <= 0) ? 0 : value;
     }
-    
     private WaitForSeconds _reviveDelayAction;
     #endregion
-    
-    #region 스크립트 참조변수
-    private PlayerEventController _playerEventController;
-    #endregion
 
-    # region 유니티 생명주기 함수들
+    private PlayerEventController _playerEventController;
+
     private void OnEnable()
     {
         if (_playerEventController != null)
         {
-            // 혹시 모를 중복 구독 방지를 위함
             RemoveFromEvent();
             AddToEvent();
         }
@@ -71,106 +72,180 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         RemoveFromEvent();
     }
 
-    // 필요한 데이터를 PlayerManager에서 받아오는 메서드
-    // 매개변수로 받아오므로, 필요할 때마다 매개변수에 추가해야 함.
     public void SetUp()
     {
+        if (PlayerManager.Instance != null)
+        {
+            _playerEventController = PlayerManager.Instance.PlayerEventController;
+        }
         resetPlayerStat();
-        _playerEventController = PlayerManager.Instance.PlayerEventController;
         _reviveDelayAction = new WaitForSeconds(ReviveDelayTime);
     }
-    #endregion
-    
-    #region 이벤트 관련 메서드
-    // 이벤트에 추가하는 함수들
+
     private void AddToEvent()
     {
+        if (_playerEventController == null) return;
         _playerEventController.Death += AddToDeath;
         _playerEventController.Revive += AddToRevive;
     }
-    
+
     private void RemoveFromEvent()
     {
+        if (_playerEventController == null) return;
         _playerEventController.Death -= AddToDeath;
         _playerEventController.Revive -= AddToRevive;
     }
 
-    // Death 이벤트 활성화 시 작동할 메서드
     private void AddToDeath()
     {
-        Debug.Log("플레이어 사망");
-        PlayerManager.Instance.PlayerMoveController.InputVector = Vector2.zero;
+        if (PlayerManager.Instance.PlayerMoveController != null)
+        {
+            PlayerManager.Instance.PlayerMoveController.InputVector = Vector2.zero;
+        }
         Dead = true;
         StartCoroutine(AfterDead());
     }
-    
-    // Revive 이벤트 활성화 시 작동할 메서드
+
     private void AddToRevive()
     {
-        Debug.Log("플레이어 부활");
         CurrentHp = MaxHp;
         Life = Math.Max(0, Life - 1);
         Dead = false;
     }
-    #endregion
 
-    //플레이어 데이터를 스크립터블 오브젝트에 있는 걸로 초기화하는 메서드
     private void resetPlayerStat()
     {
-        // 플레이어 스테이터스
+        passiveLevels.Clear();
+
         CurrentLevel = playerDefaultData.DefaultLevel;
         MaxHp = playerDefaultData.DefaultMaxHP;
         CurrentHp = MaxHp;
         Defense = playerDefaultData.DefaultDef;
         HpGenSpeed = playerDefaultData.DefaultHpGenSpeed;
-        MoveSpeed= playerDefaultData.DefaultSpeed;
+        MoveSpeed = playerDefaultData.DefaultSpeed;
         ItemGetRadius = playerDefaultData.DefaultReceiveRadius;
         Luck = playerDefaultData.DefaultLuck;
         Growth = playerDefaultData.DefaultGrowth;
         Greed = playerDefaultData.DefaultGreed;
         Curse = playerDefaultData.DefaultCurse;
         Life = playerDefaultData.DefaultLife;
-        
-        // 슬롯들
+
+        DamageMultiplier = 1.0f;
+        CriticalPercent = 0f;
+
+        AgitHp = 0f;
+        AgitDef = 0f;
+        AgitArea = 0;
+        TurretDmg = 0f;
+
         WeaponSlotSize = playerDefaultData.DefaultWeaponSlotSize;
         PassiveItemSlotSize = playerDefaultData.DefaultPassiveItemSlotSize;
         TurretSlotSize = playerDefaultData.DefaultTurretSlotSize;
     }
-    
-    #region 플레이어 데미지 관련 메서드
-    //플레이어 hp에 데미지 가하는 함수
-    // 플레이어의 hp를 치료하는 효과는 다른 함수로 구현하도록 한다.
+
+    public int GetCurrentPassiveLevel(Passive type)
+    {
+        return passiveLevels.ContainsKey(type) ? passiveLevels[type] : 0;
+    }
+
+    public void LevelUpPassiveStat(LevelUpPassive data)
+    {
+        if (!passiveLevels.ContainsKey(data.passive))
+        {
+            passiveLevels[data.passive] = 1;
+        }
+        else
+        {
+            passiveLevels[data.passive]++;
+        }
+
+        int currentLevel = passiveLevels[data.passive];
+
+        float val1 = (data.valuePerLevel != null && data.valuePerLevel.Length >= currentLevel) ? data.valuePerLevel[currentLevel - 1] : 0;
+        float val2 = (data.valuePerLevel2 != null && data.valuePerLevel2.Length >= currentLevel) ? data.valuePerLevel2[currentLevel - 1] : 0;
+
+        ApplyStat(data.passive, val1, val2);
+
+        Debug.Log($"[패시브 업그레이드] {data.itemName} Lv.{currentLevel} 달성! " +
+                  $"(공격력 배율: {DamageMultiplier} / 방어력: {Defense} / 최대체력: {MaxHp})");
+    }
+
+    private void ApplyStat(Passive type, float val1, float val2)
+    {
+        switch (type)
+        {
+            case Passive.Heart:
+                int prevMaxHp = MaxHp;
+                MaxHp = playerDefaultData.DefaultMaxHP + (int)val1;
+                CurrentHp += (MaxHp - prevMaxHp);
+                break;
+            case Passive.Nuclear:
+                DamageMultiplier = 1.0f + (val1 / 100f);
+                break;
+            case Passive.Shield:
+                Defense = playerDefaultData.DefaultDef + (int)val1;
+                break;
+            case Passive.Repair:
+                HpGenSpeed = playerDefaultData.DefaultHpGenSpeed + (int)val1;
+                break;
+            case Passive.Speed:
+                MoveSpeed = playerDefaultData.DefaultSpeed * (1.0f + val1);
+                break;
+            case Passive.Luck:
+                CriticalPercent = val1;
+                Luck = playerDefaultData.DefaultLuck + val2;
+                break;
+            case Passive.EXP:
+                Growth = playerDefaultData.DefaultGrowth + val1;
+                break;
+            case Passive.Magnet:
+                ItemGetRadius = playerDefaultData.DefaultReceiveRadius * (1.0f + val1);
+                break;
+            case Passive.AgitHP:
+                AgitHp = val1;
+                break;
+            case Passive.AgitDef:
+                AgitDef = val1;
+                break;
+            case Passive.AgitArea:
+                AgitArea = (int)val1;
+                break;
+            case Passive.TurretDmg:
+                TurretDmg = val1;
+                break;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
-        // 플레이어가 이미 죽은 경우 메서드 미적용
         if (Dead == true) return;
 
-        // 플레이어 피격 이벤트 실행
-        _playerEventController.CallHurt();
-        
-        // 방어력 적용해서 데미지 적용
+        if (_playerEventController != null)
+            _playerEventController.CallHurt();
+
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
-        Debug.Log($"{calcDmg} 적용, 남은 체력: {CurrentHp}");
 
         if (CurrentHp <= 0)
         {
             CurrentHp = 0;
-            _playerEventController.CallDeath();
+            if (_playerEventController != null)
+                _playerEventController.CallDeath();
         }
     }
+
     int CalculateReducedDmg(int damage, int defense)
     {
-        float value = damage * 100 / (100 + defense);
+        float value = damage * 100.0f / (100.0f + defense);
         return (int)Math.Round(value);
     }
-    #endregion
-    
-    #region 플레이어 사망 관련 메서드
+
     private IEnumerator AfterDead()
     {
         yield return _reviveDelayAction;
-        if (Life > 0) _playerEventController.CallRevive();
+        if (Life > 0 && _playerEventController != null)
+        {
+            _playerEventController.CallRevive();
+        }
     }
-    #endregion
 }
