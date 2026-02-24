@@ -10,12 +10,13 @@ public class GenerateExplosion : MonoBehaviour
 
     private void Awake()
     {
-        if (TryGetComponent<Collider2D>(out _bulletCollider)) Debug.LogError("총알에 Collider2D 없음");
-        if (TryGetComponent<BulletController>(out _bulletController)) Debug.LogError("총알에 BulletController 컴포넌트 없음");
+        if (!gameObject.TryGetComponent<Collider2D>(out _bulletCollider)) Debug.LogError("총알에 Collider2D 없음");
+        if (!gameObject.TryGetComponent<BulletController>(out _bulletController)) Debug.LogError("총알에 BulletController 컴포넌트 없음");
     }
 
     private void OnEnable()
     {
+        if (_bulletController == null) Debug.LogWarning("이이");
         _bulletController.OnHit += GenerateExplosionOnBulletPosition;
     }
 
@@ -27,6 +28,7 @@ public class GenerateExplosion : MonoBehaviour
     private void GenerateExplosionOnBulletPosition()
     {
         Vector2 bulletPosision = gameObject.transform.position;
-        Instantiate(explosionPrefab, bulletPosision, Quaternion.identity);
+        GameObject createdExplosion = Instantiate(explosionPrefab, bulletPosision, Quaternion.identity);
+        createdExplosion.GetComponent<EffectController>().Init(_bulletController.ProjectileDmg);
     }
 }

@@ -73,7 +73,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 4
 --- !u!114 &1039333528494596075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
-  _weaponShootSound: {fileID: 0}
+  _weaponShootSound: {fileID: 8300000, guid: c2f7f4c0d0f4a4cc685cf40e345e94cf, type: 3}
 --- !u!114 &4866292833427450968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e99b957ebab2544a8b7ac02200d1788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
-  _projectilePrefab: {fileID: 0}
+  _projectilePrefab: {fileID: 2505686164639090012, guid: aad2a853c847a471494d80075d3d21c6, type: 3}
   _baseStat: {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
 --- !u!82 &5145186164107463395
 AudioSource:

@@ -23,6 +23,7 @@ public class BulletController : MonoBehaviour
     #region 투사체 스탯
     private float _projectileSpeed;
     private int _projectileDmg;
+    public int ProjectileDmg {get => _projectileDmg;}
     #endregion
     
     [SerializeField]

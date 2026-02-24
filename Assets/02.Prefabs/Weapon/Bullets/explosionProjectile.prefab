@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 6458829120442100464}
   - component: {fileID: 2846603651589401349}
   - component: {fileID: -1692499246185581898}
-  - component: {fileID: -2500712201594329794}
-  - component: {fileID: 3760361271042450015}
-  - component: {fileID: -2000401865410467528}
+  - component: {fileID: 5192685683899347829}
   m_Layer: 0
   m_Name: explosionProjectile
   m_TagString: Untagged
@@ -166,7 +164,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: adf742af1fe7a432c8e8f287ed1d93e3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -252,7 +250,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2500712201594329794
+--- !u!114 &5192685683899347829
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,35 +259,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5562719415326265950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c280c909d53dd6a429a8eac71b595d87, type: 3}
+  m_Script: {fileID: 11500000, guid: 833d4e1f951a542d7abefe83e08b4097, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
-  _audioSource: {fileID: -1692499246185581898}
-  _hitSound: {fileID: 8300000, guid: adf742af1fe7a432c8e8f287ed1d93e3, type: 3}
---- !u!114 &3760361271042450015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5562719415326265950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06dbcbd0cc8042d40ac18ba641f5842c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletAnimationController
-  _bulletAnimationClip: {fileID: 7400000, guid: b4b5b4d4b81a4414595d0927c71ebdcc, type: 2}
---- !u!114 &-2000401865410467528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5562719415326265950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _lifeTime: 3
-  _deleteAfterAnimation: 1
+  m_EditorClassIdentifier: Assembly-CSharp::EffectController
+  _lifeTime: 1
+  _isProjectile: 0
