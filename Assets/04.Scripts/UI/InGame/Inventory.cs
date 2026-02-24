@@ -21,13 +21,34 @@ public class Inventory : MonoBehaviour
         else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.GetSlots<PassiveStatData>();
         else if (type == InventoryType.Turret) items = PlayerManager.Instance.PlayerItemController.GetSlots<TurretData>();
 
-        if (items == null) return;
-
         int index = 0;
-        foreach(var item in items)
+        if (items != null)
         {
-            _inventorySlot[0].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
-            index++;
-        }   
+            foreach (var item in items)
+            {
+                if (index >= _inventorySlot.Length)
+                {
+                    Debug.Log("설정된 인벤토리가 초과되었습니다.");
+                    break;
+                }
+                if (_inventorySlot[index] == null)
+                {
+                    Debug.Log("인벤토리 슬롯이 없습니다.");
+                }
+                _inventorySlot[index].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
+                index++;
+            }
+        }
+        
+        
+        for(int i = index; i < _inventorySlot.Length; i++)
+        {
+            if (_inventorySlot[i] == null)
+            {
+                Debug.Log("인벤토리 슬롯이 없습니다.");
+                return;
+            }
+            _inventorySlot[i].ResetSlot();
+        }
     }
 }

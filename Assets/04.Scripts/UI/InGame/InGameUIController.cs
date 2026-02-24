@@ -58,6 +58,8 @@ public class InGameUIController : MonoBehaviour
         _inGameUI.SetActive(true);
         _hpBar.fillAmount = 1f;
         _hpAnimBar.fillAmount = 1f;
+
+        UpdateInventory();
     }
     private void Update()
     {
