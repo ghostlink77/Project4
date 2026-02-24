@@ -201,39 +201,7 @@ public class InGameUIController : MonoBehaviour
         _expBar.fillAmount = currentExp / maxExp;
     }
 
-    public void UpdateHpBar()
-    {
-        float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
-        float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
-        _hpBar.fillAmount = currentHp / maxHp;
-
-        if (_animCoroutine != null)
-        {
-            StopCoroutine(_animCoroutine);
-            _animCoroutine = null;
-        }
-        _animCoroutine = StartCoroutine(PlayHpBarAnimation());
-
-    }
-
-    private IEnumerator PlayHpBarAnimation()
-    {
-        yield return new WaitForSeconds(_blendInTime);
-
-        while (_hpAnimBar.fillAmount > _hpBar.fillAmount)
-        {
-            _hpAnimBar.fillAmount = Mathf.Lerp(
-                _hpAnimBar.fillAmount,
-                _hpBar.fillAmount,
-                _animSpeed * Time.deltaTime
-                );
-
-            yield return null;
-        }
-
-        _hpAnimBar.fillAmount = _hpBar.fillAmount;
-    }
-
+    // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
         UpdateSelectableItemBtn<WeaponStatData>(0);
