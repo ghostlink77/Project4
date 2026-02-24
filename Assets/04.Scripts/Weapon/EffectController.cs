@@ -35,7 +35,7 @@ public class EffectController : MonoBehaviour
         _animator = GetComponent<Animator>();
         
         _contactFilter.useTriggers = true;
-        _contactFilter.useLayerMask = true;
+        _contactFilter.useLayerMask = false;
     }
 
     private void OnEnable()
@@ -65,6 +65,7 @@ public class EffectController : MonoBehaviour
 
     public void Init(int damage)
     {
+        Debug.Log($"데미지 설정: {damage}");
         _damage = damage;
     }
 
@@ -107,7 +108,6 @@ public class EffectController : MonoBehaviour
         
         _overlapResults.Clear();
         
-        // Unity 6 deprecation fix: OverlapCollider -> Overlap
         int hitCount = _collider.Overlap(_contactFilter, _overlapResults);
         
         if (hitCount > 0)
@@ -118,14 +118,16 @@ public class EffectController : MonoBehaviour
                 {
                     if (hit.TryGetComponent<IDamageable>(out var target))
                     {
+                        Debug.Log($"적이 공격에 휘말림, damage: {_damage}");
                         target.TakeDamage(_damage);
                     }
                 }
-                else if (hit.CompareTag("Player"))
+                if (hit.CompareTag("Player"))
                 {
                     if (hit.TryGetComponent<PlayerStatController>(out var player))
                     {
                         int reducedDamage = (int)(_damage * 0.6);
+                        Debug.Log($"플레이어가 폭발에 휘말림, damage: {reducedDamage}");
                         player.TakeDamage(reducedDamage);
                     }
                 }

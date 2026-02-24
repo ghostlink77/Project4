@@ -232,6 +232,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             if (_playerEventController != null)
                 _playerEventController.CallDeath();
         }
+        Debug.Log($"데미지: {damage}, 현재 hp: {CurrentHp}");
     }
 
     int CalculateReducedDmg(int damage, int defense)
