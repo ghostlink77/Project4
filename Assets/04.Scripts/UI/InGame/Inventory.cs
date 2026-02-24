@@ -34,6 +34,8 @@ public class Inventory : MonoBehaviour
                 if (_inventorySlot[index] == null)
                 {
                     Debug.Log("인벤토리 슬롯이 없습니다.");
+                    index++;
+                    continue;
                 }
                 _inventorySlot[index].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
                 index++;

@@ -60,21 +60,14 @@ public class InGameUIController : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 1f;
-        _pauseUI.SetActive(false);
-        _levelupUI.SetActive(false);
-        _endGameUI.SetActive(false);
-        _inGameUI.SetActive(true);
-        _hpBar.fillAmount = FULL_FILL_AMOUNT;
-        _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
-
-        UpdateInventory();
-
+        
         // ★ 빈 씬에서 에러가 나지 않도록 방어막(null 체크) 추가!
         if (_pauseUI != null) _pauseUI.SetActive(false);
         if (_levelupUI != null) _levelupUI.SetActive(false);
         if (_endGameUI != null) _endGameUI.SetActive(false);
         if (_inGameUI != null) _inGameUI.SetActive(true);
     }
+
     private void Start()
     {
         _playerStat = FindAnyObjectByType<PlayerStatController>();

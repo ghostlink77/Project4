@@ -54,7 +54,7 @@ public class DamageTextSpawner : MonoBehaviour
         if (_spawnParent != null)
             damageTextObj.transform.SetParent(_spawnParent, false);
         damageTextObj.transform.position = position;
-        damageTextObj.GetComponent<TextMeshProUGUI>().text = damage.ToString();
+        damageTextObj.text = damage.ToString();
         StartCoroutine(ReturnPool(damageTextObj));
     }
 
