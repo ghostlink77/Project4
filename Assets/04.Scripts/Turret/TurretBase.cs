@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretBase : MonoBehaviour, IDamageable
+public class TurretBase : MonoBehaviour, IDamageable, IItemStatController
 {
     [SerializeField] private TurretData _turretData;
     public TurretData TurretData => _turretData;
@@ -16,6 +16,8 @@ public class TurretBase : MonoBehaviour, IDamageable
     private float _fireTimer;
     private int _currentHp;
     private Transform _target;
+
+    private int _level = 1;
 
     private void Start()
     {
@@ -107,12 +109,6 @@ public class TurretBase : MonoBehaviour, IDamageable
 
     Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos) => endPos - startPos;
 
-    public void LevelUp(TurretData newData)
-    {
-        _turretData = newData;
-        _rangeCollider.radius = _turretData.range;
-    }
-
     public void TakeDamage(int damage)
     {
         _currentHp -= damage;
@@ -129,4 +125,13 @@ public class TurretBase : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
+    public int GetLevel()
+    {
+        return _level;
+    }
+
+    public void LevelUp()
+    {
+        _level++;
+    }
 }
