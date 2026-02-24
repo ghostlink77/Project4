@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dbcbd0cc8042d40ac18ba641f5842c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletAnimationController
-  _bulletAnimationClip: {fileID: 0}
+  _bulletAnimationClip: {fileID: 7400000, guid: 7e57d40cc2af147dea4fd5401640e19b, type: 2}
 --- !u!114 &7655198939549220338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _lifeTime: 3
+  _lifeTime: 5
   _deleteAfterAnimation: 0
 --- !u!114 &2732539170094766352
 MonoBehaviour:
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
   _audioSource: {fileID: 0}
-  _hitSound: {fileID: 0}
+  _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!114 &5130322630033218809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,4 +284,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06dbcbd0cc8042d40ac18ba641f5842c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletAnimationController
-  _bulletAnimationClip: {fileID: 0}
+  _bulletAnimationClip: {fileID: 7400000, guid: 7e57d40cc2af147dea4fd5401640e19b, type: 2}
