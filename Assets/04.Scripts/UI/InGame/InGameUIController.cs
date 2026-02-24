@@ -43,11 +43,19 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private List<Inventory> _inventories = new List<Inventory>();
 
     public readonly string IMAGE_PATH = "Sprite";
+    public const int FULL_FILL_AMOUNT = 1;
 
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
+
+    // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
+    [Header("New Passive Data Pool")]
+    public List<LevelUpPassive> allPassives;
+
+    private PlayerStatController _playerStat;
+    private PlayerLevelControl _playerLevelControl;
 
     private void Awake()
     {
@@ -56,10 +64,34 @@ public class InGameUIController : MonoBehaviour
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
         _inGameUI.SetActive(true);
-        _hpBar.fillAmount = 1f;
-        _hpAnimBar.fillAmount = 1f;
+        _hpBar.fillAmount = FULL_FILL_AMOUNT;
+        _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
 
         UpdateInventory();
+
+        // ★ 빈 씬에서 에러가 나지 않도록 방어막(null 체크) 추가!
+        if (_pauseUI != null) _pauseUI.SetActive(false);
+        if (_levelupUI != null) _levelupUI.SetActive(false);
+        if (_endGameUI != null) _endGameUI.SetActive(false);
+        if (_inGameUI != null) _inGameUI.SetActive(true);
+    }
+    private void Start()
+    {
+        _playerStat = FindAnyObjectByType<PlayerStatController>();
+        _playerLevelControl = FindAnyObjectByType<PlayerLevelControl>();
+
+        if (_playerLevelControl != null)
+        {
+            _playerLevelControl.OnLevelUp += OpenLevelupUI; // 종소리 구독
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerLevelControl != null)
+        {
+            _playerLevelControl.OnLevelUp -= OpenLevelupUI;
+        }
     }
     private void Update()
     {
