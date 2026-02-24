@@ -15,19 +15,10 @@ public class PlayerLevelControl : MonoBehaviour
         UpdateRequiredXP();
     }
 
-#if UNITY_EDITOR
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Q)) AddXP(1);
-        //if (Input.GetKeyDown(KeyCode.W)) AddXP(2);
-        //if (Input.GetKeyDown(KeyCode.E)) AddXP(4);
-    }
-#endif
-
     public void AddXP(int amount)
     {
         currentXP += amount;
-        PlayerManager.Instance.PlayerStatController.CurrentExp = (int)currentXP;
+        PlayerManager.Instance.PlayerStatController.CurrentExp = currentXP;
         InGameManager.Instance.InGameUIController.UpdateExpBar();
         Debug.Log($"경험치 {amount} 휙득 (현재: {currentXP} / {requiredXP})");
 
