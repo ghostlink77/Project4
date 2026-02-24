@@ -35,7 +35,6 @@ public class PlayerLevelControl : MonoBehaviour
         UpdateRequiredXP();
 
         Debug.Log($"LEVEL UP! 현재 레벨 {currentLevel}");
-        InGameManager.Instance.InGameUIController.OpenLevelupUI(currentLevel);
 
         OnLevelUp?.Invoke(currentLevel);
     }
