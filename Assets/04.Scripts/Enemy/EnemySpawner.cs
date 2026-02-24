@@ -73,6 +73,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         }
         GameObject enemy = _enemyPools[enemyType].Get();
         enemy.transform.position = position;
+        InGameManager.Instance.InGameUIController.AddTracedEnemyInMinimap(enemy.transform);
 
         Enemy enemyComponent = enemy.GetComponent<Enemy>();
         enemyComponent.Initialize(_agitRigidbody);
@@ -89,6 +90,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         {
             Destroy(enemy);
         }
+        InGameManager.Instance.InGameUIController.RemoveTracedEnemyInMinimap(enemy.transform);
     }
 
 

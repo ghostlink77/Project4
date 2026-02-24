@@ -94,7 +94,7 @@ public class InGameUIController : MonoBehaviour
     private void Update()
     {
         HandleInput();
-        UpdateExpBar();
+        //UpdateExpBar();
     }
 
     private void HandleInput()

@@ -35,7 +35,7 @@ public class Agit : MonoBehaviour, IDamageable
         isDestroyed = true;
 
         // 카메라 아지트로 이동
-        yield return StartCoroutine(MoveCameraToAgit());
+        //yield return StartCoroutine(MoveCameraToAgit());
 
         // 아지트 파괴 효과
         yield return new WaitForSeconds(1f);

@@ -5,8 +5,8 @@ public class PlayerLevelControl : MonoBehaviour
 {
     [Header("Player Status")]
     [SerializeField] public int currentLevel = 1;
-    [SerializeField] public float currentXP = 0;
-    public float requiredXP = 0;
+    [SerializeField] public int currentXP = 0;
+    public int requiredXP = 0;
 
     public event Action<int> OnLevelUp;
 
@@ -18,15 +18,17 @@ public class PlayerLevelControl : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) AddXP(1);
-        if (Input.GetKeyDown(KeyCode.W)) AddXP(2);
-        if (Input.GetKeyDown(KeyCode.E)) AddXP(4);
+        //if (Input.GetKeyDown(KeyCode.Q)) AddXP(1);
+        //if (Input.GetKeyDown(KeyCode.W)) AddXP(2);
+        //if (Input.GetKeyDown(KeyCode.E)) AddXP(4);
     }
 #endif
 
-    public void AddXP(float amount)
+    public void AddXP(int amount)
     {
         currentXP += amount;
+        PlayerManager.Instance.PlayerStatController.CurrentExp = (int)currentXP;
+        InGameManager.Instance.InGameUIController.UpdateExpBar();
         Debug.Log($"경험치 {amount} 휙득 (현재: {currentXP} / {requiredXP})");
 
         while (currentXP >= requiredXP)
@@ -42,6 +44,7 @@ public class PlayerLevelControl : MonoBehaviour
         UpdateRequiredXP();
 
         Debug.Log($"LEVEL UP! 현재 레벨 {currentLevel}");
+        InGameManager.Instance.InGameUIController.OpenLevelupUI(currentLevel);
 
         OnLevelUp?.Invoke(currentLevel);
     }

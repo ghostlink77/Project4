@@ -92,7 +92,6 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    // NOTE: 적과 닿아있으면 지속적으로 데미지 입히기
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(!_isLive)
@@ -111,6 +110,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _currentHp -= damage;
+        InGameManager.Instance.InGameUIController.ShowDamageText(transform.position, damage);
         if (_currentHp <= 0 && _isLive)
         {
             Die();

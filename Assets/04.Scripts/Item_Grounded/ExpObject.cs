@@ -7,8 +7,11 @@ public class ExpObject : ItemGroundedBase
 
     protected override void OnCollectedByPlayer(Collider2D playerColl)
     {
-        // TODO: 플레이어에게 Exp 추가 로직
-        Debug.Log($"Exp 획득: {_expAmount}");
+        if (playerColl.TryGetComponent<PlayerLevelControl>(out PlayerLevelControl playerLevelControl))
+        {
+            playerLevelControl.AddXP(_expAmount);
+            ReturnToPool();
+        }
     }
 
     protected override void ReturnToPool()
