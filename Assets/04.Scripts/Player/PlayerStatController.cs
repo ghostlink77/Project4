@@ -135,6 +135,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
+        InGameManager.Instance.InGameUIController.UpdateHpBar();
 
         if (CurrentHp <= 0)
         {

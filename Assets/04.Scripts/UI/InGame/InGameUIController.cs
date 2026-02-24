@@ -50,42 +50,21 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
-    // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
-    [Header("New Passive Data Pool")]
-    public List<LevelUpPassive> allPassives;
-
-    private PlayerStatController _playerStat;
-    private PlayerLevelControl _playerLevelControl;
 
     private void Awake()
     {
         Time.timeScale = 1f;
-        
-        // ★ 빈 씬에서 에러가 나지 않도록 방어막(null 체크) 추가!
-        if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (_levelupUI != null) _levelupUI.SetActive(false);
-        if (_endGameUI != null) _endGameUI.SetActive(false);
-        if (_inGameUI != null) _inGameUI.SetActive(true);
+
+        _pauseUI.SetActive(false);
+        _levelupUI.SetActive(false);
+        _endGameUI.SetActive(false);
+        _inGameUI.SetActive(true);
+        _hpBar.fillAmount = FULL_FILL_AMOUNT;
+        _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
+
+        UpdateInventory();
     }
 
-    private void Start()
-    {
-        _playerStat = FindAnyObjectByType<PlayerStatController>();
-        _playerLevelControl = FindAnyObjectByType<PlayerLevelControl>();
-
-        if (_playerLevelControl != null)
-        {
-            _playerLevelControl.OnLevelUp += OpenLevelupUI; // 종소리 구독
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (_playerLevelControl != null)
-        {
-            _playerLevelControl.OnLevelUp -= OpenLevelupUI;
-        }
-    }
     private void Update()
     {
         HandleInput();
@@ -201,7 +180,37 @@ public class InGameUIController : MonoBehaviour
         _expBar.fillAmount = currentExp / maxExp;
     }
 
-    // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
+    public void UpdateHpBar()
+    {
+        float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
+        float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
+        _hpBar.fillAmount = currentHp / maxHp;
+
+        if (_animCoroutine != null)
+        {
+            StopCoroutine(_animCoroutine);
+            _animCoroutine = null;
+        }
+        _animCoroutine = StartCoroutine(PlayHpBarAnimation());
+
+    }
+
+    private IEnumerator PlayHpBarAnimation()
+    {
+        yield return new WaitForSeconds(_blendInTime);
+
+        while (_hpAnimBar.fillAmount > _hpBar.fillAmount)
+        {
+            _hpAnimBar.fillAmount = Mathf.Lerp(
+                _hpAnimBar.fillAmount,
+                _hpBar.fillAmount,
+                _animSpeed * Time.deltaTime
+                );
+
+            yield return null;
+        }
+    }
+
     private void UpdateSelectableItemInUI()
     {
         UpdateSelectableItemBtn<WeaponStatData>(0);
