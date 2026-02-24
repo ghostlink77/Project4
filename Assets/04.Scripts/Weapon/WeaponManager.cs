@@ -40,10 +40,6 @@ public class WeaponManager : MonoBehaviour
         GetRequiredComponents();
     }
 
-    private void Start()
-    {
-    }
-
     private void OnEnable()
     {
         _weaponEventController.OnStatChanged += HandleStatChanged;
@@ -67,9 +63,9 @@ public class WeaponManager : MonoBehaviour
         {
             _atkSpeed = _weaponStatController.AtkSpeed;
         }
-        else if (type == WeaponStat.Atk)
+        else if (type == WeaponStat.Damage)
         {
-            _damage = _weaponStatController.Atk;
+            _damage = _weaponStatController.Damage;
         }
         else if (type == WeaponStat.ProjectileSpeed)
         {
@@ -101,7 +97,7 @@ public class WeaponManager : MonoBehaviour
     
     private void GetWeaponStats()
     {
-        _damage = _weaponStatController.Atk;
+        _damage = _weaponStatController.Damage;
         _atkSpeed = _weaponStatController.AtkSpeed;
         _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }

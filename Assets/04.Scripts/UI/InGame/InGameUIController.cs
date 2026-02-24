@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -50,6 +51,12 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
+    // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
+    [Header("New Passive Data Pool")]
+    public List<LevelUpPassive> allPassives;
+
+    private PlayerStatController _playerStat;
+    private PlayerLevelControl _playerLevelControl;
 
     private void Awake()
     {
@@ -65,6 +72,25 @@ public class InGameUIController : MonoBehaviour
         UpdateInventory();
     }
 
+    private void Start()
+    {
+        _playerStat = FindAnyObjectByType<PlayerStatController>();
+        _playerLevelControl = FindAnyObjectByType<PlayerLevelControl>();
+
+        if (_playerLevelControl != null)
+        {
+            _playerLevelControl.OnLevelUp += OpenLevelupUI; // 종소리 구독
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerLevelControl != null)
+        {
+            _playerLevelControl.OnLevelUp -= OpenLevelupUI;
+        }
+    }
+
     private void Update()
     {
         HandleInput();
@@ -75,14 +101,18 @@ public class InGameUIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //AudioManager.Instance.Play();
-
-            var frontUI = UIManager.Instance.GetFrontUI();
-            if (frontUI != null)
+            // 테스트 씬에 UIManager가 없을 경우를 대비한 안전장치
+            if (UIManager.Instance != null)
             {
-                frontUI.OnClickCloseButton();
+                var frontUI = UIManager.Instance.GetFrontUI();
+                if (frontUI != null)
+                {
+                    frontUI.OnClickCloseButton();
+                    return;
+                }
             }
-            else if (_pauseUI.activeSelf == true)
+
+            if (_pauseUI != null && _pauseUI.activeSelf == true)
             {
                 _pauseUI.SetActive(false);
                 Time.timeScale = 1f;
@@ -97,47 +127,37 @@ public class InGameUIController : MonoBehaviour
     private void ShowQuitConfirmUI()
     {
         Application.Quit();
-        /*var data = new ConfirmUIData()
-        {
-            ConfirmType = 
-             TitleText = 
-            DescriptionText =
-            OkButtonText = 
-            CancleButtonText = 
-            ActionOnClickOkButton = () => Application.Quit()
-        };
-        UIManager.Instance.OpenUI<ConfirmUI>(data);*/
     }
 
     public void OnClickOpenPauseUI()
     {
-        _pauseUI.SetActive(true);
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (_pauseUI != null) _pauseUI.SetActive(true);
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
         Time.timeScale = 0f;
     }
-    
+
     public void OnClickClosePauseUI()
     {
-        _pauseUI.SetActive(false);
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+        if (_pauseUI != null) _pauseUI.SetActive(false);
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
         Time.timeScale = 1f;
     }
 
     public void OnClickOpenConfigUI()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
-        UIManager.Instance.OpenUI<ConfigUI>();
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (UIManager.Instance != null) UIManager.Instance.OpenUI<ConfigUI>();
     }
 
     public void OnClickRestartGame()
     {
-        SceneLoader.Instance.LoadScene(ESceneType.InGame);
+        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.InGame);
     }
 
     public void OnClickGoLobby()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
-        SceneLoader.Instance.LoadScene(ESceneType.Lobby);
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 
     public void OnClickExitGame()
@@ -145,26 +165,90 @@ public class InGameUIController : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenLevelupUI()
+    public void OpenLevelupUI(int level)
     {
-        _levelupUI.SetActive(true);
-        UpdateSelectableItemInUI();
+        if (_levelupUI != null) _levelupUI.SetActive(true);
+        ShowRandomPassives();
         Time.timeScale = 0f;
     }
 
     public void CloseLevelupUI()
     {
-        _levelupUI.SetActive(false);
+        if (_levelupUI != null) _levelupUI.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    // ★ 랜덤 패시브를 띄워주는 핵심 로직
+    private void ShowRandomPassives()
+    {
+        if (_playerStat == null || allPassives == null) return;
+
+        List<LevelUpPassive> availablePassives = new List<LevelUpPassive>();
+
+        foreach (var p in allPassives)
+        {
+            if (p == null) continue;
+            int currentLevel = _playerStat.GetCurrentPassiveLevel(p.passive);
+            if (currentLevel < p.maxLevel)
+            {
+                availablePassives.Add(p);
+            }
+        }
+
+        availablePassives = availablePassives.OrderBy(x => UnityEngine.Random.value).ToList();
+
+        for (int i = 0; i < _itemSelectBtns.Length; i++)
+        {
+            if (_itemSelectBtns[i] == null) continue;
+
+            if (i < availablePassives.Count)
+            {
+                _itemSelectBtns[i].gameObject.SetActive(true);
+
+                LevelUpPassive selectedData = availablePassives[i];
+                int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passive) + 1;
+
+                // UI 연결이 하나라도 빠져있어도 기절하지 않도록 방어 코드 추가
+                if (_itemSelectBtnDatas.Length > i)
+                {
+                    if (_itemSelectBtnDatas[i].ItemImage != null)
+                    {
+                        _itemSelectBtnDatas[i].ItemImage.sprite = selectedData.icon;
+                        _itemSelectBtnDatas[i].ItemImage.color = Color.white;
+                    }
+                    if (_itemSelectBtnDatas[i].ItemNameText != null)
+                        _itemSelectBtnDatas[i].ItemNameText.text = selectedData.itemName;
+                    if (_itemSelectBtnDatas[i].ItemDescriptionText != null)
+                        _itemSelectBtnDatas[i].ItemDescriptionText.text = selectedData.GetDescription(nextLevel);
+                    if (_itemSelectBtnDatas[i].ItemLevelText != null)
+                        _itemSelectBtnDatas[i].ItemLevelText.text = (nextLevel == 1) ? "New!" : $"Lv.{nextLevel}";
+                }
+
+                _itemSelectBtns[i].onClick.RemoveAllListeners();
+                _itemSelectBtns[i].onClick.AddListener(() => OnPassiveSelected(selectedData));
+            }
+            else
+            {
+                _itemSelectBtns[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void OnPassiveSelected(LevelUpPassive data)
+    {
+        if (_playerStat != null) _playerStat.LevelUpPassiveStat(data);
+        CloseLevelupUI();
     }
 
     public void OpenEndgameUI()
     {
-        _endGameUI.SetActive(true);
+        if (_endGameUI != null) _endGameUI.SetActive(true);
     }
 
     public void ShowPlayTime()
     {
+        if (InGameManager.Instance == null || _playTimeUI == null) return;
+
         float time = InGameManager.Instance.PlayTime;
         string min = ((int)(time / 60)).ToString("D2");
         string sec = ((int)(time % 60)).ToString("D2");
@@ -172,8 +256,11 @@ public class InGameUIController : MonoBehaviour
         _playTimeUI.text = $"{min} : {sec}";
     }
 
+    // ★ 빈 씬에서 제일 에러가 많이 나던 경험치 바 함수 완벽 방어
     public void UpdateExpBar()
     {
+        if (_expBar == null || DataTableManager.Instance == null || PlayerManager.Instance == null) return;
+
         int currentLevel = PlayerManager.Instance.PlayerStatController.CurrentLevel;
         float currentExp = PlayerManager.Instance.PlayerStatController.CurrentExp;
         float maxExp = DataTableManager.Instance.GetGameData<ExpData>().GetExpData(currentLevel);
@@ -211,6 +298,7 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
+    // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
         UpdateSelectableItemBtn<WeaponStatData>(0);
@@ -220,18 +308,27 @@ public class InGameUIController : MonoBehaviour
 
     private void UpdateSelectableItemBtn<T>(int index) where T : IItemStatData
     {
+        if (DataTableManager.Instance == null) return;
+
         T newItemData = DataTableManager.Instance.GetSelectableItem<T>();
         if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
         {
-            Debug.Log("No Selectable Item.");
-            _itemSelectBtnDatas[index].ItemNameText.text = "";
-            _itemSelectBtnDatas[index].ItemImage.sprite = null;
-            _itemSelectBtnDatas[index].ItemImage.color = new Color(1, 1, 1, 0);
-            _itemSelectBtnDatas[index].ItemLevelText.text = "";
-            _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
-            _itemSelectBtns[index].onClick.RemoveAllListeners();
+            if (_itemSelectBtnDatas.Length > index)
+            {
+                if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = "";
+                if (_itemSelectBtnDatas[index].ItemImage != null)
+                {
+                    _itemSelectBtnDatas[index].ItemImage.sprite = null;
+                    _itemSelectBtnDatas[index].ItemImage.color = new Color(1, 1, 1, 0);
+                }
+                if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = "";
+                if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
+            }
+            if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null) _itemSelectBtns[index].onClick.RemoveAllListeners();
             return;
         }
+
+        if (PlayerManager.Instance == null) return;
         int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
 
         int ItemLevel = 1;
@@ -239,74 +336,64 @@ public class InGameUIController : MonoBehaviour
         {
             ItemLevel = currentItemLevel + 1;
         }
-        _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
-        _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
-        _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
-        _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
-        _itemSelectBtns[index].onClick.RemoveAllListeners();
-        _itemSelectBtns[index].onClick.AddListener(() => OnClickItemSelectBtn<T>(newItemData));
+
+        if (_itemSelectBtnDatas.Length > index)
+        {
+            if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
+            if (_itemSelectBtnDatas[index].ItemImage != null) _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+            if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
+            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
+        }
+
+        if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null)
+        {
+            _itemSelectBtns[index].onClick.RemoveAllListeners();
+            _itemSelectBtns[index].onClick.AddListener(() => OnClickItemSelectBtn<T>(newItemData));
+        }
     }
 
     private void UpdateInventory()
     {
         foreach (var inventory in _inventories)
         {
-            inventory.UpdateSlot();
+            if (inventory != null) inventory.UpdateSlot();
         }
     }
+
     private void OnClickItemSelectBtn<T>(T newItemData) where T : IItemStatData
     {
-        PlayerManager.Instance.PlayerItemController.AddItemToSlot<T>(newItemData);
-        UpdateInventory();
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.PlayerItemController.AddItemToSlot<T>(newItemData);
+            UpdateInventory();
+        }
     }
 
     public void ShowDamageText(Vector3 position, float damage)
     {
-        if (_damageTextSpawner == null)
-        {
-            Debug.Log("No DamageTextSpanwer.");
-            return;
-        }
-        _damageTextSpawner.ShowDamageText(damage, position);
+        if (_damageTextSpawner != null) _damageTextSpawner.ShowDamageText(damage, position);
     }
 
-    public void AddTracedEnemyInMinimap(Transform transform)
-    {
-        _minimap.AddTracedEnemy(transform);
-    }
-
-    public void RemoveTracedEnemyInMinimap(Transform transform)
-    {
-        _minimap.RemoveTracedEnemy(transform);
-    }
-
-    public void ShowMinimapWarning()
-    {
-        _minimap.PlayWarningAnim();
-    }
-
-    public void HideMinimapWarning()
-    {
-        _minimap.StopWarningAnim();
-    }
+    public void AddTracedEnemyInMinimap(Transform transform) { if (_minimap != null) _minimap.AddTracedEnemy(transform); }
+    public void RemoveTracedEnemyInMinimap(Transform transform) { if (_minimap != null) _minimap.RemoveTracedEnemy(transform); }
+    public void ShowMinimapWarning() { if (_minimap != null) _minimap.PlayWarningAnim(); }
+    public void HideMinimapWarning() { if (_minimap != null) _minimap.StopWarningAnim(); }
 
     public void ShowHealthLessWarning()
     {
-        if (_inGameVolume.profile.TryGet<Vignette>(out var vignette))
-            vignette.intensity.value = 1;
+        if (_inGameVolume != null && _inGameVolume.profile.TryGet<Vignette>(out var vignette)) vignette.intensity.value = 1;
     }
 
     public void HideHealthLessWarning()
     {
-        if (_inGameVolume.profile.TryGet<Vignette>(out var vignette))
-            vignette.intensity.value = 0;
+        if (_inGameVolume != null && _inGameVolume.profile.TryGet<Vignette>(out var vignette)) vignette.intensity.value = 0;
     }
 
     public void ShowEndGameUI()
     {
-        AudioManager.Instance.StopAll();
-        _inGameUI.SetActive(false);
-        _endGameUI.SetActive(true);
+        if (AudioManager.Instance != null) AudioManager.Instance.StopAll();
+        if (_inGameUI != null) _inGameUI.SetActive(false);
+        if (_endGameUI != null) _endGameUI.SetActive(true);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
@@ -315,40 +402,28 @@ public class InGameUIController : MonoBehaviour
 
     public void ShowDamageTextDebug()
     {
-        if (_testEnemies == null)
-        {
-            Debug.Log("No testObj.");
-            return;
-        }
+        if (_testEnemies == null || _damageTextSpawner == null) return;
         foreach (var obj in _testEnemies)
         {
-            _damageTextSpawner.ShowDamageText(10110, obj.transform.position);
+            if (obj != null) _damageTextSpawner.ShowDamageText(10110, obj.transform.position);
         }
     }
 
     public void AddTracedEnemiesInMinimapDebug()
     {
-        if (_testEnemies == null)
-        {
-            Debug.Log("No testObj.");
-            return;
-        }
+        if (_testEnemies == null || _minimap == null) return;
         foreach (var obj in _testEnemies)
         {
-            _minimap.AddTracedEnemy(obj.transform);
+            if (obj != null) _minimap.AddTracedEnemy(obj.transform);
         }
     }
 
     public void RemoveTracedEnemiesInMinimapDebug()
     {
-        if (_testEnemies == null)
-        {
-            Debug.Log("No testObj.");
-            return;
-        }
+        if (_testEnemies == null || _minimap == null) return;
         foreach (var obj in _testEnemies)
         {
-            _minimap.RemoveTracedEnemy(obj.transform);
+            if (obj != null) _minimap.RemoveTracedEnemy(obj.transform);
         }
     }
 #endif

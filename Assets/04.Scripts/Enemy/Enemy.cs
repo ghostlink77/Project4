@@ -81,7 +81,6 @@ public class Enemy : MonoBehaviour, IDamageable
         _target = targetRigidbody;
     }
 
-    // NOTE: 일정 시간마다 데미지 입히기 위한 시간 경과 처리
     private void ElapseTime()
     {
         if (!_isLive)
