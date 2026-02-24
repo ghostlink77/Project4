@@ -9,6 +9,10 @@ using UnityEngine.Pool;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(BulletSoundController))]
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(BulletAnimationController))]
+[RequireComponent(typeof(Animator))]
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
