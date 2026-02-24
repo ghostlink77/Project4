@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2732539170094766352}
   - component: {fileID: 5130322630033218809}
   - component: {fileID: 8655818457596517616}
+  - component: {fileID: 6127033790849291374}
   m_Layer: 0
   m_Name: RocketLauncherBullet
   m_TagString: Untagged
@@ -133,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280c909d53dd6a429a8eac71b595d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
-  _audioSource: {fileID: 0}
-  _hitSound: {fileID: 0}
+  _audioSource: {fileID: 8939167760622825258}
+  _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!82 &8939167760622825258
 AudioSource:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c280c909d53dd6a429a8eac71b595d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 8939167760622825258}
   _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!114 &5130322630033218809
 MonoBehaviour:
@@ -322,3 +323,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.46875
+--- !u!114 &6127033790849291374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505686164639090012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f773681d506d64563a7e82348e7c5dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GenerateExplosion
+  explosionPrefab: {fileID: 5562719415326265950, guid: ffa15aebc95aa46bba2e80abe0ae0967, type: 3}
