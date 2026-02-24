@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PlasmaGenerator
   m_EditorClassIdentifier: Assembly-CSharp::TurretData
   turretName: PlasmaGenerator
-  _icon: {fileID: 0}
+  projectileKey: Plasma
+  _icon: {fileID: -5353825294692306793, guid: b7316a0edd2fa3941947d5ac00379385, type: 3}
   scrapCost: 5
   maxHp: 10
   damage: 10

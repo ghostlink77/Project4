@@ -24,9 +24,9 @@ public class MachineGunTurretProjectile : TurretProjectile
     {
         if (collision.CompareTag("Enemy") && _isActive)
         {
-            _isActive = false;
             IDamageable enemy = collision.GetComponent<IDamageable>();
             DealDamage(enemy);
+            DisableProjectile();
         }
     }
 }

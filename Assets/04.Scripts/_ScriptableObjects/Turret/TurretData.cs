@@ -4,6 +4,7 @@ using UnityEngine;
 public class TurretData : ScriptableObject, IItemStatData
 {
     [SerializeField] private string turretName;
+    [SerializeField] private string projectileKey;
     [SerializeField] private Sprite _icon;
     public int scrapCost;
 
@@ -20,5 +21,9 @@ public class TurretData : ScriptableObject, IItemStatData
     public Sprite GetIcon()
     {
         return _icon;
+    }
+    public string GetprojectileKey()
+    {
+        return projectileKey;
     }
 }

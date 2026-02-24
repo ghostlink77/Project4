@@ -3,6 +3,7 @@
 아이템을 바꾸는 메서드나 각종 아이템 업그레이드 기능은 무기 개발이 끝나고 구현하도록 함
 */
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
@@ -77,7 +78,11 @@ public class PlayerItemController : MonoBehaviour
             string path = "";
             if (typeof(T) == typeof(WeaponStatData)) path = "Weapon";
             else if (typeof(T) == typeof(PassiveStatData)) path = "Passive";
-            else if (typeof(T) == typeof(TurretData)) path = "Turret";
+            else if (typeof(T) == typeof(TurretData))
+            {
+                path = "Turret";
+                AddTurretToSlot(newItemData as TurretData);
+            }
             GameObject newWeapon = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
             slots[newItemData.GetName()] = newWeapon;
         }
@@ -100,6 +105,15 @@ public class PlayerItemController : MonoBehaviour
         else if (typeof(T) == typeof(TurretData)) maxcount = _turretSlotMaxCount;
 
         return maxcount > count;
+    }
+
+    private async void AddTurretToSlot(TurretData turret)
+    {
+        if (turret == null)
+        {
+            return;
+        }
+        await TurretProjectileSpawner.Instance.LoadProjectilePrefab(turret.GetprojectileKey());
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드

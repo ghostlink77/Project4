@@ -19,8 +19,21 @@ public class TurretBase : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         _currentHp = _turretData.maxHp;
         _rangeCollider.radius = _turretData.range;
+
+        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
+        Collider2D[] initialEnemies =
+            Physics2D.OverlapCircleAll(transform.position, _turretData.range, enemyLayer);
+        foreach (Collider2D enemy in initialEnemies)
+        {
+            _enemiesInRange.Add(enemy.transform);
+        }
     }
 
     private void Update()
@@ -57,11 +70,16 @@ public class TurretBase : MonoBehaviour, IDamageable
         }
         UpdateTarget();
 
-        GameObject projectile = Instantiate(_projectilePrefab, _firePoint.position, Quaternion.identity);
-        TurretProjectile projScript = projectile.GetComponent<TurretProjectile>();
-        if (projScript != null)
+        TurretProjectile projectile = 
+            TurretProjectileSpawner.Instance.SpawnProjectile(_turretData.GetprojectileKey(), _firePoint.position);
+        if (projectile != null)
         {
-            projScript.Initialize(_target, _turretData.projectileSpeed, _turretData.damage);
+            Debug.Log($"Firing projectile {_turretData.GetprojectileKey()}");
+            projectile.Initialize(_target, _turretData.projectileSpeed, _turretData.damage, TurretData.GetprojectileKey());
+        }
+        else
+        {
+            Debug.LogError($"Failed to spawn projectile with key {_turretData.GetprojectileKey()}");
         }
     }
 
@@ -111,8 +129,4 @@ public class TurretBase : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    public void LevelUP()
-    {
-        // TODO: 터렛 레벨업 시의 로직 (예: 새로운 데이터 적용, 애니메이션 등)
-    }
 }

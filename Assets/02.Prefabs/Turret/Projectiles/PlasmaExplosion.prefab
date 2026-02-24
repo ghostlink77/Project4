@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1320077946098279992}
   - component: {fileID: 3981357242076219024}
   - component: {fileID: 6157461630021250058}
+  - component: {fileID: -4206214228669158618}
   m_Layer: 0
   m_Name: PlasmaExplosion
   m_TagString: Untagged
@@ -114,3 +115,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4206214228669158618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680748001770002489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153667694c899bc489ad62a5dd92d263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXAutoReturn
+  _duration: 0.5
