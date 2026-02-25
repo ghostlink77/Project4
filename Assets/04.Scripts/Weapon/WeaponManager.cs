@@ -7,6 +7,7 @@ using UnityEngine.Pool;
 [RequireComponent(typeof(WeaponStatController))]
 [RequireComponent(typeof(WeaponEventController))]
 [RequireComponent(typeof(WeaponSoundController))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class WeaponManager : MonoBehaviour
 {
     private IObjectPool<GameObject> _projectilePool;
