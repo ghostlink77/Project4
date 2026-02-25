@@ -64,6 +64,7 @@ public class BulletController : MonoBehaviour
     {
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
+        ResetTrailRendererLine();
 
         StartCoroutine(DeactivateAfterTime());
     }
@@ -82,6 +83,12 @@ public class BulletController : MonoBehaviour
         _projectileDmg = dmg;
         _projectileSpeed = speed;
         _projectilePool = pool;
+    }
+    
+    private void ResetTrailRendererLine()
+    {
+        if(!TryGetComponent<TrailRenderer>(out TrailRenderer trailRenderer)) return;
+        trailRenderer.Clear();
     }
     
     public void SetLifeTime(float lifeTime) => _delayForBulletDisable = new WaitForSeconds(lifeTime);
