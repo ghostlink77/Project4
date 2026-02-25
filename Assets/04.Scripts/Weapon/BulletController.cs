@@ -11,8 +11,6 @@ using UnityEngine.UIElements;
 
 [RequireComponent(typeof(BulletSoundController))]
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(BulletAnimationController))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider2D))]
 public class BulletController : MonoBehaviour
 {
