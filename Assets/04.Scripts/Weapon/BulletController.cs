@@ -13,6 +13,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(BulletAnimationController))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider2D))]
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
