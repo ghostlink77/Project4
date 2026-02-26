@@ -9,15 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f5d4803c916de4296f6b2724664828, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f9b9adb888f5584d9cf8593e1017532, type: 3}
   m_Name: MachineGun
-  m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  turretName: MachineGun
-  projectileKey: MachineGunBullet
-  _icon: {fileID: -2138698884186886829, guid: 4ac16e5aeb31b904e9278905602c73e9, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::AttackTurretData
+  turretName: "\uBA38\uC2E0\uAC74"
+  ID: 0
+  _icon: {fileID: -2138698884186886829, guid: 666808b86ed2fba45803771ab39e7c90, type: 3}
+  maxLevel: 6
   scrapCost: 5
-  maxHp: 10
-  damage: 3
-  range: 4
-  fireRate: 1
-  projectileSpeed: 2
+  maxHp: 1400000014000000
+  range:
+  - 3
+  upgradeDescriptions:
+  - "\uAC00\uAE4C\uC6B4 \uC801\uC5D0\uAC8C \uCD1D\uC54C\uC744 \uBC1C\uC0AC\uD558\uB294
+    \uD3EC\uD0D1\uC785\uB2C8\uB2E4"
+  - "\uACF5\uACA9\uB825 10 \uC99D\uAC00"
+  projectileAdrsKey: MachineGunBullet
+  damage: 0a0000000a000000
+  numProjectile: 01000000
+  fireRate:
+  - 1
+  projectileSpeed: 1

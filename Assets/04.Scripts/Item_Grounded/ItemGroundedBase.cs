@@ -8,38 +8,38 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
     private float _currentSpeed = 0f;
 
     private bool _isMovingToPlayer = false;
-    private Transform _playerTransform;
+    private Transform _collectorTransform;
 
     private void Update()
     {
-        if (_isMovingToPlayer && _playerTransform != null)
+        if (_isMovingToPlayer && _collectorTransform != null)
         {
-            MoveToPlayer();
+            MoveToCollector();
         }
     }
 
     public virtual void Initialize()
     {
-        _playerTransform = null;
+        _collectorTransform = null;
         _currentSpeed = 0f;
         _isMovingToPlayer = false;
     }
 
-    public void CollectItem(Transform playerTransform)
+    public void CollectItem(Transform collectorTransform)
     {
         if (_isMovingToPlayer)
         {
             return;
         }
         _isMovingToPlayer = true;
-        _playerTransform = playerTransform;
+        _collectorTransform = collectorTransform;
         _currentSpeed = _defaultSpeed;
     }
 
-    private void MoveToPlayer()
+    private void MoveToCollector()
     {
         _currentSpeed += _acceleration * Time.deltaTime;
-        Vector3 direction = (_playerTransform.position - transform.position).normalized;
+        Vector3 direction = (_collectorTransform.position - transform.position).normalized;
         transform.position += direction * _currentSpeed * Time.deltaTime;
     }
 

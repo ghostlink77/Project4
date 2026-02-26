@@ -43,10 +43,9 @@ GameObject:
   - component: {fileID: 3346027255627122803}
   - component: {fileID: 6324246625006616176}
   - component: {fileID: 967637354864923204}
-  - component: {fileID: 8757839238424461826}
-  - component: {fileID: 2981422357501244931}
+  - component: {fileID: 2075822136793511472}
   m_Layer: 0
-  m_Name: MachineGun
+  m_Name: "\uBA38\uC2E0\uAC74"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +208,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.21133333}
   m_Radius: 2.5
---- !u!114 &8757839238424461826
+--- !u!114 &2075822136793511472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,22 +217,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7089152318147423349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618e3f268be854b448db856cb815e88a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b4bac4c95662f74791d643725b218f9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TurretBase
+  m_EditorClassIdentifier: Assembly-CSharp::AttackTurretBase
   _turretData: {fileID: 11400000, guid: 43b73e018ce3c674fa079794de689944, type: 2}
-  _projectilePrefab: {fileID: 8715470850634560764, guid: 113efe86c2ac88445829ed8f320544e8, type: 3}
-  _firePoint: {fileID: 8601870875140881692}
   _rangeCollider: {fileID: 967637354864923204}
---- !u!114 &2981422357501244931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7089152318147423349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 609c3746881e94a4aba691d96913e5df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TurretStatController
+  _firePoint: {fileID: 8601870875140881692}

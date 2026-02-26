@@ -110,7 +110,11 @@ public class PlayerItemController : MonoBehaviour
         {
             return;
         }
-        await TurretProjectileSpawner.Instance.LoadProjectilePrefab(turret.GetprojectileKey());
+        if (turret is AttackTurretData attackTurret)
+        {
+            attackTurret = turret as AttackTurretData;
+            await TurretProjectileSpawner.Instance.LoadProjectilePrefab(attackTurret.GetProjectileKey());
+        }
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드

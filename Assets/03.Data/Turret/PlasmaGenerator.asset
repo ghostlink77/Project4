@@ -9,15 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f5d4803c916de4296f6b2724664828, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f9b9adb888f5584d9cf8593e1017532, type: 3}
   m_Name: PlasmaGenerator
-  m_EditorClassIdentifier: Assembly-CSharp::TurretData
-  turretName: PlasmaGenerator
-  projectileKey: Plasma
-  _icon: {fileID: -5353825294692306793, guid: b7316a0edd2fa3941947d5ac00379385, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::AttackTurretData
+  turretName: "\uD50C\uB77C\uC988\uB9C8 \uC0DD\uC131\uAE30"
+  ID: 0
+  _icon: {fileID: -1014005271760799969, guid: 196d227ee46b12a4c9db457378f84b5a, type: 3}
+  maxLevel: 6
   scrapCost: 5
-  maxHp: 10
-  damage: 10
-  range: 5
-  fireRate: 1.5
+  maxHp: 1900000019000000
+  range:
+  - 4.5
+  - 4.5
+  upgradeDescriptions: []
+  projectileAdrsKey: Plasma
+  damage: 0f0000000f000000
+  numProjectile: 0100000001000000
+  fireRate:
+  - 2
+  - 2
   projectileSpeed: 1

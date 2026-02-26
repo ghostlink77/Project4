@@ -1,18 +1,23 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "TurretData", menuName = "Scriptable Objects/TurretData")]
-public class TurretData : ScriptableObject, IItemStatData
+public abstract class TurretData : ScriptableObject, IItemStatData
 {
     [SerializeField] private string turretName;
-    [SerializeField] private string projectileKey;
+    [SerializeField] private int ID;
     [SerializeField] private Sprite _icon;
-    public int scrapCost;
 
-    public int maxHp;
-    public int damage;
-    public float range;
-    public float fireRate;
-    public float projectileSpeed;
+    public int MaxLevel { get => maxLevel; }
+    public int ScrapCost { get => scrapCost; }
+
+    [Header("포탑 공통 스탯")]
+    [SerializeField] private int maxLevel;
+    [SerializeField] private int scrapCost;
+    public int[] maxHp;
+    public float[] range;
+
+    [Header("포탑 업그레이드 설명")]
+    [TextArea]
+    [SerializeField] private string[] _upgradeDescriptions;
 
     public string GetName()
     {
@@ -22,8 +27,15 @@ public class TurretData : ScriptableObject, IItemStatData
     {
         return _icon;
     }
-    public string GetprojectileKey()
+    public string GetUpgradeDescription(int level)
     {
-        return projectileKey;
+        if (level - 1 < _upgradeDescriptions.Length)
+        {
+            return _upgradeDescriptions[level - 1];
+        }
+        else
+        {
+            return "업그레이드 설명이 없습니다.";
+        }
     }
 }
