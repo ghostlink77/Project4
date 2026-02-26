@@ -122,7 +122,7 @@ public class BulletController : MonoBehaviour
                 target.TakeDamage(_projectileDmg);
             }
             OnHit?.Invoke();
-            Release();
+            if (!_penetratable) Release();
         }
     }
 }
