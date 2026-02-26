@@ -28,15 +28,18 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
     [SerializeField] private TurretSelectUI _turretSelectUI;
-    [SerializeField] private Image _hpBar;
-    [SerializeField] private Image _hpAnimBar;
+    [SerializeField] private Image _playerHpBar;
+    [SerializeField] private Image _playerHpAnimBar;
+    [SerializeField] private Image _agitHpBar;
+    [SerializeField] private Image _agitHpAnimBar;
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _scrapAmountText;
 
     [Header("Hp Bar Animation Value")]
     [SerializeField] private float _blendInTime;
     [SerializeField] private float _animSpeed;
-    [SerializeField] private Coroutine _HpBarAnimCoroutine;
+    [SerializeField] private Coroutine _playerHpBarAnimCoroutine;
+    [SerializeField] private Coroutine _agitHpBarAnimCoroutine;
 
     private Coroutine _messageTextCoroutine;
 
@@ -72,8 +75,10 @@ public class InGameUIController : MonoBehaviour
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
         _inGameUI.SetActive(true);
-        _hpBar.fillAmount = FULL_FILL_AMOUNT;
-        _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
+        _playerHpBar.fillAmount = FULL_FILL_AMOUNT;
+        _playerHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
+        _agitHpBar.fillAmount = FULL_FILL_AMOUNT;
+        _agitHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
         _expBar.fillAmount = Null_AMOUNT;
         _messageText.text = "";
         _scrapAmountText.text = "";
@@ -317,30 +322,44 @@ public class InGameUIController : MonoBehaviour
         _expBar.fillAmount = currentExp / maxExp;
     }
 
-    public void UpdateHpBar()
+
+    public void UpdatePlayerHpBar()
     {
         float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
         float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
-        _hpBar.fillAmount = currentHp / maxHp;
+        _playerHpBar.fillAmount = currentHp / maxHp;
 
-        if (_HpBarAnimCoroutine != null)
+        if (_playerHpBarAnimCoroutine != null)
         {
-            StopCoroutine(_HpBarAnimCoroutine);
-            _HpBarAnimCoroutine = null;
+            StopCoroutine(_playerHpBarAnimCoroutine);
+            _playerHpBarAnimCoroutine = null;
         }
-        _HpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation());
-
+        _playerHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(true));
     }
 
-    private IEnumerator PlayHpBarAnimation()
+    public void UpdateAgitHpBar(float currentHp, float maxHp)
     {
+        _agitHpBar.fillAmount = currentHp / maxHp;
+
+        if (_agitHpBarAnimCoroutine != null)
+        {
+            StopCoroutine(_agitHpBarAnimCoroutine);
+            _agitHpBarAnimCoroutine = null;
+        }
+        _agitHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(false));
+    }
+
+    private IEnumerator PlayHpBarAnimation(bool isPlayer)
+    {
+        Image animBar = isPlayer ? _playerHpAnimBar : _agitHpAnimBar;
+        Image bar = isPlayer ? _playerHpBar : _agitHpBar;
         yield return new WaitForSeconds(_blendInTime);
 
-        while (_hpAnimBar.fillAmount > _hpBar.fillAmount)
+        while (animBar.fillAmount > bar.fillAmount)
         {
-            _hpAnimBar.fillAmount = Mathf.Lerp(
-                _hpAnimBar.fillAmount,
-                _hpBar.fillAmount,
+            animBar.fillAmount = Mathf.Lerp(
+                animBar.fillAmount,
+                bar.fillAmount,
                 _animSpeed * Time.deltaTime
                 );
 
