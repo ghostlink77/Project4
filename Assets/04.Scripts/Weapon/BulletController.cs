@@ -25,6 +25,8 @@ public class BulletController : MonoBehaviour
     public int ProjectileDmg {get => _projectileDmg;}
     #endregion
     
+    private TrailRenderer _trailRenderer;
+    
     [SerializeField]
     [Header("총알 수명(초)")]
     private float _lifeTime = 3f;
@@ -55,6 +57,7 @@ public class BulletController : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
+        _trailRenderer = GetComponent<TrailRenderer>();
         CashingWaitForSeconds();
     }
 
@@ -93,8 +96,8 @@ public class BulletController : MonoBehaviour
     
     private void ResetTrailRendererLine()
     {
-        if(!TryGetComponent<TrailRenderer>(out TrailRenderer trailRenderer)) return;
-        trailRenderer.Clear();
+        if(_trailRenderer == null) return;
+        _trailRenderer.Clear();
     }
     
     public void SetLifeTime(float lifeTime) => _delayForBulletDisable = new WaitForSeconds(lifeTime);
