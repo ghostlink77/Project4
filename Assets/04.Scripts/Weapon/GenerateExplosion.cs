@@ -16,7 +16,7 @@ public class GenerateExplosion : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_bulletController == null) Debug.LogWarning("이이");
+        if (_bulletController == null) Debug.LogWarning("bulletController가 null임");
         _bulletController.OnHit += GenerateExplosionOnBulletPosition;
     }
 
