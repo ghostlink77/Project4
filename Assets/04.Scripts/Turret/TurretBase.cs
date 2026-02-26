@@ -17,8 +17,8 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
 
     protected virtual void Initialize()
     {
-        _currentHp = _turretData.maxHp[_level];
-        _rangeCollider.radius = _turretData.range[_level];
+        _currentHp = _turretData.MaxHp[_level - 1];
+        _rangeCollider.radius = _turretData.Range[_level - 1];
     }
 
     public void TakeDamage(int damage)
@@ -42,8 +42,15 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
         return _level;
     }
 
-    public void LevelUp()
+    public virtual void LevelUp()
     {
+        if(_level >= _turretData.MaxLevel)
+        {
+            Debug.Log("최대 레벨에 도달했습니다.");
+            return;
+        }
+        _currentHp = _turretData.MaxHp[_level];
+        _rangeCollider.radius = _turretData.Range[_level];
         _level++;
     }
 }

@@ -11,6 +11,7 @@ public class AttackTurretBase : TurretBase
 
     private float _fireTimer;
     private Transform _target;
+    private LayerMask _enemyLayer;
 
     protected override void Initialize()
     {
@@ -18,38 +19,17 @@ public class AttackTurretBase : TurretBase
         _attackTurretData = TurretData as AttackTurretData;
         _projectileKey = _attackTurretData.GetProjectileKey();
 
-        LayerMask enemyLayer = LayerMask.GetMask("Enemy");
-        Collider2D[] initialEnemies =
-            Physics2D.OverlapCircleAll(transform.position, TurretData.range[_level], enemyLayer);
-        foreach (Collider2D enemy in initialEnemies)
-        {
-            _enemiesInRange.Add(enemy.transform);
-        }
+        _enemyLayer = LayerMask.GetMask("Enemy");
+        UpdateEnemiesInRange();
     }
 
     private void Update()
     {
         _fireTimer += Time.deltaTime;
-        if (_fireTimer >= _attackTurretData.fireRate[_level])
+        if (_fireTimer >= _attackTurretData.FireRate[_level - 1])
         {
             Fire();
             _fireTimer = 0f;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            _enemiesInRange.Add(collision.transform);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            _enemiesInRange.Remove(collision.transform);
         }
     }
 
@@ -59,17 +39,31 @@ public class AttackTurretBase : TurretBase
         {
             return;
         }
+        UpdateEnemiesInRange();
         UpdateTarget();
 
         TurretProjectile projectile =
             TurretProjectileSpawner.Instance.SpawnProjectile(_projectileKey, _firePoint.position);
         if (projectile != null)
         {
-            projectile.Initialize(_target, _attackTurretData.projectileSpeed, _attackTurretData.damage[_level], _projectileKey);
+            projectile.Initialize(_target, _attackTurretData.ProjectileSpeed, _attackTurretData.Damage[_level - 1], _projectileKey);
         }
         else
         {
             Debug.LogError($"Failed to spawn projectile with key {_projectileKey}");
+        }
+    }
+
+    private void UpdateEnemiesInRange()
+    {
+        _enemiesInRange.RemoveAll(enemy => !enemy.gameObject.activeSelf || enemy == null);
+        Collider2D[] enemies =
+            Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _enemyLayer);
+
+        foreach (Collider2D enemy in enemies)
+        {
+            if (_enemiesInRange.Contains(enemy.transform)) continue;
+            _enemiesInRange.Add(enemy.transform);
         }
     }
 
@@ -96,4 +90,5 @@ public class AttackTurretBase : TurretBase
     }
 
     private Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos) => endPos - startPos;
+
 }

@@ -112,7 +112,6 @@ public class PlayerItemController : MonoBehaviour
         }
         if (turret is AttackTurretData attackTurret)
         {
-            attackTurret = turret as AttackTurretData;
             await TurretProjectileSpawner.Instance.LoadProjectilePrefab(attackTurret.GetProjectileKey());
         }
     }

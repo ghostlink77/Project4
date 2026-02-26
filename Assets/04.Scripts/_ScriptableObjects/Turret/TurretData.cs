@@ -6,14 +6,11 @@ public abstract class TurretData : ScriptableObject, IItemStatData
     [SerializeField] private int ID;
     [SerializeField] private Sprite _icon;
 
-    public int MaxLevel { get => maxLevel; }
-    public int ScrapCost { get => scrapCost; }
-
     [Header("포탑 공통 스탯")]
-    [SerializeField] private int maxLevel;
-    [SerializeField] private int scrapCost;
-    public int[] maxHp;
-    public float[] range;
+    [field: SerializeField] public int MaxLevel { get; private set; }
+    [field: SerializeField] public int ScrapCost { get; private set; }
+    [field: SerializeField] public int[] MaxHp { get; private set; }
+    [field: SerializeField] public float[] Range { get; private set; }
 
     [Header("포탑 업그레이드 설명")]
     [TextArea]
@@ -29,7 +26,7 @@ public abstract class TurretData : ScriptableObject, IItemStatData
     }
     public string GetUpgradeDescription(int level)
     {
-        if (level - 1 < _upgradeDescriptions.Length)
+        if (level > 0 && level - 1 < _upgradeDescriptions.Length)
         {
             return _upgradeDescriptions[level - 1];
         }
