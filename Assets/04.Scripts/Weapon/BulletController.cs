@@ -32,6 +32,12 @@ public class BulletController : MonoBehaviour
     [Header("한번만 재생하고 삭제 여부")]
     [SerializeField]
     private bool _deleteAfterAnimation;
+
+    [Header("총알 관통 여부")]
+    [SerializeField]
+    private bool _penetratable = false;
+    public bool Penetratable {get => _penetratable; set => _penetratable = value;}
+
     public bool DeleteAfterAnimation {get => _deleteAfterAnimation; set => _deleteAfterAnimation = value;}
 
     #region 오브젝트 풀링

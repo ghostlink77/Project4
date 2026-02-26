@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   _lifeTime: 3
   _deleteAfterAnimation: 0
+  _penetratable: 1
 --- !u!61 &4906686752597692420
 BoxCollider2D:
   m_ObjectHideFlags: 0
