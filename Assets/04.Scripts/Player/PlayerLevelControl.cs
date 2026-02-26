@@ -9,6 +9,7 @@ public class PlayerLevelControl : MonoBehaviour
     public int requiredXP = 0;
 
     public event Action<int> OnLevelUp;
+    public event Action LevelUpEvent;
 
     private void Start()
     {
@@ -36,7 +37,8 @@ public class PlayerLevelControl : MonoBehaviour
 
         Debug.Log($"LEVEL UP! 현재 레벨 {currentLevel}");
 
-        OnLevelUp?.Invoke(currentLevel);
+        //OnLevelUp?.Invoke(currentLevel);
+        LevelUpEvent?.Invoke();
     }
 
     private void UpdateRequiredXP()

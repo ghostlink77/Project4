@@ -27,13 +27,18 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Image _expBar;
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
+    [SerializeField] private TurretSelectUI _turretSelectUI;
     [SerializeField] private Image _hpBar;
     [SerializeField] private Image _hpAnimBar;
+    [SerializeField] private TextMeshProUGUI _messageText;
+    [SerializeField] private TextMeshProUGUI _scrapAmountText;
 
     [Header("Hp Bar Animation Value")]
     [SerializeField] private float _blendInTime;
     [SerializeField] private float _animSpeed;
-    [SerializeField] private Coroutine _animCoroutine;
+    [SerializeField] private Coroutine _HpBarAnimCoroutine;
+
+    private Coroutine _messageTextCoroutine;
 
     [SerializeField] private Volume _inGameVolume;
 
@@ -45,6 +50,7 @@ public class InGameUIController : MonoBehaviour
 
     public readonly string IMAGE_PATH = "Sprite";
     public const int FULL_FILL_AMOUNT = 1;
+    public const int Null_AMOUNT = 0;
 
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
@@ -68,8 +74,10 @@ public class InGameUIController : MonoBehaviour
         _inGameUI.SetActive(true);
         _hpBar.fillAmount = FULL_FILL_AMOUNT;
         _hpAnimBar.fillAmount = FULL_FILL_AMOUNT;
-
-        UpdateInventory();
+        _expBar.fillAmount = Null_AMOUNT;
+        _messageText.text = "";
+        _scrapAmountText.text = "";
+  
     }
 
     private void Start()
@@ -80,7 +88,10 @@ public class InGameUIController : MonoBehaviour
         if (_playerLevelControl != null)
         {
             _playerLevelControl.OnLevelUp += OpenLevelupUI; // 종소리 구독
+            _playerLevelControl.LevelUpEvent += OpenLevelupUI;
         }
+
+        UpdateInventory();
     }
 
     private void OnDestroy()
@@ -88,6 +99,7 @@ public class InGameUIController : MonoBehaviour
         if (_playerLevelControl != null)
         {
             _playerLevelControl.OnLevelUp -= OpenLevelupUI;
+            _playerLevelControl.LevelUpEvent -= OpenLevelupUI;
         }
     }
 
@@ -120,6 +132,35 @@ public class InGameUIController : MonoBehaviour
             else
             {
                 OnClickOpenPauseUI();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OpenTurretSelectUI();
+        }
+        else if (Input.GetMouseButtonDown(1) && _turretSelectUI.IsSetting == true)
+        {
+            _turretSelectUI.UnSetTurret();
+        }
+        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true)
+        {
+            _turretSelectUI.PlaceTurret();
+        }
+    }
+
+    private void OpenTurretSelectUI()
+    {
+        if (_turretSelectUI != null)
+        {
+            if (!_turretSelectUI.IsActive)
+            {
+                _turretSelectUI.Show();
+                _turretSelectUI.IsActive = true;
+            }
+            else
+            {
+                _turretSelectUI.Hide();
+                _turretSelectUI.IsActive = false;
             }
         }
     }
@@ -172,10 +213,18 @@ public class InGameUIController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void OpenLevelupUI()
+    {
+        if (_levelupUI != null) _levelupUI.SetActive(true);
+        UpdateSelectableItemInUI();
+        Time.timeScale = 0f;
+    }
+
     public void CloseLevelupUI()
     {
         if (_levelupUI != null) _levelupUI.SetActive(false);
         Time.timeScale = 1f;
+        UpdateExpBar();
     }
 
     // ★ 랜덤 패시브를 띄워주는 핵심 로직
@@ -263,7 +312,8 @@ public class InGameUIController : MonoBehaviour
 
         int currentLevel = PlayerManager.Instance.PlayerStatController.CurrentLevel;
         float currentExp = PlayerManager.Instance.PlayerStatController.CurrentExp;
-        float maxExp = DataTableManager.Instance.GetGameData<ExpData>().GetExpData(currentLevel);
+        //float maxExp = DataTableManager.Instance.GetGameData<ExpData>().GetExpData(currentLevel);
+        float maxExp = _playerLevelControl.requiredXP;
         _expBar.fillAmount = currentExp / maxExp;
     }
 
@@ -273,12 +323,12 @@ public class InGameUIController : MonoBehaviour
         float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
         _hpBar.fillAmount = currentHp / maxHp;
 
-        if (_animCoroutine != null)
+        if (_HpBarAnimCoroutine != null)
         {
-            StopCoroutine(_animCoroutine);
-            _animCoroutine = null;
+            StopCoroutine(_HpBarAnimCoroutine);
+            _HpBarAnimCoroutine = null;
         }
-        _animCoroutine = StartCoroutine(PlayHpBarAnimation());
+        _HpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation());
 
     }
 
@@ -298,12 +348,61 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
+    public void PrintMessge(string text)
+    {
+        _messageText.text = text;
+        if (_messageTextCoroutine != null) StopCoroutine(_messageTextCoroutine);
+        _messageTextCoroutine = StartCoroutine(ShowMessageText());
+    }
+
+    private IEnumerator ShowMessageText(float duration = 1.0f)
+    {
+        Color color = _messageText.color;
+        color.a = 1;
+        _messageText.color = color;
+
+        float currentTime = 0f;
+
+        while(currentTime < duration)
+        {
+            currentTime += Time.unscaledDeltaTime;
+            
+            float alpha = Mathf.Lerp(1, 0, currentTime / duration);
+            color.a = alpha;
+            _messageText.color = color;
+            yield return null;
+        }
+    }
+
+    public void UpdateScrapAmountText(int amount)
+    {
+        _scrapAmountText.text = amount.ToString();
+    }
+
     // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
-        UpdateSelectableItemBtn<WeaponStatData>(0);
+        for (int index = 0; index< _itemSelectBtns.Length; index++)
+        {
+            float itemTypeIndex = UnityEngine.Random.Range(0, _itemSelectBtns.Length);
+            switch (itemTypeIndex)
+            {
+                case 0:
+                    UpdateSelectableItemBtn<WeaponStatData>(index);
+                    break;
+                case 1:
+                    UpdateSelectableItemBtn<PassiveStatData>(index);
+                    break;
+                case 2:
+                    UpdateSelectableItemBtn<TurretData>(index);
+                    break;
+                default:
+                    break;
+            }
+        }
+        /*UpdateSelectableItemBtn<WeaponStatData>(0);
         UpdateSelectableItemBtn<PassiveStatData>(1);
-        UpdateSelectableItemBtn<TurretData>(2);
+        UpdateSelectableItemBtn<TurretData>(2);*/
     }
 
     private void UpdateSelectableItemBtn<T>(int index) where T : IItemStatData

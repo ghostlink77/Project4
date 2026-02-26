@@ -97,12 +97,16 @@ public class TurretBase : MonoBehaviour, IDamageable, IItemStatController
         float closestDistance = Mathf.Infinity;
         foreach (Transform enemy in _enemiesInRange)
         {
-            float distance = GetDirectionVector(transform.position, enemy.position).sqrMagnitude;
-            if (distance < closestDistance)
+            if (enemy != null)
             {
-                closestDistance = distance;
-                closestEnemy = enemy;
+                float distance = GetDirectionVector(transform.position, enemy.position).sqrMagnitude;
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
             }
+            
         }
         _target = closestEnemy;
     }
@@ -133,5 +137,10 @@ public class TurretBase : MonoBehaviour, IDamageable, IItemStatController
     public void LevelUp()
     {
         _level++;
+    }
+
+    public int GetCost()
+    {
+        return _turretData.scrapCost;
     }
 }
