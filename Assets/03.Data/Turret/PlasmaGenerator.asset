@@ -15,17 +15,32 @@ MonoBehaviour:
   turretName: "\uD50C\uB77C\uC988\uB9C8 \uC0DD\uC131\uAE30"
   ID: 0
   _icon: {fileID: -1014005271760799969, guid: 196d227ee46b12a4c9db457378f84b5a, type: 3}
-  maxLevel: 6
-  scrapCost: 5
-  maxHp: 1900000019000000
-  range:
-  - 4.5
-  - 4.5
-  upgradeDescriptions: []
+  <MaxLevel>k__BackingField: 6
+  <ScrapCost>k__BackingField: 5
+  <MaxHp>k__BackingField: 190000001900000019000000190000001900000019000000
+  <Range>k__BackingField:
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  _upgradeDescriptions:
+  - "\uC801\uC5D0\uAC8C \uB2FF\uC73C\uBA74 \uD3ED\uBC1C\uD558\uB294 \uD50C\uB77C\uC988\uB9C8\uB97C
+    \uBC1C\uC0AC\uD558\uB294 \uD3EC\uD0D1\t"
+  - "\uD3EC\uD0D1 \uB370\uBBF8\uC9C0 +10"
+  - "\uBC1C\uC0AC \uCFE8\uD0C0\uC784 \uAC10\uC18C"
+  - "\uD22C\uC0AC\uCCB4 +1"
+  - "\uD3EC\uD0D1 \uB370\uBBF8\uC9C0 +10"
+  - "\uD22C\uC0AC\uCCB4 +1"
   projectileAdrsKey: Plasma
-  damage: 0f0000000f000000
-  numProjectile: 0100000001000000
-  fireRate:
-  - 2
-  - 2
-  projectileSpeed: 1
+  <Damage>k__BackingField: 0f0000001900000019000000190000002300000023000000
+  <NumProjectile>k__BackingField: 010000000100000001000000020000000200000003000000
+  <FireRate>k__BackingField:
+  - 2.5
+  - 2.5
+  - 1.8
+  - 1.8
+  - 1.8
+  - 1.8
+  <ProjectileSpeed>k__BackingField: 0.8

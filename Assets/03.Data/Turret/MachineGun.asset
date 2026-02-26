@@ -15,18 +15,32 @@ MonoBehaviour:
   turretName: "\uBA38\uC2E0\uAC74"
   ID: 0
   _icon: {fileID: -2138698884186886829, guid: 666808b86ed2fba45803771ab39e7c90, type: 3}
-  maxLevel: 6
-  scrapCost: 5
-  maxHp: 1400000014000000
-  range:
+  <MaxLevel>k__BackingField: 6
+  <ScrapCost>k__BackingField: 5
+  <MaxHp>k__BackingField: 1400000014000000140000001e0000001e0000001e000000
+  <Range>k__BackingField:
   - 3
-  upgradeDescriptions:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  _upgradeDescriptions:
   - "\uAC00\uAE4C\uC6B4 \uC801\uC5D0\uAC8C \uCD1D\uC54C\uC744 \uBC1C\uC0AC\uD558\uB294
-    \uD3EC\uD0D1\uC785\uB2C8\uB2E4"
-  - "\uACF5\uACA9\uB825 10 \uC99D\uAC00"
+    \uD3EC\uD0D1"
+  - "\uD3EC\uD0D1 \uD22C\uC0AC\uCCB4 +1\t"
+  - "\uD3EC\uD0D1 \uD22C\uC0AC\uCCB4 \uBC1C\uC0AC \uCFE8\uD0C0\uC784 \uAC10\uC18C"
+  - "\uD3EC\uD0D1 \uCD5C\uB300 \uCCB4\uB825 +10"
+  - "\uD3EC\uD0D1 \uD22C\uC0AC\uCCB4 +1\t"
+  - "\uACF5\uACA9\uB825 +5"
   projectileAdrsKey: MachineGunBullet
-  damage: 0a0000000a000000
-  numProjectile: 01000000
-  fireRate:
+  <Damage>k__BackingField: 05000000050000000500000005000000050000000a000000
+  <NumProjectile>k__BackingField: 010000000200000002000000020000000300000003000000
+  <FireRate>k__BackingField:
   - 1
-  projectileSpeed: 1
+  - 1
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
+  <ProjectileSpeed>k__BackingField: 1
