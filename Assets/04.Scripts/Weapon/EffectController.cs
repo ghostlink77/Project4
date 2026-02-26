@@ -7,33 +7,31 @@ using UnityEngine.WSA;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Animator))]
 public class EffectController : MonoBehaviour
 {
     public event Action OnHit;
 
     private Coroutine _releaseCoroutine;
-    private AudioSource _audioSource;
     private Collider2D _collider;
-    private AnimationClip _explosionAnimationClip;
     private Animator _animator;
 
     [Header("Settings")]
-    [SerializeField] private float _lifeTime = 1f;
+    [SerializeField] private float _defaultLifeTime = 1f;
     [SerializeField] private bool _isProjectile = false;
     private bool _alreadyDamaged = false;
     
     private int _damage;
-    private WaitForSeconds _waitLifeTime;
+    private WaitForSeconds _waitForSecondsUntilDelete;
     private IObjectPool<GameObject> _pool;
     private readonly List<Collider2D> _overlapResults = new List<Collider2D>();
     private ContactFilter2D _contactFilter;
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
         _collider = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
-        
+
         _contactFilter.useTriggers = true;
         _contactFilter.useLayerMask = false;
     }
@@ -43,9 +41,10 @@ public class EffectController : MonoBehaviour
         _collider.enabled = true;
         _alreadyDamaged = false;
         
-        float length = _animator.GetCurrentAnimatorStateInfo(0).length;
+        OnHit -= DisableColliderOnHit;
         OnHit += DisableColliderOnHit;
-        _releaseCoroutine = StartCoroutine(ReleaseAfterTime(length));
+        
+        _releaseCoroutine = StartCoroutine(ReleaseRoutine());
     }
 
     private void OnDisable()
@@ -74,9 +73,17 @@ public class EffectController : MonoBehaviour
         _pool = pool;
     }
 
-    private IEnumerator ReleaseAfterTime(float delay)
+    private IEnumerator ReleaseRoutine()
     {
-        yield return new WaitForSeconds(delay);
+        // 애니메이터가 상태를 완전히 인지할 때까지 한 프레임 대기하기 위해 사용
+        yield return null;
+        if (_waitForSecondsUntilDelete == null)
+        {
+            float length = _animator.GetCurrentAnimatorStateInfo(0).length;
+            if (length <= 0) length = _defaultLifeTime;
+            _waitForSecondsUntilDelete = new WaitForSeconds(length);
+        }
+        yield return _waitForSecondsUntilDelete;
         Release();
     }
 
