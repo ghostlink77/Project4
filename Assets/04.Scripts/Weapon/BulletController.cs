@@ -44,7 +44,7 @@ public class BulletController : MonoBehaviour
 
     #region 오브젝트 풀링
     private IObjectPool<GameObject> _projectilePool;
-    public void SetProjectilePool(IObjectPool<GameObject> pool) => _projectilePool = pool;
+    public IObjectPool<GameObject> ProjectilePool {get => _projectilePool; set => _projectilePool = value;}
     #endregion
     
     #region 참조변수

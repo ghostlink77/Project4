@@ -23,7 +23,6 @@ public class EffectController : MonoBehaviour
     
     private int _damage;
     private WaitForSeconds _waitForSecondsUntilDelete;
-    private IObjectPool<GameObject> _pool;
     private readonly List<Collider2D> _overlapResults = new List<Collider2D>();
     private ContactFilter2D _contactFilter;
 
@@ -68,11 +67,6 @@ public class EffectController : MonoBehaviour
         _damage = damage;
     }
 
-    public void SetPool(IObjectPool<GameObject> pool)
-    {
-        _pool = pool;
-    }
-
     private IEnumerator ReleaseRoutine()
     {
         // 애니메이터가 상태를 완전히 인지할 때까지 한 프레임 대기하기 위해 사용
@@ -84,29 +78,14 @@ public class EffectController : MonoBehaviour
             _waitForSecondsUntilDelete = new WaitForSeconds(length);
         }
         yield return _waitForSecondsUntilDelete;
-        Release();
-    }
-
-    public void Release()
-    {
-        if (_pool != null && gameObject.activeSelf)
-        {
-            _pool.Release(gameObject);
-        }
-        else if (gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         ApplyAreaDamageFromCollider();
         
-        if (_isProjectile)
-        {
-            Release();
-        }
+        if (_isProjectile) Destroy(gameObject);
     }
     
     private void ApplyAreaDamageFromCollider()

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class GenerateExplosion : MonoBehaviour
 {
@@ -7,11 +8,14 @@ public class GenerateExplosion : MonoBehaviour
     private BulletController _bulletController;
     [SerializeField]
     private GameObject explosionPrefab;
+    private IObjectPool<GameObject> _projectilePool;
+    public IObjectPool<GameObject> ProjectilePool {get => _projectilePool;}
 
     private void Awake()
     {
         if (!gameObject.TryGetComponent<Collider2D>(out _bulletCollider)) Debug.LogError("총알에 Collider2D 없음");
         if (!gameObject.TryGetComponent<BulletController>(out _bulletController)) Debug.LogError("총알에 BulletController 컴포넌트 없음");
+        if (_bulletCollider != null) _projectilePool = _bulletController.ProjectilePool;
     }
 
     private void OnEnable()
@@ -29,6 +33,6 @@ public class GenerateExplosion : MonoBehaviour
     {
         Vector2 bulletPosision = gameObject.transform.position;
         GameObject createdExplosion = Instantiate(explosionPrefab, bulletPosision, Quaternion.identity);
-        createdExplosion.GetComponent<EffectController>().Init(_bulletController.ProjectileDmg);
+        EffectController effectController = createdExplosion.GetComponent<EffectController>();
     }
 }
