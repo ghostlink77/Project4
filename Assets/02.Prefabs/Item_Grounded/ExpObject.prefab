@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5069646187741818551}
   - component: {fileID: 5073816160103635365}
   - component: {fileID: -8030945859087046622}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: ExpObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c174e80206c32349b4f9cc0dbf03df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExpObject
-  _expAmount: 1
   _defaultSpeed: 5
   _acceleration: 10
+  _expAmount: 1

@@ -4,6 +4,11 @@ using UnityEngine;
 public class ExpObject : ItemGroundedBase
 {
     [SerializeField] private int _expAmount;
+    public int ExpAmount
+    {
+        get => _expAmount;
+        set => _expAmount = value;
+    }
 
     protected override void OnCollectedByPlayer(Collider2D playerColl)
     {

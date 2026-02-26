@@ -1,0 +1,58 @@
+using UnityEngine;
+
+public class BlackHoleTurret : TurretBase
+{
+    [SerializeField] private LayerMask _expObjectLayer;
+
+    private BlackHoleTurretData _blackHoleData;
+    private float _effectTimer;
+
+    private GameObject _mergedExpObject;
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        _blackHoleData = TurretData as BlackHoleTurretData;
+    }
+
+    private void Update()
+    {
+        _effectTimer += Time.deltaTime;
+        if (_effectTimer >= _blackHoleData.EffectCooldown[_level - 1])
+        {
+            AbsorbExpObjects();
+            _effectTimer = 0f;
+        }
+    }
+
+    private void AbsorbExpObjects()
+    {
+        Collider2D[] hits = 
+            Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _expObjectLayer);
+
+        int absorbedExp = 0;
+        foreach (Collider2D hit in hits)
+        {
+            ExpObject expObj = hit.GetComponent<ExpObject>();
+            if (expObj == null) continue;
+            if (expObj.gameObject == _mergedExpObject) continue;
+
+            absorbedExp += expObj.ExpAmount;
+            ExpObjectSpawner.Instance.ReturnToPool(expObj.gameObject);
+        }
+
+        if (absorbedExp <= 0) return;
+
+        if (_mergedExpObject != null && _mergedExpObject.activeInHierarchy)
+        {
+            ExpObject mergedExp = _mergedExpObject.GetComponent<ExpObject>();
+            mergedExp.ExpAmount += absorbedExp;
+        }
+        else
+        {
+            _mergedExpObject = ExpObjectSpawner.Instance.SpawnExpObject(transform.position);
+            ExpObject mergedExp = _mergedExpObject.GetComponent<ExpObject>();
+            mergedExp.ExpAmount = absorbedExp;
+        }
+    }
+}
