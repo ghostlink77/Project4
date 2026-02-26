@@ -97,6 +97,7 @@ public class InGameUIController : MonoBehaviour
         }
 
         UpdateInventory();
+
     }
 
     private void OnDestroy()
@@ -139,7 +140,7 @@ public class InGameUIController : MonoBehaviour
                 OnClickOpenPauseUI();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space) && _turretSelectUI.IsSetting == false)
         {
             OpenTurretSelectUI();
         }

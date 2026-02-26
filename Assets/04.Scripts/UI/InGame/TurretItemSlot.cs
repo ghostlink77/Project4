@@ -9,18 +9,23 @@ public class TurretItemSlot : ItemSlot
     [SerializeField] private GameObject _xImage;
     protected CanvasGroup _canvasGroup;
 
+    private TurretSelectUI _selectUI;
+
     private int _cost = -1;
 
     protected override void Awake()
     {
         base.Awake();
         _canvasGroup = GetComponent<CanvasGroup>();
+        _selectUI = GetComponentInParent<TurretSelectUI>();
     }
     public override void SetSlot(string name, int level, string description, int cost)
     {
         base.SetSlot(name, level, description, cost);
         _costText.text = cost.ToString();
         _cost = cost;
+
+        UpdateScrapValue(_selectUI.GetScrapAmount());
     }
 
     public override void ResetSlot()
@@ -33,7 +38,7 @@ public class TurretItemSlot : ItemSlot
 
     public void UpdateScrapValue(int currentScrapAmount)
     {
-        if (currentScrapAmount >= _cost) ShowAnim();
+        if (currentScrapAmount >= _cost && _cost != -1) ShowAnim();
         else HideAnim();
     }
 

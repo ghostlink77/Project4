@@ -27,6 +27,7 @@ public class TurretSelectUI : MonoBehaviour
     private string _selectedTurretName;
     private Vector3 _mouseWorldPos = Vector3.zero;
 
+
     private void Awake()
     {
         _mainCamera = Camera.main;
@@ -69,6 +70,10 @@ public class TurretSelectUI : MonoBehaviour
         
     }
 
+    public int GetScrapAmount()
+    {
+        return turretPlacer.GetScrapAmount();
+    }
     private void UpdateScrapAmountEffect()
     {
         foreach(var btn in _turretBtns)
