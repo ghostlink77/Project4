@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 2004968839407375929}
   - component: {fileID: 1769412929353730414}
   - component: {fileID: 3388451361037091150}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -239,6 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76171d0de5cf69c46a40b2d29ede9b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerItemController
+  _weaponSlotMaxCount: 7
+  _passiveSlotMaxCount: 6
+  _turretSlotMaxCount: 7
 --- !u!114 &-2721069165162395340
 MonoBehaviour:
   m_ObjectHideFlags: 0
