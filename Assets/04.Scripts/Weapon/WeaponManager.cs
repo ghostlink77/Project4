@@ -87,7 +87,7 @@ public class WeaponManager : MonoBehaviour
         if (!TryGetComponent<WeaponSoundController>(out _weaponSoundController))
         Debug.Log($"{nameof(_weaponSoundController)}가 null임");
         
-        _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);
+        _weaponStatController.SetUp(_baseStat);
         GetWeaponStats();
         
         _weaponShootController.SetUp(_projectilePrefab);
