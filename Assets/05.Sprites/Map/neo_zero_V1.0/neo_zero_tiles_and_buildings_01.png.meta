@@ -178,7 +178,7 @@ TextureImporter:
         x: 64
         y: 177
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: neo_zero_tiles_and_buildings_01_4
       rect:
         serializedVersion: 2
-        x: 80
+        x: 144
         y: 177
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,7 +222,7 @@ TextureImporter:
         x: 96
         y: 177
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -374,9 +374,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 255
+        y: 241
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,9 +396,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 269
+        y: 265
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,9 +418,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 283
+        y: 282
         width: 15
-        height: 14
+        height: 15
       alignment: 9
       pivot: {x: 0.4999995, y: 0.4939411}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,10 +439,10 @@ TextureImporter:
       name: neo_zero_tiles_and_buildings_01_15
       rect:
         serializedVersion: 2
-        x: 63
-        y: 283
+        x: 65
+        y: 282
         width: 15
-        height: 14
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,7 +466,7 @@ TextureImporter:
         width: 14
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -475,6 +475,94 @@ TextureImporter:
       bones: []
       spriteID: 995045e2075a98b408f6ef57339a73a5
       internalID: -1163566770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neo_zero_tiles_and_buildings_01_17
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 265
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c82843848c2d2fb42b39730d3758c3bd
+      internalID: 1535598989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neo_zero_tiles_and_buildings_01_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 241
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a20b4295c965f784490b1b05c6108cb2
+      internalID: -1255347226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neo_zero_tiles_and_buildings_01_19
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 241
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5677edc3acda042805f87864098d50
+      internalID: 805669145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: neo_zero_tiles_and_buildings_01_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 282
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1f6100ae4c15bf48a61ba6eba1f639c
+      internalID: -1209454015
       vertices: []
       indices: 
       edges: []
@@ -506,7 +594,11 @@ TextureImporter:
       neo_zero_tiles_and_buildings_01_14: 1680745698
       neo_zero_tiles_and_buildings_01_15: -767326741
       neo_zero_tiles_and_buildings_01_16: -1163566770
+      neo_zero_tiles_and_buildings_01_17: 1535598989
+      neo_zero_tiles_and_buildings_01_18: -1255347226
+      neo_zero_tiles_and_buildings_01_19: 805669145
       neo_zero_tiles_and_buildings_01_2: -3322552880021596911
+      neo_zero_tiles_and_buildings_01_20: -1209454015
       neo_zero_tiles_and_buildings_01_3: 1626576675
       neo_zero_tiles_and_buildings_01_4: 1669866659
       neo_zero_tiles_and_buildings_01_5: 1004301577
