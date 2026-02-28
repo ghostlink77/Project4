@@ -18,7 +18,10 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     protected virtual void Initialize()
     {
         _currentHp = _turretData.MaxHp[_level - 1];
-        _rangeCollider.radius = _turretData.Range[_level - 1];
+        if(_rangeCollider != null)
+        { 
+            _rangeCollider.radius = _turretData.Range[_level - 1];
+        }
     }
 
     public void TakeDamage(int damage)

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHp;
     [SerializeField] private EnemyType _enemyType;
+    [SerializeField] private int expDropAmount = 1;
     private int _currentHp;
     private bool _isLive;
 
@@ -128,12 +129,12 @@ public class Enemy : MonoBehaviour, IDamageable
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
-        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
         DropExpObject();
+        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
     }
 
     private void DropExpObject()
     {
-        ExpObjectSpawner.Instance.SpawnExpObject(transform.position);
+        ExpObjectSpawner.Instance.SpawnExpObject(transform.position, expDropAmount);
     }
 }

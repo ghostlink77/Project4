@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackHoleTurret : TurretBase
@@ -8,6 +9,8 @@ public class BlackHoleTurret : TurretBase
     private float _effectTimer;
 
     private GameObject _mergedExpObject;
+
+    private HashSet<ExpObject> _absorbingObjects = new HashSet<ExpObject>();
 
     protected override void Initialize()
     {
@@ -27,32 +30,42 @@ public class BlackHoleTurret : TurretBase
 
     private void AbsorbExpObjects()
     {
-        Collider2D[] hits = 
+        Collider2D[] hits =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _expObjectLayer);
 
-        int absorbedExp = 0;
         foreach (Collider2D hit in hits)
         {
             ExpObject expObj = hit.GetComponent<ExpObject>();
             if (expObj == null) continue;
             if (expObj.gameObject == _mergedExpObject) continue;
+            if (_absorbingObjects.Contains(expObj)) continue;
 
-            absorbedExp += expObj.ExpAmount;
-            ExpObjectSpawner.Instance.ReturnToPool(expObj.gameObject);
+            _absorbingObjects.Add(expObj);
+            expObj.SetOnArrivedCallback(OnExpObjectArrived);
+            expObj.CollectItem(transform);
         }
+    }
 
-        if (absorbedExp <= 0) return;
+    private void OnExpObjectArrived(ItemGroundedBase item)
+    {
+        ExpObject expObj = item as ExpObject;
+        if (expObj == null) return;
+
+        int exp = expObj.ExpAmount;
+        _absorbingObjects.Remove(expObj);
+        ExpObjectSpawner.Instance.ReturnToPool(expObj.gameObject);
 
         if (_mergedExpObject != null && _mergedExpObject.activeInHierarchy)
         {
             ExpObject mergedExp = _mergedExpObject.GetComponent<ExpObject>();
-            mergedExp.ExpAmount += absorbedExp;
+            mergedExp.ExpAmount += exp;
         }
         else
         {
-            _mergedExpObject = ExpObjectSpawner.Instance.SpawnExpObject(transform.position);
+            _mergedExpObject = ExpObjectSpawner.Instance.SpawnExpObject(transform.position, exp);
             ExpObject mergedExp = _mergedExpObject.GetComponent<ExpObject>();
-            mergedExp.ExpAmount = absorbedExp;
+            mergedExp.ExpAmount = exp;
+            mergedExp.SetOnReturnedToPoolCallback(() => _mergedExpObject = null);
         }
     }
 }

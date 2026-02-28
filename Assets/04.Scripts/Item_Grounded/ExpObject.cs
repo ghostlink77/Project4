@@ -10,6 +10,12 @@ public class ExpObject : ItemGroundedBase
         set => _expAmount = value;
     }
 
+    public void Initialize(int amount)
+    {
+        base.Initialize();
+        _expAmount = amount;
+    }
+
     protected override void OnCollectedByPlayer(Collider2D playerColl)
     {
         if (playerColl.TryGetComponent<PlayerLevelControl>(out PlayerLevelControl playerLevelControl))
