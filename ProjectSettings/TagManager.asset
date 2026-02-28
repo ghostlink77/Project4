@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Agit
+  - ExpObject
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Exp
   - Tile
   - Enemy
   - Player

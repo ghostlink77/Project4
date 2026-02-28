@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8692077d97b310544b7fb17bd4b78eb5, type: 3}
+  m_Name: PortableBlackHole
+  m_EditorClassIdentifier: Assembly-CSharp::BlackHoleTurretData
+  turretName: "\uD734\uB300\uC6A9 \uBE14\uB799\uD640"
+  ID: 0
+  _icon: {fileID: -1014005271760799969, guid: 196d227ee46b12a4c9db457378f84b5a, type: 3}
+  <MaxLevel>k__BackingField: 6
+  <ScrapCost>k__BackingField: 6
+  <MaxHp>k__BackingField: 1e0000001e0000001e0000001e0000001e0000001e000000
+  <Range>k__BackingField:
+  - 5.5
+  - 5.5
+  - 5.5
+  - 5.5
+  - 5.5
+  - 5.5
+  _upgradeDescriptions:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  <EffectCooldown>k__BackingField:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5

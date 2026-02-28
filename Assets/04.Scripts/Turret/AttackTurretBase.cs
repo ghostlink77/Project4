@@ -12,14 +12,16 @@ public class AttackTurretBase : TurretBase
     private float _fireTimer;
     private Transform _target;
     private LayerMask _enemyLayer;
+    private SpriteRenderer _spriteRenderer;
 
-    protected override void Initialize()
+    public override void Initialize()
     {
         base.Initialize();
         _attackTurretData = TurretData as AttackTurretData;
         _projectileKey = _attackTurretData.GetProjectileKey();
 
         _enemyLayer = LayerMask.GetMask("Enemy");
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateEnemiesInRange();
     }
 
@@ -41,6 +43,15 @@ public class AttackTurretBase : TurretBase
         }
         UpdateEnemiesInRange();
         UpdateTarget();
+
+        if (_target.position.x < transform.position.x)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        else
+        {
+            _spriteRenderer.flipX = false;
+        }
 
         TurretProjectile projectile =
             TurretProjectileSpawner.Instance.SpawnProjectile(_projectileKey, _firePoint.position);

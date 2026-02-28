@@ -5,14 +5,17 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
 {
     [SerializeField] protected float _defaultSpeed = 5f;
     [SerializeField] protected float _acceleration = 10f;
+    [SerializeField] private float _arrivalDistance = 0.2f;
     private float _currentSpeed = 0f;
 
-    private bool _isMovingToPlayer = false;
+    private bool _isMovingTo = false;
     private Transform _collectorTransform;
+    private System.Action<ItemGroundedBase> _onArrived;
+    private System.Action _onReturnedToPool;
 
     private void Update()
     {
-        if (_isMovingToPlayer && _collectorTransform != null)
+        if (_isMovingTo && _collectorTransform != null)
         {
             MoveToCollector();
         }
@@ -22,16 +25,28 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
     {
         _collectorTransform = null;
         _currentSpeed = 0f;
-        _isMovingToPlayer = false;
+        _isMovingTo = false;
+        _onArrived = null;
+        _onReturnedToPool = null;
+    }
+
+    public void SetOnArrivedCallback(System.Action<ItemGroundedBase> onArrived)
+    {
+        _onArrived = onArrived;
+    }
+
+    public void SetOnReturnedToPoolCallback(System.Action onReturnedToPool)
+    {
+        _onReturnedToPool = onReturnedToPool;
     }
 
     public void CollectItem(Transform collectorTransform)
     {
-        if (_isMovingToPlayer)
+        if (_isMovingTo)
         {
             return;
         }
-        _isMovingToPlayer = true;
+        _isMovingTo = true;
         _collectorTransform = collectorTransform;
         _currentSpeed = _defaultSpeed;
     }
@@ -41,6 +56,13 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
         _currentSpeed += _acceleration * Time.deltaTime;
         Vector3 direction = (_collectorTransform.position - transform.position).normalized;
         transform.position += direction * _currentSpeed * Time.deltaTime;
+
+        float distance = (transform.position - _collectorTransform.position).sqrMagnitude;
+        if (distance <= _arrivalDistance * _arrivalDistance && _onArrived != null)
+        {
+            _onArrived.Invoke(this);
+            _isMovingTo = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +70,7 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
         if (collision.CompareTag("Player"))
         {
             OnCollectedByPlayer(collision);
+            _onReturnedToPool?.Invoke();
             ReturnToPool();
         }
     }
