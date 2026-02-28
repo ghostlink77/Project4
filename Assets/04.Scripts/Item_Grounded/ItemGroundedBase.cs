@@ -57,8 +57,8 @@ public abstract class ItemGroundedBase : MonoBehaviour, IItemGrounded
         Vector3 direction = (_collectorTransform.position - transform.position).normalized;
         transform.position += direction * _currentSpeed * Time.deltaTime;
 
-        float distance = Vector2.Distance(transform.position, _collectorTransform.position);
-        if (distance <= _arrivalDistance && _onArrived != null)
+        float distance = (transform.position - _collectorTransform.position).sqrMagnitude;
+        if (distance <= _arrivalDistance * _arrivalDistance && _onArrived != null)
         {
             _onArrived.Invoke(this);
             _isMovingTo = false;

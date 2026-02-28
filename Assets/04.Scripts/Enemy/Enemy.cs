@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHp;
     [SerializeField] private EnemyType _enemyType;
-    [SerializeField] private int expDropAmount = 1;
+    [SerializeField] private int _expDropAmount = 1;
     private int _currentHp;
     private bool _isLive;
 
@@ -135,6 +135,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void DropExpObject()
     {
-        ExpObjectSpawner.Instance.SpawnExpObject(transform.position, expDropAmount);
+        ExpObjectSpawner.Instance.SpawnExpObject(transform.position, _expDropAmount);
     }
 }
