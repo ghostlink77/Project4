@@ -31,9 +31,9 @@ public class WeaponSoundController : MonoBehaviour
     public void SetUp()
     {
         if(!TryGetComponent<WeaponEventController>(out _weaponEventController))
-        Debug.LogError($"{typeof(WeaponEventController)} null임");
+        Debug.LogError($"{_weaponEventController.GetType()} null임");
         if(!TryGetComponent<AudioSource>(out _audioSource))
-        Debug.LogError($"{typeof(AudioSource)} null임");
+        Debug.LogError($"{_audioSource.GetType()} null임");
         AddToEvent();
     }
     
