@@ -86,6 +86,7 @@ public class TurretPlacer : MonoBehaviour
                     {
                         component.PlaceTurret(turretPrefab);
                         UseScrapPoint(turretBasecomponent.GetCost());
+                        turretBasecomponent.Initialize();
                         EndPlaceTurret?.Invoke();
                         return;
                     }

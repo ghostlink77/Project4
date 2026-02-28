@@ -109,7 +109,7 @@ MonoBehaviour:
   _rangeCollider: {fileID: 0}
   _expObjectLayer:
     serializedVersion: 2
-    m_Bits: 2097152
+    m_Bits: 0
 --- !u!61 &1753050517880547598
 BoxCollider2D:
   m_ObjectHideFlags: 0

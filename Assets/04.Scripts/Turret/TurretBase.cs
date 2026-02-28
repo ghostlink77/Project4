@@ -15,7 +15,7 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
         Initialize();
     }
 
-    protected virtual void Initialize()
+    public virtual void Initialize()
     {
         _currentHp = _turretData.MaxHp[_level - 1];
         if (_rangeCollider != null)

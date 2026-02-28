@@ -22,6 +22,14 @@ public class Enemy : MonoBehaviour, IDamageable
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
 
+    // 기절 관련
+    private bool _isStunned;
+    private float _stunTimer;
+    private GameObject _currentStunVFX;
+    private System.Action<GameObject> _onStunVFXReturn;
+
+    public bool IsStunned => _isStunned;
+
     private static readonly int DeadHash = Animator.StringToHash("Dead");
 
     private void Awake()
@@ -35,21 +43,32 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (_isLive)
+        if (!_isLive) return;
+
+        if (_isStunned)
         {
-            ElapseTime();
+            _stunTimer -= Time.deltaTime;
+            if (_stunTimer <= 0f)
+            {
+                EndStun();
+            }
+            return;
         }
+
+        ElapseTime();
     }
 
     private void FixedUpdate()
     {
+        if (_isStunned) return;
+
         TrackTarget();
         _rigid.linearVelocity = Vector2.zero;
     }
 
     private void LateUpdate()
     {
-        if (_target != null && _isLive)
+        if (_target != null && _isLive && !_isStunned)
         {
             _spriteRenderer.flipX = _target.position.x < _rigid.position.x;
         }
@@ -60,6 +79,9 @@ public class Enemy : MonoBehaviour, IDamageable
         _currentHp = _maxHp;
         _isLive = true;
         _collider.enabled = true;
+        _isStunned = false;
+        _stunTimer = 0f;
+        ClearStunVFX();
 
         _animator.Play("Walk", 0, 0f);
 
@@ -95,7 +117,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(!_isLive)
+        if(!_isLive || _isStunned)
             return;
 
         if (collision.collider.CompareTag("Agit") || collision.collider.CompareTag("Player"))
@@ -105,6 +127,44 @@ public class Enemy : MonoBehaviour, IDamageable
                 _currentDamageDelay = _damageDelay;
                 collision.collider.GetComponent<IDamageable>()?.TakeDamage(_damage);
             }
+        }
+    }
+
+    public void Stun(float duration)
+    {
+        if (!_isLive) return;
+
+        _stunTimer = duration;
+
+        if (!_isStunned)
+        {
+            _isStunned = true;
+            _rigid.linearVelocity = Vector2.zero;
+            _animator.speed = 0f;
+        }
+    }
+
+    private void EndStun()
+    {
+        _isStunned = false;
+        _animator.speed = 1f;
+        ClearStunVFX();
+    }
+
+    public void SetStunVFX(GameObject vfx, System.Action<GameObject> onReturn)
+    {
+        _currentStunVFX = vfx;
+        _onStunVFXReturn = onReturn;
+    }
+
+    private void ClearStunVFX()
+    {
+        if (_currentStunVFX != null)
+        {
+            _currentStunVFX.transform.SetParent(null);
+            _onStunVFXReturn?.Invoke(_currentStunVFX);
+            _currentStunVFX = null;
+            _onStunVFXReturn = null;
         }
     }
 
@@ -121,9 +181,12 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Die()
     {
         _isLive = false;
+        _isStunned = false;
         _collider.enabled = false;
         _rigid.linearVelocity = Vector2.zero;
+        _animator.speed = 1f;
         _animator.SetTrigger(DeadHash);
+        ClearStunVFX();
     }
 
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
