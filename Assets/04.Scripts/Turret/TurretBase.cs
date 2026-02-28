@@ -5,8 +5,6 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     [SerializeField] private TurretData _turretData;
     public TurretData TurretData => _turretData;
 
-    [SerializeField] protected CircleCollider2D _rangeCollider;
-
     protected int _currentHp;
     protected int _level = 1;
 
@@ -18,10 +16,6 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     public virtual void Initialize()
     {
         _currentHp = _turretData.MaxHp[_level - 1];
-        if (_rangeCollider != null)
-        { 
-            _rangeCollider.radius = _turretData.Range[_level - 1];
-        }
     }
 
     public void TakeDamage(int damage)
@@ -53,7 +47,6 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
             return;
         }
         _currentHp = _turretData.MaxHp[_level];
-        _rangeCollider.radius = _turretData.Range[_level];
         _level++;
     }
 

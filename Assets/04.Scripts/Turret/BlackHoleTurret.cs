@@ -32,6 +32,7 @@ public class BlackHoleTurret : TurretBase
     {
         Collider2D[] hits =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _expObjectLayer);
+        Debug.Log($"BlackHoleTurret absorbed {hits.Length} exp objects.");
 
         foreach (Collider2D hit in hits)
         {
