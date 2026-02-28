@@ -19459,6 +19459,10 @@ PrefabInstance:
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 8659552871012397998}
+    - target: {fileID: 1149395256123153959, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
     - target: {fileID: 2856213670529371928, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: _agitHpBar
       value: 
@@ -19487,6 +19491,10 @@ PrefabInstance:
       propertyPath: '_testEnemies.Array.data[2]'
       value: 
       objectReference: {fileID: 1841578105}
+    - target: {fileID: 3270285628895408073, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3590813882390397351, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.05
@@ -19535,13 +19543,41 @@ PrefabInstance:
       propertyPath: turretPlacer
       value: 
       objectReference: {fileID: 532890275}
+    - target: {fileID: 3672733860359411787, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556345574899394354, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294963456
+      objectReference: {fileID: 0}
     - target: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6634309694036899783, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634309694036899783, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_SceneBindings.Array.data[12].key
+      value: 
+      objectReference: {fileID: -201099154040947070, guid: 194e071d986c7bc4ab5d117f3b430759, type: 2}
+    - target: {fileID: 6634309694036899783, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_SceneBindings.Array.data[12].value
+      value: 
+      objectReference: {fileID: 2591889185869983793}
+    - target: {fileID: 6649962581724332814, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 7131445946157944537, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: m_Name
       value: InGameUIController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7503516841343574257, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294965248
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19549,13 +19585,58 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6894331467813232852, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1077642991}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2591889185869983794}
+    - targetCorrespondingSourceObject: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2591889185869983793}
   m_SourcePrefab: {fileID: 100100000, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
 --- !u!224 &2591889185869983791 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6894331467813232852, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
   m_PrefabInstance: {fileID: 2591889185869983790}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2591889185869983792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+  m_PrefabInstance: {fileID: 2591889185869983790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2591889185869983793
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591889185869983792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &2591889185869983794
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591889185869983792}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &5668450579320411580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19621,7 +19702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowPlayer
   _agitTransform: {fileID: 1261736191}
-  cameraMoveDuration: 0.5
+  _cameraMoveDuration: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

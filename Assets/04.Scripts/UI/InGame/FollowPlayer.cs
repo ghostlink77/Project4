@@ -1,14 +1,14 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
     private Transform _playerTransform;
     [SerializeField] private Transform _agitTransform;
+    private Agit _agit;
     private Vector3 _position = Vector2.zero;
 
-    [SerializeField] float cameraMoveDuration = 0.5f;
+    [SerializeField] private float _cameraMoveDuration = 0.5f;
 
     private void Start()
     {
@@ -17,6 +17,12 @@ public class FollowPlayer : MonoBehaviour
         _position.z = transform.position.z;
 
         InGameManager.Instance.EndGameAction += CameraToAgit;
+
+    }
+
+    private void OnDestroy()
+    {
+        InGameManager.Instance.EndGameAction -= CameraToAgit;
     }
 
     private void LateUpdate()
@@ -45,11 +51,15 @@ public class FollowPlayer : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPos) > 0.1f)
         {
             elapsedTime += Time.unscaledDeltaTime;
-            transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime / cameraMoveDuration);
+            transform.position = Vector3.Lerp(startPos, targetPos, elapsedTime / _cameraMoveDuration);
             yield return null;
         }
         transform.position = targetPos;
 
-        _agitTransform.gameObject.GetComponent<Agit>().ShowEndGameAnim();
+        if (_agit == null)
+        {
+            _agit = _agitTransform.gameObject.GetComponent<Agit>();
+        }
+        _agit.ShowEndGameAnim();
     }
 }

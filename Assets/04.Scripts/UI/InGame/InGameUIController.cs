@@ -111,6 +111,8 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.OnLevelUp -= OpenLevelupUI;
             _playerLevelControl.LevelUpEvent -= OpenLevelupUI;
         }
+
+        InGameManager.Instance.EndGameAction -= EndGame;
     }
 
     private void Update()

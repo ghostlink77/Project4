@@ -30,19 +30,12 @@ public class ItemSlot : MonoBehaviour
 
     public virtual void ResetSlot()
     {
-        Debug.Log("슬롯 초기화 완료.");
         _name.text = "";
-        Debug.Log("1.");
         _level.text = "";
-        Debug.Log("2");
         _image.sprite = null;
-        Debug.Log("3");
         _image.color = _nullColor;
-        Debug.Log("4");
         _description.text = "";
-        Debug.Log("5");
         _btn.interactable = false;
-        Debug.Log("6");
     }
 
     public string GetName()
