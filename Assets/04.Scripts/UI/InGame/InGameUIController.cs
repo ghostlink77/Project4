@@ -96,6 +96,8 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.LevelUpEvent += OpenLevelupUI;
         }
 
+        InGameManager.Instance.EndGameAction += EndGame;
+
         UpdateInventory();
 
     }
@@ -511,8 +513,12 @@ public class InGameUIController : MonoBehaviour
     public void ShowEndGameUI()
     {
         if (AudioManager.Instance != null) AudioManager.Instance.StopAll();
-        if (_inGameUI != null) _inGameUI.SetActive(false);
         if (_endGameUI != null) _endGameUI.SetActive(true);
+    }
+
+    private void EndGame()
+    {
+        _inGameUI?.SetActive(false);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

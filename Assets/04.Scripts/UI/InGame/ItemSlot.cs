@@ -8,15 +8,11 @@ public class ItemSlot : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI _level;
     [SerializeField] protected Image _image;
     [SerializeField] protected TextMeshProUGUI _description;
-    protected Button _btn;
+    [SerializeField] protected Button _btn;
 
     public readonly string IMAGE_PATH = "Sprite";
     protected readonly Color _nullColor = new Color(1, 1, 1, 0);
 
-    protected virtual void Awake()
-    {
-        _btn = GetComponent<Button>();
-    }
     public void SetSlot(string name, int level, string description)
     {
         _name.text = name;
@@ -34,12 +30,19 @@ public class ItemSlot : MonoBehaviour
 
     public virtual void ResetSlot()
     {
+        Debug.Log("슬롯 초기화 완료.");
         _name.text = "";
+        Debug.Log("1.");
         _level.text = "";
+        Debug.Log("2");
         _image.sprite = null;
+        Debug.Log("3");
         _image.color = _nullColor;
+        Debug.Log("4");
         _description.text = "";
+        Debug.Log("5");
         _btn.interactable = false;
+        Debug.Log("6");
     }
 
     public string GetName()
