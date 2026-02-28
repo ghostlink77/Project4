@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     public void UpdateSlot()
     {
+        if (!gameObject.activeSelf || !PlayerManager.Instance.PlayerItemController) return;
         Dictionary<string, GameObject> items = null;
         if (type == InventoryType.Weapon) items = PlayerManager.Instance.PlayerItemController.GetSlots<WeaponStatData>();
         else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.GetSlots<PassiveStatData>();
@@ -37,7 +38,20 @@ public class Inventory : MonoBehaviour
                     index++;
                     continue;
                 }
-                _inventorySlot[index].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
+                if (item.Value.GetComponent<IItemStatController>() == null) return;
+
+                if (type == InventoryType.Turret)
+                {
+                    if (item.Value.TryGetComponent<TurretBase>(out var component))
+                    {
+                        _inventorySlot[index].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "", component.GetCost());
+                    }
+                }
+                else
+                {
+                    _inventorySlot[index].SetSlot(item.Key, item.Value.GetComponent<IItemStatController>().GetLevel(), "");
+                }
+                    
                 index++;
             }
         }

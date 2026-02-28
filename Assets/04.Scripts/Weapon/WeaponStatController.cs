@@ -10,10 +10,12 @@ public enum WeaponStat {Level, Damage, CritRate, CritMultiplier, EffectRate, Atk
 public class WeaponStatController : MonoBehaviour, IItemStatController
 {
     private WeaponEventController _weaponEventController;
+    private CircleCollider2D _weaponRangeCollider2D;
 
     private void Awake()
     {
         _weaponEventController = GetComponent<WeaponEventController>();
+        _weaponRangeCollider2D = GetComponent<CircleCollider2D>();
     }
 
     [SerializeField] private int level;
@@ -42,17 +44,30 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
 
     [SerializeField] private float projectileCount;
     public float ProjectileCount { get => projectileCount; set { projectileCount = value; _weaponEventController.CallOnStatChanged(WeaponStat.ProjectileCount); } }
-
-    private CircleCollider2D _weaponRangeCollider;
     
+    private void OnEnable()
+    {
+        _weaponEventController.OnStatChanged += ChangeColliderRadius;
+    }
+
+    private void OnDisable()
+    {
+        _weaponEventController.OnStatChanged -= ChangeColliderRadius;
+    }
+
+    private void ChangeColliderRadius(WeaponStat stat)
+    {
+        if (stat != WeaponStat.AtkRange) return;
+        _weaponRangeCollider2D.radius = AtkRange;
+    }
     public int GetLevel()
     {
         return level;
     }
-    public void SetUp(WeaponStatData baseStat, CircleCollider2D weaponRange)
+    public void SetUp(WeaponStatData baseStat)
     {
-        _weaponRangeCollider = weaponRange;
         ResetWeaponData(baseStat);
+        _weaponRangeCollider2D.radius = AtkRange;
         //AtkSpeed = baseStat.AtkSpeed;
     }
 

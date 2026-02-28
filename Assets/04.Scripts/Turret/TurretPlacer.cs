@@ -4,6 +4,7 @@
  * 마우스 드래그하여 방향에 따라 상하좌우 4방향 중 터렛 선택
 */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +12,8 @@ using UnityEngine.InputSystem;
 
 public class TurretPlacer : MonoBehaviour
 {
-    [SerializeField] private LayerMask _tileLayer;
+    [SerializeField] private int _turretLayerIndex;
+    [SerializeField] private LayerMask _detectLayer;
 
     private Tile _currentTile;
     private int _selectedTurretIndex = -1;
@@ -19,7 +21,12 @@ public class TurretPlacer : MonoBehaviour
     private float _selectThreshold = 10f;
 
     private bool _isSelecting = false;
-    private int _scrap = 0;
+    [SerializeField] private int _scrap = 0;
+
+    public Action UseScrap;
+    public Action EndPlaceTurret;
+
+    public const string IMPOSSIBLE = "error_btn_sound";
 
     // 인벤토리에서 가져온 포탑 목록 (최대 4개, 방향 선택 UI에 대응)
     private List<GameObject> _selectableTurretPrefabs = new List<GameObject>();
@@ -36,7 +43,7 @@ public class TurretPlacer : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        /*if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             TrySelect();
         }
@@ -57,16 +64,69 @@ public class TurretPlacer : MonoBehaviour
         {
             TestAddTurretsToSlot();
         }
-#endif
+#endif*/
     }
 
     [Header("테스트용")]
     [SerializeField] private TurretData[] _testTurretDatas;
 
+    public void SetTurret(string turretName, Vector3 position)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero, Mathf.Infinity, _detectLayer);
+        if (hit.collider != null)
+        {
+            Debug.Log($"클릭 좌표 : {position}, 대상 : {hit.collider.name}");
+
+            if (hit.collider.gameObject.TryGetComponent<Tile>(out Tile component))
+            {
+                GameObject turretPrefab = Resources.Load<GameObject>($"Turret/{turretName}");
+                if (turretPrefab.TryGetComponent<TurretBase>(out var turretBasecomponent))
+                {
+                    if (CheckScrapAmount(turretBasecomponent.GetCost()))
+                    {
+                        component.PlaceTurret(turretPrefab);
+                        UseScrapPoint(turretBasecomponent.GetCost());
+                        EndPlaceTurret?.Invoke();
+                        return;
+                    }
+                    else
+                    {
+                        Debug.Log("스크랩 재화가 부족합니다..");
+                        InGameManager.Instance.InGameUIController.PrintMessge("스크랩 재화가 부족합니다.");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("현재 클릭 지점에 포탑을 설치할 수 없습니다.");
+            InGameManager.Instance.InGameUIController.PrintMessge("현재 클릭 지점에 포탑을 설치할 수 없습니다.");
+        }
+        AudioManager.Instance.Play(AudioType.SFX, IMPOSSIBLE);
+    }
+
+    public bool CheckScrapAmount(int cost)
+    {
+        return cost <= _scrap;
+    }
+
+    private void UseScrapPoint(int cost)
+    {
+        _scrap -= cost;
+        UseScrap?.Invoke();
+        InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap);
+    }
     public void CollectScrap()
     {
+        Debug.Log($"현재 개수 : {_scrap}");
         _scrap++;
         Debug.Log($"고철 획득: {_scrap}");
+        InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap);
+    }
+
+    public int GetScrapAmount()
+    {
+        return _scrap;
     }
 
     private void TrySelect()
@@ -143,7 +203,7 @@ public class TurretPlacer : MonoBehaviour
 
     private Tile GetTilePlayerPosition()
     {
-        Collider2D hit = Physics2D.OverlapPoint(transform.position, _tileLayer);
+        Collider2D hit = Physics2D.OverlapPoint(transform.position, _turretLayerIndex);
         if (hit != null)
             return hit.GetComponent<Tile>();
         return null;

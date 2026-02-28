@@ -36,7 +36,7 @@ public class BulletAnimationController : MonoBehaviour
     
     private void HideBulletSprite()
     {
-        Debug.Log("총알 끔");
+        // Debug.Log("총알 끔");
         _spriteRenderer.enabled = false;
         _collider2D.enabled = false;
         gameObject.SetActive(false);
@@ -44,7 +44,7 @@ public class BulletAnimationController : MonoBehaviour
     
     private void ShowBulletSprite()
     {
-        Debug.Log("총알 보임");
+        // Debug.Log("총알 보임");
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
         gameObject.SetActive(true);

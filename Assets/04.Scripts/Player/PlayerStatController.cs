@@ -225,7 +225,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
 
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
-        InGameManager.Instance.InGameUIController.UpdateHpBar();
+        InGameManager.Instance.InGameUIController.UpdatePlayerHpBar();
 
         if (CurrentHp <= 0)
         {
@@ -233,6 +233,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             if (_playerEventController != null)
                 _playerEventController.CallDeath();
         }
+        Debug.Log($"데미지: {damage}, 현재 hp: {CurrentHp}");
     }
 
     int CalculateReducedDmg(int damage, int defense)
