@@ -191,14 +191,14 @@ public class TurretPlacer : MonoBehaviour
 
         GameObject prefab = _selectableTurretPrefabs[_selectedTurretIndex];
         TurretBase turretBase = prefab.GetComponent<TurretBase>();
-        if (_scrap < turretBase.TurretData.scrapCost)
+        if (_scrap < turretBase.TurretData.ScrapCost)
         {
             Debug.Log("Not enough scrap to build turret.");
             return;
         }
 
         tile.PlaceTurret(prefab);
-        _scrap -= turretBase.TurretData.scrapCost;
+        _scrap -= turretBase.TurretData.ScrapCost;
     }
 
     private Tile GetTilePlayerPosition()
