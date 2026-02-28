@@ -68,6 +68,12 @@ public class PlayerItemController : MonoBehaviour
         if (slots.ContainsKey(newItemData.GetName()))
         {
             slots[newItemData.GetName()].GetComponent<IItemStatController>().LevelUp();
+
+            if (typeof(T) == typeof(TurretData) && TurretManager.Instance != null)
+            {
+                TurretManager.Instance.LevelUpTurretType(newItemData.GetName());
+            }
+
             return;
         }
         else if (CheckSlotEmptySpace<T>(slots.Count))
@@ -126,15 +132,10 @@ public class PlayerItemController : MonoBehaviour
         {
             await TurretProjectileSpawner.Instance.LoadProjectilePrefab(attackTurret.GetProjectileKey());
         }
+        TurretManager.Instance.RegisterTurretType(turret.GetName());
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드
-    private void AddItemToSlot(GameObject newItem)
-    {
-        List<GameObject> itemSlots = _passiveItemSlot;
-        bool isEmpty = CheckEmptySlot(itemSlots, out int emptyIndex);
-        if (isEmpty == true) itemSlots[emptyIndex] = newItem;
-    }
 
     // 빈칸이 있는지 확인하는 메서드
     // out을 사용해 비어 있는 슬롯의 번호도 확인하도록 한다.

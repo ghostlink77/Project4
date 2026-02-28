@@ -14,9 +14,9 @@ public class EMPTurret : TurretBase
     private const int MaxVFXCount = 16;
     private const int DefaultVFXCount = 4;
 
-    public override void Initialize()
+    public override void Initialize(int level)
     {
-        base.Initialize();
+        base.Initialize(level);
         _empData = TurretData as EMPTurretData;
 
         if (_stunVFXPool == null && _stunVFXPrefab != null)
@@ -63,6 +63,7 @@ public class EMPTurret : TurretBase
         {
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy == null) continue;
+            if (!enemy.gameObject.activeSelf) continue;
 
             if (!enemy.IsStunned)
             {

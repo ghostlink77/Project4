@@ -44,9 +44,14 @@ public class TurretPlacer : MonoBehaviour
                 {
                     if (CheckScrapAmount(turretBasecomponent.GetCost()))
                     {
-                        component.PlaceTurret(turretPrefab);
+                        TurretBase placedTurret = component.PlaceTurret(turretPrefab);
+                        if (placedTurret != null)
+                        {
+                            int currentLevel = TurretManager.Instance.GetTurretLevel(turretName);
+                            placedTurret.Initialize(currentLevel);
+                            TurretManager.Instance.RegisterPlacedTurret(turretName, placedTurret);
+                        }
                         UseScrapPoint(turretBasecomponent.GetCost());
-                        turretBasecomponent.Initialize();
                         EndPlaceTurret?.Invoke();
                         return;
                     }

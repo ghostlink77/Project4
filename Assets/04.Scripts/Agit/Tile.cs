@@ -15,13 +15,15 @@ public class Tile : MonoBehaviour
         return isPlaceable;
     }
 
-    public void PlaceTurret(GameObject turretPrefab)
+    public TurretBase PlaceTurret(GameObject turretPrefab)
     {
-        if (!CanPlaceTurret()) return;
+        if (!CanPlaceTurret()) return null;
 
         currentTurret = Instantiate(turretPrefab, transform.position, Quaternion.identity);
         currentTurret.transform.parent = this.transform;
         isPlaceable = false;
+
+        return currentTurret.GetComponent<TurretBase>();
     }
 
     public void RemoveTurret()

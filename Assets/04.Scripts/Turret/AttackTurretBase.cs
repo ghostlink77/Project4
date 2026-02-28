@@ -14,9 +14,9 @@ public class AttackTurretBase : TurretBase
     private LayerMask _enemyLayer;
     private SpriteRenderer _spriteRenderer;
 
-    public override void Initialize()
+    public override void Initialize(int level)
     {
-        base.Initialize();
+        base.Initialize(level);
 
         _attackTurretData = TurretData as AttackTurretData;
         _projectileKey = _attackTurretData.GetProjectileKey();
@@ -79,6 +79,7 @@ public class AttackTurretBase : TurretBase
         foreach (Collider2D enemy in enemies)
         {
             if (_enemiesInRange.Contains(enemy.transform)) continue;
+            if (!enemy.gameObject.activeSelf) continue;
             _enemiesInRange.Add(enemy.transform);
         }
     }

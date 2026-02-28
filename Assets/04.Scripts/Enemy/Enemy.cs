@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if(!_isLive || _isStunned)
             return;
 
-        if (collision.collider.CompareTag("Agit") || collision.collider.CompareTag("Player"))
+        if (!collision.collider.CompareTag("Enemy"))
         {
             if (_currentDamageDelay <= 0f)
             {

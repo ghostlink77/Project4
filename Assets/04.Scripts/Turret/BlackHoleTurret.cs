@@ -12,9 +12,9 @@ public class BlackHoleTurret : TurretBase
 
     private HashSet<ExpObject> _absorbingObjects = new HashSet<ExpObject>();
 
-    public override void Initialize()
+    public override void Initialize(int level)
     {
-        base.Initialize();
+        base.Initialize(level);
         _blackHoleData = TurretData as BlackHoleTurretData;
     }
 
