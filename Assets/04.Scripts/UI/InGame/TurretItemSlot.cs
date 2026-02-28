@@ -7,17 +7,17 @@ public class TurretItemSlot : ItemSlot
 {
     [SerializeField] private TextMeshProUGUI _costText;
     [SerializeField] private GameObject _xImage;
-    protected CanvasGroup _canvasGroup;
+    [SerializeField] private CanvasGroup _canvasGroup;
 
     private TurretSelectUI _selectUI;
 
     private int _cost = -1;
 
-    protected override void Awake()
+
+    private void OnEnable()
     {
-        base.Awake();
-        _canvasGroup = GetComponent<CanvasGroup>();
-        _selectUI = GetComponentInParent<TurretSelectUI>();
+        if (_selectUI == null)
+            _selectUI = GetComponentInParent<TurretSelectUI>();
     }
     public override void SetSlot(string name, int level, string description, int cost)
     {

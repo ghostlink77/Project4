@@ -354,6 +354,7 @@ MonoBehaviour:
   _level: {fileID: 4130754049594931718}
   _image: {fileID: 4693608504746349329}
   _description: {fileID: 9043810044161273274}
+  _btn: {fileID: 1368213859280397186}
 --- !u!1 &4554081648288217572
 GameObject:
   m_ObjectHideFlags: 0
