@@ -53,4 +53,9 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
         _rangeCollider.radius = _turretData.Range[_level];
         _level++;
     }
+
+    public int GetCost()
+    {
+        return _turretData.scrapCost;
+    }
 }

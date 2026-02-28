@@ -24,6 +24,8 @@ public class Agit : MonoBehaviour, IDamageable
         currentHP = Mathf.Max(0, currentHP - damage);
         Debug.Log($"아지트 피해: {damage} | 남은 HP: {currentHP}/{maxHP}");
 
+        InGameManager.Instance.InGameUIController.UpdateAgitHpBar(currentHP, maxHP);
+
         if (currentHP <= 0)
         {
             StartCoroutine(DestroyAgitCoroutine());
