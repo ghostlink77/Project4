@@ -3361,6 +3361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 803016300551977420, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+      propertyPath: _agitTimeLine
+      value: 
+      objectReference: {fileID: 1261736195}
     - target: {fileID: 822807113821601694, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
       propertyPath: m_Name
       value: agit
@@ -3368,13 +3372,126 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 822807113821601694, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261736195}
+    - targetCorrespondingSourceObject: {fileID: 822807113821601694, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261736194}
+    - targetCorrespondingSourceObject: {fileID: 822807113821601694, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261736196}
   m_SourcePrefab: {fileID: 100100000, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
 --- !u!4 &1261736191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 390765961493882094, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
   m_PrefabInstance: {fileID: 1261736190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1261736192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 822807113821601694, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+  m_PrefabInstance: {fileID: 1261736190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1261736193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 803016300551977420, guid: 180799490d6ee8b4c9f37b2456751ef9, type: 3}
+  m_PrefabInstance: {fileID: 1261736190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261736192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9017000e5690ecd4cb7cf527aa215577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &1261736194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261736192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3a03dce3a9ccecc4e89b712437229e61, type: 2}
+    - {fileID: 11400000, guid: b4a06f4b07631ff4ab361227019bada7, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1261736193}
+          m_TargetAssemblyTypeName: Agit, Assembly-CSharp
+          m_MethodName: EndDamagedAnim
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1261736193}
+          m_TargetAssemblyTypeName: Agit, Assembly-CSharp
+          m_MethodName: ShowDamagedUIAnim
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &1261736195
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261736192}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 4fae50197fd145c4580c0318d022d59b, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -8180711348591378307, guid: 4fae50197fd145c4580c0318d022d59b, type: 2}
+    value: {fileID: 1261736194}
+  - key: {fileID: -6095381978264870004, guid: 4fae50197fd145c4580c0318d022d59b, type: 2}
+    value: {fileID: 1261736196}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &1261736196
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261736192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1287521865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
@@ -14528,6 +14645,10 @@ PrefabInstance:
       propertyPath: '_inventorySlot.Array.data[3]'
       value: 
       objectReference: {fileID: 2591889185869983791}
+    - target: {fileID: 6640931323548351405, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7131445946157944537, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: m_Name
       value: InGameUIController

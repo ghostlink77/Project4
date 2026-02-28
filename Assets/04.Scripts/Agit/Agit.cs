@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Agit : MonoBehaviour, IDamageable
 {
@@ -7,6 +8,9 @@ public class Agit : MonoBehaviour, IDamageable
     private int currentHP;
 
     [SerializeField] float cameraMoveDuration = 0.5f;
+
+    [SerializeField] private PlayableDirector _agitTimeLine;
+    [SerializeField] private bool _isWarning;
 
 
     private bool isDestroyed = false;
@@ -25,11 +29,31 @@ public class Agit : MonoBehaviour, IDamageable
         Debug.Log($"아지트 피해: {damage} | 남은 HP: {currentHP}/{maxHP}");
 
         InGameManager.Instance.InGameUIController.UpdateAgitHpBar(currentHP, maxHP);
+        ShowDamagedAnim();
 
         if (currentHP <= 0)
         {
             StartCoroutine(DestroyAgitCoroutine());
         }
+    }
+
+    private void ShowDamagedAnim()
+    {
+        if (_isWarning) return;
+        _agitTimeLine.Play();
+        _isWarning = true;
+    }
+
+    public void ShowDamagedUIAnim()
+    {
+        Debug.Log("시그널 발생");
+        InGameManager.Instance.InGameUIController.ShowMinimapWarning();
+        InGameManager.Instance.InGameUIController.PrintMessge("아지트가 공격받고 있습니다.");
+    }
+    public void EndDamagedAnim()
+    {
+        _isWarning = false;
+        InGameManager.Instance.InGameUIController.HideMinimapWarning();
     }
 
     IEnumerator DestroyAgitCoroutine()
