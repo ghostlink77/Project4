@@ -58,6 +58,8 @@ public class InGameUIController : MonoBehaviour
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
+    [SerializeField] private string[] _selectedItemName = new string[3];
+
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
     // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
@@ -404,6 +406,8 @@ public class InGameUIController : MonoBehaviour
     // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
+        Array.Clear(_selectedItemName, 0, _selectedItemName.Length);
+
         for (int index = 0; index< _itemSelectBtns.Length; index++)
         {
             float itemTypeIndex = UnityEngine.Random.Range(0, _itemSelectBtns.Length);
@@ -431,7 +435,7 @@ public class InGameUIController : MonoBehaviour
     {
         if (DataTableManager.Instance == null) return;
 
-        T newItemData = DataTableManager.Instance.GetSelectableItem<T>();
+        T newItemData = DataTableManager.Instance.GetSelectableItem<T>(_selectedItemName);
         if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
         {
             if (_itemSelectBtnDatas.Length > index)
@@ -448,6 +452,8 @@ public class InGameUIController : MonoBehaviour
             if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null) _itemSelectBtns[index].onClick.RemoveAllListeners();
             return;
         }
+
+        _selectedItemName[index] = newItemData.GetName();
 
         if (PlayerManager.Instance == null) return;
         int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);

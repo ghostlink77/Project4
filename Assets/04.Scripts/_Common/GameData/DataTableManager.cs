@@ -34,14 +34,16 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
             data.SetData();
         }
     }
-    public T GetSelectableItem<T>() where T : IItemStatData
+    public T GetSelectableItem<T>(string[] selectedItemNames) where T : IItemStatData
     {
         IEnumerable<T> sourceDatas = GetSourceList<T>();
 
         if (sourceDatas == null) return default(T);
 
         const int maxLevel = 10;
-        var availableItems = sourceDatas.Where(data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= maxLevel).ToList();
+        var availableItems = sourceDatas.Where(
+            data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= maxLevel &&
+            !selectedItemNames.Contains(data.GetName())).ToList();
         if (availableItems.Count == 0) return default(T);
 
         int index = Random.Range(0, availableItems.Count);
