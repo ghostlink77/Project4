@@ -56,6 +56,6 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
 
     public int GetCost()
     {
-        return _turretData.scrapCost;
+        return _turretData.ScrapCost;
     }
 }
