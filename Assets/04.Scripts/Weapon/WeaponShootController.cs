@@ -85,6 +85,7 @@ public class WeaponShootController : MonoBehaviour
             }
             bullet.SetActive(true);
         }
+        _weaponEventController.CallOnShoot();
     }
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
