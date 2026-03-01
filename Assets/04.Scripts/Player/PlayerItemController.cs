@@ -3,6 +3,7 @@
 아이템을 바꾸는 메서드나 각종 아이템 업그레이드 기능은 무기 개발이 끝나고 구현하도록 함
 */
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour
@@ -26,6 +27,7 @@ public class PlayerItemController : MonoBehaviour
     {
         PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
+        AddItemToSlot(PlayerManager.Instance.PlayerStatController.DefaultWeapon);
     }
 
     private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
@@ -72,19 +74,27 @@ public class PlayerItemController : MonoBehaviour
         else if (CheckSlotEmptySpace<T>(slots.Count))
         {
             string path = "";
-            if (typeof(T) == typeof(WeaponStatData)) path = "Weapon";
-            else if (typeof(T) == typeof(PassiveStatData)) path = "Passive";
-            else if (typeof(T) == typeof(TurretData)) path = "Turret";
-            GameObject newWeaponPrefab = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
-            if (path == "Weapon")
+            if (typeof(T) == typeof(WeaponStatData))
             {
-                GameObject newWeapon = Instantiate(newWeaponPrefab, transform);
+                path = "Weapon";
+                GameObject newWeapon = Instantiate(Resources.Load<GameObject>($"{path}/{newItemData.GetName()}"), PlayerManager.Instance.transform);
                 slots[newItemData.GetName()] = newWeapon;
+                
             }
-            else
+            else if (typeof(T) == typeof(PassiveStatData))
             {
-                slots[newItemData.GetName()] = newWeaponPrefab;
-            }   
+                path = "Passive";
+                GameObject newPassive = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
+                slots[newItemData.GetName()] = newPassive;
+            }
+                
+            else if (typeof(T) == typeof(TurretData))
+            {
+                path = "Turret";
+                AddTurretToSlot(newItemData as TurretData);
+                GameObject newTurret = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
+                slots[newItemData.GetName()] = newTurret;
+            }
         }
         else Debug.Log("weaponSlots에 남은 자리 없음");
     }
@@ -105,6 +115,18 @@ public class PlayerItemController : MonoBehaviour
         else if (typeof(T) == typeof(TurretData)) maxcount = _turretSlotMaxCount;
 
         return maxcount > count;
+    }
+
+    private async void AddTurretToSlot(TurretData turret)
+    {
+        if (turret == null)
+        {
+            return;
+        }
+        if (turret is AttackTurretData attackTurret)
+        {
+            await TurretProjectileSpawner.Instance.LoadProjectilePrefab(attackTurret.GetProjectileKey());
+        }
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드

@@ -1,4 +1,13 @@
+using System;
 using UnityEngine;
+
+public enum GameStat
+{
+    Play,
+    Pause,
+    End
+}
+
 
 public class InGameManager : SingletonBehaviour<InGameManager>
 {
@@ -8,6 +17,9 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
     private PlayerLevelControl _playerLevelControl;
 
+    public GameStat GameStat { get; private set; }
+
+    public Action EndGameAction;
     protected override void Init()
     {
         IsDestroyOnLoad = true;
@@ -69,5 +81,12 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         {
             Debug.LogError("UI 컨트롤러가 연결되지 않았습니다.");
         }
+    }
+
+    public void EndGame()
+    {
+        GameStat = GameStat.End;
+        Time.timeScale = 0f;
+        EndGameAction?.Invoke();
     }
 }

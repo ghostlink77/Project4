@@ -5,22 +5,24 @@
 using System;
 using UnityEngine;
 
-public enum WeaponStat {Level, Atk, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount}
+public enum WeaponStat {Level, Damage, CritRate, CritMultiplier, EffectRate, AtkSpeed, AtkRange, ProjectileSpeed, ProjectileCount}
 
 public class WeaponStatController : MonoBehaviour, IItemStatController
 {
     private WeaponEventController _weaponEventController;
+    [SerializeField] private CircleCollider2D _weaponRangeCollider2D;
 
     private void Awake()
     {
         _weaponEventController = GetComponent<WeaponEventController>();
+        _weaponRangeCollider2D = GetComponent<CircleCollider2D>();
     }
 
     [SerializeField] private int level;
     public int Level { get => level; set { level = value; _weaponEventController.CallOnStatChanged(WeaponStat.Level); } }
 
-    [SerializeField] private int atk;
-    public int Atk { get => atk; set { atk = value; _weaponEventController.CallOnStatChanged(WeaponStat.Atk); } }
+    [SerializeField] private int damage;
+    public int Damage { get => damage; set { damage = value; _weaponEventController.CallOnStatChanged(WeaponStat.Damage); } }
 
     [SerializeField] private float critRate;
     public float CritRate { get => critRate; set { critRate = value; _weaponEventController.CallOnStatChanged(WeaponStat.CritRate); } }
@@ -42,24 +44,37 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
 
     [SerializeField] private float projectileCount;
     public float ProjectileCount { get => projectileCount; set { projectileCount = value; _weaponEventController.CallOnStatChanged(WeaponStat.ProjectileCount); } }
-
-    private CircleCollider2D _weaponRangeCollider;
     
+    private void OnEnable()
+    {
+        _weaponEventController.OnStatChanged += ChangeColliderRadius;
+    }
+
+    private void OnDisable()
+    {
+        _weaponEventController.OnStatChanged -= ChangeColliderRadius;
+    }
+
+    private void ChangeColliderRadius(WeaponStat stat)
+    {
+        if (stat != WeaponStat.AtkRange) return;
+        _weaponRangeCollider2D.radius = AtkRange;
+    }
     public int GetLevel()
     {
         return level;
     }
-    public void SetUp(WeaponStatData baseStat, CircleCollider2D weaponRange)
+    public void SetUp(WeaponStatData baseStat)
     {
-        _weaponRangeCollider = weaponRange;
         ResetWeaponData(baseStat);
+        _weaponRangeCollider2D.radius = AtkRange;
         //AtkSpeed = baseStat.AtkSpeed;
     }
 
     private void ResetWeaponData(WeaponStatData baseStat)
     {
         level = baseStat.Level;
-        atk = baseStat.Damage;
+        damage = baseStat.Damage;
         critRate = baseStat.CritRate;
         critMultiplier = baseStat.CritMultiplier;
         effectRate = baseStat.EffectRate;

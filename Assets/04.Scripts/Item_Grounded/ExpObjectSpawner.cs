@@ -51,12 +51,12 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
                 );
     }
 
-    public GameObject SpawnExpObject(Vector3 position)
+    public GameObject SpawnExpObject(Vector3 position, int expAmount)
     {
         GameObject expObject = _expObjectPool.Get();
         expObject.transform.position = position;
         ExpObject expObjComponent = expObject.GetComponent<ExpObject>();
-        expObjComponent.Initialize();
+        expObjComponent.Initialize(expAmount);
         return expObject;
     }
 

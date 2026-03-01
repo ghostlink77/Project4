@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHp;
     [SerializeField] private EnemyType _enemyType;
+    [SerializeField] private int _expDropAmount = 1;
     private int _currentHp;
     private bool _isLive;
 
@@ -20,6 +21,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+
+    // 기절 관련
+    private bool _isStunned;
+    private float _stunTimer;
+    private GameObject _currentStunVFX;
+    private System.Action<GameObject> _onStunVFXReturn;
+
+    public bool IsStunned => _isStunned;
 
     private static readonly int DeadHash = Animator.StringToHash("Dead");
 
@@ -34,21 +43,32 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (_isLive)
+        if (!_isLive) return;
+
+        if (_isStunned)
         {
-            ElapseTime();
+            _stunTimer -= Time.deltaTime;
+            if (_stunTimer <= 0f)
+            {
+                EndStun();
+            }
+            return;
         }
+
+        ElapseTime();
     }
 
     private void FixedUpdate()
     {
+        if (_isStunned) return;
+
         TrackTarget();
         _rigid.linearVelocity = Vector2.zero;
     }
 
     private void LateUpdate()
     {
-        if (_target != null && _isLive)
+        if (_target != null && _isLive && !_isStunned)
         {
             _spriteRenderer.flipX = _target.position.x < _rigid.position.x;
         }
@@ -59,6 +79,9 @@ public class Enemy : MonoBehaviour, IDamageable
         _currentHp = _maxHp;
         _isLive = true;
         _collider.enabled = true;
+        _isStunned = false;
+        _stunTimer = 0f;
+        ClearStunVFX();
 
         _animator.Play("Walk", 0, 0f);
 
@@ -81,7 +104,6 @@ public class Enemy : MonoBehaviour, IDamageable
         _target = targetRigidbody;
     }
 
-    // NOTE: 일정 시간마다 데미지 입히기 위한 시간 경과 처리
     private void ElapseTime()
     {
         if (!_isLive)
@@ -93,10 +115,9 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    // NOTE: 적과 닿아있으면 지속적으로 데미지 입히기
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(!_isLive)
+        if(!_isLive || _isStunned)
             return;
 
         if (collision.collider.CompareTag("Agit") || collision.collider.CompareTag("Player"))
@@ -109,9 +130,48 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    public void Stun(float duration)
+    {
+        if (!_isLive) return;
+
+        _stunTimer = duration;
+
+        if (!_isStunned)
+        {
+            _isStunned = true;
+            _rigid.linearVelocity = Vector2.zero;
+            _animator.speed = 0f;
+        }
+    }
+
+    private void EndStun()
+    {
+        _isStunned = false;
+        _animator.speed = 1f;
+        ClearStunVFX();
+    }
+
+    public void SetStunVFX(GameObject vfx, System.Action<GameObject> onReturn)
+    {
+        _currentStunVFX = vfx;
+        _onStunVFXReturn = onReturn;
+    }
+
+    private void ClearStunVFX()
+    {
+        if (_currentStunVFX != null)
+        {
+            _currentStunVFX.transform.SetParent(null);
+            _onStunVFXReturn?.Invoke(_currentStunVFX);
+            _currentStunVFX = null;
+            _onStunVFXReturn = null;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         _currentHp -= damage;
+        InGameManager.Instance.InGameUIController.ShowDamageText(transform.position, damage);
         if (_currentHp <= 0 && _isLive)
         {
             Die();
@@ -121,20 +181,23 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Die()
     {
         _isLive = false;
+        _isStunned = false;
         _collider.enabled = false;
         _rigid.linearVelocity = Vector2.zero;
+        _animator.speed = 1f;
         _animator.SetTrigger(DeadHash);
+        ClearStunVFX();
     }
 
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
-        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
         DropExpObject();
+        EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
     }
 
     private void DropExpObject()
     {
-        ExpObjectSpawner.Instance.SpawnExpObject(transform.position);
+        ExpObjectSpawner.Instance.SpawnExpObject(transform.position, _expDropAmount);
     }
 }

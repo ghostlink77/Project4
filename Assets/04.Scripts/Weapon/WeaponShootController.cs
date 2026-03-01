@@ -15,6 +15,7 @@ public class WeaponShootController : MonoBehaviour
     private CircleCollider2D _weaponRangeCollider;
     private List<GameObject> enemiesInRange = new List<GameObject>();
     private WeaponStatController _weaponStatController;
+    private WeaponEventController _weaponEventController;
     
     private int _weaponDamage, _projectileCount;
     private float _atkCoolTime, _projectileSpeed = 0f;
@@ -39,6 +40,7 @@ public class WeaponShootController : MonoBehaviour
     {
         _bulletPrefab = bulletPrefab;
         _weaponStatController = GetComponent<WeaponStatController>();
+        _weaponEventController = GetComponent<WeaponEventController>();
     }
 
     public IObjectPool<GameObject> ReturnObjectPool() => _projectilePool;
@@ -83,6 +85,7 @@ public class WeaponShootController : MonoBehaviour
             }
             bullet.SetActive(true);
         }
+        _weaponEventController.CallOnShoot();
     }
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
@@ -134,7 +137,7 @@ public class WeaponShootController : MonoBehaviour
         
         if (obj.TryGetComponent<BulletController>(out var bulletController))
         {
-            bulletController.SetUp(_weaponDamage, _projectileSpeed, _projectilePool);
+            bulletController.GetNeededVariableForAttack(_weaponDamage, _projectileSpeed, _projectilePool, _weaponEventController);
         }
     }
 

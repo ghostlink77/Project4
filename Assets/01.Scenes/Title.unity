@@ -468,10 +468,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DataTableManager
   _weaponDatas:
   - {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}
+  - {fileID: 11400000, guid: 38e4cdb27b183444485321281993de5a, type: 2}
+  - {fileID: 11400000, guid: 07339147a955c9648b3179b2473724e1, type: 2}
+  - {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
+  - {fileID: 11400000, guid: 66197b5dd572f4856a5b8f72fe074b2d, type: 2}
   _passiveDatas:
   - {fileID: 11400000, guid: 4fcf708fc4aa3664face8c46d0d33dc0, type: 2}
   _turretDatas:
   - {fileID: 11400000, guid: 43b73e018ce3c674fa079794de689944, type: 2}
+  - {fileID: 11400000, guid: 5dc4861079cc6c344914953d7abedd75, type: 2}
+  - {fileID: 11400000, guid: 46995ce45a84e19479fbaeeaa34b5cd9, type: 2}
+  - {fileID: 11400000, guid: b4c2791c86e7c2d4290f95921c0d7619, type: 2}
 --- !u!4 &849497057
 Transform:
   m_ObjectHideFlags: 0
@@ -929,7 +936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801821812789112251, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4801821812789112251, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_SceneBindings.Array.data[3].key

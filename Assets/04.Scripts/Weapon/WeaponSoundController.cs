@@ -10,10 +10,7 @@ public class WeaponSoundController : MonoBehaviour
 
     #region 스크립트 참조 변수
     private WeaponEventController _weaponEventController;
-    #endregion
-
-    #region 컴포넌트 참조변수
-    private AudioSource _audioSource;
+    private SoundManager _soundManager;
     #endregion
 
     #region 유니티 생명주기 함수
@@ -30,39 +27,32 @@ public class WeaponSoundController : MonoBehaviour
 
     public void SetUp()
     {
-        _weaponEventController = GetComponent<WeaponEventController>();
-        _audioSource = GetComponent<AudioSource>();
+        if(!TryGetComponent<WeaponEventController>(out _weaponEventController))
+        Debug.LogError($"{_weaponEventController.GetType()} null임");
         AddToEvent();
     }
-    
+
+    private void Start()
+    {
+        _soundManager = SoundManager.Instance;
+        if (_soundManager == null) Debug.LogError("사운드매니저가 씬에 없음");
+    }
+
     #region 이벤트 관련 변수
     private void AddToEvent()
     {
-        _weaponEventController.OnShoot += OnEventOnShoot;
+        _weaponEventController.OnShoot += PlayShootSound;
     }
     
     private void RemoveFromEvent()
     {
-        _weaponEventController.OnShoot -= OnEventOnShoot;
+        _weaponEventController.OnShoot -= PlayShootSound;
     }
     
-    private void OnEventOnShoot()
+    private void PlayShootSound()
     {
-        if (ObjectIsNull(_audioSource, "AudioSource")) return;
-        if (ObjectIsNull(_weaponShootSound, "Weapon Shoot Sound")) return;
-        _audioSource.PlayOneShot(_weaponShootSound);
-    }
-    #endregion
-    
-    #region 점검 스크립트
-    private bool ObjectIsNull(Object obj, string name)
-    {
-        if (obj == null)
-        {
-            Debug.LogWarning($"{name}이(가) null임");
-            return true;
-        }
-        return false;
+        _soundManager.PlaySFX(SoundType.Player, _weaponShootSound);
+        Debug.Log("무기 발사음 출력됨");
     }
     #endregion
 }

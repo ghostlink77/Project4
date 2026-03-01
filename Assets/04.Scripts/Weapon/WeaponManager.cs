@@ -7,6 +7,7 @@ using UnityEngine.Pool;
 [RequireComponent(typeof(WeaponStatController))]
 [RequireComponent(typeof(WeaponEventController))]
 [RequireComponent(typeof(WeaponSoundController))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class WeaponManager : MonoBehaviour
 {
     private IObjectPool<GameObject> _projectilePool;
@@ -40,10 +41,6 @@ public class WeaponManager : MonoBehaviour
         GetRequiredComponents();
     }
 
-    private void Start()
-    {
-    }
-
     private void OnEnable()
     {
         _weaponEventController.OnStatChanged += HandleStatChanged;
@@ -67,9 +64,9 @@ public class WeaponManager : MonoBehaviour
         {
             _atkSpeed = _weaponStatController.AtkSpeed;
         }
-        else if (type == WeaponStat.Atk)
+        else if (type == WeaponStat.Damage)
         {
-            _damage = _weaponStatController.Atk;
+            _damage = _weaponStatController.Damage;
         }
         else if (type == WeaponStat.ProjectileSpeed)
         {
@@ -90,7 +87,7 @@ public class WeaponManager : MonoBehaviour
         if (!TryGetComponent<WeaponSoundController>(out _weaponSoundController))
         Debug.Log($"{nameof(_weaponSoundController)}가 null임");
         
-        _weaponStatController.SetUp(_baseStat, _weaponRangeCollider);
+        _weaponStatController.SetUp(_baseStat);
         GetWeaponStats();
         
         _weaponShootController.SetUp(_projectilePrefab);
@@ -101,7 +98,7 @@ public class WeaponManager : MonoBehaviour
     
     private void GetWeaponStats()
     {
-        _damage = _weaponStatController.Atk;
+        _damage = _weaponStatController.Damage;
         _atkSpeed = _weaponStatController.AtkSpeed;
         _projectileSpeed = _weaponStatController.ProjectileSpeed;
     }

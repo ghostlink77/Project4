@@ -22,18 +22,19 @@ public class BulletSoundController : MonoBehaviour
     #endregion
     
     #region 이벤트 메서드
-    private void AddEvent()
+    private void SubscribeEvent()
     {
-        _bulletController.Hit += OnEventHit;
+        _bulletController.OnHit += WorkTodoOnEventOnHit;
     }
     
-    private void RemoveEvent()
+    private void UnSubscribeEvent()
     {
-        _bulletController.Hit -= OnEventHit;
+        _bulletController.OnHit -= WorkTodoOnEventOnHit;
     }
 
-    private void OnEventHit()
+    private void WorkTodoOnEventOnHit()
     {
+        if (SoundManager.Instance == null) Debug.LogError("사운드매니저 인스턴스가 존재하지 않음");
         SoundManager.Instance.PlaySFX(SoundType.Enemy, _hitSound);
     }
     #endregion
@@ -46,12 +47,12 @@ public class BulletSoundController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_bulletController != null) AddEvent();
+        if (_bulletController != null) SubscribeEvent();
     }
 
     private void OnDisable()
     {
-        RemoveEvent();
+        UnSubscribeEvent();
     }
     #endregion
     

@@ -20,64 +20,65 @@ public class BulletAnimationController : MonoBehaviour
     #region 이벤트
     private void AddEvent()
     {
-        _bulletController.Generate += OnEventGenerate;
-        _bulletController.Hit += OnEventHit;
-        _bulletController.Remove += OnEventRemove;
+        _bulletController.OnHit += OnEventHit;
     }
     
     private void RemoveEvent()
     {
-        _bulletController.Generate -= OnEventGenerate;
-        _bulletController.Hit -= OnEventHit;
-        _bulletController.Remove -= OnEventRemove;
-    }
-    
-    private void OnEventGenerate()
-    {
-        if (_bulletAnimationClip == null)
-        {
-            Debug.Log("애니메이션 클립 없음");
-            return;
-        }
-        _spriteRenderer.enabled = true;
-        _collider2D.enabled = true;
-        
-        if(_animator != null) _animator.Play(_bulletAnimationClip.name, 0, 0f);
+        _bulletController.OnHit -= OnEventHit;
+
     }
     
     private void OnEventHit()
     {
-        _spriteRenderer.enabled = false;
-        _collider2D.enabled = false;
+        HideBulletSprite();
     }
     
-    private void OnEventRemove()
+    private void HideBulletSprite()
     {
+        // Debug.Log("총알 끔");
+        _spriteRenderer.enabled = false;
+        _collider2D.enabled = false;
+        gameObject.SetActive(false);
+    }
+    
+    private void ShowBulletSprite()
+    {
+        // Debug.Log("총알 보임");
         _spriteRenderer.enabled = true;
         _collider2D.enabled = true;
+        gameObject.SetActive(true);
     }
     #endregion
 
     #region 유니티 생명주기 메서드
     private void Awake()
     {
-        if (!TryGetComponent<BulletController>(out _bulletController)) Debug.Log($"{nameof(_bulletController)}가 null임");
-        if (!TryGetComponent<Collider2D>(out _collider2D)) Debug.Log($"{nameof(_collider2D)}가 null임");
-        if (!TryGetComponent<SpriteRenderer>(out _spriteRenderer)) Debug.Log($"{nameof(_spriteRenderer)}가 null임");
-        if (!TryGetComponent<Animator>(out _animator)) Debug.Log($"{nameof(_animator)}가 null임");
-
-        _deleteAfterAnimation = _bulletController.DeleteAfterAnimation;
+        if (!TryGetComponent<BulletController>(out _bulletController)) Debug.LogError($"{nameof(_bulletController)}가 null임");
+        if (!TryGetComponent<Collider2D>(out _collider2D)) Debug.LogError($"{nameof(_collider2D)}가 null임");
+        if (!TryGetComponent<SpriteRenderer>(out _spriteRenderer)) Debug.LogError($"{nameof(_spriteRenderer)}가 null임");
+        if (!TryGetComponent<Animator>(out _animator)) Debug.LogError($"{nameof(_animator)}가 null임");
         if (_deleteAfterAnimation && _bulletAnimationClip != null)
+        _deleteAfterAnimation = _bulletController.DeleteAfterAnimation;
         _bulletController.SetLifeTime(_bulletAnimationClip.length);
     }
 
     private void OnEnable()
     {
+        if (_bulletAnimationClip == null)
+        {
+            Debug.Log("애니메이션 클립 없음");
+            return;
+        }
+        ShowBulletSprite();
+        
+        if(_animator != null) _animator.Play(_bulletAnimationClip.name, 0, 0f);
         AddEvent();
     }
 
     private void OnDisable()
     {
+        HideBulletSprite();
         RemoveEvent();
     }
     #endregion

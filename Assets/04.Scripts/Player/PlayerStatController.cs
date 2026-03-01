@@ -18,7 +18,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public Dictionary<Passive, int> passiveLevels = new Dictionary<Passive, int>();
 
     public int CurrentLevel { get; set; }
-    public int CurrentExp { get; private set; }
+    public int CurrentExp { get; set; }
     public int MaxHp { get; set; }
     public int CurrentHp { get; set; }
     public int Defense { get; set; }
@@ -44,6 +44,8 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public float AgitDef { get; set; }
     public int AgitArea { get; set; }
     public float TurretDmg { get; set; }
+
+    public WeaponStatData DefaultWeapon { get => playerDefaultData.DefaultWepon; }
     #endregion
 
     #region 플레이어 부활 시간 관련 변수
@@ -239,6 +241,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
 
         int calcDmg = CalculateReducedDmg(damage, Defense);
         CurrentHp -= calcDmg;
+        InGameManager.Instance.InGameUIController.UpdatePlayerHpBar();
 
         if (CurrentHp <= 0)
         {
@@ -246,6 +249,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             if (_playerEventController != null)
                 _playerEventController.CallDeath();
         }
+        Debug.Log($"데미지: {damage}, 현재 hp: {CurrentHp}");
     }
 
     int CalculateReducedDmg(int damage, int defense)

@@ -4,11 +4,25 @@ using UnityEngine;
 public class ExpObject : ItemGroundedBase
 {
     [SerializeField] private int _expAmount;
+    public int ExpAmount
+    {
+        get => _expAmount;
+        set => _expAmount = value;
+    }
+
+    public void Initialize(int amount)
+    {
+        base.Initialize();
+        _expAmount = amount;
+    }
 
     protected override void OnCollectedByPlayer(Collider2D playerColl)
     {
-        // TODO: 플레이어에게 Exp 추가 로직
-        Debug.Log($"Exp 획득: {_expAmount}");
+        if (playerColl.TryGetComponent<PlayerLevelControl>(out PlayerLevelControl playerLevelControl))
+        {
+            playerLevelControl.AddXP(_expAmount);
+            ReturnToPool();
+        }
     }
 
     protected override void ReturnToPool()
