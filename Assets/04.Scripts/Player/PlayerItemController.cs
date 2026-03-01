@@ -27,6 +27,7 @@ public class PlayerItemController : MonoBehaviour
     {
         PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
+        AddItemToSlot(PlayerManager.Instance.PlayerStatController.DefaultWeapon);
     }
 
     private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
@@ -80,11 +81,12 @@ public class PlayerItemController : MonoBehaviour
                 slots[newItemData.GetName()] = newWeapon;
                 
             }
-            else if (typeof(T) == typeof(PassiveStatData))
+            else if (typeof(T) == typeof(PassiveItemData))
             {
                 path = "Passive";
                 GameObject newPassive = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
                 slots[newItemData.GetName()] = newPassive;
+                newPassive.GetComponent<PassiveItemController>()?.Initialize(newItemData as PassiveItemData);
             }
                 
             else if (typeof(T) == typeof(TurretData))
@@ -101,7 +103,7 @@ public class PlayerItemController : MonoBehaviour
     public Dictionary<string, GameObject> GetSlots<T>()
     {
         if (typeof(T) == typeof(WeaponStatData)) return _weaponSlots;
-        else if (typeof(T) == typeof(PassiveStatData)) return _passiveSlots;
+        else if (typeof(T) == typeof(PassiveItemData)) return _passiveSlots;
         else if (typeof(T) == typeof(TurretData)) return _turretSlots;
         else return null;
     }
@@ -110,7 +112,7 @@ public class PlayerItemController : MonoBehaviour
     {
         int maxcount = 0;
         if (typeof(T) == typeof(WeaponStatData)) maxcount = _weaponSlotMaxCount;
-        else if (typeof(T) == typeof(PassiveStatData)) maxcount = _passiveSlotMaxCount;
+        else if (typeof(T) == typeof(PassiveItemData)) maxcount = _passiveSlotMaxCount;
         else if (typeof(T) == typeof(TurretData)) maxcount = _turretSlotMaxCount;
 
         return maxcount > count;

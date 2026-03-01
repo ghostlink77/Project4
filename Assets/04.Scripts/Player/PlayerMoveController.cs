@@ -95,8 +95,8 @@ public class PlayerMoveController : MonoBehaviour
 #region 메서드들
     public void MovePlayer()
     {
-        
-        _currentPos += InputVector * _moveSpeed * Time.deltaTime;
+
+        _currentPos += InputVector * _playerStatController.MoveSpeed * Time.deltaTime;
 
         bool isMoving = CheckMove();
         if (isMoving == false) return;

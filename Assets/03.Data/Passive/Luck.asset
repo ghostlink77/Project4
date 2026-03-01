@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3eab43b7bdb694892826c0c8f421e8, type: 3}
+  m_Name: Luck
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
+  itemName: "\uB7ED\uD0A4 \uCE69"
+  icon: {fileID: 0}
+  passiveType: 5
+  maxLevel: 5
+  levelData:
+  - description: "\uCE58\uBA85\uD0C0\uC728\uC774 5%, \uB4DC\uB7C5\uB960\uC774 10%
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 10
+  - description: "\uCE58\uBA85\uD0C0\uC728\uC774 10%, \uB4DC\uB7C5\uB960\uC774 20%
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 10
+    value2: 20
+  - description: "\uCE58\uBA85\uD0C0\uC728\uC774 15%, \uB4DC\uB7C5\uB960\uC774 30%
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 15
+    value2: 30
+  - description: "\uCE58\uBA85\uD0C0\uC728\uC774 20%, \uB4DC\uB7C5\uB960\uC774 40%
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 20
+    value2: 40
+  - description: "\uCE58\uBA85\uD0C0\uC728\uC774 25%, \uB4DC\uB7C5\uB960\uC774 50%
+      \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 25
+    value2: 50

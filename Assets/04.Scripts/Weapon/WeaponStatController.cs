@@ -10,7 +10,7 @@ public enum WeaponStat {Level, Damage, CritRate, CritMultiplier, EffectRate, Atk
 public class WeaponStatController : MonoBehaviour, IItemStatController
 {
     private WeaponEventController _weaponEventController;
-    private CircleCollider2D _weaponRangeCollider2D;
+    [SerializeField] private CircleCollider2D _weaponRangeCollider2D;
 
     private void Awake()
     {

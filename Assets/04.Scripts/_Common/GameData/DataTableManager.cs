@@ -9,7 +9,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
     [SerializeField]
     private List<WeaponStatData> _weaponDatas = new List<WeaponStatData>();
     [SerializeField]
-    private List<PassiveStatData> _passiveDatas = new List<PassiveStatData>();
+    private List<PassiveItemData> _passiveDatas = new List<PassiveItemData>();
     [SerializeField]
     private List<TurretData> _turretDatas = new List<TurretData>();
     
@@ -53,7 +53,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
     private IEnumerable<T> GetSourceList<T>() where T : IItemStatData
     {
         if (typeof(T) == typeof(WeaponStatData)) return _weaponDatas as IEnumerable<T>;
-        else if (typeof(T) == typeof(PassiveStatData)) return _passiveDatas as IEnumerable<T>;
+        else if (typeof(T) == typeof(PassiveItemData)) return _passiveDatas as IEnumerable<T>;
         else if (typeof(T) == typeof(TurretData)) return _turretDatas as IEnumerable<T>;
         else return null;
     }
