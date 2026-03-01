@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class WeaponShootController : MonoBehaviour
 {
@@ -21,7 +22,25 @@ public class WeaponShootController : MonoBehaviour
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
-
+    
+    // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
+    #region 임시 추가 코드
+    [SerializeField]
+    private LineRenderer _lineRenderer;
+    private Vector3 _firepoint;
+    private float _range = 25f;
+    
+    private void Update()
+    {
+        UpdateAimLine();
+    }
+    
+    private void UpdateAimLine()
+    {
+        _lineRenderer.SetPosition(0, gameObject.transform.position);
+        _lineRenderer.SetPosition(1, _firepoint);
+    }
+    #endregion
 
     private void Awake()
     {   
@@ -107,6 +126,10 @@ public class WeaponShootController : MonoBehaviour
                 targetPos = targetCandidatePos;
             }
         }
+        // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
+        #region 임시 추가 코드
+        _firepoint = targetPos;
+        #endregion
         return targetPos;
     }
 
