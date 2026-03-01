@@ -13,10 +13,6 @@ public class WeaponSoundController : MonoBehaviour
     private SoundManager _soundManager;
     #endregion
 
-    #region 컴포넌트 참조변수
-    private AudioSource _audioSource;
-    #endregion
-
     #region 유니티 생명주기 함수
     private void OnEnable()
     {
@@ -33,8 +29,6 @@ public class WeaponSoundController : MonoBehaviour
     {
         if(!TryGetComponent<WeaponEventController>(out _weaponEventController))
         Debug.LogError($"{_weaponEventController.GetType()} null임");
-        if(!TryGetComponent<AudioSource>(out _audioSource))
-        Debug.LogError($"{_audioSource.GetType()} null임");
         AddToEvent();
     }
 
