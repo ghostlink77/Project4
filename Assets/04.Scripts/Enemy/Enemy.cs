@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour, IDamageable
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
 
-    // 기절 관련
     private bool _isStunned;
     private float _stunTimer;
     private GameObject _currentStunVFX;

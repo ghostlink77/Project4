@@ -1,4 +1,4 @@
-using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,15 +8,21 @@ public class EnemyTargetSetter : MonoBehaviour
     private Enemy _enemy;
     private HashSet<Rigidbody2D> _damageablesInRange = new HashSet<Rigidbody2D>();
     private Rigidbody2D _currentTarget;
+    private Coroutine _updateTargetCoroutine;
+    private const float FindTargetInterval = 0.1f;
 
     private void Awake()
     {
         _enemy = GetComponentInParent<Enemy>();
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        UpdateTarget();
+        if (_updateTargetCoroutine != null)
+        {
+            StopCoroutine(_updateTargetCoroutine);
+            _updateTargetCoroutine = null;
+        }
     }
 
     public void Initialize(Rigidbody2D agit)
@@ -24,6 +30,7 @@ public class EnemyTargetSetter : MonoBehaviour
         _agitRigidbody = agit;
         _currentTarget = agit;
         _damageablesInRange.Clear();
+        _updateTargetCoroutine = StartCoroutine(UpdateTargetRoutine());
     }
 
     private void UpdateTarget()
@@ -59,18 +66,23 @@ public class EnemyTargetSetter : MonoBehaviour
         }
     }
 
+    private IEnumerator UpdateTargetRoutine()
+    {
+        while (true)
+        {
+            UpdateTarget();
+            yield return new WaitForSeconds(FindTargetInterval);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") || collision.CompareTag("Agit")) return;
         if (!collision.gameObject.activeSelf) return;
 
-        if (collision.GetComponent<IDamageable>() != null)
+        if (collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb) && rb.GetComponent<IDamageable>() != null)
         {
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                _damageablesInRange.Add(rb);
-            }
+            _damageablesInRange.Add(rb);
         }
     }
 
