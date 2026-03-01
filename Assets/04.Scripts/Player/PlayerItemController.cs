@@ -68,11 +68,6 @@ public class PlayerItemController : MonoBehaviour
 
         if (slots.ContainsKey(newItemData.GetName()))
         {
-            if (typeof(T) == typeof(PassiveItemData))
-            {
-                PassiveItemData passiveData = newItemData as PassiveItemData;
-                PlayerManager.Instance.PlayerStatController.LevelUpPassiveStat(passiveData);
-            }
             slots[newItemData.GetName()].GetComponent<IItemStatController>().LevelUp();
             return;
         }
@@ -91,6 +86,7 @@ public class PlayerItemController : MonoBehaviour
                 path = "Passive";
                 GameObject newPassive = Resources.Load<GameObject>($"{path}/{newItemData.GetName()}");
                 slots[newItemData.GetName()] = newPassive;
+                newPassive.GetComponent<PassiveItemController>()?.Initialize(newItemData as PassiveItemData);
             }
                 
             else if (typeof(T) == typeof(TurretData))

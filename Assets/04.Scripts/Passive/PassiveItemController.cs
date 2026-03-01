@@ -3,7 +3,7 @@ using UnityEngine;
 public class PassiveItemController : MonoBehaviour, IItemStatController
 {
     // ★ 이름 변경: PassiveStatData -> PassiveItemData
-    public PassiveItemData StatData { get; private set; }
+    [field: SerializeField]public PassiveItemData StatData { get; private set; }
     private int _currentLevel = 0;
 
     public int GetLevel() => _currentLevel;
