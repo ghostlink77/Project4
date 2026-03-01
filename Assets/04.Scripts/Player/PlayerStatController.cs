@@ -82,8 +82,9 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         }
         resetPlayerStat();
         _reviveDelayAction = new WaitForSeconds(ReviveDelayTime);
-    }
 
+        StartCoroutine(HpRegenRoutine());
+    }
     private void AddToEvent()
     {
         if (_playerEventController == null) return;
@@ -150,70 +151,83 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         return passiveLevels.ContainsKey(type) ? passiveLevels[type] : 0;
     }
 
-    public void LevelUpPassiveStat(LevelUpPassive data)
+    public void LevelUpPassiveStat(PassiveItemData data)
     {
-        if (!passiveLevels.ContainsKey(data.passive))
+        if (!passiveLevels.ContainsKey(data.passiveType))
         {
-            passiveLevels[data.passive] = 1;
+            passiveLevels[data.passiveType] = 1;
         }
         else
         {
-            passiveLevels[data.passive]++;
+            passiveLevels[data.passiveType]++;
         }
 
-        int currentLevel = passiveLevels[data.passive];
+        int currentLevel = passiveLevels[data.passiveType];
 
-        float val1 = (data.valuePerLevel != null && data.valuePerLevel.Length >= currentLevel) ? data.valuePerLevel[currentLevel - 1] : 0;
-        float val2 = (data.valuePerLevel2 != null && data.valuePerLevel2.Length >= currentLevel) ? data.valuePerLevel2[currentLevel - 1] : 0;
+        float val1 = 0;
+        float val2 = 0;
 
-        ApplyStat(data.passive, val1, val2);
+        if (currentLevel == 1)
+        {
+            val1 = (data.levelData != null && data.levelData.Length >= 1) ? data.levelData[0].value1 : 0;
+            val2 = (data.levelData != null && data.levelData.Length >= 1) ? data.levelData[0].value2 : 0;
+        }
+        else
+        {
+            if (data.levelData != null && data.levelData.Length >= currentLevel)
+            {
+                val1 = data.levelData[currentLevel - 1].value1 - data.levelData[currentLevel - 2].value1;
+                val2 = data.levelData[currentLevel - 1].value2 - data.levelData[currentLevel - 2].value2;
+            }
+        }
 
-        Debug.Log($"[패시브 업그레이드] {data.itemName} Lv.{currentLevel} 달성! " +
-                  $"(공격력 배율: {DamageMultiplier} / 방어력: {Defense} / 최대체력: {MaxHp})");
+        ApplyPassiveStat(data.passiveType, val1, val2);
+
+        Debug.Log($"[패시브 업그레이드] {data.itemName} Lv.{currentLevel} 달성! (증가량: {val1})");
     }
 
-    private void ApplyStat(Passive type, float val1, float val2)
+    public void ApplyPassiveStat(Passive type, float val1, float val2)
     {
         switch (type)
         {
             case Passive.Heart:
                 int prevMaxHp = MaxHp;
-                MaxHp = playerDefaultData.DefaultMaxHP + (int)val1;
+                MaxHp += (int)val1;
                 CurrentHp += (MaxHp - prevMaxHp);
                 break;
             case Passive.Nuclear:
-                DamageMultiplier = 1.0f + (val1 / 100f);
+                DamageMultiplier += (val1 / 100f);
                 break;
             case Passive.Shield:
-                Defense = playerDefaultData.DefaultDef + (int)val1;
+                Defense += (int)val1;
                 break;
             case Passive.Repair:
-                HpGenSpeed = playerDefaultData.DefaultHpGenSpeed + (int)val1;
+                HpGenSpeed += (int)val1;
                 break;
             case Passive.Speed:
-                MoveSpeed = playerDefaultData.DefaultSpeed * (1.0f + val1);
+                MoveSpeed += playerDefaultData.DefaultSpeed * (val1 / 100f);
                 break;
             case Passive.Luck:
-                CriticalPercent = val1;
-                Luck = playerDefaultData.DefaultLuck + val2;
+                CriticalPercent += (val1 / 100f);
+                Luck += (val2 / 100f);
                 break;
             case Passive.EXP:
-                Growth = playerDefaultData.DefaultGrowth + val1;
+                Growth += (val1 / 100f);
                 break;
             case Passive.Magnet:
-                ItemGetRadius = playerDefaultData.DefaultReceiveRadius * (1.0f + val1);
+                ItemGetRadius += playerDefaultData.DefaultReceiveRadius * (val1 / 100f);
                 break;
             case Passive.AgitHP:
-                AgitHp = val1;
+                AgitHp += val1;
                 break;
             case Passive.AgitDef:
-                AgitDef = val1;
+                AgitDef += val1;
                 break;
             case Passive.AgitArea:
-                AgitArea = (int)val1;
+                AgitArea += (int)val1;
                 break;
             case Passive.TurretDmg:
-                TurretDmg = val1;
+                TurretDmg += (val1 / 100f);
                 break;
         }
     }
@@ -250,6 +264,24 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         if (Life > 0 && _playerEventController != null)
         {
             _playerEventController.CallRevive();
+        }
+    }
+
+    private IEnumerator HpRegenRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+
+            if (Dead == false && HpGenSpeed > 0 && CurrentHp < MaxHp)
+            {
+                CurrentHp += HpGenSpeed;
+
+                if (CurrentHp > MaxHp)
+                {
+                    CurrentHp = MaxHp;
+                }
+            }
         }
     }
 }

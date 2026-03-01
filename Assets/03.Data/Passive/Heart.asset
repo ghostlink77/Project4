@@ -9,18 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3b4e24c8ec88c44a1b32d7f481e474, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a3eab43b7bdb694892826c0c8f421e8, type: 3}
   m_Name: Heart
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpPassive
   itemName: "\uC778\uC870 \uC2EC\uC7A5"
-  icon: {fileID: 8581442000097331106, guid: 159cb2b7b70aecf4e9b2108f03c769c7, type: 3}
-  descriptionDesc: "\uCD5C\uB300 HP\uAC00 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  passive: 0
+  icon: {fileID: 0}
+  passiveType: 0
   maxLevel: 5
-  valuePerLevel:
-  - 20
-  - 40
-  - 60
-  - 80
-  - 100
-  valuePerLevel2: []
+  levelData:
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uC885 \uCCB4\uB825\uC774
+      20 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 20
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uC885 \uCCB4\uB825\uC774
+      40 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 40
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uC885 \uCCB4\uB825\uC774
+      60 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 60
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uC885 \uCCB4\uB825\uC774
+      80 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 80
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uCD5C\uC885 \uCCB4\uB825\uC774
+      100 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 100
+    value2: 0

@@ -18,10 +18,20 @@ public class PlayerLevelControl : MonoBehaviour
 
     public void AddXP(int amount)
     {
-        currentXP += amount;
+        float growthStat = 0;
+        if (PlayerManager.Instance != null && PlayerManager.Instance.PlayerStatController != null)
+        {
+            growthStat = PlayerManager.Instance.PlayerStatController.Growth;
+        }
+
+        float bonusRate = 1.0f + growthStat;
+
+        float finalAmount = amount * bonusRate;
+        currentXP += finalAmount;
+
+        Debug.Log($"[XP 획득] 기본:{amount} | 패시브 보너스:+{growthStat * 100}% | 최종획득:{finalAmount} (현재:{currentXP}/{requiredXP})");
         PlayerManager.Instance.PlayerStatController.CurrentExp = currentXP;
         InGameManager.Instance.InGameUIController.UpdateExpBar();
-        Debug.Log($"경험치 {amount} 휙득 (현재: {currentXP} / {requiredXP})");
 
         while (currentXP >= requiredXP)
         {

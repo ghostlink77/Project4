@@ -9,18 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3b4e24c8ec88c44a1b32d7f481e474, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a3eab43b7bdb694892826c0c8f421e8, type: 3}
   m_Name: Sheild
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpPassive
-  itemName: "\uC5D0\uB108\uC9C0 \uC2E4\uB4DC"
-  icon: {fileID: -6236367840824913244, guid: afe275a488e08f14197173a7b02d9fb5, type: 3}
-  descriptionDesc: "\uBC29\uC5B4\uB825\uC774 {0} \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  passive: 2
+  itemName: "\uC5D0\uB108\uC9C0 \uC274\uB4DC"
+  icon: {fileID: 0}
+  passiveType: 2
   maxLevel: 5
-  valuePerLevel:
-  - 5
-  - 10
-  - 15
-  - 20
-  - 25
-  valuePerLevel2: []
+  levelData:
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uBC29\uC5B4\uB825\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uBC29\uC5B4\uB825\uC774 10 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uBC29\uC5B4\uB825\uC774 15 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uBC29\uC5B4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
+  - description: "\uD50C\uB808\uC774\uC5B4\uC758 \uBC29\uC5B4\uB825\uC774 25 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
