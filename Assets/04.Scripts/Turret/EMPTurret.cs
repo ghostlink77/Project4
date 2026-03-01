@@ -5,6 +5,7 @@ public class EMPTurret : TurretBase
 {
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private GameObject _stunVFXPrefab;
+    [SerializeField] private ParticleSystem _empBurstVFX;
 
     private EMPTurretData _empData;
     private float _effectTimer;
@@ -13,9 +14,9 @@ public class EMPTurret : TurretBase
     private const int MaxVFXCount = 16;
     private const int DefaultVFXCount = 4;
 
-    public override void Initialize()
+    public override void Initialize(int level)
     {
-        base.Initialize();
+        base.Initialize(level);
         _empData = TurretData as EMPTurretData;
 
         if (_stunVFXPool == null && _stunVFXPrefab != null)
@@ -48,6 +49,11 @@ public class EMPTurret : TurretBase
 
     private void EmitEMP()
     {
+        if (_empBurstVFX != null)
+        {
+            _empBurstVFX.Play();
+        }
+
         Collider2D[] hits =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _enemyLayer);
 
@@ -57,6 +63,7 @@ public class EMPTurret : TurretBase
         {
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy == null) continue;
+            if (!enemy.gameObject.activeSelf) continue;
 
             if (!enemy.IsStunned)
             {

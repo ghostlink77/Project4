@@ -14,15 +14,19 @@ public class AttackTurretBase : TurretBase
     private LayerMask _enemyLayer;
     private SpriteRenderer _spriteRenderer;
 
-    public override void Initialize()
+    public override void Initialize(int level)
     {
-        base.Initialize();
+        base.Initialize(level);
+
         _attackTurretData = TurretData as AttackTurretData;
         _projectileKey = _attackTurretData.GetProjectileKey();
 
         _enemyLayer = LayerMask.GetMask("Enemy");
         _spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateEnemiesInRange();
+
+        Debug.Log($"Initializing turret: {gameObject.name} with data: {_attackTurretData.name}");
+
     }
 
     private void Update()
@@ -37,11 +41,11 @@ public class AttackTurretBase : TurretBase
 
     private void Fire()
     {
+        UpdateEnemiesInRange();
         if (_enemiesInRange.Count == 0)
         {
             return;
         }
-        UpdateEnemiesInRange();
         UpdateTarget();
 
         if (_target.position.x < transform.position.x)
@@ -67,13 +71,15 @@ public class AttackTurretBase : TurretBase
 
     private void UpdateEnemiesInRange()
     {
-        _enemiesInRange.RemoveAll(enemy => !enemy.gameObject.activeSelf || enemy == null);
+        _enemiesInRange.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeSelf);
         Collider2D[] enemies =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _enemyLayer);
+        Debug.Log($"Enemies detected in range: {enemies.Length}");
 
         foreach (Collider2D enemy in enemies)
         {
             if (_enemiesInRange.Contains(enemy.transform)) continue;
+            if (!enemy.gameObject.activeSelf) continue;
             _enemiesInRange.Add(enemy.transform);
         }
     }

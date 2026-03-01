@@ -480,6 +480,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14b889a4bb586224690de5cb58b245e5, type: 2}
   _turretDatas:
   - {fileID: 11400000, guid: 43b73e018ce3c674fa079794de689944, type: 2}
+  - {fileID: 11400000, guid: b4c2791c86e7c2d4290f95921c0d7619, type: 2}
   - {fileID: 11400000, guid: 5dc4861079cc6c344914953d7abedd75, type: 2}
   - {fileID: 11400000, guid: 46995ce45a84e19479fbaeeaa34b5cd9, type: 2}
   - {fileID: 11400000, guid: b4c2791c86e7c2d4290f95921c0d7619, type: 2}

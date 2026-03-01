@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackTurretData
   turretName: "\uD50C\uB77C\uC988\uB9C8 \uC0DD\uC131\uAE30"
   ID: 0
-  _icon: {fileID: -1014005271760799969, guid: 196d227ee46b12a4c9db457378f84b5a, type: 3}
+  _icon: {fileID: -8839553369793950398, guid: ca26287048a139e4e96aab5be276d507, type: 3}
   <MaxLevel>k__BackingField: 6
   <ScrapCost>k__BackingField: 5
   <MaxHp>k__BackingField: 190000001900000019000000190000001900000019000000

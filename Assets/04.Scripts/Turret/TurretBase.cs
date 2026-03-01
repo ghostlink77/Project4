@@ -5,23 +5,24 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     [SerializeField] private TurretData _turretData;
     public TurretData TurretData => _turretData;
 
-    [SerializeField] protected CircleCollider2D _rangeCollider;
-
     protected int _currentHp;
+    private const int StartLevel = 1;
     protected int _level = 1;
+    private bool _isInitialized;
 
     protected virtual void Start()
     {
-        Initialize();
+        if (!_isInitialized)
+        {
+            Initialize(StartLevel);
+        }
     }
 
-    public virtual void Initialize()
+    public virtual void Initialize(int level)
     {
+        _level = level;
         _currentHp = _turretData.MaxHp[_level - 1];
-        if (_rangeCollider != null)
-        { 
-            _rangeCollider.radius = _turretData.Range[_level - 1];
-        }
+        _isInitialized = true;
     }
 
     public void TakeDamage(int damage)
@@ -36,7 +37,10 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
 
     protected virtual void OnDestroyed()
     {
-        // TODO: 터렛이 파괴될 때의 로직 (예: 애니메이션, 사운드 등)
+        if (TurretManager.Instance != null)
+        {
+            TurretManager.Instance.UnregisterPlacedTurret(_turretData.GetName(), this);
+        }
         Destroy(gameObject);
     }
 
@@ -53,8 +57,18 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
             return;
         }
         _currentHp = _turretData.MaxHp[_level];
-        _rangeCollider.radius = _turretData.Range[_level];
         _level++;
+    }
+
+    public virtual void SetLevel(int level)
+    {
+        if (level < 1 || level > _turretData.MaxLevel)
+        {
+            Debug.LogWarning($"SetLevel: 유효하지 않은 레벨 {level} (max: {_turretData.MaxLevel})");
+            return;
+        }
+        _level = level;
+        _currentHp = _turretData.MaxHp[_level - 1];
     }
 
     public int GetCost()
