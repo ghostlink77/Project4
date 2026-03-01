@@ -42,9 +42,8 @@ public class InGameUIController : MonoBehaviour
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
-    // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
     [Header("New Passive Data Pool")]
-    public List<LevelUpPassive> allPassives;
+    public List<PassiveItemData> allPassives;
 
     private PlayerStatController _playerStat;
     private PlayerLevelControl _playerLevelControl;
@@ -166,17 +165,17 @@ public class InGameUIController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // ★ 랜덤 패시브를 띄워주는 핵심 로직
     private void ShowRandomPassives()
     {
         if (_playerStat == null || allPassives == null) return;
 
-        List<LevelUpPassive> availablePassives = new List<LevelUpPassive>();
+        List<PassiveItemData> availablePassives = new List<PassiveItemData>();
 
         foreach (var p in allPassives)
         {
             if (p == null) continue;
-            int currentLevel = _playerStat.GetCurrentPassiveLevel(p.passive);
+
+            int currentLevel = _playerStat.GetCurrentPassiveLevel(p.passiveType);
             if (currentLevel < p.maxLevel)
             {
                 availablePassives.Add(p);
@@ -193,10 +192,10 @@ public class InGameUIController : MonoBehaviour
             {
                 _itemSelectBtns[i].gameObject.SetActive(true);
 
-                LevelUpPassive selectedData = availablePassives[i];
-                int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passive) + 1;
+                PassiveItemData selectedData = availablePassives[i];
 
-                // UI 연결이 하나라도 빠져있어도 기절하지 않도록 방어 코드 추가
+                int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passiveType) + 1;
+
                 if (_itemSelectBtnDatas.Length > i)
                 {
                     if (_itemSelectBtnDatas[i].ItemImage != null)
@@ -222,7 +221,7 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
-    private void OnPassiveSelected(LevelUpPassive data)
+    private void OnPassiveSelected(PassiveItemData data)
     {
         if (_playerStat != null) _playerStat.LevelUpPassiveStat(data);
         CloseLevelupUI();
@@ -244,7 +243,6 @@ public class InGameUIController : MonoBehaviour
         _playTimeUI.text = $"{min} : {sec}";
     }
 
-    // ★ 빈 씬에서 제일 에러가 많이 나던 경험치 바 함수 완벽 방어
     public void UpdateExpBar()
     {
         if (_expBar == null || DataTableManager.Instance == null || PlayerManager.Instance == null) return;
@@ -255,7 +253,6 @@ public class InGameUIController : MonoBehaviour
         _expBar.fillAmount = currentExp / maxExp;
     }
 
-    // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
         UpdateSelectableItemBtn<WeaponStatData>(0);

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3eab43b7bdb694892826c0c8f421e8, type: 3}
+  m_Name: TurretDmg
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
+  itemName: "\uC5C5\uB370\uC774\uD2B8 \uBAA8\uB4C8"
+  icon: {fileID: 0}
+  passiveType: 11
+  maxLevel: 5
+  levelData:
+  - description: "\uACF5\uACA9\uD615 \uD3EC\uD0D1\uC758 \uB370\uBBF8\uC9C0\uAC00
+      5% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 5
+    value2: 0
+  - description: "\uACF5\uACA9\uD615 \uD3EC\uD0D1\uC758 \uB370\uBBF8\uC9C0\uAC00
+      10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 10
+    value2: 0
+  - description: "\uACF5\uACA9\uD615 \uD3EC\uD0D1\uC758 \uB370\uBBF8\uC9C0\uAC00
+      15% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 15
+    value2: 0
+  - description: "\uACF5\uACA9\uD615 \uD3EC\uD0D1\uC758 \uB370\uBBF8\uC9C0\uAC00
+      20% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 20
+    value2: 0
+  - description: "\uACF5\uACA9\uD615 \uD3EC\uD0D1\uC758 \uB370\uBBF8\uC9C0\uAC00
+      25% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 25
+    value2: 0

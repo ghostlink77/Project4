@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3eab43b7bdb694892826c0c8f421e8, type: 3}
+  m_Name: AgitDef
+  m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
+  itemName: "\uC7A5\uAC11 \uB3C4\uAE08"
+  icon: {fileID: 0}
+  passiveType: 9
+  maxLevel: 5
+  levelData:
+  - description: "\uC544\uC9C0\uD2B8\uC758 \uBC29\uC5B4\uB825\uC774 10 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 10
+    value2: 0
+  - description: "\uC544\uC9C0\uD2B8\uC758 \uBC29\uC5B4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 20
+    value2: 0
+  - description: "\uC544\uC9C0\uD2B8\uC758 \uBC29\uC5B4\uB825\uC774 30 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 30
+    value2: 0
+  - description: "\uC544\uC9C0\uD2B8\uC758 \uBC29\uC5B4\uB825\uC774 40 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 40
+    value2: 0
+  - description: "\uC544\uC9C0\uD2B8\uC758 \uBC29\uC5B4\uB825\uC774 50 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 50
+    value2: 0
