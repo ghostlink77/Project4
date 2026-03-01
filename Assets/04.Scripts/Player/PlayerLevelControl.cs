@@ -39,6 +39,7 @@ public class PlayerLevelControl : MonoBehaviour
 
         //OnLevelUp?.Invoke(currentLevel);
         LevelUpEvent?.Invoke();
+        PlayerManager.Instance.PlayerStatController.CurrentLevel = currentLevel;
     }
 
     private void UpdateRequiredXP()

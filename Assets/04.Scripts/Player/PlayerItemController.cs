@@ -27,6 +27,7 @@ public class PlayerItemController : MonoBehaviour
     {
         PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
+        AddItemToSlot(PlayerManager.Instance.PlayerStatController.DefaultWeapon);
     }
 
     private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)

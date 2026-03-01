@@ -61,4 +61,9 @@ public class PlayerDefaultData : ScriptableObject
     [SerializeField]
     private int defaultTurretSlotSize;
     public int DefaultTurretSlotSize {get => defaultTurretSlotSize; set => defaultTurretSlotSize = value;}
+
+    [Header("기본 무기")]
+    [SerializeField]
+    private WeaponStatData defaultWepon;
+    public WeaponStatData DefaultWepon { get => defaultWepon; set => defaultWepon = value; }
 }

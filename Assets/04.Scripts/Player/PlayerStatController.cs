@@ -44,6 +44,8 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public float AgitDef { get; set; }
     public int AgitArea { get; set; }
     public float TurretDmg { get; set; }
+
+    public WeaponStatData DefaultWeapon { get => playerDefaultData.DefaultWepon; }
     #endregion
 
     #region 플레이어 부활 시간 관련 변수
