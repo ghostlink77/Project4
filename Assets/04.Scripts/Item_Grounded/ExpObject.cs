@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class ExpObject : ItemGroundedBase
 {
-    [SerializeField] private int _expAmount;
-    public int ExpAmount
+    [SerializeField] private float _expAmount;
+    public float ExpAmount
     {
         get => _expAmount;
         set => _expAmount = value;
     }
 
-    public void Initialize(int amount)
+    public void Initialize(float amount)
     {
         base.Initialize();
         _expAmount = amount;

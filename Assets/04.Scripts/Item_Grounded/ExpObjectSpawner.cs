@@ -51,7 +51,7 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
                 );
     }
 
-    public GameObject SpawnExpObject(Vector3 position, int expAmount)
+    public GameObject SpawnExpObject(Vector3 position, float expAmount)
     {
         GameObject expObject = _expObjectPool.Get();
         expObject.transform.position = position;

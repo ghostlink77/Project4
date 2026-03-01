@@ -5,7 +5,8 @@ public enum ESceneType
 {
     Title,
     Lobby,
-    InGame
+    InGame,
+    GameOver
 }
 
 

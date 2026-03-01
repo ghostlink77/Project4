@@ -494,8 +494,10 @@ MonoBehaviour:
   _level: {fileID: 1286724523280101105}
   _image: {fileID: 1356277209006166154}
   _description: {fileID: 5070198144671093190}
+  _btn: {fileID: 3124546593567792558}
   _costText: {fileID: 2000416778910073096}
   _xImage: {fileID: 3642383836325621225}
+  _canvasGroup: {fileID: 2113853917991529835}
 --- !u!1 &6200148466141712453
 GameObject:
   m_ObjectHideFlags: 0

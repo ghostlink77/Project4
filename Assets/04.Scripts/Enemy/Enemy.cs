@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _speed;
     [SerializeField] private int _maxHp;
     [SerializeField] private EnemyType _enemyType;
-    [SerializeField] private int _expDropAmount = 1;
+    [SerializeField] private float _expDropAmount = 1f;
     private int _currentHp;
     private bool _isLive;
 

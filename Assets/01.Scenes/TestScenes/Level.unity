@@ -611,6 +611,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3c0eeba4020ad54381f223819f5250e, type: 2}
   - {fileID: 11400000, guid: 13765146ea933b147a7f6348ea5c5e46, type: 2}
   - {fileID: 11400000, guid: 08453fe547c162f43a7069d5fa993958, type: 2}
+  - {fileID: 11400000, guid: 14b889a4bb586224690de5cb58b245e5, type: 2}
+  - {fileID: 11400000, guid: 35298abfe8d95cb4aa9eadbf6c469050, type: 2}
+  - {fileID: 11400000, guid: 7c2189f254d445e4b93277f7eeb440f3, type: 2}
+  - {fileID: 11400000, guid: 3e5bc9c2b06d26b488e26af449637d30, type: 2}
+  - {fileID: 11400000, guid: 39c1d4ba0acd8de4a9b3426132652dab, type: 2}
+  - {fileID: 11400000, guid: 4cd47fde285ba4a4ea00c58536a8de32, type: 2}
+  - {fileID: 11400000, guid: acccf1fcec87dd045a07ac9396f0bd9f, type: 2}
   _testEnemies: []
 --- !u!114 &1663212766 stripped
 MonoBehaviour:

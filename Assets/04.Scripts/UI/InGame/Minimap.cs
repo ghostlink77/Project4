@@ -49,6 +49,8 @@ public class Minimap : MonoBehaviour
             _mapTextureSize.y / _mapBounds.size.y);
         }
 
+        _anim.enabled = false;
+
         CreatePools();
     }
 

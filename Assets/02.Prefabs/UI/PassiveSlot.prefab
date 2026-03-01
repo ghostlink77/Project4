@@ -545,6 +545,7 @@ MonoBehaviour:
   _level: {fileID: 8998901872432979314}
   _image: {fileID: 5053755148947319297}
   _description: {fileID: 5373777288741402506}
+  _btn: {fileID: 4472585340829007418}
 --- !u!114 &4472585340829007418
 MonoBehaviour:
   m_ObjectHideFlags: 0

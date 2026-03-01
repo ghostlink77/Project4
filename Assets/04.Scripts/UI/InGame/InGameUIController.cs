@@ -58,11 +58,12 @@ public class InGameUIController : MonoBehaviour
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
+    [SerializeField] private string[] _selectedItemName = new string[3];
+
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
 
-    // ★ 새로운 랜덤 패시브 시스템을 위한 변수들
     [Header("New Passive Data Pool")]
-    public List<LevelUpPassive> allPassives;
+    public List<PassiveItemData> allPassives;
 
     private PlayerStatController _playerStat;
     private PlayerLevelControl _playerLevelControl;
@@ -96,6 +97,8 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.LevelUpEvent += OpenLevelupUI;
         }
 
+        InGameManager.Instance.EndGameAction += EndGame;
+
         UpdateInventory();
 
     }
@@ -107,6 +110,8 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.OnLevelUp -= OpenLevelupUI;
             _playerLevelControl.LevelUpEvent -= OpenLevelupUI;
         }
+
+        InGameManager.Instance.EndGameAction -= EndGame;
     }
 
     private void Update()
@@ -233,17 +238,17 @@ public class InGameUIController : MonoBehaviour
         UpdateExpBar();
     }
 
-    // ★ 랜덤 패시브를 띄워주는 핵심 로직
     private void ShowRandomPassives()
     {
         if (_playerStat == null || allPassives == null) return;
 
-        List<LevelUpPassive> availablePassives = new List<LevelUpPassive>();
+        List<PassiveItemData> availablePassives = new List<PassiveItemData>();
 
         foreach (var p in allPassives)
         {
             if (p == null) continue;
-            int currentLevel = _playerStat.GetCurrentPassiveLevel(p.passive);
+
+            int currentLevel = _playerStat.GetCurrentPassiveLevel(p.passiveType);
             if (currentLevel < p.maxLevel)
             {
                 availablePassives.Add(p);
@@ -260,10 +265,10 @@ public class InGameUIController : MonoBehaviour
             {
                 _itemSelectBtns[i].gameObject.SetActive(true);
 
-                LevelUpPassive selectedData = availablePassives[i];
-                int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passive) + 1;
+                PassiveItemData selectedData = availablePassives[i];
 
-                // UI 연결이 하나라도 빠져있어도 기절하지 않도록 방어 코드 추가
+                int nextLevel = _playerStat.GetCurrentPassiveLevel(selectedData.passiveType) + 1;
+
                 if (_itemSelectBtnDatas.Length > i)
                 {
                     if (_itemSelectBtnDatas[i].ItemImage != null)
@@ -289,7 +294,7 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
-    private void OnPassiveSelected(LevelUpPassive data)
+    private void OnPassiveSelected(PassiveItemData data)
     {
         if (_playerStat != null) _playerStat.LevelUpPassiveStat(data);
         CloseLevelupUI();
@@ -311,7 +316,6 @@ public class InGameUIController : MonoBehaviour
         _playTimeUI.text = $"{min} : {sec}";
     }
 
-    // ★ 빈 씬에서 제일 에러가 많이 나던 경험치 바 함수 완벽 방어
     public void UpdateExpBar()
     {
         if (_expBar == null || DataTableManager.Instance == null || PlayerManager.Instance == null) return;
@@ -402,6 +406,8 @@ public class InGameUIController : MonoBehaviour
     // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
+        Array.Clear(_selectedItemName, 0, _selectedItemName.Length);
+
         for (int index = 0; index< _itemSelectBtns.Length; index++)
         {
             float itemTypeIndex = UnityEngine.Random.Range(0, _itemSelectBtns.Length);
@@ -411,7 +417,7 @@ public class InGameUIController : MonoBehaviour
                     UpdateSelectableItemBtn<WeaponStatData>(index);
                     break;
                 case 1:
-                    UpdateSelectableItemBtn<PassiveStatData>(index);
+                    UpdateSelectableItemBtn<PassiveItemData>(index);
                     break;
                 case 2:
                     UpdateSelectableItemBtn<TurretData>(index);
@@ -429,7 +435,7 @@ public class InGameUIController : MonoBehaviour
     {
         if (DataTableManager.Instance == null) return;
 
-        T newItemData = DataTableManager.Instance.GetSelectableItem<T>();
+        T newItemData = DataTableManager.Instance.GetSelectableItem<T>(_selectedItemName);
         if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
         {
             if (_itemSelectBtnDatas.Length > index)
@@ -446,6 +452,8 @@ public class InGameUIController : MonoBehaviour
             if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null) _itemSelectBtns[index].onClick.RemoveAllListeners();
             return;
         }
+
+        _selectedItemName[index] = newItemData.GetName();
 
         if (PlayerManager.Instance == null) return;
         int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
@@ -511,8 +519,12 @@ public class InGameUIController : MonoBehaviour
     public void ShowEndGameUI()
     {
         if (AudioManager.Instance != null) AudioManager.Instance.StopAll();
-        if (_inGameUI != null) _inGameUI.SetActive(false);
         if (_endGameUI != null) _endGameUI.SetActive(true);
+    }
+
+    private void EndGame()
+    {
+        _inGameUI?.SetActive(false);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

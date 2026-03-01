@@ -16,8 +16,8 @@ MonoBehaviour:
   defaultMaxHP: 100
   defaultDef: 10
   defaultHpGenSpeed: 1
-  defaultSpeed: 5
-  defaultReceiveRadius: 3
+  defaultSpeed: 3
+  defaultReceiveRadius: 1
   defaultLuck: 0
   defaultGrowth: 0
   defaultGreed: 0
@@ -26,3 +26,4 @@ MonoBehaviour:
   defaultWeaponSlotSize: 4
   defaultPassiveItemSlotSize: 8
   defaultTurretSlotSize: 4
+  defaultWepon: {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}
