@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShootController
   _dispersionAngle: 10
-  _lineRenderer: {fileID: 0}
+  _lineRenderer: {fileID: -9012976560820378015}
 --- !u!114 &6035414204298828862
 MonoBehaviour:
   m_ObjectHideFlags: 0
