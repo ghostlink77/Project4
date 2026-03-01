@@ -417,7 +417,7 @@ public class InGameUIController : MonoBehaviour
                     UpdateSelectableItemBtn<WeaponStatData>(index);
                     break;
                 case 1:
-                    UpdateSelectableItemBtn<PassiveStatData>(index);
+                    UpdateSelectableItemBtn<PassiveItemData>(index);
                     break;
                 case 2:
                     UpdateSelectableItemBtn<TurretData>(index);

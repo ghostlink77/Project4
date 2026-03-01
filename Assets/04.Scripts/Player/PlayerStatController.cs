@@ -18,7 +18,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
     public Dictionary<Passive, int> passiveLevels = new Dictionary<Passive, int>();
 
     public int CurrentLevel { get; set; }
-    public int CurrentExp { get; set; }
+    public float CurrentExp { get; set; }
     public int MaxHp { get; set; }
     public int CurrentHp { get; set; }
     public int Defense { get; set; }
@@ -276,6 +276,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             if (Dead == false && HpGenSpeed > 0 && CurrentHp < MaxHp)
             {
                 CurrentHp += HpGenSpeed;
+                InGameManager.Instance.InGameUIController.UpdatePlayerHpBar();
 
                 if (CurrentHp > MaxHp)
                 {

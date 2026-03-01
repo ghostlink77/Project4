@@ -26,4 +26,4 @@ MonoBehaviour:
   defaultWeaponSlotSize: 4
   defaultPassiveItemSlotSize: 8
   defaultTurretSlotSize: 4
-  defaultWepon: {fileID: 2434694142653457009, guid: 07cb561b90482254f9ea654615bf48bb, type: 3}
+  defaultWepon: {fileID: 11400000, guid: 063a343d9f2c4764db0ff5d58e15f0d1, type: 2}

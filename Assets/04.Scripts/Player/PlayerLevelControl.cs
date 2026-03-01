@@ -5,8 +5,8 @@ public class PlayerLevelControl : MonoBehaviour
 {
     [Header("Player Status")]
     [SerializeField] public int currentLevel = 1;
-    [SerializeField] public int currentXP = 0;
-    public int requiredXP = 0;
+    [SerializeField] public float currentXP = 0;
+    public float requiredXP = 0;
 
     public event Action<int> OnLevelUp;
     public event Action LevelUpEvent;
@@ -16,7 +16,7 @@ public class PlayerLevelControl : MonoBehaviour
         UpdateRequiredXP();
     }
 
-    public void AddXP(int amount)
+    public void AddXP(float amount)
     {
         float growthStat = 0;
         if (PlayerManager.Instance != null && PlayerManager.Instance.PlayerStatController != null)

@@ -51,7 +51,7 @@ public class BlackHoleTurret : TurretBase
         ExpObject expObj = item as ExpObject;
         if (expObj == null) return;
 
-        int exp = expObj.ExpAmount;
+        float exp = expObj.ExpAmount;
         _absorbingObjects.Remove(expObj);
         ExpObjectSpawner.Instance.ReturnToPool(expObj.gameObject);
 

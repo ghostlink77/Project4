@@ -473,7 +473,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
   - {fileID: 11400000, guid: 66197b5dd572f4856a5b8f72fe074b2d, type: 2}
   _passiveDatas:
-  - {fileID: 11400000, guid: 4fcf708fc4aa3664face8c46d0d33dc0, type: 2}
+  - {fileID: 11400000, guid: 3e5bc9c2b06d26b488e26af449637d30, type: 2}
+  - {fileID: 11400000, guid: b3c0eeba4020ad54381f223819f5250e, type: 2}
+  - {fileID: 11400000, guid: 08453fe547c162f43a7069d5fa993958, type: 2}
+  - {fileID: 11400000, guid: 35298abfe8d95cb4aa9eadbf6c469050, type: 2}
+  - {fileID: 11400000, guid: 14b889a4bb586224690de5cb58b245e5, type: 2}
   _turretDatas:
   - {fileID: 11400000, guid: 43b73e018ce3c674fa079794de689944, type: 2}
   - {fileID: 11400000, guid: 5dc4861079cc6c344914953d7abedd75, type: 2}
