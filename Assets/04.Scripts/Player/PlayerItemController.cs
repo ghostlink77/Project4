@@ -27,7 +27,13 @@ public class PlayerItemController : MonoBehaviour
     {
         PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
         ResetItemSlots(statCon.WeaponSlotSize, statCon.PassiveItemSlotSize, statCon.TurretSlotSize);
-        AddItemToSlot(PlayerManager.Instance.PlayerStatController.DefaultWeapon);
+    }
+
+    public void AddDefaultItems()
+    {
+        PlayerStatController statCon = PlayerManager.Instance.PlayerStatController;
+        AddItemToSlot(statCon.DefaultWeapon);
+        AddItemToSlot(statCon.DefaultTurret);
     }
 
     private void ResetItemSlots(int weaponSlotSize, int passiveSlotSize, int turretSlotSize)
@@ -130,11 +136,20 @@ public class PlayerItemController : MonoBehaviour
         {
             return;
         }
+
+        if (TurretManager.Instance != null)
+        {
+            TurretManager.Instance.RegisterTurretType(turret.GetName());
+        }
+        else
+        {
+            Debug.LogError($"TurretManager.Instance가 null입니다. turret: {turret.GetName()}");
+        }
+
         if (turret is AttackTurretData attackTurret)
         {
             await TurretProjectileSpawner.Instance.LoadProjectilePrefab(attackTurret.GetProjectileKey());
         }
-        TurretManager.Instance.RegisterTurretType(turret.GetName());
     }
 
     // 빈 아이템 슬롯이 있다면 아이템 넣는 메서드

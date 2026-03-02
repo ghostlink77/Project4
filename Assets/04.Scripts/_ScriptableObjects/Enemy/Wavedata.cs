@@ -1,28 +1,22 @@
-using JetBrains.Annotations;
 using System;
 using UnityEngine;
+
+[Serializable]
+public class SpawnPointConfig
+{
+    public int spawnPointIndex;
+    public EnemyType enemyType;
+
+    // NOTE: 0 ì´í•˜ë©´ Waveì˜ defaultSpawnInterval ì‚¬ìš©
+    public float spawnInterval;
+}
 
 [Serializable]
 public class Wave
 {
     public float startTime;
-
-    public EnemyType enemyType;
-
-    public float spawnInterval;
-
-    public Wave(float startTime, EnemyType enemyType, float spawnInterval)
-    {
-        this.startTime = startTime;
-        this.enemyType = enemyType;
-        this.spawnInterval = spawnInterval;
-    }
-    public Wave(Wave wave)
-    {
-        startTime = wave.startTime;
-        enemyType = wave.enemyType;
-        spawnInterval = wave.spawnInterval;
-    }
+    public float defaultSpawnInterval = 1f;
+    public SpawnPointConfig[] spawnPointConfigs;
 }
 
 [CreateAssetMenu(fileName = "Wavedata", menuName = "Scriptable Objects/Wavedata")]
@@ -30,31 +24,4 @@ public class Wavedata : ScriptableObject
 {
     [SerializeField] private Wave[] _waves;
     public Wave[] Waves => _waves;
-
-    private Wave _basicWave = new Wave(0, EnemyType.Drone1, 1f);
-
-    public Wave GetCurrentWave(float playTime)
-    {
-        if(_waves == null || _waves.Length == 0)
-        {
-            Debug.LogWarning("Wavedata¿¡ ¿þÀÌºê°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
-            return _basicWave;
-        }
-
-        Wave wave = new Wave(_basicWave);
-
-        for(int i = 0; i < _waves.Length; i++)
-        {
-            if (playTime >= _waves[i].startTime)
-            {
-                wave = _waves[i];
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        return wave;
-    }
 }

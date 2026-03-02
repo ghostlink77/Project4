@@ -204,11 +204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _damage: 2
-  _damageDelay: 0.5
+  _damageDelay: 0.3
   _speed: 0.8
   _maxHp: 9
   _enemyType: 2
-  _expDropAmount: 2
+  _expDropAmount: 3
 --- !u!1 &7319112613732629385
 GameObject:
   m_ObjectHideFlags: 0
