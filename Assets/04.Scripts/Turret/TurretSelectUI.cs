@@ -102,7 +102,6 @@ public class TurretSelectUI : MonoBehaviour
 
     public void PlaceTurret()
     {
-        Cursor.visible = true;
 
         if (turretPlacer == null)
         {
@@ -115,6 +114,7 @@ public class TurretSelectUI : MonoBehaviour
 
     public void UnSetTurret()
     {
+        Cursor.visible = true;
         Time.timeScale = 1f;
         _panel?.SetActive(false);
         _setImage?.gameObject.SetActive(false);
