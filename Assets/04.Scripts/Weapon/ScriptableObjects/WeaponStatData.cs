@@ -70,6 +70,10 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     private int projectileCount;
     public int ProjectileCount => projectileCount;
 
+    [Header("아이템 설명")]
+    [SerializeField]
+    private string[] _description;
+
     public string GetName()
     {
         return WeaponName;
@@ -78,5 +82,10 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     public Sprite GetIcon()
     {
         return icon;
+    }
+
+    public string GetDescription(int level)
+    {
+        return _description[level-1];
     }
 }

@@ -24,7 +24,7 @@ public abstract class TurretData : ScriptableObject, IItemStatData
     {
         return _icon;
     }
-    public string GetUpgradeDescription(int level)
+    public string GetDescription(int level)
     {
         if (level > 0 && level - 1 < _upgradeDescriptions.Length)
         {

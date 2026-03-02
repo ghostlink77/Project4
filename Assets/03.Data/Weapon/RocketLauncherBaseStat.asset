@@ -25,3 +25,9 @@ MonoBehaviour:
   atkRange: 4
   projectileSpeed: 10
   projectileCount: 1
+  _description:
+  - "\uC5EC\uB7EC \uC801\uC744 \uAD00\uD1B5\uD558\uB294 \uBB34\uAE30"
+  - 2
+  - 3
+  - 4
+  - 5
