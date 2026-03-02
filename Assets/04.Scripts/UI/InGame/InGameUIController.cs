@@ -97,7 +97,7 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.LevelUpEvent += OpenLevelupUI;
         }
 
-        InGameManager.Instance.EndGameAction += EndGame;
+        InGameManager.Instance.AgitGameOverAction += EndGame;
 
         UpdateInventory();
 
@@ -111,7 +111,7 @@ public class InGameUIController : MonoBehaviour
             _playerLevelControl.LevelUpEvent -= OpenLevelupUI;
         }
 
-        InGameManager.Instance.EndGameAction -= EndGame;
+        InGameManager.Instance.AgitGameOverAction -= EndGame;
     }
 
     private void Update()

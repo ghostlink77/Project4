@@ -899,6 +899,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
+      propertyPath: _mouseCursorImage
+      value: 
+      objectReference: {fileID: 2800000, guid: 02a619e21d1191a4cb417f0d3b69f437, type: 3}
     - target: {fileID: 2574658426140972437, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_Layer
       value: 5

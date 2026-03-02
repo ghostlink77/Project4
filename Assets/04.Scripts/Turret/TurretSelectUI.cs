@@ -86,6 +86,8 @@ public class TurretSelectUI : MonoBehaviour
     }
     private void SetTurret(string name)
     {
+        Cursor.visible = false;
+
         Time.timeScale = 0f;
         _panel?.SetActive(true);
         if (_setImage != null)
@@ -100,6 +102,8 @@ public class TurretSelectUI : MonoBehaviour
 
     public void PlaceTurret()
     {
+        Cursor.visible = true;
+
         if (turretPlacer == null)
         {
             Debug.Log("turretPlacer가 TurretSelectUI에 없습니다.");

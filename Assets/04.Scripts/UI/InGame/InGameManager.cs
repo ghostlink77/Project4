@@ -19,7 +19,8 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
     public GameStat GameStat { get; private set; }
 
-    public Action EndGameAction;
+    public Action AgitGameOverAction;
+    public Action PlayerGameOverAction;
     protected override void Init()
     {
         IsDestroyOnLoad = true;
@@ -83,10 +84,19 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         }
     }
 
-    public void EndGame()
+    public void EndGame(bool isPlayerDead)
     {
         GameStat = GameStat.End;
         Time.timeScale = 0f;
-        EndGameAction?.Invoke();
+
+        if (isPlayerDead)
+        {
+            PlayerGameOverAction?.Invoke();
+        }
+        else
+        {
+            AgitGameOverAction?.Invoke();
+        }
+            
     }
 }

@@ -248,6 +248,8 @@ public class PlayerStatController : MonoBehaviour, IDamageable
             CurrentHp = 0;
             if (_playerEventController != null)
                 _playerEventController.CallDeath();
+
+            InGameManager.Instance.EndGame(true);
         }
         Debug.Log($"데미지: {damage}, 현재 hp: {CurrentHp}");
     }

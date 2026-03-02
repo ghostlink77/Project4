@@ -16,13 +16,13 @@ public class FollowPlayer : MonoBehaviour
             _playerTransform = PlayerManager.Instance.gameObject.transform;
         _position.z = transform.position.z;
 
-        InGameManager.Instance.EndGameAction += CameraToAgit;
+        InGameManager.Instance.AgitGameOverAction += CameraToAgit;
 
     }
 
     private void OnDestroy()
     {
-        InGameManager.Instance.EndGameAction -= CameraToAgit;
+        InGameManager.Instance.AgitGameOverAction -= CameraToAgit;
     }
 
     private void LateUpdate()

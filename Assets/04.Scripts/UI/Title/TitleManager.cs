@@ -5,11 +5,14 @@ using UnityEngine.Playables;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField] GameObject LoadingTextTimeline;
+    [SerializeField] Texture2D _mouseCursorImage;
 
     private void Start()
     {
         AudioManager.Instance.SyncUserSettings();
         DataTableManager.Instance.SetData();
+
+        Cursor.SetCursor(_mouseCursorImage, new Vector2(_mouseCursorImage.width / 2, _mouseCursorImage.height / 2), CursorMode.Auto);
 
     }
 
