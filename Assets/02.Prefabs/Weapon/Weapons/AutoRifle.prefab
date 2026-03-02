@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23eaf59f55b46944094f18cb6c77b198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
+  _weaponRangeCollider2D: {fileID: 5700628673114457835}
   level: 0
   damage: 0
   critRate: 0
@@ -135,6 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShootController
   _dispersionAngle: 10
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _lineRenderer: {fileID: -4189912633782151398}
 --- !u!114 &5751310512860791070
 MonoBehaviour:
