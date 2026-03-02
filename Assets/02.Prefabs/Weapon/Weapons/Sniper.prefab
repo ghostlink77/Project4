@@ -53,7 +53,7 @@ MonoBehaviour:
   _dispersionAngle: 10
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1048576
   _lineRenderer: {fileID: 5778697208193919880}
 --- !u!114 &652187539149569847
 MonoBehaviour:

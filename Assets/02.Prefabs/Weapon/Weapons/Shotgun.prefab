@@ -138,7 +138,7 @@ MonoBehaviour:
   _dispersionAngle: 10
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1048576
   _lineRenderer: {fileID: -4613020966027650799}
 --- !u!114 &-5654382924020200263
 MonoBehaviour:
