@@ -28,7 +28,7 @@ MonoBehaviour:
     - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 645a2ac05173eaf40af7b1f24eec311d
-    m_Address: Assets/02.Prefabs/Enemy/Enemies/Boss.prefab
+    m_Address: Prefabs/Enemy/Boss
     m_ReadOnly: 0
     m_SerializedLabels:
     - EnemyPrefabs

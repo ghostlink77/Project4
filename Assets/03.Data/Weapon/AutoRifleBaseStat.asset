@@ -22,7 +22,7 @@ MonoBehaviour:
   critMultiplier: 1.4
   effectRate: 10
   atkSpeed: 1
-  atkRange: 3
+  atkRange: 4.5
   projectileSpeed: 3.5
   projectileCount: 1
   _description:

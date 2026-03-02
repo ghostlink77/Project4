@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Speed
   m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
   itemName: "\uC678\uACE8\uACA9"
-  icon: {fileID: 0}
+  icon: {fileID: 1284413250822283305, guid: 59c3ba53c921cc64b82d0a1c32566b1f, type: 3}
   passiveType: 4
   maxLevel: 5
   levelData:
