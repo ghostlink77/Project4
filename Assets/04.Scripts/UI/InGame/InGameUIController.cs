@@ -34,6 +34,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Image _agitHpAnimBar;
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _scrapAmountText;
+    [SerializeField] private GameObject _worldCanvas;
 
     [Header("Hp Bar Animation Value")]
     [SerializeField] private float _blendInTime;
@@ -518,6 +519,7 @@ public class InGameUIController : MonoBehaviour
     private void EndGame()
     {
         _inGameUI?.SetActive(false);
+        _worldCanvas?.SetActive(false);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
