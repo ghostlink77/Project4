@@ -438,22 +438,15 @@ public class InGameUIController : MonoBehaviour
         T newItemData = DataTableManager.Instance.GetSelectableItem<T>(_selectedItemName);
         if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
         {
-            if (_itemSelectBtnDatas.Length > index)
-            {
-                if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = "";
-                if (_itemSelectBtnDatas[index].ItemImage != null)
-                {
-                    _itemSelectBtnDatas[index].ItemImage.sprite = null;
-                    _itemSelectBtnDatas[index].ItemImage.color = new Color(1, 1, 1, 0);
-                }
-                if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = "";
-                if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = "";
-            }
-            if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null) _itemSelectBtns[index].onClick.RemoveAllListeners();
+            _itemSelectBtns[index].gameObject.SetActive(false);
+            _itemSelectBtns[index].onClick.RemoveAllListeners();
             return;
         }
 
+        _itemSelectBtns[index].gameObject.SetActive(true);
+
         _selectedItemName[index] = newItemData.GetName();
+        _itemSelectBtns[index].interactable = true;
 
         if (PlayerManager.Instance == null) return;
         int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
