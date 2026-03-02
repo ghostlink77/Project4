@@ -17,8 +17,9 @@ public class WeaponShootController : MonoBehaviour
     private List<GameObject> enemiesInRange = new List<GameObject>();
     private WeaponStatController _weaponStatController;
     private WeaponEventController _weaponEventController;
-    
-    private int _weaponDamage, _projectileCount;
+
+    private float _weaponDamage;
+    private float _projectileCount;
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
@@ -74,7 +75,7 @@ public class WeaponShootController : MonoBehaviour
         if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
     }
 
-    public void ShootProcedurePerUpdate(int weaponDamage, float atkSpeed, float projectileSpeed)
+    public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
     {
         if (atkSpeed <= 0.01f)
         {
@@ -89,7 +90,7 @@ public class WeaponShootController : MonoBehaviour
         }
     }
 
-    private void Shoot(int weaponDamage, float projSpeed)
+    private void Shoot(float weaponDamage, float projSpeed)
     {
         _weaponDamage = weaponDamage;
         _projectileSpeed = projSpeed;

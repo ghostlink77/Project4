@@ -15,10 +15,10 @@ MonoBehaviour:
   _waves:
   - startTime: 0
     enemyType: 0
-    spawnInterval: 0.75
-  - startTime: 90
+    spawnInterval: 2.7
+  - startTime: 120
     enemyType: 2
-    spawnInterval: 0.75
-  - startTime: 180
+    spawnInterval: 2
+  - startTime: 240
     enemyType: 1
-    spawnInterval: 0.8
+    spawnInterval: 1.3

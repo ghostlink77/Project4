@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 645a2ac05173eaf40af7b1f24eec311d
+    m_Address: Assets/02.Prefabs/Enemy/Enemies/Boss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefabs
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2d15bddbb8693c4fb35f3c1fb60cb3f
     m_Address: Prefabs/Enemy/Drone2
     m_ReadOnly: 0

@@ -11,6 +11,7 @@ public enum EnemyType
     Drone1,
     Drone2,
     Robot1,
+    Boss,
 }
 
 public class EnemySpawnManager : MonoBehaviour
