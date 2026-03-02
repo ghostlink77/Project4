@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _damageDelay;
     private float _currentDamageDelay;
 
     [SerializeField] private float _speed;
-    [SerializeField] private int _maxHp;
+    [SerializeField] private float _maxHp;
     [SerializeField] private EnemyType _enemyType;
-    [SerializeField] private float _expDropAmount = 1f;
-    private int _currentHp;
+    [SerializeField] private float _expDropAmount = 2f;
+    private float _currentHp;
     private bool _isLive;
 
     private Rigidbody2D _rigid;
@@ -167,7 +167,7 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _currentHp -= damage;
         InGameManager.Instance.InGameUIController.ShowDamageText(transform.position, damage);

@@ -11,8 +11,12 @@ public class ScrapSpawner : MonoBehaviour
     private const int InitSize = 10;
     private const float SpawnInterval = 1f;
 
+    [SerializeField] private int _maxActiveScrap = 20;
+    [SerializeField] private float _scrapLifetime = 30f;
+
     private ObjectPool<GameObject> _scrapPool;
     private GameObject _scrapPrefab;
+    private int _activeScrapCount;
 
     [SerializeField] private BoxCollider2D _mapCollider;
     private Bounds _mapBound;
@@ -65,10 +69,13 @@ public class ScrapSpawner : MonoBehaviour
 
     public GameObject SpawnScrap(Vector3 position)
     {
+        if (_activeScrapCount >= _maxActiveScrap) return null;
+
         GameObject scrap = _scrapPool.Get();
         scrap.transform.position = position;
         Scrap scrapComponent = scrap.GetComponent<Scrap>();
-        scrapComponent.Initialize(this);
+        scrapComponent.Initialize(this, _scrapLifetime);
+        _activeScrapCount++;
         return scrap;
     }
 
@@ -88,8 +95,7 @@ public class ScrapSpawner : MonoBehaviour
     {
         while (true)
         {
-            // TODO: 스폰 조건, 위치, 간격 등 조정
-            if (_isSpawning)
+            if (_isSpawning && _activeScrapCount < _maxActiveScrap)
             {
                 SpawnScrap(GetRandomPosition());
             }
@@ -110,6 +116,7 @@ public class ScrapSpawner : MonoBehaviour
 
     public void ReturnToPool(GameObject scrap)
     {
+        _activeScrapCount--;
         _scrapPool.Release(scrap);
     }
 

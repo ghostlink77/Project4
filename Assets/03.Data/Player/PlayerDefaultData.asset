@@ -15,7 +15,7 @@ MonoBehaviour:
   defaultLevel: 1
   defaultMaxHP: 100
   defaultDef: 10
-  defaultHpGenSpeed: 1
+  defaultHpGenSpeed: 0.2
   defaultSpeed: 3
   defaultReceiveRadius: 1
   defaultLuck: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3819811264436506151, guid: 9024db6f9bfc745368caeb3719a73a97, type: 3}
   level: 1
   type: 1
-  damage: 60
+  damage: 10
   critRate: 35
   critMultiplier: 2.5
   effectRate: 30

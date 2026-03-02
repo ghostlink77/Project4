@@ -5,8 +5,8 @@ using UnityEngine.Timeline;
 
 public class Agit : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHP = 100;
-    private int currentHP;
+    [SerializeField] private float maxHP = 250f;
+    private float currentHP;
 
     [SerializeField] float cameraMoveDuration = 0.5f;
 
@@ -24,7 +24,7 @@ public class Agit : MonoBehaviour, IDamageable
         _agitTimeLine.playableAsset = _warningTimeline;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (isDestroyed) return;
 

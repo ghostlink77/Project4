@@ -21,8 +21,8 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     [SerializeField] private int level;
     public int Level { get => level; set { level = value; _weaponEventController.CallOnStatChanged(WeaponStat.Level); } }
 
-    [SerializeField] private int damage;
-    public int Damage { get => damage; set { damage = value; _weaponEventController.CallOnStatChanged(WeaponStat.Damage); } }
+    [SerializeField] private float damage;
+    public float Damage { get => damage; set { damage = value; _weaponEventController.CallOnStatChanged(WeaponStat.Damage); } }
 
     [SerializeField] private float critRate;
     public float CritRate { get => critRate; set { critRate = value; _weaponEventController.CallOnStatChanged(WeaponStat.CritRate); } }

@@ -23,7 +23,7 @@ MonoBehaviour:
   effectRate: 20
   atkSpeed: 3
   atkRange: 1
-  projectileSpeed: 20
+  projectileSpeed: 10
   projectileCount: 10
   _description:
   - "\uADFC\uAC70\uB9AC\uC758 \uC801\uC5D0\uAC8C \uB2E4\uB7C9\uC758 \uD53C\uD574\uB97C

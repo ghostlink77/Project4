@@ -30,7 +30,7 @@ public class WeaponManager : MonoBehaviour
     #endregion
     
     #region 무기 스탯 변수
-    private int _damage;
+    private float _damage;
     private float _atkSpeed, _projectileSpeed;
     #endregion
 

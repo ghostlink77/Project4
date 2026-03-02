@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class TurretProjectile : MonoBehaviour
 {
     protected Transform _target;
-    protected int _damage;
+    protected float _damage;
     protected float _speed;
     protected string _projectileKey;
 
@@ -14,7 +14,7 @@ public abstract class TurretProjectile : MonoBehaviour
     [SerializeField] protected float _lifetime = 8f;
     private float _timer;
 
-    public virtual void Initialize(Transform target, float speed, int damage, string key)
+    public virtual void Initialize(Transform target, float speed, float damage, string key)
     {
         _target = target;
         _speed = speed;
