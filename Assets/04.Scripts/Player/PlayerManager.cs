@@ -33,6 +33,8 @@ public class PlayerManager : MonoBehaviour
             Animator = GetComponent<Animator>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
         }
+
+        PlayerComponentSetup();
     }
 
     private void Start()
@@ -40,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         if (Instance == this)
         {
             SoundManager = SoundManager.Instance;
-            PlayerComponentSetup();
+            //PlayerComponentSetup();
         }
     }
 
