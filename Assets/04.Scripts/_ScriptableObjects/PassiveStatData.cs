@@ -77,4 +77,9 @@ public class PassiveStatData : ScriptableObject, IItemStatData
     {
         return _icon;
     }
+
+    public string GetDescription(int level)
+    {
+        throw new System.NotImplementedException();
+    }
 }

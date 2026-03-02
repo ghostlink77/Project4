@@ -553,7 +553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC\n\uC544\uC790\uCC28\uCE74\uD0C0\uD30C\uD558\n\uAD6C\uB204\uB450\uB8E8\uBB34\uBD80\uC218\n\uC6B0\uC8FC\uCD94\uCFE0\uD22C\uD478\uD6C4"
+  m_text: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC\uC544\uC790\uCC28\uCE74\uD0C0\uD30C\uD558\uAD6C\uB204\uB450\uB8E8\uBB34\uBD80\uC218\uC6B0\uC8FC\uCD94\uCFE0\uD22C\uD478\uD6C4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e786b25321f08db4a8b2542ef4684bf9, type: 2}
   m_sharedMaterial: {fileID: -7449160132103506112, guid: e786b25321f08db4a8b2542ef4684bf9, type: 2}
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 0
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
