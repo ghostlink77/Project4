@@ -601,6 +601,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1428302980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650246915143629867, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
+  m_PrefabInstance: {fileID: 8527922050373995477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1734531172 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6864246068008638890, guid: 661222fb742bda44bb65932263c23f4b, type: 3}
@@ -885,6 +890,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
+      propertyPath: _mouseCursorImage
+      value: 
+      objectReference: {fileID: 2800000, guid: 02a619e21d1191a4cb417f0d3b69f437, type: 3}
+    - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
+      propertyPath: _loadingTextTimeline
+      value: 
+      objectReference: {fileID: 1428302980}
     - target: {fileID: 2574658426140972437, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_Layer
       value: 5

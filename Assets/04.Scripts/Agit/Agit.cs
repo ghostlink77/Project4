@@ -36,7 +36,7 @@ public class Agit : MonoBehaviour, IDamageable
 
         if (currentHP <= 0)
         {
-            InGameManager.Instance.EndGame();
+            InGameManager.Instance.EndGame(false);
             StartCoroutine(DestroyAgitCoroutine());
         }
     }

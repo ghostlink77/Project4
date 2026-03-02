@@ -4,19 +4,23 @@ using UnityEngine.Playables;
 
 public class TitleManager : MonoBehaviour
 {
-    [SerializeField] GameObject LoadingTextTimeline;
+    [SerializeField] private GameObject _loadingTextTimeline;
+    [SerializeField] private Texture2D _mouseCursorImage;
 
     private void Start()
     {
         AudioManager.Instance.SyncUserSettings();
         DataTableManager.Instance.SetData();
 
+        if (_mouseCursorImage != null)
+            Cursor.SetCursor(_mouseCursorImage, new Vector2(_mouseCursorImage.width / 2, _mouseCursorImage.height / 2), CursorMode.Auto);
+
     }
 
     public void StartLoading()
     {
-        LoadingTextTimeline.SetActive(true);
-        LoadingTextTimeline.GetComponent<PlayableDirector>().Play();
+        _loadingTextTimeline.SetActive(true);
+        _loadingTextTimeline.GetComponent<PlayableDirector>().Play();
         StartCoroutine(LoadingSequence());
     }
 
