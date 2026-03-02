@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Repair
   m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
   itemName: "\uB098\uB178 \uB9AC\uD398\uC5B4 \uBD07"
-  icon: {fileID: 0}
+  icon: {fileID: 2531992326394644286, guid: 55cd23291c7f4c84f8e36e14ae16d103, type: 3}
   passiveType: 3
   maxLevel: 5
   levelData:

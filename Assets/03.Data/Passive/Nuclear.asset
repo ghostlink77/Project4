@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nuclear
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpPassive
   itemName: "\uD734\uB300\uC6A9 \uC6D0\uC790\uB85C"
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 196d227ee46b12a4c9db457378f84b5a, type: 3}
   passiveType: 1
   maxLevel: 5
   levelData:

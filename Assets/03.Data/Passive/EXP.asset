@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EXP
   m_EditorClassIdentifier: Assembly-CSharp::PassiveItemData
   itemName: "\uC218\uC0C1\uD55C \uD30C\uC77C"
-  icon: {fileID: 0}
+  icon: {fileID: 2009479317920108927, guid: 040d80acdf8b52a48ae29de3f23de3f1, type: 3}
   passiveType: 6
   maxLevel: 5
   levelData:
