@@ -66,4 +66,9 @@ public class PlayerDefaultData : ScriptableObject
     [SerializeField]
     private WeaponStatData defaultWepon;
     public WeaponStatData DefaultWepon { get => defaultWepon; set => defaultWepon = value; }
+
+    [Header("기본 포탑")]
+    [SerializeField]
+    private TurretData defaultTurret;
+    public TurretData DefaultTurret { get => defaultTurret; set => defaultTurret = value; }
 }

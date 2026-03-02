@@ -41,6 +41,12 @@ public class EnemySpawnPoint : MonoBehaviour
     {
         while (_isSpawning)
         {
+            // NOTE: 보스는 한 번만 스폰
+            if (_enemyType == EnemyType.Boss)
+            {
+                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
+                yield break;
+            }
             yield return new WaitForSeconds(GetRandomInterval());
             if (EnemySpawner.Instance != null)
             {

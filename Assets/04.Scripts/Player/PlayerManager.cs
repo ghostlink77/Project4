@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         if (Instance == this)
         {
             SoundManager = SoundManager.Instance;
-            //PlayerComponentSetup();
+            PlayerItemController.AddDefaultItems();
         }
     }
 

@@ -19,7 +19,6 @@ public class EnemySpawnManager : MonoBehaviour
     private List<EnemySpawnPoint> _spawnPoints;
 
     [SerializeField] private Wavedata _waveData;
-    private Wave _currentWave;
     private int _waveIndex = -1;
 
     private void Start()
@@ -41,30 +40,40 @@ public class EnemySpawnManager : MonoBehaviour
         if (nextWaveIndex < _waveData.Waves.Length && playTime >= _waveData.Waves[nextWaveIndex].startTime)
         {
             _waveIndex = nextWaveIndex;
-            _currentWave = _waveData.Waves[_waveIndex];
-
-            Debug.Log($"Wave changed: EnemyType={_currentWave.enemyType}, SpawnInterval={_currentWave.spawnInterval}");
-            StopSpawnAllPoints();
-            foreach (var sp in _spawnPoints)
-            {
-                sp.SpawnInterval = _currentWave.spawnInterval;
-            }
-            StartSpawnAllPoints(_currentWave.enemyType);
+            ApplyWave(_waveData.Waves[_waveIndex]);
         }
         else if (_waveIndex == -1 && _waveData.Waves.Length > 0)
         {
             _waveIndex = 0;
-            _currentWave = _waveData.GetCurrentWave(0);
-            StartSpawnAllPoints(_currentWave.enemyType);
+            ApplyWave(_waveData.Waves[0]);
         }
     }
 
-    public void StartSpawnAllPoints(EnemyType enemyType)
+    private void ApplyWave(Wave wave)
     {
-        foreach (var sp in _spawnPoints)
+        StopSpawnAllPoints();
+
+        if (wave.spawnPointConfigs == null || wave.spawnPointConfigs.Length == 0)
         {
-            sp.StartSpawn(enemyType);
+            Debug.LogWarning("Wave에 SpawnPointConfig가 설정되지 않았습니다.");
+            return;
         }
+
+        foreach (SpawnPointConfig config in wave.spawnPointConfigs)
+        {
+            if (config.spawnPointIndex < 0 || config.spawnPointIndex >= _spawnPoints.Count)
+            {
+                Debug.LogWarning($"유효하지 않은 스폰포인트 인덱스: {config.spawnPointIndex}");
+                continue;
+            }
+
+            EnemySpawnPoint spawnPoint = _spawnPoints[config.spawnPointIndex];
+            float interval = config.spawnInterval > 0f ? config.spawnInterval : wave.defaultSpawnInterval;
+            spawnPoint.SpawnInterval = interval;
+            spawnPoint.StartSpawn(config.enemyType);
+        }
+
+        Debug.Log($"Wave {_waveIndex} 적용: {wave.spawnPointConfigs.Length}개 스폰포인트 활성화");
     }
 
     public void StopSpawnAllPoints()
@@ -74,5 +83,4 @@ public class EnemySpawnManager : MonoBehaviour
             sp.StopSpawn();
         }
     }
-    
 }
