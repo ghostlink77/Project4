@@ -24,6 +24,10 @@ public class WeaponShootController : MonoBehaviour
     [SerializeField]
     private float _dispersionAngle = 10f;
     
+    [Header("공격할 적 레이어")]
+    [SerializeField]
+    private LayerMask _enemyLayer;
+    
     // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
     #region 임시 추가 코드
     [SerializeField]
