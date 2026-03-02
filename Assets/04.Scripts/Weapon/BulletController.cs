@@ -21,8 +21,8 @@ public class BulletController : MonoBehaviour
 
     #region 투사체 스탯
     private float _projectileSpeed;
-    private int _projectileDmg;
-    public int ProjectileDmg {get => _projectileDmg;}
+    private float _projectileDmg;
+    public float ProjectileDmg {get => _projectileDmg;}
     #endregion
     
     private TrailRenderer _trailRenderer;
@@ -87,7 +87,7 @@ public class BulletController : MonoBehaviour
     #endregion
 
     #region 스탯 설정 및 반환 메서드
-    public void GetNeededVariableForAttack(int dmg, float speed, IObjectPool<GameObject> pool, WeaponEventController eventController)
+    public void GetNeededVariableForAttack(float dmg, float speed, IObjectPool<GameObject> pool, WeaponEventController eventController)
     {
         _projectileDmg = dmg;
         _projectileSpeed = speed;

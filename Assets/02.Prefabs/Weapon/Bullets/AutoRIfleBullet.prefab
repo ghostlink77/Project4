@@ -109,8 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _lifeTime: 3
+  _lifeTime: 5
   _deleteAfterAnimation: 0
+  _penetratable: 0
 --- !u!114 &-3673833467466675828
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,8 +32,8 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     
     [Header("무기 공격력")]
     [SerializeField]
-    private int damage;
-    public int Damage => damage;
+    private float damage;
+    public float Damage => damage;
     
     [Header("무기 치명타 확률")]
     [SerializeField]

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 196d227ee46b12a4c9db457378f84b5a
+guid: 2ddc2eee2658a5249b017bf72d0f6514
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1014005271760799969
-    second: Icon14_26_0
+      213: 8163301911369663424
+    second: empTur_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Icon14_26_0
+      name: empTur_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 30
-        height: 28
+        x: 8
+        y: 0
+        width: 49
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f17f258e3978de1f0800000000000000
-      internalID: -1014005271760799969
+      spriteID: 0c3c47d56dfd94170800000000000000
+      internalID: 8163301911369663424
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Icon14_26_0: -1014005271760799969
+      empTur_0: 8163301911369663424
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

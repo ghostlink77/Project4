@@ -19,10 +19,10 @@ public class PlayerStatController : MonoBehaviour, IDamageable
 
     public int CurrentLevel { get; set; }
     public float CurrentExp { get; set; }
-    public int MaxHp { get; set; }
-    public int CurrentHp { get; set; }
+    public float MaxHp { get; set; }
+    public float CurrentHp { get; set; }
     public int Defense { get; set; }
-    public int HpGenSpeed { get; set; }
+    public float HpGenSpeed { get; set; }
 
     public float DamageMultiplier { get; set; } = 1.0f;
     public float CriticalPercent { get; set; } = 0f;
@@ -191,7 +191,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         switch (type)
         {
             case Passive.Heart:
-                int prevMaxHp = MaxHp;
+                float prevMaxHp = MaxHp;
                 MaxHp += (int)val1;
                 CurrentHp += (MaxHp - prevMaxHp);
                 break;
@@ -232,7 +232,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (Dead == true) return;
 
@@ -252,7 +252,7 @@ public class PlayerStatController : MonoBehaviour, IDamageable
         Debug.Log($"데미지: {damage}, 현재 hp: {CurrentHp}");
     }
 
-    int CalculateReducedDmg(int damage, int defense)
+    int CalculateReducedDmg(float damage, int defense)
     {
         float value = damage * 100.0f / (100.0f + defense);
         return (int)Math.Round(value);

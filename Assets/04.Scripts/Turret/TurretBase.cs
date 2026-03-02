@@ -5,7 +5,7 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     [SerializeField] private TurretData _turretData;
     public TurretData TurretData => _turretData;
 
-    protected int _currentHp;
+    protected float _currentHp;
     private const int StartLevel = 1;
     protected int _level = 1;
     private bool _isInitialized;
@@ -25,7 +25,7 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
         _isInitialized = true;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _currentHp -= damage;
 
@@ -37,6 +37,7 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
 
     protected virtual void OnDestroyed()
     {
+        // TODO: 파괴 효과, 사운드 등 추가
         if (TurretManager.Instance != null)
         {
             TurretManager.Instance.UnregisterPlacedTurret(_turretData.GetName(), this);

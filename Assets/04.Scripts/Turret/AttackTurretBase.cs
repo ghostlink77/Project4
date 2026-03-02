@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,15 @@ public class AttackTurretBase : TurretBase
 
     private AttackTurretData _attackTurretData;
     private List<Transform> _enemiesInRange = new List<Transform>();
+    private List<Transform> _sortedTargets = new List<Transform>();
     private string _projectileKey;
 
     private float _fireTimer;
-    private Transform _target;
     private LayerMask _enemyLayer;
     private SpriteRenderer _spriteRenderer;
+
+    private bool _isFiring;
+    private static readonly WaitForSeconds FireDelay = new WaitForSeconds(0.1f);
 
     public override void Initialize(int level)
     {
@@ -24,13 +28,12 @@ public class AttackTurretBase : TurretBase
         _enemyLayer = LayerMask.GetMask("Enemy");
         _spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateEnemiesInRange();
-
-        Debug.Log($"Initializing turret: {gameObject.name} with data: {_attackTurretData.name}");
-
     }
 
     private void Update()
     {
+        if (_isFiring) return;
+
         _fireTimer += Time.deltaTime;
         if (_fireTimer >= _attackTurretData.FireRate[_level - 1])
         {
@@ -42,31 +45,70 @@ public class AttackTurretBase : TurretBase
     private void Fire()
     {
         UpdateEnemiesInRange();
-        if (_enemiesInRange.Count == 0)
-        {
-            return;
-        }
-        UpdateTarget();
+        if (_enemiesInRange.Count == 0) return;
 
-        if (_target.position.x < transform.position.x)
+        UpdateSortedTargets();
+        if (_sortedTargets.Count == 0) return;
+
+        int numProjectile = _attackTurretData.NumProjectile[_level - 1];
+
+        if (numProjectile <= 1)
         {
-            _spriteRenderer.flipX = true;
+            FlipSprite(_sortedTargets[0]);
+            FireProjectileAt(_sortedTargets[0]);
         }
         else
         {
-            _spriteRenderer.flipX = false;
+            StartCoroutine(FireMultipleProjectiles(numProjectile));
+        }
+    }
+
+    private IEnumerator FireMultipleProjectiles(int count)
+    {
+        _isFiring = true;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (_sortedTargets.Count == 0) break;
+
+            // NOTE: 타겟 인덱스가 범위를 초과하면 마지막 유효 타겟을 재사용
+            int targetIndex = Mathf.Min(i, _sortedTargets.Count - 1);
+            Transform target = _sortedTargets[targetIndex];
+
+            if (target == null || !target.gameObject.activeSelf)
+            {
+                UpdateEnemiesInRange();
+                UpdateSortedTargets();
+                if (_sortedTargets.Count == 0) break;
+                targetIndex = Mathf.Min(i, _sortedTargets.Count - 1);
+                target = _sortedTargets[targetIndex];
+            }
+
+            FlipSprite(target);
+            FireProjectileAt(target);
+
+            if (i < count - 1)
+            {
+                yield return FireDelay;
+            }
         }
 
+        _isFiring = false;
+    }
+
+    private void FireProjectileAt(Transform target)
+    {
         TurretProjectile projectile =
             TurretProjectileSpawner.Instance.SpawnProjectile(_projectileKey, _firePoint.position);
         if (projectile != null)
         {
-            projectile.Initialize(_target, _attackTurretData.ProjectileSpeed, _attackTurretData.Damage[_level - 1], _projectileKey);
+            projectile.Initialize(target, _attackTurretData.ProjectileSpeed, _attackTurretData.Damage[_level - 1], _projectileKey);
         }
-        else
-        {
-            Debug.LogError($"Failed to spawn projectile with key {_projectileKey}");
-        }
+    }
+
+    private void FlipSprite(Transform target)
+    {
+        _spriteRenderer.flipX = target.position.x < transform.position.x;
     }
 
     private void UpdateEnemiesInRange()
@@ -74,7 +116,6 @@ public class AttackTurretBase : TurretBase
         _enemiesInRange.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeSelf);
         Collider2D[] enemies =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _enemyLayer);
-        Debug.Log($"Enemies detected in range: {enemies.Length}");
 
         foreach (Collider2D enemy in enemies)
         {
@@ -84,28 +125,21 @@ public class AttackTurretBase : TurretBase
         }
     }
 
-    private void UpdateTarget()
+    private void UpdateSortedTargets()
     {
-        if (_enemiesInRange.Count == 0)
-        {
-            _target = null;
-            return;
-        }
-
-        Transform closestEnemy = null;
-        float closestDistance = Mathf.Infinity;
+        _sortedTargets.Clear();
+        Vector2 pos = transform.position;
         foreach (Transform enemy in _enemiesInRange)
         {
-            float distance = GetDirectionVector(transform.position, enemy.position).sqrMagnitude;
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestEnemy = enemy;
-            }
+            if (enemy == null || !enemy.gameObject.activeSelf) continue;
+            _sortedTargets.Add(enemy);
         }
-        _target = closestEnemy;
+        _sortedTargets.Sort((a, b) =>
+        {
+            float distA = ((Vector2)a.position - pos).sqrMagnitude;
+            float distB = ((Vector2)b.position - pos).sqrMagnitude;
+            return distA.CompareTo(distB);
+        });
     }
-
-    private Vector2 GetDirectionVector(Vector2 startPos, Vector2 endPos) => endPos - startPos;
 
 }

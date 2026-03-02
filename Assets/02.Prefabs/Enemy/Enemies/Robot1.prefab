@@ -208,7 +208,7 @@ MonoBehaviour:
   _speed: 0.8
   _maxHp: 9
   _enemyType: 2
-  _expDropAmount: 1
+  _expDropAmount: 2
 --- !u!1 &7319112613732629385
 GameObject:
   m_ObjectHideFlags: 0

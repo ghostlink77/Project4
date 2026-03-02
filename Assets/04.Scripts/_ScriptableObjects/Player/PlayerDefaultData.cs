@@ -8,16 +8,16 @@ public class PlayerDefaultData : ScriptableObject
     public int DefaultLevel {get => defaultLevel; set => defaultLevel = value;}
 
     [Header("플레이어 기본 최대 HP")]
-    [SerializeField] private int defaultMaxHP;
-    public int DefaultMaxHP {get => defaultMaxHP; set => defaultMaxHP = value;}
+    [SerializeField] private float defaultMaxHP;
+    public float DefaultMaxHP {get => defaultMaxHP; set => defaultMaxHP = value;}
     
     [Header("플레이어 기본 방어력")]
     [SerializeField] private int defaultDef;
     public int DefaultDef {get => defaultDef; set => defaultDef = value;}
     
     [Header("기본 체력 회복 속도")]
-    [SerializeField] private int defaultHpGenSpeed;
-    public int DefaultHpGenSpeed {get => defaultHpGenSpeed; set => defaultHpGenSpeed = value;}
+    [SerializeField] private float defaultHpGenSpeed;
+    public float DefaultHpGenSpeed {get => defaultHpGenSpeed; set => defaultHpGenSpeed = value;}
     
     [Header("기본 이동 속도")]
     [SerializeField] private float defaultSpeed;
