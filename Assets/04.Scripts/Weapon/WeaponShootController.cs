@@ -71,7 +71,10 @@ public class WeaponShootController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Add(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            enemiesInRange.Add(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
