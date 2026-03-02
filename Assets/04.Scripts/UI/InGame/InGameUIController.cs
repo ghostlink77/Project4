@@ -480,7 +480,7 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
-    public void UpdateInventory()
+    private void UpdateInventory()
     {
         foreach (var inventory in _inventories)
         {
