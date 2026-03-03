@@ -24,6 +24,10 @@ public class WeaponShootController : MonoBehaviour
     [SerializeField]
     private float _dispersionAngle = 10f;
     
+    [Header("공격할 적 레이어")]
+    [SerializeField]
+    private LayerMask _enemyLayer;
+    
     // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
     #region 임시 추가 코드
     [SerializeField]
@@ -67,12 +71,18 @@ public class WeaponShootController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Add(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            enemiesInRange.Add(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            enemiesInRange.Remove(collision.gameObject);
+        }
     }
 
     public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
