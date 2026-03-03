@@ -99,6 +99,7 @@ public class InGameUIController : MonoBehaviour
         }
 
         InGameManager.Instance.AgitGameOverAction += EndGame;
+        InGameManager.Instance.PlayerGameOverAction += EndGame;
 
         UpdateInventory();
 
@@ -113,6 +114,7 @@ public class InGameUIController : MonoBehaviour
         }
 
         InGameManager.Instance.AgitGameOverAction -= EndGame;
+        InGameManager.Instance.PlayerGameOverAction -= EndGame;
     }
 
     private void Update()

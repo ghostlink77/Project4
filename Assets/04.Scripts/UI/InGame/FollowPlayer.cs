@@ -5,7 +5,7 @@ public class FollowPlayer : MonoBehaviour
 {
     private Transform _playerTransform;
     [SerializeField] private Transform _agitTransform;
-    private Agit _agit;
+    [SerializeField] private CutSceneManager _cutSceneManager;
     private Vector3 _position = Vector2.zero;
 
     [SerializeField] private float _cameraMoveDuration = 0.5f;
@@ -56,10 +56,11 @@ public class FollowPlayer : MonoBehaviour
         }
         transform.position = targetPos;
 
-        if (_agit == null)
+        if (_cutSceneManager != null)
         {
-            _agit = _agitTransform.gameObject.GetComponent<Agit>();
+            _cutSceneManager.ShowAgitDeathAction();
         }
-        _agit.ShowEndGameAnim();
+        //_agit.ShowEndGameAnim();
+        //CutSceneManager.Instance.ShowGameOverAnim();
     }
 }
