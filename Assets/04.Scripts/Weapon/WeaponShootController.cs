@@ -79,7 +79,10 @@ public class WeaponShootController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            enemiesInRange.Remove(collision.gameObject);
+        }
     }
 
     public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
