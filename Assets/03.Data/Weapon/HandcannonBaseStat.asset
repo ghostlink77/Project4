@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7e0e8ab78922745a2ba1a3065f12e5, type: 3}
   m_Name: HandcannonBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
-  weaponName: 
-  icon: {fileID: 0}
-  projectilePrefab: {fileID: 0}
-  level: 0
-  type: 0
-  damage: 0
-  critRate: 0
-  critMultiplier: 0
-  effectRate: 0
-  atkSpeed: 0
-  atkRange: 0
-  projectileSpeed: 0
-  projectileCount: 0
+  weaponName: "\uD578\uB4DC \uCE90\uB17C"
+  icon: {fileID: 2109234943996966913, guid: 96fbc46e4fbda4050ab9387e06183afc, type: 3}
+  projectilePrefab: {fileID: 2687196738428583231, guid: 72677ec0a9a78482f878bc6f1e28ce11, type: 3}
+  level: 1
+  type: 1
+  damage: 30
+  critRate: 60
+  critMultiplier: 2
+  effectRate: 50
+  atkSpeed: 1.25
+  atkRange: 3
+  projectileSpeed: 30
+  projectileCount: 1
   _description: []
