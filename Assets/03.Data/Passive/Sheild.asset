@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sheild
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpPassive
   itemName: "\uC5D0\uB108\uC9C0 \uC274\uB4DC"
-  icon: {fileID: -8839553369793950398, guid: ca26287048a139e4e96aab5be276d507, type: 3}
+  icon: {fileID: 21300000, guid: ca26287048a139e4e96aab5be276d507, type: 3}
   passiveType: 2
   maxLevel: 5
   levelData:
