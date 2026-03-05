@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
+using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEditor.Build.Pipeline;
 using UnityEngine;
@@ -24,7 +25,6 @@ public class BulletController : MonoBehaviour
     private float _projectileDmg;
     public float ProjectileDmg {get => _projectileDmg;}
     #endregion
-    
     private TrailRenderer _trailRenderer;
     
     [SerializeField]
@@ -125,7 +125,7 @@ public class BulletController : MonoBehaviour
                 target.TakeDamage(_projectileDmg);
             }
             OnHit?.Invoke();
-            if (!_penetratable) Release();
+            if (!Penetratable) Release();
         }
     }
 }
