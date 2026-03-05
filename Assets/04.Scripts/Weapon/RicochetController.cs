@@ -1,0 +1,77 @@
+/*
+이 스크립트는 총알 게임 오브젝트에 붙어야 함.
+현재 구상 중인 구현 방식은 다음과 같음:
+활성화와 동시에 총알 관통을 활성화함.
+
+먼저 가장 가까운 적을 찾도록 함.
+적을 인식하면 도탄 횟수를 점검함.
+이후 적에게 발사하기 위해 총알을 생성함.
+생성한 총알에 공격력, 투사체 속도 스탯 주입.
+생성한 총알의 ricochetController를 변수화해서 현재 도탄 횟수에 -1 적용
+총알 이동 시작
+
+일단 이 방법에서 예상되는 문제로는
+- 총알이 생성되자마자 생성된 위치의 적에게 데미지를 입히는 문제
+가 있다.
+
+그래서 차라리 모양이 똑같이 생긴 "도탄 전용 투사체 프리팹"을 따로 구현하는 것도 좋지 않을까 하는 생각도 든다.
+*/
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class RicochetController : MonoBehaviour
+{
+    [Header("최대 도탄 횟수")]
+    [SerializeField]
+    private int _maxRicochetNumber;
+    public int MaxRicochetNumber {get => _maxRicochetNumber; set => _maxRicochetNumber = value;}
+    
+    private int _currentRicochetNumber;
+    private BulletController _bulletController;
+    
+    [Header("총알 사거리를 담는 게임오브젝트")]
+    [SerializeField]
+    private GameObject _ricochetRangeGameObject;
+    
+    private CircleCollider2D _ricochetRangeCollider;
+    
+    [Header("도탄 사거리")]
+    [SerializeField]
+    private float _ricochetRange = 5f;
+    
+    private List<GameObject> _enemyDirectionList;
+
+    private void Awake()
+    {
+        _ricochetRangeGameObject.SetActive(false);
+        _ricochetRangeCollider = _ricochetRangeGameObject.GetComponent<CircleCollider2D>();
+        _bulletController = GetComponent<BulletController>();
+    }
+
+    private void OnEnable()
+    {
+        _bulletController.Penetratable = true;
+        _currentRicochetNumber = _maxRicochetNumber;
+        if (_currentRicochetNumber > 0) _bulletController.OnHit += Ricochet;
+    }
+
+    private void OnDisable()
+    {
+        _bulletController.OnHit -= Ricochet;
+    }
+    
+    private void Ricochet()
+    {
+        EnemyFinder enemyFinder;
+        if (!_ricochetRangeGameObject.TryGetComponent<EnemyFinder>(out enemyFinder))
+        {
+            Debug.LogError("EnemyFinder가 존재하지 않음");
+            return;
+        }
+        enemyFinder.SetList(_enemyDirectionList);
+        if (_maxRicochetNumber <= 1) _bulletController.Penetratable = false;
+        _currentRicochetNumber--;
+    }
+}
