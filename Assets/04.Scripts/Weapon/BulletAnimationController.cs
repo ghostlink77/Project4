@@ -58,8 +58,7 @@ public class BulletAnimationController : MonoBehaviour
         if (!TryGetComponent<Collider2D>(out _collider2D)) Debug.LogError($"{nameof(_collider2D)}가 null임");
         if (!TryGetComponent<SpriteRenderer>(out _spriteRenderer)) Debug.LogError($"{nameof(_spriteRenderer)}가 null임");
         if (!TryGetComponent<Animator>(out _animator)) Debug.LogError($"{nameof(_animator)}가 null임");
-        if (_deleteAfterAnimation && _bulletAnimationClip != null)
-        _deleteAfterAnimation = _bulletController.DeleteAfterAnimation;
+        if (_deleteAfterAnimation && _bulletAnimationClip != null && _bulletController != null) _bulletController.SetLifeTime(_bulletAnimationClip.length);
     }
 
     private void OnEnable()
