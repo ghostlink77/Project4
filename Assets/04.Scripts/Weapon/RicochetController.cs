@@ -23,6 +23,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyFinder))]
 public class RicochetController : MonoBehaviour
 {
     [Header("최대 도탄 횟수")]
@@ -33,22 +34,13 @@ public class RicochetController : MonoBehaviour
     private int _currentRicochetNumber;
     private BulletController _bulletController;
     
-    [Header("총알 사거리를 담는 게임오브젝트")]
-    [SerializeField]
-    private GameObject _ricochetRangeGameObject;
-    
-    private CircleCollider2D _ricochetRangeCollider;
     
     [Header("도탄 사거리")]
     [SerializeField]
     private float _ricochetRange = 5f;
     
-    private List<GameObject> _enemyDirectionList;
-
     private void Awake()
     {
-        _ricochetRangeGameObject.SetActive(false);
-        _ricochetRangeCollider = _ricochetRangeGameObject.GetComponent<CircleCollider2D>();
         _bulletController = GetComponent<BulletController>();
     }
 
@@ -67,12 +59,23 @@ public class RicochetController : MonoBehaviour
     private void Ricochet()
     {
         EnemyFinder enemyFinder;
-        if (!_ricochetRangeGameObject.TryGetComponent<EnemyFinder>(out enemyFinder))
+        if (!TryGetComponent<EnemyFinder>(out enemyFinder))
         {
             Debug.LogError("EnemyFinder가 존재하지 않음");
             return;
         }
-        enemyFinder.SetList(_enemyDirectionList);
+        Transform closestEnemyTransform = enemyFinder.GetClosestEnemy(_ricochetRange);
+        if (closestEnemyTransform == null)
+        {
+            Debug.LogError("주변에 적 없으므로 도탄 중지");
+            return;
+        }
+        Debug.LogError($"주변에 가장 가까운 적 위치: {closestEnemyTransform.position}");
+
+        Vector2 enemyDirection = (closestEnemyTransform.position - transform.position).normalized;
+        Debug.LogError($"기존 / 바뀔 방향: {transform.right} / {enemyDirection}");
+        gameObject.transform.right = enemyDirection;
+
         if (_maxRicochetNumber <= 1) _bulletController.Penetratable = false;
         _currentRicochetNumber--;
     }
