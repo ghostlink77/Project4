@@ -1,13 +1,7 @@
 using System;
 using System.Collections;
-using System.ComponentModel;
-using Unity.VisualScripting;
-using UnityEditor.Build.Pipeline;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Pool;
-using UnityEngine.ResourceManagement.ResourceProviders;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(BulletSoundController))]
 [RequireComponent(typeof(AudioSource))]
@@ -22,11 +16,12 @@ public class BulletController : MonoBehaviour
     #region 투사체 스탯
     private float _projectileSpeed;
     private float _projectileDmg;
-    public float ProjectileDmg {get => _projectileDmg;}
+    public float ProjectileDmg { get => _projectileDmg; }
     #endregion
     
     private TrailRenderer _trailRenderer;
-    
+    private Coroutine _deactivateCoroutine;
+
     [SerializeField]
     [Header("총알 수명(초)")]
     private float _lifeTime = 3f;
@@ -38,13 +33,18 @@ public class BulletController : MonoBehaviour
     [Header("총알 관통 여부")]
     [SerializeField]
     private bool _penetratable = false;
-    public bool Penetratable {get => _penetratable; set => _penetratable = value;}
+    public bool Penetratable { get => _penetratable; set => _penetratable = value; }
 
-    public bool DeleteAfterAnimation {get => _deleteAfterAnimation; set => _deleteAfterAnimation = value;}
+    [Header("폭발형 투사체 여부 (직접 데미지 스킵)")]
+    [SerializeField]
+    private bool _isExplosive = false;
+    public bool IsExplosive { get => _isExplosive; set => _isExplosive = value; }
+
+    public bool DeleteAfterAnimation { get => _deleteAfterAnimation; set => _deleteAfterAnimation = value; }
 
     #region 오브젝트 풀링
     private IObjectPool<GameObject> _projectilePool;
-    public IObjectPool<GameObject> ProjectilePool {get => _projectilePool; set => _projectilePool = value;}
+    public IObjectPool<GameObject> ProjectilePool { get => _projectilePool; set => _projectilePool = value; }
     #endregion
     
     #region 참조변수
@@ -75,12 +75,7 @@ public class BulletController : MonoBehaviour
         _collider2D.enabled = true;
         ResetTrailRendererLine();
 
-        StartCoroutine(DeactivateAfterTime());
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
+        _deactivateCoroutine = StartCoroutine(DeactivateAfterTime());
     }
 
     private void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
@@ -96,7 +91,7 @@ public class BulletController : MonoBehaviour
     
     private void ResetTrailRendererLine()
     {
-        if(_trailRenderer == null) return;
+        if (_trailRenderer == null) return;
         _trailRenderer.Clear();
     }
     
@@ -108,21 +103,27 @@ public class BulletController : MonoBehaviour
     {
         yield return _delayForBulletDisable;
         Release();
+        Debug.Log($"총알 lifetime 만료 lifetime: {_lifeTime}");
     }
     #endregion
     
     private void Release()
     {
         if (gameObject.activeSelf) _projectilePool.Release(gameObject);
+        StopCoroutine(_deactivateCoroutine);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && gameObject.activeSelf)
         {
-            if (other.TryGetComponent<IDamageable>(out var target))
+            // NOTE: 폭발형 투사체는 직접 데미지를 주지 않고 GenerateExplosion에서 범위 데미지를 처리한다
+            if (!_isExplosive)
             {
-                target.TakeDamage(_projectileDmg);
+                if (other.TryGetComponent<IDamageable>(out var target))
+                {
+                    target.TakeDamage(_projectileDmg);
+                }
             }
             OnHit?.Invoke();
             if (!_penetratable) Release();

@@ -60,7 +60,6 @@ public class BulletAnimationController : MonoBehaviour
         if (!TryGetComponent<Animator>(out _animator)) Debug.LogError($"{nameof(_animator)}가 null임");
         if (_deleteAfterAnimation && _bulletAnimationClip != null)
         _deleteAfterAnimation = _bulletController.DeleteAfterAnimation;
-        _bulletController.SetLifeTime(_bulletAnimationClip.length);
     }
 
     private void OnEnable()
