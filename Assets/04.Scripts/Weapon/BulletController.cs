@@ -77,6 +77,10 @@ public class BulletController : MonoBehaviour
 
         _deactivateCoroutine = StartCoroutine(DeactivateAfterTime());
     }
+    private void OnDisable()
+    {
+        StopCoroutine(_deactivateCoroutine);
+    }
 
     private void Update() => transform.Translate(Vector2.right * _projectileSpeed * Time.deltaTime);
     #endregion
@@ -103,14 +107,12 @@ public class BulletController : MonoBehaviour
     {
         yield return _delayForBulletDisable;
         Release();
-        Debug.Log($"총알 lifetime 만료 lifetime: {_lifeTime}");
     }
     #endregion
     
     private void Release()
     {
         if (gameObject.activeSelf) _projectilePool.Release(gameObject);
-        StopCoroutine(_deactivateCoroutine);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

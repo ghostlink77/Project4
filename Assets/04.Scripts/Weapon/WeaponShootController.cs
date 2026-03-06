@@ -24,8 +24,6 @@ public class WeaponShootController : MonoBehaviour
     [SerializeField]
     private float _dispersionAngle = 10f;
 
-    public int EnemyCountInRange;
-
     [Header("공격할 적 레이어")]
     [SerializeField]
     private LayerMask _enemyLayer;
@@ -76,7 +74,6 @@ public class WeaponShootController : MonoBehaviour
         if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
         {
             _enemiesInRange.Add(collision.gameObject);
-            EnemyCountInRange = _enemiesInRange.Count;
         }
     }
 
@@ -85,7 +82,6 @@ public class WeaponShootController : MonoBehaviour
         if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
         {
             _enemiesInRange.Remove(collision.gameObject);
-            EnemyCountInRange = _enemiesInRange.Count;
         }
     }
 

@@ -45,7 +45,6 @@ public class GenerateExplosion : MonoBehaviour
             // NOTE: CircleCollider2D.radius는 로컬 스페이스 값이므로 프리팹의 Scale을 반영해야 한다
             float scale = Mathf.Max(explosionPrefab.transform.localScale.x, explosionPrefab.transform.localScale.y);
             _explosionRadius = collider.radius * scale;
-            Debug.Log($"폭발 범위 캐싱: radius={collider.radius}, scale={scale}, 최종={_explosionRadius}");
         }
         else
         {
