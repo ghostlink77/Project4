@@ -49,7 +49,11 @@ public class EnemyFinder : MonoBehaviour
             enemyPos = _enemyDirectionList[i].transform.position;
             direction = GetDirection(bulletPos, enemyPos);
             float currentMultipleLength = GetMultipleLength(direction);
-            if (currentMultipleLength < closestMultipleLength) closestDirection = direction;
+            if (currentMultipleLength < closestMultipleLength)
+            {
+                closestDirection = direction;
+                closestMultipleLength = currentMultipleLength;
+            }
         }
         return closestDirection.normalized;
     }
