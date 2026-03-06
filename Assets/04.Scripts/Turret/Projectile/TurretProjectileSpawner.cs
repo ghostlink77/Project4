@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class TurretProjectileSpawner : SingletonBehaviour<TurretProjectileSpawner>
 {
-    private const int MaxSize = 12;
+    private const int MaxSize = 18;
     private const int InitSize = 6;
 
     private Dictionary<string, ObjectPool<TurretProjectile>> _projectilePools = new Dictionary<string, ObjectPool<TurretProjectile>>();
