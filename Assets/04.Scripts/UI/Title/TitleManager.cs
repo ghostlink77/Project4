@@ -13,7 +13,7 @@ public class TitleManager : MonoBehaviour
         DataTableManager.Instance.SetData();
 
         if (_mouseCursorImage != null)
-            Cursor.SetCursor(_mouseCursorImage, new Vector2(_mouseCursorImage.width / 2, _mouseCursorImage.height / 2), CursorMode.Auto);
+            Cursor.SetCursor(_mouseCursorImage, Vector2.zero, CursorMode.Auto);
 
     }
 
