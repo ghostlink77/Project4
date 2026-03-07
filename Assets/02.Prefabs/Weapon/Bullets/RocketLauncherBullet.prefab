@@ -302,8 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _lifeTime: 3
+  _lifeTime: 5
   _deleteAfterAnimation: 0
+  _penetratable: 0
+  _isExplosive: 1
 --- !u!114 &3328102590677456804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,3 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateExplosion
   explosionPrefab: {fileID: 5562719415326265950, guid: ffa15aebc95aa46bba2e80abe0ae0967, type: 3}
+  _damageableLayer:
+    serializedVersion: 2
+    m_Bits: 3145728
+  _playerDamageMultiplier: 0.6
