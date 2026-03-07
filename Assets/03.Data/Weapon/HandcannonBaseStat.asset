@@ -23,6 +23,6 @@ MonoBehaviour:
   effectRate: 50
   atkSpeed: 1.25
   atkRange: 3
-  projectileSpeed: 30
+  projectileSpeed: 6
   projectileCount: 1
   _description: []
