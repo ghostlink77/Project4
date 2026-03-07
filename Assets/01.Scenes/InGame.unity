@@ -7663,7 +7663,7 @@ MonoBehaviour:
   _hpAnimBar: {fileID: 1645887}
   _blendInTime: 1
   _animSpeed: 1
-  _UIowner: {fileID: 0}
+  _UIOwner: {fileID: 0}
   _customPosition: {x: 0, y: 0, z: 0}
   _isFocus: 0
 --- !u!4 &812005200 stripped
@@ -10735,7 +10735,7 @@ MonoBehaviour:
   _hpAnimBar: {fileID: 665471049}
   _blendInTime: 1
   _animSpeed: 1
-  _UIowner: {fileID: 1373398688}
+  _UIOwner: {fileID: 1373398688}
   _customPosition: {x: 0, y: -0.5, z: 0}
   _isFocus: 1
 --- !u!4 &1995769463 stripped

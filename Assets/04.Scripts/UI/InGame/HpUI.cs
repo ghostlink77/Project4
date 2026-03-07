@@ -13,26 +13,25 @@ public class HpUI : MonoBehaviour
     [SerializeField] private float _animSpeed;
     private Coroutine _animCoroutine;
     private const float FULL_AMOUNT = 1f;
+    private WaitForSeconds _waitForBlendInTime;
 
     [Header("Owner")]
-    [SerializeField] private GameObject _UIowner;
+    [SerializeField] private GameObject _UIOwner;
 
     [Header("UI Position Value")]
     [SerializeField] private Vector3 _customPosition;
     [SerializeField] private bool _isFocus;
-    private Vector3 _position;
     
     private void Awake()
     {
         _hpBar.fillAmount = FULL_AMOUNT;
         _hpAnimBar.fillAmount = FULL_AMOUNT;
+        _waitForBlendInTime = new WaitForSeconds(_blendInTime);
     }
     private void Update()
     {
-        if (!_isFocus) return;
-        _position = _UIowner.transform.position;
-        _position += _customPosition;
-        transform.position = _position;
+        if (!_isFocus || !_UIOwner) return;
+        transform.position = _UIOwner.transform.position + _customPosition;
     }
 
     public void UpdateHpBar(float currentHp, float maxHp)
@@ -51,7 +50,7 @@ public class HpUI : MonoBehaviour
     {
         Image animBar = _hpAnimBar;
         Image bar = _hpBar;
-        yield return new WaitForSeconds(_blendInTime);
+        yield return _waitForBlendInTime;
 
         while (animBar.fillAmount > bar.fillAmount)
         {
