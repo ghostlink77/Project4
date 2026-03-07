@@ -33,6 +33,7 @@ public class TurretSelectUI : MonoBehaviour
         _mainCamera = Camera.main;
         _setImage?.gameObject.SetActive(false);
         gameObject.SetActive(true);
+        _panel?.SetActive(false);
         _anim = GetComponent<Animator>();
         _turretBtns = GetComponentsInChildren<Button>();
         foreach (var btn in _turretBtns)
