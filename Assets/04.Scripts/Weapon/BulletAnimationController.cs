@@ -31,7 +31,7 @@ public class BulletAnimationController : MonoBehaviour
     
     private void OnEventHit(Collider2D hitTarget)
     {
-        HideBulletSprite();
+        if (!_bulletController.Penetratable) HideBulletSprite();
     }
     
     private void HideBulletSprite()
