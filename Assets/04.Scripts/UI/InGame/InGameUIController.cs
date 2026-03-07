@@ -100,6 +100,7 @@ public class InGameUIController : MonoBehaviour
 
         InGameManager.Instance.AgitGameOverAction += EndGame;
         InGameManager.Instance.PlayerGameOverAction += EndGame;
+        InGameManager.Instance.PlayerWinAction += PlayerWinEndGame;
 
         UpdateInventory();
 
@@ -115,6 +116,7 @@ public class InGameUIController : MonoBehaviour
 
         InGameManager.Instance.AgitGameOverAction -= EndGame;
         InGameManager.Instance.PlayerGameOverAction -= EndGame;
+        InGameManager.Instance.PlayerWinAction -= PlayerWinEndGame;
     }
 
     private void Update()
@@ -522,6 +524,11 @@ public class InGameUIController : MonoBehaviour
     {
         _inGameUI?.SetActive(false);
         _worldCanvas?.SetActive(false);
+    }
+
+    private void PlayerWinEndGame()
+    {
+        _playTimeUI.text = "Player Win!!";
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

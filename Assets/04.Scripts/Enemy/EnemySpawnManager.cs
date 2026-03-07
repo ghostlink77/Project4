@@ -25,6 +25,12 @@ public class EnemySpawnManager : MonoBehaviour
     {
         _spawnPoints = new List<EnemySpawnPoint>(GetComponentsInChildren<EnemySpawnPoint>());
         UpdateWave();
+        InGameManager.Instance.PlayerWinAction += StopSpawnAllPoints;
+    }
+
+    private void OnDestroy()
+    {
+        InGameManager.Instance.PlayerWinAction -= StopSpawnAllPoints;
     }
 
     private void Update()

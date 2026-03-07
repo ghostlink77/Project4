@@ -962,6 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657e13ae01e2ae04385c4e014e036130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  _enemyAllDeadSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!4 &296131733
 Transform:
   m_ObjectHideFlags: 0
@@ -8640,6 +8641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783c483876807d648b2a7c5df4cef0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _gameClearConditionTime: 15
 --- !u!4 &1340342960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
@@ -9616,12 +9618,42 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 396129191f1775e43bd473cece8930f9, type: 2}
+    - {fileID: 11400000, guid: 8d87754fe3cc4bb46b5509d193a00317, type: 2}
+    - {fileID: 11400000, guid: 8bb0efa2bb884ea43a988316c5579cf6, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1782945156}
           m_TargetAssemblyTypeName: CutSceneManager, Assembly-CSharp
           m_MethodName: ShowGameOverUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1782945156}
+          m_TargetAssemblyTypeName: CutSceneManager, Assembly-CSharp
+          m_MethodName: StopSlow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1782945156}
+          m_TargetAssemblyTypeName: CutSceneManager, Assembly-CSharp
+          m_MethodName: StopTime
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9640,7 +9672,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1782945153}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: c83f48010187d2c47b7c0dbb716a8d52, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
@@ -9660,6 +9692,16 @@ PlayableDirector:
     value: {fileID: 1077642988}
   - key: {fileID: -4159922696642935828, guid: c83f48010187d2c47b7c0dbb716a8d52, type: 2}
     value: {fileID: 1782945154}
+  - key: {fileID: -6006808190738538473, guid: c83f48010187d2c47b7c0dbb716a8d52, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6729364684552983757, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
+    value: {fileID: 1782945154}
+  - key: {fileID: 3862960476744610036, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
+    value: {fileID: 2591889185869983796}
+  - key: {fileID: -546194331596965482, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
+    value: {fileID: 1077642988}
+  - key: {fileID: -5901032114654531287, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1782945156
@@ -9677,6 +9719,7 @@ MonoBehaviour:
   _director: {fileID: 1782945155}
   _playerDeathCutScene: {fileID: 11400000, guid: a6f27ba3420d3d947829e01a4c6543ef, type: 2}
   _agitDeathCutScene: {fileID: 11400000, guid: c83f48010187d2c47b7c0dbb716a8d52, type: 2}
+  _playerWinCutScene: {fileID: 11400000, guid: 65e079bc15e7f2143b2a4db638122096, type: 2}
 --- !u!4 &1782945157
 Transform:
   m_ObjectHideFlags: 0
@@ -19834,6 +19877,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294963456
       objectReference: {fileID: 0}
+    - target: {fileID: 6093468275051715227, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      propertyPath: m_text
+      value: Player Win
+      objectReference: {fileID: 0}
     - target: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -19869,6 +19916,9 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 1077642991}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9220836302188827669, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2591889185869983796}
     - targetCorrespondingSourceObject: {fileID: 6349792748815339905, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2591889185869983794}
@@ -19920,6 +19970,33 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &2591889185869983795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9220836302188827669, guid: 51abe3c32790ed840818e1721bc9bbf3, type: 3}
+  m_PrefabInstance: {fileID: 2591889185869983790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2591889185869983796
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591889185869983795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5668450579320411580
 MonoBehaviour:
   m_ObjectHideFlags: 0
