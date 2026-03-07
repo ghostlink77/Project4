@@ -77,7 +77,7 @@ public class RicochetController : MonoBehaviour
         Debug.LogError($"기존 / 바뀔 방향: {transform.right} / {enemyDirection}");
         gameObject.transform.right = enemyDirection;
 
-        if (_maxRicochetNumber <= 1) _bulletController.Penetratable = false;
+        if (_currentRicochetNumber <= 1) _bulletController.Penetratable = false;
         _currentRicochetNumber--;
     }
 }
