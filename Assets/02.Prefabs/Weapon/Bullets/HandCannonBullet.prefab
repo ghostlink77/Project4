@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f102a471d32d44f4e94ef787c512cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  _lifeTime: 3
+  _lifeTime: 10
   _deleteAfterAnimation: 0
   _penetratable: 0
 --- !u!114 &2897313329502328934
@@ -318,8 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e13435a79b014cd8bbebc87812f1d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RicochetController
-  _maxRicochetNumber: 3
-  _ricochetRangeGameObject: {fileID: 0}
+  _maxRicochetNumber: 10
   _ricochetRange: 5
 --- !u!114 &7075906778255349521
 MonoBehaviour:
