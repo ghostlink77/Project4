@@ -56,7 +56,7 @@ public class RicochetController : MonoBehaviour
         _bulletController.OnHit -= Ricochet;
     }
     
-    private void Ricochet()
+    private void Ricochet(Collider2D hitTarget)
     {
         EnemyFinder enemyFinder;
         if (!TryGetComponent<EnemyFinder>(out enemyFinder))
