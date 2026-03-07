@@ -33,6 +33,7 @@ public class RicochetController : MonoBehaviour
     
     private int _currentRicochetNumber;
     private BulletController _bulletController;
+    private EnemyFinder _enemyFinder;
     
     
     [Header("도탄 사거리")]
@@ -42,6 +43,7 @@ public class RicochetController : MonoBehaviour
     private void Awake()
     {
         _bulletController = GetComponent<BulletController>();
+        _enemyFinder = GetComponent<EnemyFinder>();
     }
 
     private void OnEnable()
@@ -64,14 +66,8 @@ public class RicochetController : MonoBehaviour
             return;
         }
 
-        EnemyFinder enemyFinder;
-        if (!TryGetComponent<EnemyFinder>(out enemyFinder))
-        {
-            Debug.LogError("EnemyFinder가 존재하지 않음");
-            return;
-        }
-        enemyFinder.HitTarget = hitTarget;
-        Transform closestEnemyTransform = enemyFinder.GetClosestEnemy(_ricochetRange);
+        _enemyFinder.HitTarget = hitTarget;
+        Transform closestEnemyTransform = _enemyFinder.GetClosestEnemy(_ricochetRange);
         if (closestEnemyTransform == null)
         {
             _bulletController.Penetratable = false;
