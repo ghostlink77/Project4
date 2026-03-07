@@ -64,6 +64,7 @@ public class RicochetController : MonoBehaviour
             Debug.LogError("EnemyFinder가 존재하지 않음");
             return;
         }
+        enemyFinder.HitTarget = hitTarget;
         Transform closestEnemyTransform = enemyFinder.GetClosestEnemy(_ricochetRange);
         if (closestEnemyTransform == null)
         {
