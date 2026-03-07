@@ -8,7 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
 {
     private const int MaxSize = 100;
-    private const int InitSize = 10;
+    private const int InitSize = 30;
 
     private ObjectPool<GameObject> _expObjectPool;
     private GameObject _expObjectPrefab;

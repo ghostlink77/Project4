@@ -14,7 +14,7 @@ public class WeaponShootController : MonoBehaviour
     private IObjectPool<GameObject> _projectilePool;
     private GameObject _bulletPrefab;
     private CircleCollider2D _weaponRangeCollider;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
+    private List<GameObject> _enemiesInRange = new List<GameObject>();
     private WeaponStatController _weaponStatController;
     private WeaponEventController _weaponEventController;
 
@@ -23,7 +23,7 @@ public class WeaponShootController : MonoBehaviour
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
-    
+
     [Header("공격할 적 레이어")]
     [SerializeField]
     private LayerMask _enemyLayer;
@@ -73,7 +73,7 @@ public class WeaponShootController : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
         {
-            enemiesInRange.Add(collision.gameObject);
+            _enemiesInRange.Add(collision.gameObject);
         }
     }
 
@@ -81,7 +81,7 @@ public class WeaponShootController : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
         {
-            enemiesInRange.Remove(collision.gameObject);
+            _enemiesInRange.Remove(collision.gameObject);
         }
     }
 
@@ -93,7 +93,7 @@ public class WeaponShootController : MonoBehaviour
             return;
         }
         _atkCoolTime += Time.deltaTime;
-        if (enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
+        if (_enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
         {
             _atkCoolTime = 0f;
             Shoot(weaponDamage, projectileSpeed);
@@ -124,21 +124,23 @@ public class WeaponShootController : MonoBehaviour
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
     {
-        if (enemiesInRange.Count == 0) return Vector2.zero;
+        if (_enemiesInRange.Count == 0) return Vector2.zero;
         
         int smallestIndex = 0;
         float smallestDistance = float.MaxValue;
         
         Vector2 targetPos = Vector2.zero;
-        for (int i = 0; i < enemiesInRange.Count; i++)
+        _enemiesInRange.RemoveAll(enemy => enemy == null);
+        for (int i = 0; i < _enemiesInRange.Count; i++)
         {
-            if (enemiesInRange[i] == null) continue;
-            Vector2 targetCandidatePos = enemiesInRange[i].transform.position;
+            if (_enemiesInRange[i] == null) continue;
+            Vector2 targetCandidatePos = _enemiesInRange[i].transform.position;
             float oneEnemyDistance = GetDirectionVector(playerPos,targetCandidatePos).sqrMagnitude;
             if (smallestDistance > oneEnemyDistance)
             {
                 smallestIndex = i;
                 targetPos = targetCandidatePos;
+                smallestDistance = oneEnemyDistance;
             }
         }
         // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
