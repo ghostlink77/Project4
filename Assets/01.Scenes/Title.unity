@@ -924,7 +924,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1407357419250742325, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 2323307279601998464, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_Name
@@ -937,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: _mouseCursorImage
       value: 
-      objectReference: {fileID: 2800000, guid: 02a619e21d1191a4cb417f0d3b69f437, type: 3}
+      objectReference: {fileID: 2800000, guid: 9fdad510a7a9eef45b22e7076ee4eff0, type: 3}
     - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: _loadingTextTimeline
       value: 
