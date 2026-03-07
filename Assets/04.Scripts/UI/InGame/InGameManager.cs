@@ -102,6 +102,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
     {
         GameStat = GameStat.End;
         Time.timeScale = 0f;
+        AudioManager.Instance.StopAll();
 
         if (isPlayerDead)
         {
