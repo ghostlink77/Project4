@@ -16,7 +16,7 @@ using UnityEngine.UIElements;
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
-    public event Action OnHit;
+    public event Action<Collider2D> OnHit;
     public void InvokeOnHit() => OnHit?.Invoke();
     #endregion
 
