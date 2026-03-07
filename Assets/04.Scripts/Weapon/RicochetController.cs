@@ -58,6 +58,12 @@ public class RicochetController : MonoBehaviour
     
     private void Ricochet(Collider2D hitTarget)
     {
+        if (_currentRicochetNumber <= 0)
+        {
+            _bulletController.Penetratable = false;
+            return;
+        }
+
         EnemyFinder enemyFinder;
         if (!TryGetComponent<EnemyFinder>(out enemyFinder))
         {
@@ -68,16 +74,13 @@ public class RicochetController : MonoBehaviour
         Transform closestEnemyTransform = enemyFinder.GetClosestEnemy(_ricochetRange);
         if (closestEnemyTransform == null)
         {
+            _bulletController.Penetratable = false;
             Debug.LogError("주변에 적 없으므로 도탄 중지");
             return;
         }
-        Debug.LogError($"주변에 가장 가까운 적 위치: {closestEnemyTransform.position}");
 
         Vector2 enemyDirection = (closestEnemyTransform.position - transform.position).normalized;
-        Debug.LogError($"기존 / 바뀔 방향: {transform.right} / {enemyDirection}");
-        gameObject.transform.right = enemyDirection;
-
-        if (_currentRicochetNumber <= 1) _bulletController.Penetratable = false;
+        gameObject.transform.right = (closestEnemyTransform.position - transform.position).normalized;
         _currentRicochetNumber--;
     }
 }
