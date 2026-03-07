@@ -9,26 +9,6 @@ public class EnemyFinder : MonoBehaviour
 
     private Collider2D _hitTarget;
     public Collider2D HitTarget {get => _hitTarget; set=> _hitTarget = value;}
-    
-    /*
-    private Transform[] GetEnemyCollidersInRange(float radius)
-    {
-        Collider2D[] targetColliders = Physics2D.OverlapCircleAll(transform.position, radius, _targetLayer);
-
-        List<Collider2D> filteredList = new List<Collider2D>();
-
-        
-        int targetCount = targetColliders.Length;
-        Transform[] detactedTargetsTransform = new Transform[targetCount];
-        
-        for (int i = 0; i < targetCount; i++)
-        {
-            detactedTargetsTransform[i] = targetColliders[i].transform;
-        }
-
-        return detactedTargetsTransform;
-    }
-    */
 
     private List<Transform> GetEnemyCollidersInRange(float radius)
     {
