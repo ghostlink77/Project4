@@ -29,7 +29,7 @@ public class GenerateExplosion : MonoBehaviour
         _bulletController.OnHit -= GenerateExplosionOnBulletPosition;
     }
 
-    private void GenerateExplosionOnBulletPosition()
+    private void GenerateExplosionOnBulletPosition(Collider2D hitTarget)
     {
         Vector2 bulletPosision = gameObject.transform.position;
         GameObject createdExplosion = Instantiate(explosionPrefab, bulletPosision, Quaternion.identity);
