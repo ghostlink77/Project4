@@ -17,7 +17,7 @@ public class BulletController : MonoBehaviour
 {
     #region 이벤트
     public event Action<Collider2D> OnHit;
-    public void InvokeOnHit() => OnHit?.Invoke();
+    public void InvokeOnHit(Collider2D hitTarget) => OnHit?.Invoke(hitTarget);
     #endregion
 
     #region 투사체 스탯
@@ -124,7 +124,7 @@ public class BulletController : MonoBehaviour
             {
                 target.TakeDamage(_projectileDmg);
             }
-            OnHit?.Invoke();
+            InvokeOnHit(other);
             if (!Penetratable) Release();
         }
     }
