@@ -11,5 +11,5 @@ adder *= first_stat
 print(f"레벨 당 증가값: {adder}")
 
 for i in range(max_level):
-    result = round(first_stat + adder * i, 0)
+    result = round(first_stat + adder * i, 3)
     print(f"{i+1}번째 스탯: {result}")
