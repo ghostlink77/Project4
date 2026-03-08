@@ -32,43 +32,43 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     
     [Header("무기 공격력")]
     [SerializeField]
-    private float damage;
-    public float Damage => damage;
+    private float[] damage = new float[8];
+    public float[] Damage => damage;
     
     [Header("무기 치명타 확률")]
     [SerializeField]
-    private float critRate;
-    public float CritRate => critRate;
+    private float[] critRate = new float[8];
+    public float[] CritRate => critRate;
 
     [Header("무기 치명타 배수")]
     [SerializeField]
-    private float critMultiplier;
-    public float CritMultiplier => critMultiplier;
+    private float[] critMultiplier = new float[8];
+    public float[] CritMultiplier => critMultiplier;
 
     [Header("상태 이상 확률")]
     [SerializeField]
-    private float effectRate;
-    public float EffectRate => effectRate;
+    private float[] effectRate = new float[8];
+    public float[] EffectRate => effectRate;
 
     [Header("공격 쿨타임(공격 속도)")]
     [SerializeField]
-    private float atkSpeed;
-    public float AtkSpeed => atkSpeed;
+    private float[] atkSpeed = new float[8];
+    public float[] AtkSpeed => atkSpeed;
 
     [Header("공격 사거리")]
     [SerializeField]
-    private float atkRange;
-    public float AtkRange => atkRange;
+    private float[] atkRange = new float[8];
+    public float[] AtkRange => atkRange;
 
     [Header("투사체 속도")]
     [SerializeField]
-    private float projectileSpeed;
-    public float ProjectileSpeed => projectileSpeed;
+    private float[] projectileSpeed = new float[8];
+    public float[] ProjectileSpeed => projectileSpeed;
     
     [Header("투사체 개수")]
     [SerializeField]
-    private int projectileCount;
-    public int ProjectileCount => projectileCount;
+    private int[] projectileCount = new int[8];
+    public int[] ProjectileCount => projectileCount;
 
     [Header("아이템 설명")]
     [SerializeField]
