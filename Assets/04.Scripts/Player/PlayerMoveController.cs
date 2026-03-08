@@ -102,6 +102,8 @@ public class PlayerMoveController : MonoBehaviour
         _currentPos = _rigidBody.position;
         _currentPos += InputVector * _playerStatController.MoveSpeed * Time.fixedDeltaTime;
 
+        _rigidBody.linearVelocity = Vector2.zero;
+
         bool isMoving = CheckMove();
         if (isMoving == false) return;
 
@@ -111,7 +113,7 @@ public class PlayerMoveController : MonoBehaviour
     
     private bool CheckMove()
     {
-        if (InputVector != _currentPos)
+        if (InputVector != Vector2.zero)
         {
             _playerEventController.CallMove();
             return true;
