@@ -108,6 +108,10 @@ public class WeaponShootController : MonoBehaviour
         for (int i = 0; i < _projectileCount; i++)
         {
             GameObject bullet = _projectilePool.Get();
+            if (bullet.TryGetComponent<RicochetController>(out RicochetController ricochetController))
+            {
+                bullet.GetComponent<BulletController>().Penetratable = true;
+            }
             if (_projectileCount >= 2)
             {
                 float addedAngle = UnityEngine.Random.Range(-_dispersionAngle/2, _dispersionAngle/2);

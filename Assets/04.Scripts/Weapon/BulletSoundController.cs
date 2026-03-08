@@ -24,15 +24,15 @@ public class BulletSoundController : MonoBehaviour
     #region 이벤트 메서드
     private void SubscribeEvent()
     {
-        _bulletController.OnHit += WorkTodoOnEventOnHit;
+        _bulletController.OnHit += PlayEnemyHitSound;
     }
     
     private void UnSubscribeEvent()
     {
-        _bulletController.OnHit -= WorkTodoOnEventOnHit;
+        _bulletController.OnHit -= PlayEnemyHitSound;
     }
 
-    private void WorkTodoOnEventOnHit()
+    private void PlayEnemyHitSound(Collider2D hitTarget)
     {
         if (SoundManager.Instance == null) Debug.LogError("사운드매니저 인스턴스가 존재하지 않음");
         SoundManager.Instance.PlaySFX(SoundType.Enemy, _hitSound);

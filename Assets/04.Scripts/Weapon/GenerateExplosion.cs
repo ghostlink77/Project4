@@ -64,7 +64,7 @@ public class GenerateExplosion : MonoBehaviour
         _bulletController.OnHit -= HandleExplosion;
     }
 
-    private void HandleExplosion()
+    private void HandleExplosion(Collider2D hitTarget)
     {
         Vector2 explosionPosition = transform.position;
         ApplyAreaDamage(explosionPosition, _bulletController.ProjectileDmg);

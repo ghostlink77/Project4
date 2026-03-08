@@ -9,8 +9,8 @@ using UnityEngine.Pool;
 public class BulletController : MonoBehaviour
 {
     #region 이벤트
-    public event Action OnHit;
-    public void InvokeOnHit() => OnHit?.Invoke();
+    public event Action<Collider2D> OnHit;
+    public void InvokeOnHit(Collider2D hitTarget) => OnHit?.Invoke(hitTarget);
     #endregion
 
     #region 투사체 스탯
@@ -18,7 +18,6 @@ public class BulletController : MonoBehaviour
     private float _projectileDmg;
     public float ProjectileDmg { get => _projectileDmg; }
     #endregion
-    
     private TrailRenderer _trailRenderer;
     private Coroutine _deactivateCoroutine;
 
@@ -127,8 +126,8 @@ public class BulletController : MonoBehaviour
                     target.TakeDamage(_projectileDmg);
                 }
             }
-            OnHit?.Invoke();
-            if (!_penetratable) Release();
+            InvokeOnHit(other);
+            if (!Penetratable) Release();
         }
     }
 }
