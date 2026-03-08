@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         PlayerMoveController.MovePlayer();
     }

@@ -5,6 +5,7 @@ public class PlayerMoveController : MonoBehaviour
 {
 #region variables
     private SpriteRenderer _spriteRenderer;
+    private Rigidbody2D _rigidBody;
 
     private float _moveSpeed;
     private Vector2 _inputVector;
@@ -56,6 +57,9 @@ public class PlayerMoveController : MonoBehaviour
         _playerManager = PlayerManager.Instance;
         _playerStatController = _playerManager.PlayerStatController;
         _playerEventController = _playerManager.PlayerEventController;
+
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody.freezeRotation = true;
     }
     
     private void normalVariableSetup()
@@ -95,18 +99,19 @@ public class PlayerMoveController : MonoBehaviour
 #region 메서드들
     public void MovePlayer()
     {
-
-        _currentPos += InputVector * _playerStatController.MoveSpeed * Time.deltaTime;
+        _currentPos = _rigidBody.position;
+        _currentPos += InputVector * _playerStatController.MoveSpeed * Time.fixedDeltaTime;
 
         bool isMoving = CheckMove();
         if (isMoving == false) return;
-        transform.position = _currentPos;
+
+        _rigidBody.MovePosition(_currentPos);
         UpdatePosition();
     }
     
     private bool CheckMove()
     {
-        if (_lastPos != _currentPos)
+        if (InputVector != _currentPos)
         {
             _playerEventController.CallMove();
             return true;
