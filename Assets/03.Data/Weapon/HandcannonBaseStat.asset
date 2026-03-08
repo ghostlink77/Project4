@@ -17,14 +17,70 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2687196738428583231, guid: 72677ec0a9a78482f878bc6f1e28ce11, type: 3}
   level: 1
   type: 1
-  damage: 30
-  critRate: 60
-  critMultiplier: 2
-  effectRate: 50
-  atkSpeed: 1.25
-  atkRange: 3
-  projectileSpeed: 6
-  projectileCount: 1
+  damage:
+  - 30
+  - 34.286
+  - 38.571
+  - 42.857
+  - 47.143
+  - 51.429
+  - 55.714
+  - 60
+  critRate:
+  - 60
+  - 68.571
+  - 77.143
+  - 85.714
+  - 94.286
+  - 102.857
+  - 111.429
+  - 120
+  critMultiplier:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  effectRate:
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  - 50
+  atkSpeed:
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  atkRange:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  projectileSpeed:
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  - 6
+  projectileCount: 0100000001000000010000000100000001000000010000000100000001000000
   _description:
   - 1
   - 1
