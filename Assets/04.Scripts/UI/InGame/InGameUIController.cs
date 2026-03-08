@@ -28,13 +28,11 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
     [SerializeField] private TurretSelectUI _turretSelectUI;
-    [SerializeField] private Image _playerHpBar;
-    [SerializeField] private Image _playerHpAnimBar;
-    [SerializeField] private Image _agitHpBar;
-    [SerializeField] private Image _agitHpAnimBar;
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _scrapAmountText;
     [SerializeField] private GameObject _worldCanvas;
+    [SerializeField] private HpUI _playerHpUI;
+    [SerializeField] private HpUI _agitHpUI;
 
     [Header("Hp Bar Animation Value")]
     [SerializeField] private float _blendInTime;
@@ -77,10 +75,6 @@ public class InGameUIController : MonoBehaviour
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
         _inGameUI.SetActive(true);
-        _playerHpBar.fillAmount = FULL_FILL_AMOUNT;
-        _playerHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
-        _agitHpBar.fillAmount = FULL_FILL_AMOUNT;
-        _agitHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
         _expBar.fillAmount = Null_AMOUNT;
         _messageText.text = "";
         _scrapAmountText.text = "";
@@ -333,44 +327,12 @@ public class InGameUIController : MonoBehaviour
     {
         float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
         float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
-        _playerHpBar.fillAmount = currentHp / maxHp;
-
-        if (_playerHpBarAnimCoroutine != null)
-        {
-            StopCoroutine(_playerHpBarAnimCoroutine);
-            _playerHpBarAnimCoroutine = null;
-        }
-        _playerHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(true));
+        _playerHpUI.UpdateHpBar(currentHp, maxHp);
     }
 
     public void UpdateAgitHpBar(float currentHp, float maxHp)
     {
-        _agitHpBar.fillAmount = currentHp / maxHp;
-
-        if (_agitHpBarAnimCoroutine != null)
-        {
-            StopCoroutine(_agitHpBarAnimCoroutine);
-            _agitHpBarAnimCoroutine = null;
-        }
-        _agitHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(false));
-    }
-
-    private IEnumerator PlayHpBarAnimation(bool isPlayer)
-    {
-        Image animBar = isPlayer ? _playerHpAnimBar : _agitHpAnimBar;
-        Image bar = isPlayer ? _playerHpBar : _agitHpBar;
-        yield return new WaitForSeconds(_blendInTime);
-
-        while (animBar.fillAmount > bar.fillAmount)
-        {
-            animBar.fillAmount = Mathf.Lerp(
-                animBar.fillAmount,
-                bar.fillAmount,
-                _animSpeed * Time.deltaTime
-                );
-
-            yield return null;
-        }
+        _agitHpUI.UpdateHpBar(currentHp, maxHp);
     }
 
     public void PrintMessge(string text)
@@ -461,7 +423,11 @@ public class InGameUIController : MonoBehaviour
         if (_itemSelectBtnDatas.Length > index)
         {
             if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
-            if (_itemSelectBtnDatas[index].ItemImage != null) _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+            if (_itemSelectBtnDatas[index].ItemImage != null)
+            {
+                _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+                _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
+            }
             if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
             if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
         }
