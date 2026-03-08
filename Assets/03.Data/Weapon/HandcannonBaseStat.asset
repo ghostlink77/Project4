@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HandcannonBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatData
   weaponName: "\uD578\uB4DC \uCE90\uB17C"
-  icon: {fileID: 2109234943996966913, guid: 96fbc46e4fbda4050ab9387e06183afc, type: 3}
+  icon: {fileID: 21300000, guid: b2ed6fd9b1e9f8e4fb43a62679a8878a, type: 2}
   projectilePrefab: {fileID: 2687196738428583231, guid: 72677ec0a9a78482f878bc6f1e28ce11, type: 3}
   level: 1
   type: 1
@@ -25,4 +25,9 @@ MonoBehaviour:
   atkRange: 3
   projectileSpeed: 6
   projectileCount: 1
-  _description: []
+  _description:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
