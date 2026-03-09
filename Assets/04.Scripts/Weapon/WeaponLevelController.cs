@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class WeaponLevelController : MonoBehaviour
 {
-    [SerializeField]
-    WeaponStatController _weaponStatController;
+    private WeaponStatController _weaponStatController;
     private WeaponManager _weaponManager;
     private WeaponStatData _weaponStatData;
 
