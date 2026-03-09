@@ -23,4 +23,17 @@ public class WeaponLevelController : MonoBehaviour
     {
         _weaponStatController.Level -= 1;
     }
+    
+    private void MatchStatToLevel(int level)
+    {
+        int statIndex = level - 1;
+        _weaponStatController.Damage = _weaponStatData.Damage[statIndex];
+        _weaponStatController.CritRate = _weaponStatData.CritRate[statIndex];
+        _weaponStatController.CritMultiplier = _weaponStatData.CritMultiplier[statIndex];
+        _weaponStatController.EffectRate = _weaponStatData.EffectRate[statIndex];
+        _weaponStatController.AtkSpeed = _weaponStatData.AtkSpeed[statIndex];
+        _weaponStatController.AtkRange = _weaponStatData.ProjectileSpeed[statIndex];
+        _weaponStatController.ProjectileSpeed = _weaponStatData.ProjectileSpeed[statIndex];
+        _weaponStatController.ProjectileCount = _weaponStatData.ProjectileCount[statIndex];
+    }
 }
