@@ -19,6 +19,7 @@ public class WeaponManager : MonoBehaviour
     [Header("무기 기본 데이터")]
     [SerializeField]
     private WeaponStatData _baseStat;
+    public WeaponStatData BaseStat {get => _baseStat;}
     private CircleCollider2D _weaponRangeCollider;
     
     #region 스크립트 참조변수
