@@ -14,14 +14,10 @@ public class WeaponLevelController : MonoBehaviour
         _weaponStatController = GetComponent<WeaponStatController>();
     }
     
-    public void LevelUp()
+    public void ChangeLevel(int level)
     {
-        _weaponStatController.Level += 1;
-    }
-    
-    public void LevelDown()
-    {
-        _weaponStatController.Level -= 1;
+        _weaponStatController.Level = level;
+        MatchStatToLevel(level);
     }
     
     private void MatchStatToLevel(int level)
