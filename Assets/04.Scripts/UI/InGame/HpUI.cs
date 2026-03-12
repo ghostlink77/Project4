@@ -27,11 +27,22 @@ public class HpUI : MonoBehaviour
         _hpBar.fillAmount = FULL_AMOUNT;
         _hpAnimBar.fillAmount = FULL_AMOUNT;
         _waitForBlendInTime = new WaitForSeconds(_blendInTime);
+
     }
     private void Update()
     {
         if (!_isFocus || !_UIOwner) return;
+        FollowOwner();
+    }
+
+    private void FollowOwner()
+    {
         transform.position = _UIOwner.transform.position + _customPosition;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position + _customPosition;
     }
 
     public void UpdateHpBar(float currentHp, float maxHp)
