@@ -18,8 +18,8 @@ public class WeaponLevelController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            ChangeLevel(_weaponStatData.Level + 1);
-            Debug.LogError($"레벨 오름: {_weaponStatData.Level}");
+            ChangeLevel(_weaponStatController.Level + 1);
+            Debug.LogError($"레벨 오름: {_weaponStatController.Level}");
         }
     }
 
