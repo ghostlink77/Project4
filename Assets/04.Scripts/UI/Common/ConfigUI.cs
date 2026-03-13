@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class ConfigUI : BaseUI
 {
-    [SerializeField] private GameObject BGMSlider;
-    [SerializeField] private GameObject SFXSlider;
-    [SerializeField] private Slider BGM;
-    [SerializeField] private Slider SFX;
+    [SerializeField] private GameObject MasterVolumeObj;
+    [SerializeField] private GameObject BGMVolumeObj;
+    [SerializeField] private GameObject UISFXVolumeObj;
+    [SerializeField] private GameObject CharSFXVolumeObj;
+
+    [Header("Sliders")]
+    [SerializeField] private Slider MasterSlider;
+    [SerializeField] private Slider BGMSlider;
+    [SerializeField] private Slider UISFXSlider;
+    [SerializeField] private Slider CharSFXSlider;
+
 
     private readonly float _defaultSoundValueScale = 0.01f;
 
@@ -55,19 +62,19 @@ public class ConfigUI : BaseUI
     private void SetupSound(bool isUp)
     {
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-        if (EventSystem.current.currentSelectedGameObject.name == BGMSlider.name)
+        if (EventSystem.current.currentSelectedGameObject.name == MasterVolumeObj.name)
         {
             if (isUp)
-                BGM.value += _defaultSoundValueScale;
+                BGMSlider.value += _defaultSoundValueScale;
             else
-                BGM.value -= _defaultSoundValueScale;
+                BGMSlider.value -= _defaultSoundValueScale;
         }
-        else if (EventSystem.current.currentSelectedGameObject.name == SFXSlider.name)
+        else if (EventSystem.current.currentSelectedGameObject.name == BGMVolumeObj.name)
         {
             if (isUp)
-                SFX.value += _defaultSoundValueScale;
+                BGMSlider.value += _defaultSoundValueScale;
             else
-                SFX.value -= _defaultSoundValueScale;
+                BGMSlider.value -= _defaultSoundValueScale;
         }
     }
 
@@ -75,15 +82,13 @@ public class ConfigUI : BaseUI
 
     public void SetVolume()
     {
-        Debug.Log($"BGM value : {BGM.value}, SFX value : {SFX.value}");
-
-        AudioManager.Instance.SetVolume(AudioType.BGM, BGM.value);
-        AudioManager.Instance.SetVolume(AudioType.SFX, SFX.value);
+        AudioManager.Instance.SetVolume(AudioType.BGM, BGMSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.SFX, UISFXSlider.value);
     }
 
     public void EndFadeIn()
     {
-        EventSystem.current.SetSelectedGameObject(BGMSlider);
+        EventSystem.current.SetSelectedGameObject(MasterVolumeObj);
     }
     public void EndFadeOut()
     {
