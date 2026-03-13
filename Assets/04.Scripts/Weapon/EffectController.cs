@@ -11,6 +11,7 @@ public class EffectController : MonoBehaviour
 {
     private Coroutine _releaseCoroutine;
     private Animator _animator;
+    [SerializeField] private string _hitClipName;
 
     [Header("Settings")]
     [SerializeField] private float _defaultLifeTime = 1f;
@@ -20,6 +21,7 @@ public class EffectController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        AudioManager.Instance.Play(AudioType.BulletSFX, _hitClipName);
     }
 
     private void OnEnable()

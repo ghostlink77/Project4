@@ -125,12 +125,12 @@ public class TurretSelectUI : MonoBehaviour
     public void Show()
     {
         _anim.Play(FADEIN);
-        AudioManager.Instance.Play(AudioType.SFX, FADEIN);
+        AudioManager.Instance.Play(AudioType.UISFX, FADEIN);
     }
     public void Hide()
     {
         _anim.Play(FADEOUT);
-        AudioManager.Instance.Play(AudioType.SFX, FADEOUT);
+        AudioManager.Instance.Play(AudioType.UISFX, FADEOUT);
     }
 
 }

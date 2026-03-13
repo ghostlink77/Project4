@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
   _weaponShootSound: {fileID: 8300000, guid: b18db8b09a4de46b1bd0f64534710255, type: 3}
+  _weaponShootClipName: SniperShootSound
 --- !u!114 &5387269975543966741
 MonoBehaviour:
   m_ObjectHideFlags: 0

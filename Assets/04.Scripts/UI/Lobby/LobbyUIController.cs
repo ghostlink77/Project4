@@ -50,13 +50,13 @@ public class LobbyUIController : MonoBehaviour
 
     public void OnClickConfigButton()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         UIManager.Instance.OpenUI<ConfigUI>();
     }
 
     public void OnClickStartButton()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         _fadeOutObj.Play();
     }
 

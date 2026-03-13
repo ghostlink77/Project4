@@ -61,29 +61,50 @@ public class ConfigUI : BaseUI
 
     private void SetupSound(bool isUp)
     {
-        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-        if (EventSystem.current.currentSelectedGameObject.name == MasterVolumeObj.name)
+        if (EventSystem.current.currentSelectedGameObject.TryGetComponent<ConfigButton>(out ConfigButton component))
         {
-            if (isUp)
-                BGMSlider.value += _defaultSoundValueScale;
-            else
-                BGMSlider.value -= _defaultSoundValueScale;
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == BGMVolumeObj.name)
-        {
-            if (isUp)
-                BGMSlider.value += _defaultSoundValueScale;
-            else
-                BGMSlider.value -= _defaultSoundValueScale;
-        }
+            ConfigButton currentBtn = component;
+
+            if (currentBtn.BtnType == BtnType.BGMSoundBtn)
+            {
+                if (isUp)
+                    BGMSlider.value += _defaultSoundValueScale;
+                else
+                    BGMSlider.value -= _defaultSoundValueScale;
+            }
+            else if (currentBtn.BtnType == BtnType.MasterSoundBtn)
+            {
+                if (isUp)
+                    MasterSlider.value += _defaultSoundValueScale;
+                else
+                    MasterSlider.value -= _defaultSoundValueScale;
+            }
+            else if (currentBtn.BtnType == BtnType.UISoundBtn)
+            {
+                if (isUp)
+                    UISFXSlider.value += _defaultSoundValueScale;
+                else
+                    UISFXSlider.value -= _defaultSoundValueScale;
+            }
+            else if (currentBtn.BtnType == BtnType.CharSoundBtn)
+            {
+                if (isUp)
+                    CharSFXSlider.value += _defaultSoundValueScale;
+                else
+                    CharSFXSlider.value -= _defaultSoundValueScale;
+            }
+        }  
     }
 
 
 
     public void SetVolume()
     {
-        AudioManager.Instance.SetVolume(AudioType.BGM, BGMSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.SFX, UISFXSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.BGM, BGMSlider.value * MasterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.UISFX, UISFXSlider.value * MasterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.CharSFX, CharSFXSlider.value * MasterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.EnemySFX, CharSFXSlider.value * MasterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.BulletSFX, CharSFXSlider.value * MasterSlider.value);
     }
 
     public void EndFadeIn()

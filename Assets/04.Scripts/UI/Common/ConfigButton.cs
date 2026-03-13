@@ -1,20 +1,45 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum BtnType
+{
+    BGMSoundBtn,
+    MasterSoundBtn,
+    UISoundBtn,
+    CharSoundBtn,
+}
+
+
+
 public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image _selectedImage;
-    [SerializeField] private Image _btnImage;
     [SerializeField] private Animator _selectedImageAnim;
+    [SerializeField] private TextMeshProUGUI _btnNameText;
+    [SerializeField] private TextMeshProUGUI _sliderValueText;
     public Slider Slider;
 
     [SerializeField] private bool _isFirst = false;
     [SerializeField] ConfigUI _configUIObject;
 
+    [SerializeField] private BtnType _btnType;
+    public BtnType BtnType { get { return _btnType; } }
+
+    [SerializeField] private Color _OnSelectColor;
+    [SerializeField] private Color _deSelectColor;
+
     private void Awake()
     {
         _configUIObject = GetComponentInParent<ConfigUI>();
+        if (Slider != null)
+            Slider.value = 1f;
+    }
+
+    private void Update()
+    {
+        _sliderValueText.text = ((int)(Slider.value * 10)).ToString();
     }
 
     private void OnEnable()
@@ -32,21 +57,31 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
         ChangeButtonEffect(true);
         if (_configUIObject != null)
             _configUIObject.SelectBtn();
-        _selectedImageAnim.enabled = true;
     }
 
     private void ChangeButtonEffect(bool isSelected)
     {
-        _selectedImage.enabled = isSelected;
+        if (isSelected)
+        {
+            _selectedImage.enabled = true;
+            _selectedImageAnim.Play("ShowBtn");
+            _btnNameText.color = _OnSelectColor;
+        }
+        else
+        {
+            _selectedImage.enabled = false;
+            _btnNameText.color = _deSelectColor;
+        }
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _btnImage.enabled = true;
+        OnSelect(eventData);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _btnImage.enabled = false;
+        OnDeselect(eventData);
     }
 }

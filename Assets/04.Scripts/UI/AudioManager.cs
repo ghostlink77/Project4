@@ -4,7 +4,10 @@ using System;
 public enum AudioType
 {
     BGM,
-    SFX
+    UISFX,
+    CharSFX,
+    EnemySFX,
+    BulletSFX
 }
 
 public class AudioManager : SingletonBehaviour<AudioManager>
@@ -44,7 +47,16 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 audioSource.clip = clip;
                 audioSource.Play();
                 break;
-            case AudioType.SFX:
+            case AudioType.UISFX:
+                audioSource.PlayOneShot(clip);
+                break;
+            case AudioType.CharSFX:
+                audioSource.PlayOneShot(clip);
+                break;
+            case AudioType.EnemySFX:
+                audioSource.PlayOneShot(clip);
+                break;
+            case AudioType.BulletSFX:
                 audioSource.PlayOneShot(clip);
                 break;
             default:
@@ -80,13 +92,13 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     public void Mute()
     {
         SetVolume(AudioType.BGM, 0f);
-        SetVolume(AudioType.SFX, 0f);
+        SetVolume(AudioType.UISFX, 0f);
     }
 
     public void UnMute()
     {
         SetVolume(AudioType.BGM, 1f);
-        SetVolume(AudioType.SFX, 1f);
+        SetVolume(AudioType.UISFX, 1f);
     }
 
     public void SyncUserSettings()

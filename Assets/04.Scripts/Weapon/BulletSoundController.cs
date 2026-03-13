@@ -9,6 +9,7 @@ public class BulletSoundController : MonoBehaviour
     [Header("플레이어 사운드 컴포넌트")]
     [SerializeField]
     private AudioSource _audioSource;
+    [SerializeField] private string _hitClipName = "EnemyHurtSound";
 
     #region 변수들
     [Header("적 맞췄을 때 나는 소리")]
@@ -34,8 +35,8 @@ public class BulletSoundController : MonoBehaviour
 
     private void PlayEnemyHitSound(Collider2D hitTarget)
     {
-        if (SoundManager.Instance == null) Debug.LogError("사운드매니저 인스턴스가 존재하지 않음");
-        SoundManager.Instance.PlaySFX(SoundType.Enemy, _hitSound);
+        if (AudioManager.Instance == null) Debug.LogError("오디오매니저가 없습니다.");
+        else AudioManager.Instance.Play(AudioType.EnemySFX, _hitClipName);
     }
     #endregion
 

@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
   _weaponShootSound: {fileID: 8300000, guid: c2f7f4c0d0f4a4cc685cf40e345e94cf, type: 3}
+  _weaponShootClipName: RocketLauncherShootSound
 --- !u!114 &4866292833427450968
 MonoBehaviour:
   m_ObjectHideFlags: 0

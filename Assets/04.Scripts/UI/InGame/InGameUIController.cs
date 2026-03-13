@@ -179,20 +179,20 @@ public class InGameUIController : MonoBehaviour
     public void OnClickOpenPauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(true);
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         Time.timeScale = 0f;
     }
 
     public void OnClickClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click_Close");
         Time.timeScale = 1f;
     }
 
     public void OnClickOpenConfigUI()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         if (UIManager.Instance != null) UIManager.Instance.OpenUI<ConfigUI>();
     }
 
@@ -203,7 +203,7 @@ public class InGameUIController : MonoBehaviour
 
     public void OnClickGoLobby()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click_Close");
         if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 

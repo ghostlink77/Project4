@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
   _weaponShootSound: {fileID: 8300000, guid: 32ba729671790be46b1a1e936f3c3663, type: 3}
+  _weaponShootClipName: SwordSlashSound
 --- !u!114 &1659737480157701853
 MonoBehaviour:
   m_ObjectHideFlags: 0

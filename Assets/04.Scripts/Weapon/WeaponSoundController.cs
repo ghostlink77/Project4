@@ -3,14 +3,14 @@ using UnityEngine;
 public class WeaponSoundController : MonoBehaviour
 {
     #region 필요한 변수
-    [SerializeField]    
-    private AudioClip _weaponShootSound;
+    [SerializeField]
+    private string _weaponShootClipName = "";
     private float _ShootSoundLength;
     #endregion
 
     #region 스크립트 참조 변수
     private WeaponEventController _weaponEventController;
-    private SoundManager _soundManager;
+    private AudioManager _audioManager;
     #endregion
 
     #region 유니티 생명주기 함수
@@ -34,8 +34,8 @@ public class WeaponSoundController : MonoBehaviour
 
     private void Start()
     {
-        _soundManager = SoundManager.Instance;
-        if (_soundManager == null) Debug.LogError("사운드매니저가 씬에 없음");
+        _audioManager = AudioManager.Instance;
+        if (_audioManager == null) Debug.LogError("오디오 매니저가 없음");
     }
 
     #region 이벤트 관련 변수
@@ -51,7 +51,7 @@ public class WeaponSoundController : MonoBehaviour
     
     private void PlayShootSound()
     {
-        _soundManager.PlaySFX(SoundType.Player, _weaponShootSound);
+        if (_audioManager != null) _audioManager.Play(AudioType.BulletSFX, _weaponShootClipName);
         Debug.Log("무기 발사음 출력됨");
     }
     #endregion
