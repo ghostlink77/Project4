@@ -13,7 +13,16 @@ public class WeaponLevelController : MonoBehaviour
         _weaponStatData = _weaponManager.BaseStat;
         _weaponStatController = GetComponent<WeaponStatController>();
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ChangeLevel(_weaponStatData.Level + 1);
+            Debug.LogError($"레벨 오름: {_weaponStatData.Level}");
+        }
+    }
+
     public void ChangeLevel(int level)
     {
         _weaponStatController.Level = level;
