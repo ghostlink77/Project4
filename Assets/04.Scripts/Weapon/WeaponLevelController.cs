@@ -23,6 +23,7 @@ public class WeaponLevelController : MonoBehaviour
         }
     }
 
+    // 무기 레벨을 수정하기 위해서는 이 메서드를 호출하면 됨
     public void ChangeLevel(int level)
     {
         _weaponStatController.Level = level;
