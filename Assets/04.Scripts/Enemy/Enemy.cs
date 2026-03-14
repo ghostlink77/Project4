@@ -1,4 +1,5 @@
 // NOTE: 적 유닛의 이동, 전투, 사망 처리를 담당하는 스크립트
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    [SerializeField] private Color _hitColor = new Color(1f, 0.5f, 0.5f, 1f);
 
     private bool _isStunned;
     private float _stunTimer;
@@ -175,6 +177,19 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Die();
         }
+        StartCoroutine(Blink());
+    }
+
+    private IEnumerator Blink()
+    {
+        if (!_isLive)
+        {
+            yield break; 
+        }
+        Color originalColor = _spriteRenderer.color;
+        _spriteRenderer.color = _hitColor;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = originalColor;
     }
 
     private void Die()

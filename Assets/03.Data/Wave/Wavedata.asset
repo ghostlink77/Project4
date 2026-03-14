@@ -18,12 +18,12 @@ MonoBehaviour:
     spawnPointConfigs:
     - spawnPointIndex: 0
       enemyType: 0
-      spawnInterval: 0
+      spawnInterval: 1.7
     - spawnPointIndex: 5
       enemyType: 0
       spawnInterval: 0
   - startTime: 80
-    defaultSpawnInterval: 3.5
+    defaultSpawnInterval: 2.8
     spawnPointConfigs:
     - spawnPointIndex: 3
       enemyType: 0
