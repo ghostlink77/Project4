@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponLevelController : MonoBehaviour
 {
+    public static int _maxLevel = 8;
     private WeaponStatController _weaponStatController;
     private WeaponManager _weaponManager;
     private WeaponStatData _weaponStatData;
@@ -33,10 +34,10 @@ public class WeaponLevelController : MonoBehaviour
             Debug.LogError($"입력된 레벨 값{level}이 1보다 작음. 1로 수정함.");
             level = 1;
         }
-        else if (level > 8)
+        else if (level > _maxLevel)
         {
             Debug.LogError($"입력되 레벨값 {level}이 8보다 큼. 8로 수정함.");
-            level = 8;
+            level = _maxLevel;
         }
         _weaponStatController.Level = level;
         MatchStatToLevel(level);
