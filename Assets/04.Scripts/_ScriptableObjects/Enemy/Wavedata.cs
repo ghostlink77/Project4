@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnPointConfig
 {
     public int spawnPointIndex;
+    public int spawnCount = 1;
     public EnemyType enemyType;
 
     // NOTE: 0 이하면 Wave의 defaultSpawnInterval 사용

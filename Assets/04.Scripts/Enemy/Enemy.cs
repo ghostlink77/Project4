@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-    [SerializeField] private Color _hitColor = new Color(1f, 0.5f, 0.5f, 1f);
+    private Color _originalColor;
 
     private bool _isStunned;
     private float _stunTimer;
@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
+        _originalColor = _spriteRenderer.color;
     }
 
     private void Update()
@@ -186,10 +187,10 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             yield break; 
         }
-        Color originalColor = _spriteRenderer.color;
-        _spriteRenderer.color = _hitColor;
+        Color hitColor = new Color(1f, 0f, 0f);
+        _spriteRenderer.color = hitColor;
         yield return new WaitForSeconds(0.2f);
-        _spriteRenderer.color = originalColor;
+        _spriteRenderer.color = _originalColor;
     }
 
     private void Die()

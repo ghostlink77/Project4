@@ -69,8 +69,8 @@ public class EnemySpawnManager : MonoBehaviour
 
             EnemySpawnPoint spawnPoint = _spawnPoints[config.spawnPointIndex];
             float interval = config.spawnInterval > 0f ? config.spawnInterval : wave.defaultSpawnInterval;
-            spawnPoint.SpawnInterval = interval;
-            spawnPoint.StartSpawn(config.enemyType);
+            int count = config.spawnCount > 1 ? config.spawnCount : 1;
+            spawnPoint.StartSpawn(config.enemyType, interval, count);
         }
 
         Debug.Log($"Wave {_waveIndex} 적용: {wave.spawnPointConfigs.Length}개 스폰포인트 활성화");

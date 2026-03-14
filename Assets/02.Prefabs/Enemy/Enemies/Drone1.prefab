@@ -197,7 +197,7 @@ MonoBehaviour:
   _damage: 2
   _damageDelay: 0.2
   _speed: 0.7
-  _maxHp: 10
+  _maxHp: 5
   _enemyType: 0
   _expDropAmount: 3
   _hitColor: {r: 1, g: 0, b: 0, a: 1}
