@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4165855992570876612}
   - component: {fileID: 8324327203860504292}
   - component: {fileID: 8544294808717868412}
-  - component: {fileID: 2042200141789805921}
   - component: {fileID: 5751310512860791070}
+  - component: {fileID: 2042200141789805921}
+  - component: {fileID: 9204540679626201902}
   m_Layer: 0
   m_Name: "\uC790\uB3D9 \uC18C\uCD1D"
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1048576
   _lineRenderer: {fileID: 2042200141789805921}
+--- !u!114 &5751310512860791070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434694142653457009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd4cc7723692644f8727ec258560fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponEventController
 --- !u!120 &2042200141789805921
 LineRenderer:
   serializedVersion: 3
@@ -250,7 +263,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &5751310512860791070
+--- !u!114 &9204540679626201902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,6 +272,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2434694142653457009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd4cc7723692644f8727ec258560fb3, type: 3}
+  m_Script: {fileID: 11500000, guid: b68e56650927f4c13b4b5af282532100, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponEventController
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponLevelController
