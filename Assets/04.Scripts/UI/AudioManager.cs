@@ -54,7 +54,9 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 audioSource.PlayOneShot(clip);
                 break;
             case AudioType.EnemySFX:
-                audioSource.PlayOneShot(clip);
+                audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(clip, UnityEngine.Random.Range(audioSource.volume -.2f, audioSource.volume + .2f));
+                //audioSource.PlayOneShot(clip);
                 break;
             case AudioType.BulletSFX:
                 audioSource.PlayOneShot(clip);

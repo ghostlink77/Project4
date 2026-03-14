@@ -4,8 +4,10 @@ using UnityEngine.Playables;
 
 public class BaseUI : MonoBehaviour
 {
-    public PlayableDirector FadeIn;
-    public PlayableDirector FadeOut;
+    public PlayableDirector Director;
+
+    public PlayableAsset FadeInAsset;
+    public PlayableAsset FadeOutAsset;
 
 
     public virtual void Init(Transform canvas)
@@ -22,9 +24,10 @@ public class BaseUI : MonoBehaviour
 
     public virtual void Show()
     {
-        if (FadeIn != null)
+        if (Director != null)
         {
-            FadeIn.Play();
+            Director.playableAsset = FadeInAsset;
+            Director.Play();
         }
     }
 
@@ -37,10 +40,11 @@ public class BaseUI : MonoBehaviour
     {
         AudioManager.Instance.Play(AudioType.UISFX, "Button_Click_Close");
 
-        if (FadeOut != null)
+        if (Director != null)
         {
             Debug.Log("FadeOUt Ω««‡¡ﬂ..");
-            FadeOut.Play();
+            Director.playableAsset = FadeOutAsset;
+            Director.Play();
         }
         else
         {
