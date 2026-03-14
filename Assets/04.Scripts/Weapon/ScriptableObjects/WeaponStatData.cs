@@ -32,42 +32,42 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     
     [Header("무기 공격력")]
     [SerializeField]
-    private float[] damage = new float[8];
+    private float[] damage = new float[WeaponLevelController._maxLevel];
     public float[] Damage => damage;
     
     [Header("무기 치명타 확률")]
     [SerializeField]
-    private float[] critRate = new float[8];
+    private float[] critRate = new float[WeaponLevelController._maxLevel];
     public float[] CritRate => critRate;
 
     [Header("무기 치명타 배수")]
     [SerializeField]
-    private float[] critMultiplier = new float[8];
+    private float[] critMultiplier = new float[WeaponLevelController._maxLevel];
     public float[] CritMultiplier => critMultiplier;
 
     [Header("상태 이상 확률")]
     [SerializeField]
-    private float[] effectRate = new float[8];
+    private float[] effectRate = new float[WeaponLevelController._maxLevel];
     public float[] EffectRate => effectRate;
 
     [Header("공격 쿨타임(공격 속도)")]
     [SerializeField]
-    private float[] atkSpeed = new float[8];
+    private float[] atkSpeed = new float[WeaponLevelController._maxLevel];
     public float[] AtkSpeed => atkSpeed;
 
     [Header("공격 사거리")]
     [SerializeField]
-    private float[] atkRange = new float[8];
+    private float[] atkRange = new float[WeaponLevelController._maxLevel];
     public float[] AtkRange => atkRange;
 
     [Header("투사체 속도")]
     [SerializeField]
-    private float[] projectileSpeed = new float[8];
+    private float[] projectileSpeed = new float[WeaponLevelController._maxLevel];
     public float[] ProjectileSpeed => projectileSpeed;
     
     [Header("투사체 개수")]
     [SerializeField]
-    private int[] projectileCount = new int[8];
+    private int[] projectileCount = new int[WeaponLevelController._maxLevel];
     public int[] ProjectileCount => projectileCount;
 
     [Header("아이템 설명")]
