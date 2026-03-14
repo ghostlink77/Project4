@@ -28,25 +28,6 @@ public class WeaponShootController : MonoBehaviour
     [SerializeField]
     private LayerMask _enemyLayer;
     
-    // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
-    #region 임시 추가 코드
-    [SerializeField]
-    private LineRenderer _lineRenderer;
-    private Vector3 _firepoint;
-    private float _range = 25f;
-    
-    private void Update()
-    {
-        UpdateAimLine();
-    }
-    
-    private void UpdateAimLine()
-    {
-        _lineRenderer.SetPosition(0, gameObject.transform.position);
-        _lineRenderer.SetPosition(1, _firepoint);
-    }
-    #endregion
-
     private void Awake()
     {   
         _projectilePool = new ObjectPool<GameObject>(
@@ -143,10 +124,6 @@ public class WeaponShootController : MonoBehaviour
                 smallestDistance = oneEnemyDistance;
             }
         }
-        // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
-        #region 임시 추가 코드
-        _firepoint = targetPos;
-        #endregion
         return targetPos;
     }
 
