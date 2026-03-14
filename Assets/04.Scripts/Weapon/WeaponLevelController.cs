@@ -50,7 +50,7 @@ public class WeaponLevelController : MonoBehaviour
         _weaponStatController.CritMultiplier = _weaponStatData.CritMultiplier[statIndex];
         _weaponStatController.EffectRate = _weaponStatData.EffectRate[statIndex];
         _weaponStatController.AtkSpeed = _weaponStatData.AtkSpeed[statIndex];
-        _weaponStatController.AtkRange = _weaponStatData.ProjectileSpeed[statIndex];
+        _weaponStatController.AtkRange = _weaponStatData.AtkRange[statIndex];
         _weaponStatController.ProjectileSpeed = _weaponStatData.ProjectileSpeed[statIndex];
         _weaponStatController.ProjectileCount = _weaponStatData.ProjectileCount[statIndex];
     }
