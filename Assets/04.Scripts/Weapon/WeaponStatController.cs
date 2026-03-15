@@ -12,7 +12,7 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
     private WeaponEventController _weaponEventController;
     [SerializeField] private CircleCollider2D _weaponRangeCollider2D;
 
-    [SerializeField] private WeaponStatData _weaponStat;
+    private WeaponStatData _weaponStat;
     public static int maxLevel = 8;
 
     [SerializeField] private int _level;
@@ -53,10 +53,14 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
 
     public void SetUp(WeaponStatData baseStat)
     {
+        if (_weaponEventController == null)
+            _weaponEventController = GetComponent<WeaponEventController>();
+        if (_weaponRangeCollider2D == null)
+            _weaponRangeCollider2D = GetComponent<CircleCollider2D>();
+
         _weaponStat = baseStat;
         ChangeLevel(baseStat.Level);
         _weaponRangeCollider2D.radius = AtkRange;
-        //AtkSpeed = baseStat.AtkSpeed;
     }
 
     public int GetLevel()
@@ -100,13 +104,13 @@ public class WeaponStatController : MonoBehaviour, IItemStatController
             return;
         }
         int statIndex = level - 1;
-        _damage = _weaponStat.Damage[statIndex];
-        _critRate = _weaponStat.CritRate[statIndex];
-        _critMultiplier = _weaponStat.CritMultiplier[statIndex];
-        _effectRate = _weaponStat.EffectRate[statIndex];
-        _atkSpeed = _weaponStat.AtkSpeed[statIndex];
-        _atkRange = _weaponStat.AtkRange[statIndex];
-        _projectileSpeed = _weaponStat.ProjectileSpeed[statIndex];
-        _projectileCount = _weaponStat.ProjectileCount[statIndex];
+        Damage = _weaponStat.Damage[statIndex];
+        CritRate = _weaponStat.CritRate[statIndex];
+        CritMultiplier = _weaponStat.CritMultiplier[statIndex];
+        EffectRate = _weaponStat.EffectRate[statIndex];
+        AtkSpeed = _weaponStat.AtkSpeed[statIndex];
+        AtkRange = _weaponStat.AtkRange[statIndex];
+        ProjectileSpeed = _weaponStat.ProjectileSpeed[statIndex];
+        ProjectileCount = _weaponStat.ProjectileCount[statIndex];
     }
 }

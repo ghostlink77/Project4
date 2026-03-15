@@ -19,22 +19,22 @@ MonoBehaviour:
   type: 1
   damage:
   - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  - 8
+  - 8
+  - 8
+  - 8
+  - 11
+  - 11
+  - 13
   critRate:
   - 20
-  - 28.571
-  - 37.143
-  - 45.714
-  - 54.286
-  - 54.286
-  - 71.429
-  - 80
+  - 20
+  - 20
+  - 20
+  - 40
+  - 40
+  - 40
+  - 60
   critMultiplier:
   - 1.4
   - 1.4
@@ -55,13 +55,13 @@ MonoBehaviour:
   - 40
   atkSpeed:
   - 1
-  - 0.893
-  - 0.786
-  - 0.679
-  - 0.571
-  - 0.464
-  - 0.357
-  - 0.25
+  - 1
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.8
+  - 0.6
+  - 0.5
   atkRange:
   - 4.5
   - 4.5
@@ -70,20 +70,23 @@ MonoBehaviour:
   - 4.5
   - 4.5
   - 4.5
-  - 4.5
+  - 5
   projectileSpeed:
   - 3.5
   - 3.5
   - 3.5
-  - 3.5
-  - 3.5
-  - 3.5
-  - 3.5
-  - 3.5
+  - 4.3
+  - 4.3
+  - 4.3
+  - 4.3
+  - 5
   projectileCount: 0100000001000000010000000100000001000000010000000100000001000000
   _description:
   - "\uAE30\uBCF8 \uBB34\uAE30"
-  - 1
-  - 2
-  - 3
-  - 4
+  - "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uACF5\uACA9 \uCFE8\uD0C0\uC784\uC774 0.2\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+  - "\uD22C\uC0AC\uCCB4 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uCE58\uBA85\uD0C0 \uD655\uB960\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uACF5\uACA9 \uCFE8\uD0C0\uC784\uC774 0.2\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+  - "\uBB34\uAE30\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58\uAC00 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."
