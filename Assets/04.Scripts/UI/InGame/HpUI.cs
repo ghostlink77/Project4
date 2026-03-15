@@ -24,10 +24,16 @@ public class HpUI : MonoBehaviour
     
     private void Awake()
     {
-        _hpBar.fillAmount = FULL_AMOUNT;
-        _hpAnimBar.fillAmount = FULL_AMOUNT;
+/*        _hpBar.fillAmount = FULL_AMOUNT;
+        _hpAnimBar.fillAmount = FULL_AMOUNT;*/
         _waitForBlendInTime = new WaitForSeconds(_blendInTime);
 
+    }
+
+    private void OnEnable()
+    {
+        _hpBar.fillAmount = FULL_AMOUNT;
+        _hpAnimBar.fillAmount = FULL_AMOUNT;
     }
     private void Update()
     {
