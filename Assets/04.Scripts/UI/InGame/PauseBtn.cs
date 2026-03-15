@@ -26,7 +26,8 @@ public class PauseBtn : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IDe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (eventData.delta.sqrMagnitude > 0.1f)
+            EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
     public void OnSelect(BaseEventData eventData)

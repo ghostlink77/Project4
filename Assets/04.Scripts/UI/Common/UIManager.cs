@@ -111,10 +111,17 @@ public class UIManager : SingletonBehaviour<UIManager>
         }
     }
 
-    public void SaveCurrentBtn(GameObject btn) => _currentBtn = btn;
+    public void SaveCurrentBtn(GameObject btn)
+    {
+        _currentBtn = btn;
+    } 
     public void LoadCurrentBtn()
     {
         if (_currentBtn == null) Debug.Log("currentBtn is null.");
-        else EventSystem.current.SetSelectedGameObject(_currentBtn);
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(_currentBtn);
+        }
+        
     }
 }

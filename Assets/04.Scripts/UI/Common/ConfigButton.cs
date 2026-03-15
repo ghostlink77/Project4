@@ -73,6 +73,7 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        EventSystem.current.SetSelectedGameObject(gameObject);
+        if (eventData.delta.sqrMagnitude > 0.1f)
+            EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }
