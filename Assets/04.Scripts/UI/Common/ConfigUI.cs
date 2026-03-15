@@ -6,15 +6,12 @@ using UnityEngine.UI;
 public class ConfigUI : BaseUI
 {
     [SerializeField] private GameObject MasterVolumeObj;
-    [SerializeField] private GameObject BGMVolumeObj;
-    [SerializeField] private GameObject UISFXVolumeObj;
-    [SerializeField] private GameObject CharSFXVolumeObj;
 
     [Header("Sliders")]
-    [SerializeField] private Slider MasterSlider;
-    [SerializeField] private Slider BGMSlider;
-    [SerializeField] private Slider UISFXSlider;
-    [SerializeField] private Slider CharSFXSlider;
+    [SerializeField] private Slider _masterSlider;
+    [SerializeField] private Slider _bgmSlider;
+    [SerializeField] private Slider _uiSFXSlider;
+    [SerializeField] private Slider _gameSFXSlider;
 
 
     private readonly float _defaultSoundValueScale = 0.01f;
@@ -51,30 +48,30 @@ public class ConfigUI : BaseUI
             if (currentBtn.BtnType == BtnType.BGMSoundBtn)
             {
                 if (isUp)
-                    BGMSlider.value += _defaultSoundValueScale;
+                    _bgmSlider.value += _defaultSoundValueScale;
                 else
-                    BGMSlider.value -= _defaultSoundValueScale;
+                    _bgmSlider.value -= _defaultSoundValueScale;
             }
             else if (currentBtn.BtnType == BtnType.MasterSoundBtn)
             {
                 if (isUp)
-                    MasterSlider.value += _defaultSoundValueScale;
+                    _masterSlider.value += _defaultSoundValueScale;
                 else
-                    MasterSlider.value -= _defaultSoundValueScale;
+                    _masterSlider.value -= _defaultSoundValueScale;
             }
             else if (currentBtn.BtnType == BtnType.UISoundBtn)
             {
                 if (isUp)
-                    UISFXSlider.value += _defaultSoundValueScale;
+                    _uiSFXSlider.value += _defaultSoundValueScale;
                 else
-                    UISFXSlider.value -= _defaultSoundValueScale;
+                    _uiSFXSlider.value -= _defaultSoundValueScale;
             }
             else if (currentBtn.BtnType == BtnType.CharSoundBtn)
             {
                 if (isUp)
-                    CharSFXSlider.value += _defaultSoundValueScale;
+                    _gameSFXSlider.value += _defaultSoundValueScale;
                 else
-                    CharSFXSlider.value -= _defaultSoundValueScale;
+                    _gameSFXSlider.value -= _defaultSoundValueScale;
             }
         }  
     }
@@ -83,11 +80,11 @@ public class ConfigUI : BaseUI
 
     public void SetVolume()
     {
-        AudioManager.Instance.SetVolume(AudioType.BGM, BGMSlider.value * MasterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.UISFX, UISFXSlider.value * MasterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.CharSFX, CharSFXSlider.value * MasterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.EnemySFX, CharSFXSlider.value * MasterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.BulletSFX, CharSFXSlider.value * MasterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.BGM, _bgmSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.UISFX, _uiSFXSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.CharSFX, _gameSFXSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.EnemySFX, _gameSFXSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolume(AudioType.BulletSFX, _gameSFXSlider.value * _masterSlider.value);
     }
 
     public void EndFadeIn()

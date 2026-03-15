@@ -874,13 +874,10 @@ MonoBehaviour:
   FadeInAsset: {fileID: 11400000, guid: d98a7599cc34b3845a5bbf4aff37dfb2, type: 2}
   FadeOutAsset: {fileID: 11400000, guid: a45c59d6ffe43a94181329001eb6b5dd, type: 2}
   MasterVolumeObj: {fileID: 8644096929972656317}
-  BGMVolumeObj: {fileID: 2335812322688892113}
-  UISFXVolumeObj: {fileID: 4653905875823669538}
-  CharSFXVolumeObj: {fileID: 1269272006426149221}
-  MasterSlider: {fileID: 2640739188419620242}
-  BGMSlider: {fileID: 8302864194156169726}
-  UISFXSlider: {fileID: 1424884247188358157}
-  CharSFXSlider: {fileID: 4813950231035262026}
+  _masterSlider: {fileID: 2640739188419620242}
+  _bgmSlider: {fileID: 8302864194156169726}
+  _uiSFXSlider: {fileID: 1424884247188358157}
+  _gameSFXSlider: {fileID: 4813950231035262026}
 --- !u!114 &4879439167418096662
 MonoBehaviour:
   m_ObjectHideFlags: 0

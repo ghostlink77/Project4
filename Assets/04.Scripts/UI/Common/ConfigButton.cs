@@ -29,13 +29,16 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     [SerializeField] private Color _OnSelectColor;
     [SerializeField] private Color _deSelectColor;
 
+    private static readonly int SHOW_BTN = Animator.StringToHash("showBtn");
     private void Awake()
     {
         if (Slider != null)
             Slider.value = 1f;
+
+        SetValueText();
     }
 
-    private void Update()
+    public void SetValueText()
     {
         _sliderValueText.text = ((int)(Slider.value * 10)).ToString();
     }
@@ -60,7 +63,7 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
         if (isSelected)
         {
             _selectedImage.enabled = true;
-            _selectedImageAnim.Play("ShowBtn");
+            _selectedImageAnim.Play(SHOW_BTN);
             _btnNameText.color = _OnSelectColor;
         }
         else

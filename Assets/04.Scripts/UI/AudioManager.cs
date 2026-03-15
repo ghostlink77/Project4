@@ -95,12 +95,18 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     {
         SetVolume(AudioType.BGM, 0f);
         SetVolume(AudioType.UISFX, 0f);
+        SetVolume(AudioType.EnemySFX, 0f);
+        SetVolume(AudioType.BulletSFX, 0f);
+        SetVolume(AudioType.CharSFX, 0f);
     }
 
     public void UnMute()
     {
         SetVolume(AudioType.BGM, 1f);
         SetVolume(AudioType.UISFX, 1f);
+        SetVolume(AudioType.EnemySFX, 1f);
+        SetVolume(AudioType.BulletSFX, 1f);
+        SetVolume(AudioType.CharSFX, 1f);
     }
 
     public void SyncUserSettings()

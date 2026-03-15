@@ -5,8 +5,8 @@ public class PauseBtn : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IDe
 {
     [SerializeField] private Animator _anim;
 
-    private readonly string SHOW = "Show";
-    private readonly string HIDE = "Hide";
+    private static readonly int SHOW = Animator.StringToHash("Show");
+    private static readonly int HIDE = Animator.StringToHash("Hide");
 
     public bool isFirst;
 

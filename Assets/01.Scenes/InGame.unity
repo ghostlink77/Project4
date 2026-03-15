@@ -7548,7 +7548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _anim: {fileID: 651467728}
-  isFirst: 1
+  isFirst: 0
 --- !u!4 &659853215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
@@ -9388,7 +9388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _anim: {fileID: 1279140556}
-  isFirst: 1
+  isFirst: 0
 --- !u!4 &1287521865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2438694301238225116, guid: f31ed4be9a2386b4697e35144a114d1f, type: 3}
