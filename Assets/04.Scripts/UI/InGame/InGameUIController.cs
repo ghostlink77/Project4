@@ -34,11 +34,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private HpUI _playerHpUI;
     [SerializeField] private HpUI _agitHpUI;
 
-    [Header("Hp Bar Animation Value")]
-    [SerializeField] private float _blendInTime;
-    [SerializeField] private float _animSpeed;
-    [SerializeField] private Coroutine _playerHpBarAnimCoroutine;
-    [SerializeField] private Coroutine _agitHpBarAnimCoroutine;
+    private Dictionary<Transform, HpUI> _turretHpBars = new Dictionary<Transform, HpUI>();
 
     private Coroutine _messageTextCoroutine;
 
@@ -60,6 +56,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private string[] _selectedItemName = new string[3];
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
+    [SerializeField] private HpUISpawner _hpUISpawner;
 
     [Header("New Passive Data Pool")]
     public List<PassiveItemData> allPassives;
@@ -486,6 +483,28 @@ public class InGameUIController : MonoBehaviour
     {
         _inGameUI?.SetActive(false);
         _worldCanvas?.SetActive(false);
+    }
+
+    public void CreateTurretHpBar(Transform transform)
+    {
+        HpUI hpUI = _hpUISpawner.CreateHpUI(transform.position);
+        _turretHpBars[transform] = hpUI;
+    }
+
+    public void RemoveTurretHpBar(Transform transform)
+    {
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+        {
+            _hpUISpawner.RemoveHpUI(hpUI);
+            _turretHpBars.Remove(transform);
+        }
+        
+    }
+
+    public void UpdateTurretHpBar(Transform transform, float currentHp, float maxHp)
+    {
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+            hpUI.UpdateHpBar(currentHp, maxHp);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

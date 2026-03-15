@@ -29,9 +29,12 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     {
         _currentHp -= damage;
 
+        InGameManager.Instance.InGameUIController.UpdateTurretHpBar(transform.parent, _currentHp, (float)_turretData.MaxHp[_level-1]);
+        
         if (_currentHp <= 0)
         {
             OnDestroyed();
+            InGameManager.Instance.InGameUIController.RemoveTurretHpBar(transform.parent);
         }
     }
 
