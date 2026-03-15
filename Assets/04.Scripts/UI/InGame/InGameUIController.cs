@@ -493,13 +493,18 @@ public class InGameUIController : MonoBehaviour
 
     public void RemoveTurretHpBar(Transform transform)
     {
-        _hpUISpawner.RemoveHpUI(_turretHpBars[transform]);
-        _turretHpBars.Remove(transform);
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+        {
+            _hpUISpawner.RemoveHpUI(hpUI);
+            _turretHpBars.Remove(transform);
+        }
+        
     }
 
     public void UpdateTurretHpBar(Transform transform, float currentHp, float maxHp)
     {
-        _turretHpBars[transform].UpdateHpBar(currentHp, maxHp);
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+            hpUI.UpdateHpBar(currentHp, maxHp);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
