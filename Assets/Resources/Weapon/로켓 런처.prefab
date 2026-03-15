@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 3957966006892038675}
   - component: {fileID: 4866292833427450968}
   - component: {fileID: 3561674948437025311}
-  - component: {fileID: 4773915402747861237}
   m_Layer: 0
   m_Name: "\uB85C\uCF13 \uB7F0\uCC98"
   m_TagString: Untagged
@@ -91,7 +90,6 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 1048576
-  _lineRenderer: {fileID: 3561674948437025311}
 --- !u!114 &6035414204298828862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,15 +103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
   _weaponRangeCollider2D: {fileID: 4188357915843382534}
-  level: 0
-  damage: 0
-  critRate: 0
-  critMultiplier: 0
-  effectRate: 0
-  atkSpeed: 0
-  atkRange: 0
-  projectileSpeed: 0
-  projectileCount: 0
+  _weaponStat: {fileID: 0}
+  _level: 0
+  _damage: 0
+  _critRate: 0
+  _critMultiplier: 0
+  _effectRate: 0
+  _atkSpeed: 0
+  _atkRange: 0
+  _projectileSpeed: 0
+  _projectileCount: 0
 --- !u!114 &736068464906957172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,15 +262,3 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &4773915402747861237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345563338146526642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b68e56650927f4c13b4b5af282532100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponLevelController
