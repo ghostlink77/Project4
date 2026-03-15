@@ -13,7 +13,7 @@ public enum BtnType
 
 
 
-public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
+public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler
 {
     [SerializeField] private Image _selectedImage;
     [SerializeField] private Animator _selectedImageAnim;
@@ -22,7 +22,6 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     public Slider Slider;
 
     [SerializeField] private bool _isFirst = false;
-    [SerializeField] ConfigUI _configUIObject;
 
     [SerializeField] private BtnType _btnType;
     public BtnType BtnType { get { return _btnType; } }
@@ -32,7 +31,6 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
 
     private void Awake()
     {
-        _configUIObject = GetComponentInParent<ConfigUI>();
         if (Slider != null)
             Slider.value = 1f;
     }
@@ -55,8 +53,6 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     public void OnSelect(BaseEventData eventData)
     {
         ChangeButtonEffect(true);
-        if (_configUIObject != null)
-            _configUIObject.SelectBtn();
     }
 
     private void ChangeButtonEffect(bool isSelected)
@@ -77,11 +73,6 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        OnSelect(eventData);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        OnDeselect(eventData);
+        EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }

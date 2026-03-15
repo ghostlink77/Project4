@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -21,6 +23,7 @@ public class InGameUIController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject _pauseUI;
+    [SerializeField] private PauseUI _pauseUIComponent;
     [SerializeField] private GameObject _endGameUI;
     [SerializeField] private GameObject _levelupUI;
     [SerializeField] private TextMeshProUGUI _playTimeUI;
@@ -33,6 +36,11 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private GameObject _worldCanvas;
     [SerializeField] private HpUI _playerHpUI;
     [SerializeField] private HpUI _agitHpUI;
+    [SerializeField] private PlayableDirector _director;
+    [SerializeField] private PlayableAsset _fadeInAsset;
+    [SerializeField] private PlayableAsset _fadeOutAsset;
+
+    [SerializeField] private CanvasGroup _canvasGroup;
 
     [Header("Hp Bar Animation Value")]
     [SerializeField] private float _blendInTime;
@@ -74,7 +82,7 @@ public class InGameUIController : MonoBehaviour
         _pauseUI.SetActive(false);
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
-        _inGameUI.SetActive(true);
+        _inGameUI.SetActive(false);
         _expBar.fillAmount = Null_AMOUNT;
         _messageText.text = "";
         _scrapAmountText.text = "";
@@ -130,25 +138,26 @@ public class InGameUIController : MonoBehaviour
                 }
             }
 
-            if (_pauseUI != null && _pauseUI.activeSelf == true)
+            if (_pauseUI != null && _pauseUI.activeSelf == true && InGameManager.Instance.GameStat == GameStat.Pause)
             {
-                _pauseUI.SetActive(false);
-                Time.timeScale = 1f;
+                _pauseUIComponent.OnClickContinueBtn();
+                InGameManager.Instance.ContinueGame();
             }
-            else
+            else if (InGameManager.Instance.GameStat == GameStat.Play)
             {
+                InGameManager.Instance.PauseGame();
                 OnClickOpenPauseUI();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && _turretSelectUI.IsSetting == false)
+        else if (Input.GetKeyDown(KeyCode.Space) && _turretSelectUI.IsSetting == false && InGameManager.Instance.GameStat == GameStat.Play)
         {
             OpenTurretSelectUI();
         }
-        else if (Input.GetMouseButtonDown(1) && _turretSelectUI.IsSetting == true)
+        else if (Input.GetMouseButtonDown(1) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.UnSetTurret();
         }
-        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true)
+        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.PlaceTurret();
         }
@@ -183,28 +192,20 @@ public class InGameUIController : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void OnClickClosePauseUI()
+    public void ClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click_Close");
         Time.timeScale = 1f;
     }
 
-    public void OnClickOpenConfigUI()
+    public void OpenConfigUI()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         if (UIManager.Instance != null) UIManager.Instance.OpenUI<ConfigUI>();
     }
 
     public void OnClickRestartGame()
     {
         if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.InGame);
-    }
-
-    public void OnClickGoLobby()
-    {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click_Close");
-        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 
     public void OnClickExitGame()
@@ -486,6 +487,43 @@ public class InGameUIController : MonoBehaviour
     {
         _inGameUI?.SetActive(false);
         _worldCanvas?.SetActive(false);
+    }
+
+    public void ShowFadeInAnim()
+    {
+         if (_director != null && _fadeInAsset != null)
+        {
+            _director.playableAsset = _fadeInAsset;
+            _director.Play();
+        }
+    }
+
+    public void EndFadeIn()
+    {
+        if (InGameManager.Instance != null)
+        {
+            InGameManager.Instance.StartGame();
+            _inGameUI.SetActive(true);
+        }
+    }
+
+    public void ShowFadeOutAnim()
+    {
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.sendNavigationEvents = false;
+
+        if (_director != null && _fadeOutAsset != null)
+        {
+            _director.playableAsset = _fadeOutAsset;
+            _director.Play();
+        }
+    }
+
+    public void EndFadeOut()
+    {
+        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

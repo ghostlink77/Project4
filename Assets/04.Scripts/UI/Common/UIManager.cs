@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
@@ -12,6 +13,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     private Dictionary<Type, BaseUI> _closeUIPool = new();
 
     public Camera uiCamera;
+
+    private GameObject _currentBtn;
 
     private BaseUI GetUI<T>(out bool isAlreadyOpen) where T : BaseUI
     {
@@ -106,5 +109,12 @@ public class UIManager : SingletonBehaviour<UIManager>
         {
             _frontUI.Close();
         }
+    }
+
+    public void SaveCurrentBtn(GameObject btn) => _currentBtn = btn;
+    public void LoadCurrentBtn()
+    {
+        if (_currentBtn == null) Debug.Log("currentBtn is null.");
+        else EventSystem.current.SetSelectedGameObject(_currentBtn);
     }
 }

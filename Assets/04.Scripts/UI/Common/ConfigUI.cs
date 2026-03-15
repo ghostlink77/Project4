@@ -19,28 +19,11 @@ public class ConfigUI : BaseUI
 
     private readonly float _defaultSoundValueScale = 0.01f;
 
-    private GameObject LastSelectedBtn;
-
-    public void SelectBtn()
-    {
-        if (EventSystem.current.currentSelectedGameObject != null)
-            LastSelectedBtn = EventSystem.current.currentSelectedGameObject;
-    }
-
-    private void KeepSelected()
-    {
-        if (EventSystem.current.currentSelectedGameObject == null)
-        {
-            if (LastSelectedBtn != null) 
-                EventSystem.current.SetSelectedGameObject(LastSelectedBtn);
-        }
-    }
 
     private void Update()
     {
         InputHandle();
         SetVolume();
-        KeepSelected();
     }
 
     private void InputHandle()
@@ -113,7 +96,8 @@ public class ConfigUI : BaseUI
     }
     public void EndFadeOut()
     {
-        EventSystem.current.SetSelectedGameObject(LastSelectedBtn);
-        Close();
+        if (UIManager.Instance == null) Debug.Log("UIManager Instance is null.");
+        else UIManager.Instance.LoadCurrentBtn();
+            Close();
     }
 }

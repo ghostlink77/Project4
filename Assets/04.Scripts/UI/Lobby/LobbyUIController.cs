@@ -50,6 +50,9 @@ public class LobbyUIController : MonoBehaviour
 
     public void OnClickConfigButton()
     {
+        if (UIManager.Instance == null) Debug.LogError("UIManager Instance is null.");
+        else UIManager.Instance.SaveCurrentBtn(EventSystem.current.currentSelectedGameObject);
+        
         AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         UIManager.Instance.OpenUI<ConfigUI>();
     }
@@ -72,7 +75,7 @@ public class LobbyUIController : MonoBehaviour
 
     public void EndFadeIn()
     {
-        AudioManager.Instance.StopAll();
+        EventSystem.current.sendNavigationEvents = true;
         AudioManager.Instance.Play(AudioType.BGM, "LobbyBGM");
         EventSystem.current.SetSelectedGameObject(_firstBtn);
     }
