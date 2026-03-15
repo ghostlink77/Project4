@@ -141,11 +141,9 @@ public class InGameUIController : MonoBehaviour
             if (_pauseUI != null && _pauseUI.activeSelf == true && InGameManager.Instance.GameStat == GameStat.Pause)
             {
                 _pauseUIComponent.OnClickContinueBtn();
-                InGameManager.Instance.ContinueGame();
             }
             else if (InGameManager.Instance.GameStat == GameStat.Play)
             {
-                InGameManager.Instance.PauseGame();
                 OnClickOpenPauseUI();
             }
         }
@@ -187,6 +185,8 @@ public class InGameUIController : MonoBehaviour
 
     public void OnClickOpenPauseUI()
     {
+        InGameManager.Instance.PauseGame();
+
         if (_pauseUI != null) _pauseUI.SetActive(true);
         if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         Time.timeScale = 0f;

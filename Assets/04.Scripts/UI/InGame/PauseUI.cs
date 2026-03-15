@@ -8,6 +8,8 @@ public class PauseUI : MonoBehaviour
     [SerializeField] private PlayableAsset _fadeInAsset;
     [SerializeField] private PlayableAsset _fadeOutAsset;
 
+    [SerializeField] private GameObject _firstBtn;
+
     private void OnEnable()
     {
         if (_director == null)
@@ -27,6 +29,8 @@ public class PauseUI : MonoBehaviour
 
     public void OnClickContinueBtn()
     {
+        InGameManager.Instance.ContinueGame();
+
         if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
 
         if (_director == null)
@@ -70,5 +74,10 @@ public class PauseUI : MonoBehaviour
         }
         InGameManager.Instance.ExitGame();
         InGameManager.Instance.InGameUIController.ShowFadeOutAnim();
+    }
+
+    public void EndFadeIn()
+    {
+        EventSystem.current.SetSelectedGameObject(_firstBtn);
     }
 }

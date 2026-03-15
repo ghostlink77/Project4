@@ -10,14 +10,6 @@ public class PauseBtn : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IDe
 
     public bool isFirst;
 
-    private void OnEnable()
-    {
-        if (_anim != null && isFirst)
-        {
-            EventSystem.current.SetSelectedGameObject(gameObject);
-        }     
-    }
-
     public void OnDeselect(BaseEventData eventData)
     {
         Debug.Log("버튼 비활성화.");

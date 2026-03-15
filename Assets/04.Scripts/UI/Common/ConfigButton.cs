@@ -21,7 +21,7 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     [SerializeField] private TextMeshProUGUI _sliderValueText;
     public Slider Slider;
 
-    [SerializeField] private bool _isFirst = false;
+    [SerializeField] private bool _isFirst;
 
     [SerializeField] private BtnType _btnType;
     public BtnType BtnType { get { return _btnType; } }
@@ -45,8 +45,7 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
 
     private void OnEnable()
     {
-        if (_isFirst) EventSystem.current.SetSelectedGameObject(gameObject);
-        else ChangeButtonEffect(false);
+        ChangeButtonEffect(false);
     }
     public void OnDeselect(BaseEventData eventData)
     {

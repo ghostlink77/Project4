@@ -21435,7 +21435,7 @@ PlayableDirector:
   m_GameObject: {fileID: 2591889185869983793}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 97c938672b3e9be499a6d3e75e6b6e19, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 001290f0cdb1a674082fd24a3fccbeec, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 2
@@ -21474,6 +21474,8 @@ PlayableDirector:
   - key: {fileID: -4837324604042242328, guid: 97c938672b3e9be499a6d3e75e6b6e19, type: 2}
     value: {fileID: 2591889185869983796}
   - key: {fileID: 8761674270597574474, guid: 97c938672b3e9be499a6d3e75e6b6e19, type: 2}
+    value: {fileID: 2591889185869983798}
+  - key: {fileID: -5700664076320612834, guid: 001290f0cdb1a674082fd24a3fccbeec, type: 2}
     value: {fileID: 2591889185869983798}
   m_ExposedReferences:
     m_References: []
@@ -21519,12 +21521,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 396129191f1775e43bd473cece8930f9, type: 2}
+    - {fileID: 11400000, guid: 04ed6acb8a0ee9a408ac3e48f1a7944a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2591889185869983791}
           m_TargetAssemblyTypeName: InGameUIController, Assembly-CSharp
           m_MethodName: ClosePauseUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2591889185869983799}
+          m_TargetAssemblyTypeName: PauseUI, Assembly-CSharp
+          m_MethodName: EndFadeIn
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -21549,6 +21566,7 @@ MonoBehaviour:
   _director: {fileID: 2591889185869983795}
   _fadeInAsset: {fileID: 11400000, guid: 001290f0cdb1a674082fd24a3fccbeec, type: 2}
   _fadeOutAsset: {fileID: 11400000, guid: 97c938672b3e9be499a6d3e75e6b6e19, type: 2}
+  _firstBtn: {fileID: 2591889185869983797}
 --- !u!95 &2591889185869983800
 Animator:
   serializedVersion: 7
