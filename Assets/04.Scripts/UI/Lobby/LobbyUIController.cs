@@ -10,6 +10,14 @@ public class LobbyUIController : MonoBehaviour
     [SerializeField] private PlayableDirector _fadeOutObj;
     [SerializeField] private GameObject _firstBtn;
 
+    [SerializeField] private CanvasGroup _canvasGroup;
+
+    private void Awake()
+    {
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+    }
+
     private void Update()
     {
         HandleInput();
@@ -50,13 +58,16 @@ public class LobbyUIController : MonoBehaviour
 
     public void OnClickConfigButton()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (UIManager.Instance == null) Debug.LogError("UIManager Instance is null.");
+        else UIManager.Instance.SaveCurrentBtn(EventSystem.current.currentSelectedGameObject);
+        
+        AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         UIManager.Instance.OpenUI<ConfigUI>();
     }
 
     public void OnClickStartButton()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         _fadeOutObj.Play();
     }
 
@@ -72,7 +83,9 @@ public class LobbyUIController : MonoBehaviour
 
     public void EndFadeIn()
     {
-        AudioManager.Instance.StopAll();
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
+        EventSystem.current.sendNavigationEvents = true;
         AudioManager.Instance.Play(AudioType.BGM, "LobbyBGM");
         EventSystem.current.SetSelectedGameObject(_firstBtn);
     }

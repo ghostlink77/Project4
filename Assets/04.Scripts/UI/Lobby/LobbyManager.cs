@@ -20,6 +20,6 @@ public class LobbyManager : SingletonBehaviour<LobbyManager>
             return;
         }
 
-        //AudioManager.Instance.Play();
+        AudioManager.Instance.StopAll();
     }
 }

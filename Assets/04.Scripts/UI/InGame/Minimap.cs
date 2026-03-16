@@ -166,7 +166,7 @@ public class Minimap : MonoBehaviour
 
     public void PlayWarningAnim()
     {
-        AudioManager.Instance.Play(AudioType.SFX, "Warning");
+        AudioManager.Instance.Play(AudioType.UISFX, "Warning");
         _anim.enabled = true;
     }
     public void StopWarningAnim()

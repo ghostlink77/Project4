@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
   _weaponShootSound: {fileID: 8300000, guid: aee4b1b58b8ab414aaf43591a5fdd099, type: 3}
+  _weaponShootClipName: HandCannonShootSound
 --- !u!58 &7749492455472732356
 CircleCollider2D:
   m_ObjectHideFlags: 0

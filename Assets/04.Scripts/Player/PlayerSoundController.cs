@@ -3,15 +3,14 @@ using UnityEngine;
 public class PlayerSoundController : MonoBehaviour
 {
 #region 스크립트 참조 변수들
-    private SoundManager _soundManager;
+    private AudioManager _audioManager;
     private PlayerManager _playerManager;
     private PlayerEventController _playerEventController;
 #endregion
 
 #region 사운드 클립들
     [Header("플레이어 피해 입는 사운드 클립")]
-    [SerializeField]
-    private AudioClip _hurtClip;
+    [SerializeField] private string _hurtClipName = "playerHurtSoundEffect";
     #endregion
 
     #region 이벤트 생명주기 함수
@@ -29,7 +28,7 @@ public class PlayerSoundController : MonoBehaviour
     #region SetUp 함수
     public void SetUp()
     {
-        _soundManager = SoundManager.Instance;
+        _audioManager = AudioManager.Instance;
         _playerManager = PlayerManager.Instance;
         _playerEventController = _playerManager.PlayerEventController;
         AddOnEvent();
@@ -49,8 +48,7 @@ public class PlayerSoundController : MonoBehaviour
     
     private void OnEventHurt()
     {
-        if (IsNull(_hurtClip)) return;
-        _soundManager.PlaySFX(SoundType.Player, _hurtClip);
+        _audioManager.Play(AudioType.CharSFX, _hurtClipName);
     }
     #endregion
     
