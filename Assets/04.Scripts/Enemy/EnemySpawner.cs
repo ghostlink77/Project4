@@ -19,7 +19,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
     private Rigidbody2D _agitRigidbody;
 
-    private List<Enemy> _activedEnemies = new List<Enemy>();
+    private List<Enemy> _activeEnemies = new List<Enemy>();
 
     [SerializeField] private AudioClip _enemyAllDeadSound;
 
@@ -81,7 +81,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
         Enemy enemyComponent = enemy.GetComponent<Enemy>();
         enemyComponent.Initialize(_agitRigidbody);
-        _activedEnemies.Add(enemyComponent);
+        _activeEnemies.Add(enemyComponent);
         return enemy;
     }
 
@@ -96,7 +96,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
             Destroy(enemy);
         }
         InGameManager.Instance.InGameUIController.RemoveTracedEnemyInMinimap(enemy.transform);
-        _activedEnemies.Remove(enemy.GetComponent<Enemy>());
+        _activeEnemies.Remove(enemy.GetComponent<Enemy>());
     }
 
 
@@ -119,10 +119,10 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
     public void DestroyAll()
     {
-        foreach (var enemy in _activedEnemies)
+        foreach (var enemy in _activeEnemies)
         {
             enemy.TakeDamage(1000000000000);
-            SoundManager.Instance?.PlaySFX(SoundType.Enemy, _enemyAllDeadSound);
         }
+        SoundManager.Instance?.PlaySFX(SoundType.Enemy, _enemyAllDeadSound);
     }
 }

@@ -8,9 +8,9 @@ using UnityEngine.Playables;
 public class PlayerAnimationController : MonoBehaviour
 {
     #region 애니메이터 패러미터 ID
-    private static readonly int isHurt = Animator.StringToHash("isHurt");
-    private static readonly int isDead = Animator.StringToHash("isDead");
-    private static readonly int isMoving = Animator.StringToHash("isMoving");
+    private static readonly int IsHurt = Animator.StringToHash("isHurt");
+    private static readonly int IsDead = Animator.StringToHash("isDead");
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
     #endregion
 
 #region variables
@@ -70,29 +70,29 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void OnEventHurt()
     {
-        _animator.SetTrigger(isHurt);
+        _animator.SetTrigger(IsHurt);
     }
     
     private void OnEventDeath()
     {
-        _animator.SetBool(isDead, true);
+        _animator.SetBool(IsDead, true);
     }
     
     private void OnEventRevive()
     {
-        _animator.SetBool(isDead, false);
+        _animator.SetBool(IsDead, false);
     }
     
     private void OnEventMove()
     {
-        _animator.SetBool(isMoving, true);
+        _animator.SetBool(IsMoving, true);
         if (_playerMoveController.InputVector.x < 0) _spriteRenderer.flipX = true;
         else if (_playerMoveController.InputVector.x > 0) _spriteRenderer.flipX = false;
     }
     
     private void OnEventStop()
     {
-        _animator.SetBool(isMoving, false);
+        _animator.SetBool(IsMoving, false);
     }
 #endregion
 }
