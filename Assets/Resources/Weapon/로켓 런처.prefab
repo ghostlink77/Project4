@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8310104116831955907}
   - component: {fileID: 4188357915843382534}
   - component: {fileID: 1039333528494596075}
-  - component: {fileID: 3561674948437025311}
   - component: {fileID: 6035414204298828862}
   - component: {fileID: 736068464906957172}
   - component: {fileID: 3957966006892038675}
   - component: {fileID: 4866292833427450968}
+  - component: {fileID: 3561674948437025311}
   m_Layer: 0
   m_Name: "\uB85C\uCF13 \uB7F0\uCC98"
   m_TagString: Untagged
@@ -90,7 +90,68 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 1048576
-  _lineRenderer: {fileID: 3561674948437025311}
+--- !u!114 &6035414204298828862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345563338146526642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23eaf59f55b46944094f18cb6c77b198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
+  _weaponRangeCollider2D: {fileID: 4188357915843382534}
+  _weaponStat: {fileID: 0}
+  _level: 0
+  _damage: 0
+  _critRate: 0
+  _critMultiplier: 0
+  _effectRate: 0
+  _atkSpeed: 0
+  _atkRange: 0
+  _projectileSpeed: 0
+  _projectileCount: 0
+--- !u!114 &736068464906957172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345563338146526642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd4cc7723692644f8727ec258560fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponEventController
+--- !u!114 &3957966006892038675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345563338146526642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
+  _weaponShootSound: {fileID: 8300000, guid: c2f7f4c0d0f4a4cc685cf40e345e94cf, type: 3}
+--- !u!114 &4866292833427450968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345563338146526642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e99b957ebab2544a8b7ac02200d1788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
+  _projectilePrefab: {fileID: 2505686164639090012, guid: aad2a853c847a471494d80075d3d21c6, type: 3}
+  _baseStat: {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
 --- !u!120 &3561674948437025311
 LineRenderer:
   serializedVersion: 3
@@ -201,65 +262,3 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &6035414204298828862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345563338146526642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23eaf59f55b46944094f18cb6c77b198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
-  _weaponRangeCollider2D: {fileID: 4188357915843382534}
-  level: 0
-  damage: 0
-  critRate: 0
-  critMultiplier: 0
-  effectRate: 0
-  atkSpeed: 0
-  atkRange: 0
-  projectileSpeed: 0
-  projectileCount: 0
---- !u!114 &736068464906957172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345563338146526642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd4cc7723692644f8727ec258560fb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponEventController
---- !u!114 &3957966006892038675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345563338146526642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
-  _weaponShootSound: {fileID: 8300000, guid: c2f7f4c0d0f4a4cc685cf40e345e94cf, type: 3}
-  _weaponShootClipName: RocketLauncherShootSound
---- !u!114 &4866292833427450968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7345563338146526642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e99b957ebab2544a8b7ac02200d1788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
-  _projectilePrefab: {fileID: 2505686164639090012, guid: aad2a853c847a471494d80075d3d21c6, type: 3}
-  _baseStat: {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
