@@ -19,13 +19,13 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
-    public void StartSpawn(EnemyType enemyType, float interval, int count)
+    public void StartSpawn(EnemyType enemyType, float interval, int count, bool isBossWave)
     {
         _spawnInterval = interval;
         _spawnCount = count;
         _isSpawning = true;
         _enemyType = enemyType;
-        _spawnCoroutine = StartCoroutine(SpawnLoop());
+        _spawnCoroutine = StartCoroutine(SpawnLoop(isBossWave));
     }
 
     public void StopSpawn()
@@ -39,12 +39,12 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnCoroutine = null;
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop(bool isBossWave)
     {
         while (_isSpawning)
         {
             // NOTE: 보스는 한 번만 스폰
-            if (_enemyType == EnemyType.Boss)
+            if (isBossWave)
             {
                 EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), transform.position);
                 StopSpawn();

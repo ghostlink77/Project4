@@ -16,6 +16,7 @@ public class SpawnPointConfig
 public class Wave
 {
     public float startTime;
+    public bool isBoss;
     public float defaultSpawnInterval = 1f;
     public SpawnPointConfig[] spawnPointConfigs;
 }
