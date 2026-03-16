@@ -1,26 +1,51 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
+public enum BtnType
+{
+    BGMSoundBtn,
+    MasterSoundBtn,
+    UISoundBtn,
+    CharSoundBtn,
+}
+
+
+
+public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler
 {
     [SerializeField] private Image _selectedImage;
-    [SerializeField] private Image _btnImage;
     [SerializeField] private Animator _selectedImageAnim;
+    [SerializeField] private TextMeshProUGUI _btnNameText;
+    [SerializeField] private TextMeshProUGUI _sliderValueText;
     public Slider Slider;
 
-    [SerializeField] private bool _isFirst = false;
-    [SerializeField] ConfigUI _configUIObject;
+    [SerializeField] private bool _isFirst;
 
+    [SerializeField] private BtnType _btnType;
+    public BtnType BtnType { get { return _btnType; } }
+
+    [SerializeField] private Color _OnSelectColor;
+    [SerializeField] private Color _deSelectColor;
+
+    private static readonly int SHOW_BTN = Animator.StringToHash("showBtn");
     private void Awake()
     {
-        _configUIObject = GetComponentInParent<ConfigUI>();
+        if (Slider != null)
+            Slider.value = 1f;
+
+        SetValueText();
+    }
+
+    public void SetValueText()
+    {
+        _sliderValueText.text = ((int)(Slider.value * 10)).ToString();
     }
 
     private void OnEnable()
     {
-        if (_isFirst) EventSystem.current.SetSelectedGameObject(gameObject);
-        else ChangeButtonEffect(false);
+        ChangeButtonEffect(false);
     }
     public void OnDeselect(BaseEventData eventData)
     {
@@ -30,23 +55,27 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     public void OnSelect(BaseEventData eventData)
     {
         ChangeButtonEffect(true);
-        if (_configUIObject != null)
-            _configUIObject.SelectBtn();
-        _selectedImageAnim.enabled = true;
     }
 
     private void ChangeButtonEffect(bool isSelected)
     {
-        _selectedImage.enabled = isSelected;
+        if (isSelected)
+        {
+            _selectedImage.enabled = true;
+            _selectedImageAnim.Play(SHOW_BTN);
+            _btnNameText.color = _OnSelectColor;
+        }
+        else
+        {
+            _selectedImage.enabled = false;
+            _btnNameText.color = _deSelectColor;
+        }
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _btnImage.enabled = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _btnImage.enabled = false;
+        if (eventData.delta.sqrMagnitude > 0.1f)
+            EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }

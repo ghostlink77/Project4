@@ -720,10 +720,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1655730356}
+    m_SelectOnDown: {fileID: 1892106215420240601}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 1225626602}
   - component: {fileID: 1225626603}
   - component: {fileID: 1225626604}
+  - component: {fileID: 1225626605}
   m_Layer: 0
   m_Name: LobbyUIController
   m_TagString: Untagged
@@ -872,6 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LobbyUIController
   _fadeOutObj: {fileID: 845361139}
   _firstBtn: {fileID: 3513004534203070781}
+  _canvasGroup: {fileID: 1225626605}
 --- !u!114 &1225626604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,6 +919,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!225 &1225626605
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225626601}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1655730353
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,10 +1000,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1892106215420240601}
+    m_SelectOnDown: {fileID: 1094400720}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1902,10 +1916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1094400720}
+    m_SelectOnDown: {fileID: 1655730356}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2

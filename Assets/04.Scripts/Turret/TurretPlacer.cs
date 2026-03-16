@@ -68,7 +68,7 @@ public class TurretPlacer : MonoBehaviour
             Debug.Log("현재 클릭 지점에 포탑을 설치할 수 없습니다.");
             InGameManager.Instance.InGameUIController.PrintMessge("현재 클릭 지점에 포탑을 설치할 수 없습니다.");
         }
-        AudioManager.Instance.Play(AudioType.SFX, IMPOSSIBLE);
+        AudioManager.Instance.Play(AudioType.UISFX, IMPOSSIBLE);
     }
 
     public bool CheckScrapAmount(int cost)

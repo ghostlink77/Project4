@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class LobbyButton : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IDeselectHandler
 {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Image _buttonImage;
@@ -32,15 +32,15 @@ public class LobbyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
         ChangeButtonEffect(true);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        ChangeButtonEffect(false);
-    }
-
-    public void OnClickBtn()
+    public void OnDeselect(BaseEventData eventData)
     {
         ChangeButtonEffect(false);
     }
