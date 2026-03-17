@@ -3,13 +3,14 @@
 플레이어의 애니메이션 작동은 이곳에서 관리한다.
 */
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerAnimationController : MonoBehaviour
 {
     #region 애니메이터 패러미터 ID
-    private static readonly int isHurtHash = Animator.StringToHash("isHurt");
-    private static readonly int isDeadHash = Animator.StringToHash("isDead");
-    private static readonly int isMovingHash = Animator.StringToHash("isMoving");
+    private static readonly int IsHurt = Animator.StringToHash("isHurt");
+    private static readonly int IsDead = Animator.StringToHash("isDead");
+    private static readonly int IsMoving = Animator.StringToHash("isMoving");
     #endregion
 
 #region variables
@@ -34,7 +35,10 @@ public class PlayerAnimationController : MonoBehaviour
         RemoveFromEvent();
     }
 
-#endregion
+    #endregion
+
+    [SerializeField] private PlayableDirector _director;
+    
 
     public void SetUp()
     {
@@ -66,29 +70,29 @@ public class PlayerAnimationController : MonoBehaviour
     }
     private void OnEventHurt()
     {
-        _animator.SetTrigger(isHurtHash);
+        _animator.SetTrigger(IsHurt);
     }
     
     private void OnEventDeath()
     {
-        _animator.SetBool(isDeadHash, true);
+        _animator.SetBool(IsDead, true);
     }
     
     private void OnEventRevive()
     {
-        _animator.SetBool(isDeadHash, false);
+        _animator.SetBool(IsDead, false);
     }
     
     private void OnEventMove()
     {
-        _animator.SetBool(isMovingHash, true);
+        _animator.SetBool(IsMoving, true);
         if (_playerMoveController.InputVector.x < 0) _spriteRenderer.flipX = true;
         else if (_playerMoveController.InputVector.x > 0) _spriteRenderer.flipX = false;
     }
     
     private void OnEventStop()
     {
-        _animator.SetBool(isMovingHash, false);
+        _animator.SetBool(IsMoving, false);
     }
 #endregion
 }

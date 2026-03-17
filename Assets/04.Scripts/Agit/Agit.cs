@@ -10,10 +10,9 @@ public class Agit : MonoBehaviour, IDamageable
 
     [SerializeField] float cameraMoveDuration = 0.5f;
 
-    [SerializeField] private PlayableDirector _agitTimeLine;
+    [SerializeField] private PlayableDirector _playableDirector;
     [SerializeField] private bool _isWarning;
     [SerializeField] private TimelineAsset _warningTimeline;
-    [SerializeField] private TimelineAsset _gameOverTimeline;
 
     private bool isDestroyed = false;
 
@@ -21,7 +20,7 @@ public class Agit : MonoBehaviour, IDamageable
     {
         currentHP = maxHP;
         isDestroyed = false;
-        _agitTimeLine.playableAsset = _warningTimeline;
+        _playableDirector.playableAsset = _warningTimeline;
     }
 
     public void TakeDamage(float damage)
@@ -44,7 +43,7 @@ public class Agit : MonoBehaviour, IDamageable
     private void ShowDamagedAnim()
     {
         if (_isWarning) return;
-        _agitTimeLine.Play();
+        _playableDirector.Play();
         _isWarning = true;
     }
 
@@ -57,12 +56,6 @@ public class Agit : MonoBehaviour, IDamageable
     {
         _isWarning = false;
         InGameManager.Instance.InGameUIController.HideMinimapWarning();
-    }
-
-    public void ShowEndGameAnim()
-    {
-        _agitTimeLine.playableAsset = _gameOverTimeline;
-        _agitTimeLine.Play();
     }
 
     public void ShowGameOverUI()

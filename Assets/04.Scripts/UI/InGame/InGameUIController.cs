@@ -98,6 +98,8 @@ public class InGameUIController : MonoBehaviour
         }
 
         InGameManager.Instance.AgitGameOverAction += EndGame;
+        InGameManager.Instance.PlayerGameOverAction += EndGame;
+        InGameManager.Instance.PlayerWinAction += PlayerWinEndGame;
 
         UpdateInventory();
 
@@ -112,6 +114,8 @@ public class InGameUIController : MonoBehaviour
         }
 
         InGameManager.Instance.AgitGameOverAction -= EndGame;
+        InGameManager.Instance.PlayerGameOverAction -= EndGame;
+        InGameManager.Instance.PlayerWinAction -= PlayerWinEndGame;
     }
 
     private void Update()
@@ -486,6 +490,10 @@ public class InGameUIController : MonoBehaviour
         _worldCanvas?.SetActive(false);
     }
 
+    private void PlayerWinEndGame()
+    {
+        _playTimeUI.text = "Player Win!!";
+    }
     public void ShowFadeInAnim()
     {
          if (_director != null && _fadeInAsset != null)

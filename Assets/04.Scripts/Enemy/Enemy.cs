@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void TrackTarget()
     {
-        if (_target != null && _isLive)
+        if (_target != null && _isLive && InGameManager.Instance.GameStat != GameStat.End)
         {
             Vector2 direction = (_target.position - _rigid.position).normalized;
             Vector2 moveAmount = direction * _speed * Time.fixedDeltaTime;

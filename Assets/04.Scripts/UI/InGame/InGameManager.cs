@@ -15,12 +15,16 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
     public float PlayTime { get; private set; }
 
+    [SerializeField] private float _gameClearConditionTime;
+    public float GameClearConditionTime { get { return _gameClearConditionTime; }}
+
     private PlayerLevelControl _playerLevelControl;
 
     public GameStat GameStat { get; private set; }
 
     public Action AgitGameOverAction;
     public Action PlayerGameOverAction;
+    public Action PlayerWinAction;
     protected override void Init()
     {
         IsDestroyOnLoad = true;
@@ -64,13 +68,23 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
     private void Update()
     {
-        RecordPlayTime();
+        if (GameStat == GameStat.Play)
+            RecordPlayTime();
     }
 
     private void RecordPlayTime()
     {
         PlayTime += Time.deltaTime;
         InGameUIController.ShowPlayTime();
+
+        if (PlayTime >= _gameClearConditionTime)
+        {
+            Debug.Log("°ÔÀÓ ¿ì½Â!!");
+            Time.timeScale = .2f;
+            PlayerWinAction?.Invoke();
+            EnemySpawner.Instance.DestroyAll();
+            GameStat = GameStat.End;
+        }
     }
 
     public void OpenLevelUpUI(int level)
@@ -112,6 +126,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
     {
         GameStat = GameStat.End;
         Time.timeScale = 0f;
+        AudioManager.Instance.StopAll();
 
         if (isPlayerDead)
         {
