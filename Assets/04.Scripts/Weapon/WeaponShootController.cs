@@ -14,7 +14,7 @@ public class WeaponShootController : MonoBehaviour
     private IObjectPool<GameObject> _projectilePool;
     private GameObject _bulletPrefab;
     private CircleCollider2D _weaponRangeCollider;
-    private List<GameObject> enemiesInRange = new List<GameObject>();
+    private List<GameObject> _enemiesInRange = new List<GameObject>();
     private WeaponStatController _weaponStatController;
     private WeaponEventController _weaponEventController;
 
@@ -23,26 +23,11 @@ public class WeaponShootController : MonoBehaviour
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
     private float _dispersionAngle = 10f;
-    
-    // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
-    #region 임시 추가 코드
-    [SerializeField]
-    private LineRenderer _lineRenderer;
-    private Vector3 _firepoint;
-    private float _range = 25f;
-    
-    private void Update()
-    {
-        UpdateAimLine();
-    }
-    
-    private void UpdateAimLine()
-    {
-        _lineRenderer.SetPosition(0, gameObject.transform.position);
-        _lineRenderer.SetPosition(1, _firepoint);
-    }
-    #endregion
 
+    [Header("공격할 적 레이어")]
+    [SerializeField]
+    private LayerMask _enemyLayer;
+    
     private void Awake()
     {   
         _projectilePool = new ObjectPool<GameObject>(
@@ -67,12 +52,18 @@ public class WeaponShootController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Add(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            _enemiesInRange.Add(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")) enemiesInRange.Remove(collision.gameObject);
+        if (((1 << collision.gameObject.layer) & _enemyLayer) != 0)
+        {
+            _enemiesInRange.Remove(collision.gameObject);
+        }
     }
 
     public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
@@ -83,7 +74,7 @@ public class WeaponShootController : MonoBehaviour
             return;
         }
         _atkCoolTime += Time.deltaTime;
-        if (enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
+        if (_enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
         {
             _atkCoolTime = 0f;
             Shoot(weaponDamage, projectileSpeed);
@@ -98,6 +89,10 @@ public class WeaponShootController : MonoBehaviour
         for (int i = 0; i < _projectileCount; i++)
         {
             GameObject bullet = _projectilePool.Get();
+            if (bullet.TryGetComponent<RicochetController>(out RicochetController ricochetController))
+            {
+                bullet.GetComponent<BulletController>().Penetratable = true;
+            }
             if (_projectileCount >= 2)
             {
                 float addedAngle = UnityEngine.Random.Range(-_dispersionAngle/2, _dispersionAngle/2);
@@ -110,27 +105,25 @@ public class WeaponShootController : MonoBehaviour
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
     {
-        if (enemiesInRange.Count == 0) return Vector2.zero;
+        if (_enemiesInRange.Count == 0) return Vector2.zero;
         
         int smallestIndex = 0;
         float smallestDistance = float.MaxValue;
         
         Vector2 targetPos = Vector2.zero;
-        for (int i = 0; i < enemiesInRange.Count; i++)
+        _enemiesInRange.RemoveAll(enemy => enemy == null);
+        for (int i = 0; i < _enemiesInRange.Count; i++)
         {
-            if (enemiesInRange[i] == null) continue;
-            Vector2 targetCandidatePos = enemiesInRange[i].transform.position;
+            if (_enemiesInRange[i] == null) continue;
+            Vector2 targetCandidatePos = _enemiesInRange[i].transform.position;
             float oneEnemyDistance = GetDirectionVector(playerPos,targetCandidatePos).sqrMagnitude;
             if (smallestDistance > oneEnemyDistance)
             {
                 smallestIndex = i;
                 targetPos = targetCandidatePos;
+                smallestDistance = oneEnemyDistance;
             }
         }
-        // 공격 방향을 확인하기 위한 임시 코드. 추후 삭제 필요
-        #region 임시 추가 코드
-        _firepoint = targetPos;
-        #endregion
         return targetPos;
     }
 

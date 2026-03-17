@@ -21,6 +21,8 @@ public class ItemSlot : MonoBehaviour
         _image.color = Color.white;
         _description.text = description;
         _btn.interactable = true;
+
+        _image.preserveAspect = true;
     }
 
     public virtual void SetSlot(string name, int level, string description, int cost)

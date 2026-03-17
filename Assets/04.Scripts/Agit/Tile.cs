@@ -23,6 +23,8 @@ public class Tile : MonoBehaviour
         currentTurret.transform.parent = this.transform;
         isPlaceable = false;
 
+        InGameManager.Instance.InGameUIController.CreateTurretHpBar(transform);
+
         return currentTurret.GetComponent<TurretBase>();
     }
 

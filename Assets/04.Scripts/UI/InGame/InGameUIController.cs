@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -21,6 +23,7 @@ public class InGameUIController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject _pauseUI;
+    [SerializeField] private PauseUI _pauseUIComponent;
     [SerializeField] private GameObject _endGameUI;
     [SerializeField] private GameObject _levelupUI;
     [SerializeField] private TextMeshProUGUI _playTimeUI;
@@ -28,19 +31,18 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private Minimap _minimap;
     [SerializeField] private GameObject _inGameUI;
     [SerializeField] private TurretSelectUI _turretSelectUI;
-    [SerializeField] private Image _playerHpBar;
-    [SerializeField] private Image _playerHpAnimBar;
-    [SerializeField] private Image _agitHpBar;
-    [SerializeField] private Image _agitHpAnimBar;
     [SerializeField] private TextMeshProUGUI _messageText;
     [SerializeField] private TextMeshProUGUI _scrapAmountText;
     [SerializeField] private GameObject _worldCanvas;
+    [SerializeField] private HpUI _playerHpUI;
+    [SerializeField] private HpUI _agitHpUI;
+    [SerializeField] private PlayableDirector _director;
+    [SerializeField] private PlayableAsset _fadeInAsset;
+    [SerializeField] private PlayableAsset _fadeOutAsset;
 
-    [Header("Hp Bar Animation Value")]
-    [SerializeField] private float _blendInTime;
-    [SerializeField] private float _animSpeed;
-    [SerializeField] private Coroutine _playerHpBarAnimCoroutine;
-    [SerializeField] private Coroutine _agitHpBarAnimCoroutine;
+    [SerializeField] private CanvasGroup _canvasGroup;
+
+    private Dictionary<Transform, HpUI> _turretHpBars = new Dictionary<Transform, HpUI>();
 
     private Coroutine _messageTextCoroutine;
 
@@ -62,6 +64,7 @@ public class InGameUIController : MonoBehaviour
     [SerializeField] private string[] _selectedItemName = new string[3];
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
+    [SerializeField] private HpUISpawner _hpUISpawner;
 
     [Header("New Passive Data Pool")]
     public List<PassiveItemData> allPassives;
@@ -76,11 +79,7 @@ public class InGameUIController : MonoBehaviour
         _pauseUI.SetActive(false);
         _levelupUI.SetActive(false);
         _endGameUI.SetActive(false);
-        _inGameUI.SetActive(true);
-        _playerHpBar.fillAmount = FULL_FILL_AMOUNT;
-        _playerHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
-        _agitHpBar.fillAmount = FULL_FILL_AMOUNT;
-        _agitHpAnimBar.fillAmount = FULL_FILL_AMOUNT;
+        _inGameUI.SetActive(false);
         _expBar.fillAmount = Null_AMOUNT;
         _messageText.text = "";
         _scrapAmountText.text = "";
@@ -140,25 +139,24 @@ public class InGameUIController : MonoBehaviour
                 }
             }
 
-            if (_pauseUI != null && _pauseUI.activeSelf == true)
+            if (_pauseUI != null && _pauseUI.activeSelf == true && InGameManager.Instance.GameStat == GameStat.Pause)
             {
-                _pauseUI.SetActive(false);
-                Time.timeScale = 1f;
+                _pauseUIComponent.OnClickContinueBtn();
             }
-            else
+            else if (InGameManager.Instance.GameStat == GameStat.Play)
             {
                 OnClickOpenPauseUI();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && _turretSelectUI.IsSetting == false)
+        else if (Input.GetKeyDown(KeyCode.Space) && _turretSelectUI.IsSetting == false && InGameManager.Instance.GameStat == GameStat.Play)
         {
             OpenTurretSelectUI();
         }
-        else if (Input.GetMouseButtonDown(1) && _turretSelectUI.IsSetting == true)
+        else if (Input.GetMouseButtonDown(1) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.UnSetTurret();
         }
-        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true)
+        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.PlaceTurret();
         }
@@ -188,33 +186,27 @@ public class InGameUIController : MonoBehaviour
 
     public void OnClickOpenPauseUI()
     {
+        InGameManager.Instance.PauseGame();
+
         if (_pauseUI != null) _pauseUI.SetActive(true);
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.UISFX, "Button_Click");
         Time.timeScale = 0f;
     }
 
-    public void OnClickClosePauseUI()
+    public void ClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
         Time.timeScale = 1f;
     }
 
-    public void OnClickOpenConfigUI()
+    public void OpenConfigUI()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click");
         if (UIManager.Instance != null) UIManager.Instance.OpenUI<ConfigUI>();
     }
 
     public void OnClickRestartGame()
     {
         if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.InGame);
-    }
-
-    public void OnClickGoLobby()
-    {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.SFX, "Button_Click_Close");
-        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
     }
 
     public void OnClickExitGame()
@@ -337,44 +329,12 @@ public class InGameUIController : MonoBehaviour
     {
         float currentHp = (float)PlayerManager.Instance.PlayerStatController.CurrentHp;
         float maxHp = (float)PlayerManager.Instance.PlayerStatController.MaxHp;
-        _playerHpBar.fillAmount = currentHp / maxHp;
-
-        if (_playerHpBarAnimCoroutine != null)
-        {
-            StopCoroutine(_playerHpBarAnimCoroutine);
-            _playerHpBarAnimCoroutine = null;
-        }
-        _playerHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(true));
+        _playerHpUI.UpdateHpBar(currentHp, maxHp);
     }
 
     public void UpdateAgitHpBar(float currentHp, float maxHp)
     {
-        _agitHpBar.fillAmount = currentHp / maxHp;
-
-        if (_agitHpBarAnimCoroutine != null)
-        {
-            StopCoroutine(_agitHpBarAnimCoroutine);
-            _agitHpBarAnimCoroutine = null;
-        }
-        _agitHpBarAnimCoroutine = StartCoroutine(PlayHpBarAnimation(false));
-    }
-
-    private IEnumerator PlayHpBarAnimation(bool isPlayer)
-    {
-        Image animBar = isPlayer ? _playerHpAnimBar : _agitHpAnimBar;
-        Image bar = isPlayer ? _playerHpBar : _agitHpBar;
-        yield return new WaitForSeconds(_blendInTime);
-
-        while (animBar.fillAmount > bar.fillAmount)
-        {
-            animBar.fillAmount = Mathf.Lerp(
-                animBar.fillAmount,
-                bar.fillAmount,
-                _animSpeed * Time.deltaTime
-                );
-
-            yield return null;
-        }
+        _agitHpUI.UpdateHpBar(currentHp, maxHp);
     }
 
     public void PrintMessge(string text)
@@ -465,7 +425,11 @@ public class InGameUIController : MonoBehaviour
         if (_itemSelectBtnDatas.Length > index)
         {
             if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
-            if (_itemSelectBtnDatas[index].ItemImage != null) _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+            if (_itemSelectBtnDatas[index].ItemImage != null)
+            {
+                _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+                _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
+            }
             if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
             if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
         }
@@ -529,6 +493,64 @@ public class InGameUIController : MonoBehaviour
     private void PlayerWinEndGame()
     {
         _playTimeUI.text = "Player Win!!";
+    }
+    public void ShowFadeInAnim()
+    {
+         if (_director != null && _fadeInAsset != null)
+        {
+            _director.playableAsset = _fadeInAsset;
+            _director.Play();
+        }
+    }
+
+    public void EndFadeIn()
+    {
+        if (InGameManager.Instance != null)
+        {
+            InGameManager.Instance.StartGame();
+            _inGameUI.SetActive(true);
+        }
+    }
+
+    public void ShowFadeOutAnim()
+    {
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.sendNavigationEvents = false;
+
+        if (_director != null && _fadeOutAsset != null)
+        {
+            _director.playableAsset = _fadeOutAsset;
+            _director.Play();
+        }
+    }
+
+    public void EndFadeOut()
+    {
+        if (SceneLoader.Instance != null) SceneLoader.Instance.LoadScene(ESceneType.Lobby);
+    }
+    
+    public void CreateTurretHpBar(Transform transform)
+    {
+        HpUI hpUI = _hpUISpawner.CreateHpUI(transform.position);
+        _turretHpBars[transform] = hpUI;
+    }
+
+    public void RemoveTurretHpBar(Transform transform)
+    {
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+        {
+            _hpUISpawner.RemoveHpUI(hpUI);
+            _turretHpBars.Remove(transform);
+        }
+        
+    }
+
+    public void UpdateTurretHpBar(Transform transform, float currentHp, float maxHp)
+    {
+        if (_turretHpBars.TryGetValue(transform, out HpUI hpUI))
+            hpUI.UpdateHpBar(currentHp, maxHp);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD

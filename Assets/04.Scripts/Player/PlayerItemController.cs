@@ -44,29 +44,6 @@ public class PlayerItemController : MonoBehaviour
         Debug.Log("플레이어 아이템 슬롯 모두 초기화됨");
     }
 
-    // 빈 무기 슬롯이 없다면 무기 교환해서 넣는 기능은 따로 구현하지 않는다.
-    // 추가하려는 무기가 현재 무기 슬롯에 존재한다면 레벨만 올림.
-    public void AddWeaponToSlot(WeaponStatData newWeaponData)
-    {
-        GameObject newWeapon = Resources.Load<GameObject>($"Weapon/{newWeaponData.WeaponName}");
-        int index = GetWeaponIndexInSlot(newWeaponData);
-        List<GameObject> weaponSlots = _weaponSlot;
-        if (index != -1)
-        {
-            weaponSlots[index].GetComponent<WeaponStatController>().LevelUpWeaponLevel();
-            return;
-        }
-
-        bool isEmpty = CheckEmptySlot(weaponSlots, out int emptyIndex);
-        if (isEmpty == true)
-        {
-            weaponSlots[emptyIndex] = newWeapon;
-            weaponSlots[emptyIndex].GetComponent<WeaponStatController>().LevelUpWeaponLevel();
-            Debug.Log("신규 무기 추가");
-
-        }
-        else Debug.Log($"weaponSlots에 남은 자리 없음");
-    }
 
     public void AddItemToSlot<T>(T newItemData) where T : IItemStatData
     {

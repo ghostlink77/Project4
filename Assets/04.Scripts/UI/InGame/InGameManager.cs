@@ -42,12 +42,9 @@ public class InGameManager : SingletonBehaviour<InGameManager>
             return;
         }
 
-        PlayTime = 0;
-
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.StopAll();
-            AudioManager.Instance.Play(AudioType.BGM, "InGameBGM");
         }
 
         _playerLevelControl = FindAnyObjectByType<PlayerLevelControl>();
@@ -55,6 +52,10 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         {
             _playerLevelControl.OnLevelUp += OpenLevelUpUI;
         }
+
+        GameStat = GameStat.Pause;
+        Time.timeScale = 0f;
+        InGameUIController.ShowFadeInAnim();
     }
 
     private void OnDestroy()
@@ -96,6 +97,29 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         {
             Debug.LogError("UI 컨트롤러가 연결되지 않았습니다.");
         }
+    }
+
+    public void StartGame()
+    {
+        GameStat = GameStat.Play;
+        Time.timeScale = 1f;
+        PlayTime = 0;
+        if (AudioManager.Instance != null) AudioManager.Instance.Play(AudioType.BGM, "InGameBGM");
+    }
+
+    public void PauseGame()
+    {
+        GameStat = GameStat.Pause;
+    }
+
+    public void ContinueGame()
+    {
+        GameStat = GameStat.Play;
+    }
+
+    public void ExitGame()
+    {
+        GameStat = GameStat.End;
     }
 
     public void EndGame(bool isPlayerDead)

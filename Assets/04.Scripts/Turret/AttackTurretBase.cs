@@ -113,13 +113,12 @@ public class AttackTurretBase : TurretBase
 
     private void UpdateEnemiesInRange()
     {
-        _enemiesInRange.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeSelf);
+        _enemiesInRange.Clear();
         Collider2D[] enemies =
             Physics2D.OverlapCircleAll(transform.position, TurretData.Range[_level - 1], _enemyLayer);
 
         foreach (Collider2D enemy in enemies)
         {
-            if (_enemiesInRange.Contains(enemy.transform)) continue;
             if (!enemy.gameObject.activeSelf) continue;
             _enemiesInRange.Add(enemy.transform);
         }

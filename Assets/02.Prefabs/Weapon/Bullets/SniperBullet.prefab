@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSoundController
   _audioSource: {fileID: 6795578696252321253}
+  _hitClipName: EnemyHurtSound
   _hitSound: {fileID: 8300000, guid: 280420bdf27d17744ad39395b0bce9d3, type: 3}
 --- !u!82 &6795578696252321253
 AudioSource:
@@ -122,7 +123,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
   _lifeTime: 3
   _deleteAfterAnimation: 0
   _penetratable: 1
+  _isExplosive: 0
 --- !u!61 &4906686752597692420
 BoxCollider2D:
   m_ObjectHideFlags: 0

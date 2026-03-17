@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heart
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpPassive
   itemName: "\uC778\uC870 \uC2EC\uC7A5"
-  icon: {fileID: -2138698884186886829, guid: 4ac16e5aeb31b904e9278905602c73e9, type: 3}
+  icon: {fileID: 21300000, guid: 4ac16e5aeb31b904e9278905602c73e9, type: 3}
   passiveType: 0
   maxLevel: 5
   levelData:

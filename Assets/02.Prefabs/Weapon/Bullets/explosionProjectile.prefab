@@ -165,7 +165,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: adf742af1fe7a432c8e8f287ed1d93e3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -262,5 +262,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833d4e1f951a542d7abefe83e08b4097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectController
-  _lifeTime: 1
-  _isProjectile: 0
+  _hitClipName: RocketLauncherExplosionSound
+  _defaultLifeTime: 1

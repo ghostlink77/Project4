@@ -16,7 +16,6 @@ public class PlayerManager : MonoBehaviour
     public PlayerAnimationController PlayerAnimationController { get; private set; }
     public PlayerEventController PlayerEventController { get; private set; }
     public PlayerSoundController PlayerSoundController { get; private set; }
-    public SoundManager SoundManager { get; private set; } 
     public Animator Animator { get; private set; }
     public SpriteRenderer SpriteRenderer {get; private set; }
 
@@ -41,12 +40,11 @@ public class PlayerManager : MonoBehaviour
     {
         if (Instance == this)
         {
-            SoundManager = SoundManager.Instance;
             PlayerItemController.AddDefaultItems();
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         PlayerMoveController.MovePlayer();
     }

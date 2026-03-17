@@ -87,6 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponShootController
   _dispersionAngle: 10
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
   _lineRenderer: {fileID: -9012976560820378015}
 --- !u!114 &6035414204298828862
 MonoBehaviour:

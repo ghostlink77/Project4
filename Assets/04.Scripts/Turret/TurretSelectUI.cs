@@ -33,6 +33,7 @@ public class TurretSelectUI : MonoBehaviour
         _mainCamera = Camera.main;
         _setImage?.gameObject.SetActive(false);
         gameObject.SetActive(true);
+        _panel?.SetActive(false);
         _anim = GetComponent<Animator>();
         _turretBtns = GetComponentsInChildren<Button>();
         foreach (var btn in _turretBtns)
@@ -124,12 +125,12 @@ public class TurretSelectUI : MonoBehaviour
     public void Show()
     {
         _anim.Play(FADEIN);
-        AudioManager.Instance.Play(AudioType.SFX, FADEIN);
+        AudioManager.Instance.Play(AudioType.UISFX, FADEIN);
     }
     public void Hide()
     {
         _anim.Play(FADEOUT);
-        AudioManager.Instance.Play(AudioType.SFX, FADEOUT);
+        AudioManager.Instance.Play(AudioType.UISFX, FADEOUT);
     }
 
 }

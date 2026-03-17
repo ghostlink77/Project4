@@ -472,6 +472,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07339147a955c9648b3179b2473724e1, type: 2}
   - {fileID: 11400000, guid: 70112d4309c6b4b76bb7fbd412aecd6f, type: 2}
   - {fileID: 11400000, guid: 66197b5dd572f4856a5b8f72fe074b2d, type: 2}
+  - {fileID: 11400000, guid: 9af3ed7a260744300a8fea5cc72ba96b, type: 2}
   _passiveDatas:
   - {fileID: 11400000, guid: 3e5bc9c2b06d26b488e26af449637d30, type: 2}
   - {fileID: 11400000, guid: b3c0eeba4020ad54381f223819f5250e, type: 2}
@@ -924,7 +925,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1407357419250742325, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 2323307279601998464, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: m_Name
@@ -937,7 +938,7 @@ PrefabInstance:
     - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: _mouseCursorImage
       value: 
-      objectReference: {fileID: 2800000, guid: 02a619e21d1191a4cb417f0d3b69f437, type: 3}
+      objectReference: {fileID: 2800000, guid: 9fdad510a7a9eef45b22e7076ee4eff0, type: 3}
     - target: {fileID: 2453239532947120896, guid: a16362a5a4f1f574c913a0903089080c, type: 3}
       propertyPath: _loadingTextTimeline
       value: 
