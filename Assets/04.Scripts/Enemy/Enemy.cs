@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _maxHp;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private float _expDropAmount = 2f;
+    [SerializeField] private Color _hitColor = Color.red;
+    private float _blinkDuration = 0.2f;
+    private WaitForSeconds _blinkWait;
     private float _currentHp;
     private bool _isLive;
 
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _collider = GetComponent<Collider2D>();
         _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
         _originalColor = _spriteRenderer.color;
+        _blinkWait = new WaitForSeconds(_blinkDuration);
     }
 
     private void Update()
@@ -187,9 +191,8 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             yield break; 
         }
-        Color hitColor = new Color(1f, 0f, 0f);
-        _spriteRenderer.color = hitColor;
-        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.color = _hitColor;
+        yield return _blinkWait;
         _spriteRenderer.color = _originalColor;
     }
 

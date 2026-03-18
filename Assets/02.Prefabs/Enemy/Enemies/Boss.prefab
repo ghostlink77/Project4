@@ -213,10 +213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _damage: 3
   _damageDelay: 0.1
-  _speed: 0.5
-  _maxHp: 300
+  _speed: 0.67
+  _maxHp: 600
   _enemyType: 4
-  _expDropAmount: 20
+  _expDropAmount: 35
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &8252412915557673614
 BoxCollider2D:
   m_ObjectHideFlags: 0

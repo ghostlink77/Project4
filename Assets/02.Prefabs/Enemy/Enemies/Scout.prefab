@@ -286,7 +286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _damage: 2
   _damageDelay: 0.3
-  _speed: 0.65
+  _speed: 0.75
   _maxHp: 3
   _enemyType: 3
   _expDropAmount: 3
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}

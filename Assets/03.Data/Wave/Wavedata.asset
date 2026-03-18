@@ -82,11 +82,11 @@ MonoBehaviour:
       enemyType: 2
       spawnInterval: 5
     - spawnPointIndex: 2
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 3
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 5
