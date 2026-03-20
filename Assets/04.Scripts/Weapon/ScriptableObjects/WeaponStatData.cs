@@ -24,6 +24,10 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     [SerializeField]
     private int level;
     public int Level => level;
+
+    [Header("최대 레벨")]
+    [SerializeField]
+    private int maxLevel;
     
     [Header("무기 타입")]
     [SerializeField]
@@ -82,6 +86,11 @@ public class WeaponStatData : ScriptableObject, IItemStatData
     public Sprite GetIcon()
     {
         return icon;
+    }
+
+    public int GetMaxLevel()
+    {
+        return maxLevel;
     }
 
     public string GetDescription(int level)

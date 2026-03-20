@@ -10,7 +10,7 @@ public enum InventoryType
 
 public class Inventory : MonoBehaviour
 {
-    private const int Inventory_Size = 7;
+    private const int Inventory_Size = 4;
     [SerializeField] private InventoryType type;
     [SerializeField] private ItemSlot[] _inventorySlot = new ItemSlot[Inventory_Size];
 
@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
         if (!gameObject.activeSelf || !PlayerManager.Instance.PlayerItemController) return;
         Dictionary<string, GameObject> items = null;
         if (type == InventoryType.Weapon) items = PlayerManager.Instance.PlayerItemController.GetSlots<WeaponStatData>();
-        else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.GetSlots<PassiveStatData>();
+        else if (type == InventoryType.Passive) items = PlayerManager.Instance.PlayerItemController.GetSlots<PassiveItemData>();
         else if (type == InventoryType.Turret) items = PlayerManager.Instance.PlayerItemController.GetSlots<TurretData>();
 
         int index = 0;

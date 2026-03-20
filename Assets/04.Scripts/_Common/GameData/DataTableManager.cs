@@ -39,10 +39,9 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         IEnumerable<T> sourceDatas = GetSourceList<T>();
 
         if (sourceDatas == null) return default(T);
-
-        const int maxLevel = 10;
+        
         var availableItems = sourceDatas.Where(
-            data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= maxLevel &&
+            data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= data.GetMaxLevel() &&
             !selectedItemNames.Contains(data.GetName())).ToList();
         if (availableItems.Count == 0) return default(T);
 
