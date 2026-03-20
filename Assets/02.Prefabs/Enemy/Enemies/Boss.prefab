@@ -63,7 +63,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1805722157778797766, guid: 3e5fd5036c4ca8a4ab3fc0b7f807c454, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -213,10 +213,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _damage: 3
   _damageDelay: 0.1
-  _speed: 0.5
-  _maxHp: 85
-  _enemyType: 3
-  _expDropAmount: 20
+  _speed: 0.67
+  _maxHp: 600
+  _enemyType: 4
+  _expDropAmount: 35
+  _hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &8252412915557673614
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnemyPrefabs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cbf280f8d0fc3540ac6f6e91b598209
+    m_Address: Prefabs/Enemy/Scout
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyPrefabs
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a2d15bddbb8693c4fb35f3c1fb60cb3f
     m_Address: Prefabs/Enemy/Drone2
     m_ReadOnly: 0

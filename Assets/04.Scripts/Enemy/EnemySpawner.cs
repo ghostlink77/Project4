@@ -100,7 +100,6 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
     }
 
 
-    // NOTE: 오브젝트 풀 콜백 메서드들
 
     private void ActivateEnemy(GameObject enemy)
     {

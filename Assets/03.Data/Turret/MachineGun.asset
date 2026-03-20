@@ -16,7 +16,7 @@ MonoBehaviour:
   ID: 0
   _icon: {fileID: 21300000, guid: 0d6d82914a8b6144bb0ee0513dd1060a, type: 3}
   <MaxLevel>k__BackingField: 6
-  <ScrapCost>k__BackingField: 5
+  <ScrapCost>k__BackingField: 6
   <MaxHp>k__BackingField: 1400000014000000140000001e0000001e0000001e000000
   <Range>k__BackingField:
   - 3
@@ -35,12 +35,12 @@ MonoBehaviour:
     5 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   projectileAdrsKey: MachineGunBullet
   <Damage>k__BackingField:
-  - 6
-  - 6
-  - 6
-  - 6
-  - 6
-  - 11
+  - 4
+  - 4
+  - 4
+  - 4
+  - 4
+  - 9
   <NumProjectile>k__BackingField: 010000000200000002000000020000000300000003000000
   <FireRate>k__BackingField:
   - 1.7
@@ -49,4 +49,4 @@ MonoBehaviour:
   - 1.5
   - 1.5
   - 1.3
-  <ProjectileSpeed>k__BackingField: 2
+  <ProjectileSpeed>k__BackingField: 2.3

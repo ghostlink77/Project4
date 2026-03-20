@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnPointConfig
 {
     public int spawnPointIndex;
+    public int spawnCount = 1;
     public EnemyType enemyType;
 
     // NOTE: 0 이하면 Wave의 defaultSpawnInterval 사용
@@ -15,6 +16,7 @@ public class SpawnPointConfig
 public class Wave
 {
     public float startTime;
+    public bool isBoss;
     public float defaultSpawnInterval = 1f;
     public SpawnPointConfig[] spawnPointConfigs;
 }
