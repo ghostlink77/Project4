@@ -20,7 +20,6 @@ public class ConfigUI : BaseUI
     private void Update()
     {
         InputHandle();
-        SetVolume();
     }
 
     private void InputHandle()
@@ -73,6 +72,7 @@ public class ConfigUI : BaseUI
                 else
                     _gameSFXSlider.value -= _defaultSoundValueScale;
             }
+            SetVolume();
         }  
     }
 
@@ -80,11 +80,10 @@ public class ConfigUI : BaseUI
 
     public void SetVolume()
     {
-        AudioManager.Instance.SetVolume(AudioType.BGM, _bgmSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.UISFX, _uiSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.CharSFX, _gameSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.EnemySFX, _gameSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.BulletSFX, _gameSFXSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolumeMixer(_gameSFXSlider.value, "SFX");
+        AudioManager.Instance.SetVolumeMixer(_masterSlider.value, "Master");
+        AudioManager.Instance.SetVolumeMixer(_bgmSlider.value, "BGM");
+        AudioManager.Instance.SetVolumeMixer(_uiSFXSlider.value, "UISFX");
     }
 
     public void EndFadeIn()

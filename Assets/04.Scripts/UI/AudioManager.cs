@@ -1,19 +1,31 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Pool;
+using UnityEngine.UIElements;
 public enum AudioType
 {
     BGM,
     UISFX,
-    CharSFX,
-    EnemySFX,
-    BulletSFX
+    SFX,
 }
 
 public class AudioManager : SingletonBehaviour<AudioManager>
 {
     private AudioSource[] _audioSources;
     private Dictionary<string, AudioClip> _clips = new();
+
+    [Header("AudioSource pool")]
+    [SerializeField] private GameObject _audioSourcePrefab;
+    private IObjectPool<AudioSource> _audioSourcePool;
+    [SerializeField] private int _initSize = 10;
+    [SerializeField] private int _maxSize = 50;
+    [SerializeField] Transform _audioSourceParent;
+
+    [SerializeField] private AudioMixer _audioMixer; 
 
     protected override void Init()
     {
@@ -26,11 +38,45 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             GameObject go = new GameObject(soundTypeNames[i]);
             go.transform.parent = transform;
             _audioSources[i] = go.AddComponent<AudioSource>();
+            AudioMixerGroup[] _audioMixerGroup = _audioMixer.FindMatchingGroups(soundTypeNames[i]);
+            if ( _audioMixerGroup != null ) _audioSources[i].outputAudioMixerGroup = _audioMixerGroup[0];
         }
 
         AudioSource bgm = _audioSources[(int)AudioType.BGM];
         bgm.loop = true;
+
+        CreatePools();
     }
+
+    #region AudioSource Pool 
+    private void CreatePools()
+    {
+        AudioSource audioSourceObj = _audioSourcePrefab.GetComponent<AudioSource>();
+        var pool = new ObjectPool<AudioSource>(
+            createFunc: () => Instantiate(audioSourceObj),
+            actionOnGet: ActivateAudioSource,
+            actionOnRelease: DisableAudioSource,
+            collectionCheck: false,
+            defaultCapacity: _initSize,
+            maxSize: _maxSize);
+        _audioSourcePool = pool;
+    }
+
+    private void ActivateAudioSource(AudioSource obj)
+    {
+        obj.gameObject.SetActive(true);
+    }
+
+    private void DisableAudioSource(AudioSource obj)
+    {
+        obj.gameObject.SetActive(false);
+    }
+
+    public void RemoveAudioSource(AudioSource obj)
+    {
+        _audioSourcePool.Release(obj);
+    }
+    #endregion
 
     public void Play(AudioType audioType, string fileName)
     {
@@ -43,22 +89,13 @@ public class AudioManager : SingletonBehaviour<AudioManager>
                 {
                     audioSource.Stop();
                 }
-
                 audioSource.clip = clip;
                 audioSource.Play();
                 break;
             case AudioType.UISFX:
                 audioSource.PlayOneShot(clip);
                 break;
-            case AudioType.CharSFX:
-                audioSource.PlayOneShot(clip);
-                break;
-            case AudioType.EnemySFX:
-                audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
-                audioSource.PlayOneShot(clip, UnityEngine.Random.Range(audioSource.volume -.2f, audioSource.volume + .2f));
-                //audioSource.PlayOneShot(clip);
-                break;
-            case AudioType.BulletSFX:
+            case AudioType.SFX:
                 audioSource.PlayOneShot(clip);
                 break;
             default:
@@ -68,20 +105,57 @@ public class AudioManager : SingletonBehaviour<AudioManager>
 
     }
 
+    public void PlayAtPoint(string fileName, Vector3 position)
+    {
+        AudioClip clip = GetClip(fileName);
+
+        if (_audioSourcePool == null)
+        {
+            Debug.Log("AudioSource Pools is nothing.");
+            return;
+        }
+
+        var audioSource = _audioSourcePool.Get();
+        audioSource.transform.SetParent(gameObject.transform, false);
+        audioSource.transform.parent = _audioSourceParent;
+        audioSource.clip = clip;
+        audioSource.Play();
+
+        StartCoroutine(PlayAudioSourceAtPoint(clip.length, audioSource));
+    }
+
+    private IEnumerator PlayAudioSourceAtPoint(float playTime, AudioSource audioSource)
+    {
+        yield return new WaitForSeconds(playTime);
+
+        _audioSourcePool.Release(audioSource);
+    }
+
     public void SetPitch(AudioType audioType, float pitch) =>
         _audioSources[(int)audioType].pitch = pitch;
 
-    public void SetVolume(AudioType audioType, float volume) =>
+    public void SetVolume(AudioType audioType, float volume)
+    {
         _audioSources[(int)audioType].volume = volume;
+    }
+
+    public void SetVolumeMixer(float volume, string groupName)
+    {
+        if (volume < 0.0001f) _audioMixer.SetFloat(groupName, -80f);
+        else _audioMixer.SetFloat(groupName, Mathf.Log10(volume) * 20);
+    }
+        
 
     public void Pause(AudioType audioType) =>
         _audioSources[(int)audioType].Pause();
+        //AudioListener.pause = true;
 
     public void Stop(AudioType audioType) =>
         _audioSources[(int)audioType].Stop();
 
     public void Resome(AudioType audioType) =>
         _audioSources[(int)audioType].UnPause();
+        //AudioListener.pause = false;
 
     public void StopAll()
     {
@@ -89,24 +163,21 @@ public class AudioManager : SingletonBehaviour<AudioManager>
         {
             source.Stop();
         }
+        
+        foreach(var source in _audioSourceParent.GetComponentsInChildren<AudioSource>())
+        {
+            source.Stop();
+        }
     }
 
     public void Mute()
     {
-        SetVolume(AudioType.BGM, 0f);
-        SetVolume(AudioType.UISFX, 0f);
-        SetVolume(AudioType.EnemySFX, 0f);
-        SetVolume(AudioType.BulletSFX, 0f);
-        SetVolume(AudioType.CharSFX, 0f);
+        _audioMixer.SetFloat("Master", -80f);
     }
 
     public void UnMute()
     {
-        SetVolume(AudioType.BGM, 1f);
-        SetVolume(AudioType.UISFX, 1f);
-        SetVolume(AudioType.EnemySFX, 1f);
-        SetVolume(AudioType.BulletSFX, 1f);
-        SetVolume(AudioType.CharSFX, 1f);
+        _audioMixer.SetFloat("Master", 0f);
     }
 
     public void SyncUserSettings()

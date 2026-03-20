@@ -48,7 +48,7 @@ public class PlayerSoundController : MonoBehaviour
     
     private void OnEventHurt()
     {
-        _audioManager.Play(AudioType.CharSFX, _hurtClipName);
+        _audioManager.Play(AudioType.SFX, _hurtClipName);
     }
     #endregion
     

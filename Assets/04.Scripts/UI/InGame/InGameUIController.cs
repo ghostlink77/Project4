@@ -227,7 +227,6 @@ public class InGameUIController : MonoBehaviour
         if (_levelupUI != null) _levelupUI.SetActive(true);
         UpdateSelectableItemInUI();
         Time.timeScale = 0f;
-        AudioManager.Instance.Play(AudioType.UISFX, "LevelUp");
     }
 
     public void CloseLevelupUI()
@@ -235,7 +234,6 @@ public class InGameUIController : MonoBehaviour
         if (_levelupUI != null) _levelupUI.SetActive(false);
         Time.timeScale = 1f;
         UpdateExpBar();
-        AudioManager.Instance.Play(AudioType.UISFX, "GetItem");
     }
 
     private void ShowRandomPassives()
