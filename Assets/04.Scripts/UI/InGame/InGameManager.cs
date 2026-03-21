@@ -77,6 +77,8 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         PlayTime += Time.deltaTime;
         InGameUIController.ShowPlayTime();
 
+        // 수정 : 10분 플레이 후 보스 출현을 위해 클리어 조건 제거
+        /*
         if (PlayTime >= _gameClearConditionTime)
         {
             Debug.Log("게임 우승!!");
@@ -85,6 +87,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
             EnemySpawner.Instance.DestroyAll();
             GameStat = GameStat.End;
         }
+        */
     }
 
     public void OpenLevelUpUI(int level)
@@ -137,5 +140,12 @@ public class InGameManager : SingletonBehaviour<InGameManager>
             AgitGameOverAction?.Invoke();
         }
             
+    }
+
+    public void StopGameIfClear()
+    {
+        GameStat = GameStat.End;
+        Time.timeScale = 0.2f;
+        EnemySpawner.Instance.DestroyAll();
     }
 }
