@@ -51,7 +51,7 @@ public class WeaponSoundController : MonoBehaviour
     
     private void PlayShootSound()
     {
-        if (_audioManager != null && _weaponShootClipName != null) _audioManager.Play(AudioType.BulletSFX, _weaponShootClipName);
+        if (_audioManager != null && _weaponShootClipName != null) _audioManager.PlayAtPoint(_weaponShootClipName, transform.position);//_audioManager.Play(AudioType.BulletSFX, _weaponShootClipName);
         Debug.Log("무기 발사음 출력됨");
     }
     #endregion

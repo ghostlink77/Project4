@@ -196,7 +196,8 @@ public class InGameUIController : MonoBehaviour
     public void ClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        Time.timeScale = 1f;
+        if (_levelupUI != null && !_levelupUI.activeSelf)
+            Time.timeScale = 1f;
     }
 
     public void OpenConfigUI()
@@ -430,7 +431,7 @@ public class InGameUIController : MonoBehaviour
                 _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
                 _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
             }
-            if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = ItemLevel.ToString();
+            if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = $"Lv{ItemLevel-1} -> Lv{ItemLevel}";
             if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
         }
 

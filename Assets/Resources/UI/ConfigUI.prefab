@@ -1254,11 +1254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2790197061247888166, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_text
-      value: "\uCE90\uB9AD\uD130 \uD6A8\uACFC\uC74C"
+      value: "\uC778\uAC8C\uC784 \uD6A8\uACFC\uC74C"
       objectReference: {fileID: 0}
     - target: {fileID: 4500387315321035456, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_Name
-      value: Char Sound Setting Btn (3)
+      value: InGame Sound Setting Btn (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4614920910588394721, guid: 8e672e763967e8d4985a12ec756e5e4a, type: 3}
       propertyPath: m_IsActive
