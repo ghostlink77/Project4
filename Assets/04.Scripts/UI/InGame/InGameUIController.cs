@@ -418,7 +418,7 @@ public class InGameUIController : MonoBehaviour
                 _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
             }
             if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = $"Lv{ItemLevel-1} -> Lv{ItemLevel}";
-            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
+            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = itemData.GetDescription(ItemLevel);
         }
 
         _itemSelectBtns[index].onClick.RemoveAllListeners();
