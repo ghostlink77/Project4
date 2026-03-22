@@ -8,6 +8,7 @@ using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
@@ -104,30 +105,24 @@ public class WeaponShootController : MonoBehaviour
         }
         _weaponEventController.CallOnShoot();
     }
-
-    private bool IsAbleToCritical(float critRate)
-    {
-        int randomValue = UnityEngine.Random.Range(0, 100);
-        float probability_standard = critRate % 100;
-
-        if (probability_standard >= randomValue) return true;
-        return false;
-    }
     
     private float GetCriticalDamage()
     {
         float damage = _weaponStatController.Damage;
         float critRate = _weaponStatController.CritRate;
-        bool isCrit = IsAbleToCritical(critRate);
         float critMult = _weaponStatController.CritMultiplier;
-        int critLevel = (int)(critRate / 100);
-        if (isCrit)
+        
+        float finalDamage = damage;
+        float remainingCritRate = critRate;
+
+        while (remainingCritRate >= 100f)
         {
-            if (critLevel == 0) return damage * critMult;
-            else return damage * critMult * (float)Math.Pow(2, critLevel);
+            finalDamage *= critMult;
+            remainingCritRate -= 100f;
         }
-        else if (!isCrit && critLevel > 0) return damage * critMult * (float)Math.Pow(2, critLevel - 1);
-        return damage;
+        if (UnityEngine.Random.Range(0f, 100f) < remainingCritRate) finalDamage *= critMult;
+
+        return finalDamage;
     }
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
