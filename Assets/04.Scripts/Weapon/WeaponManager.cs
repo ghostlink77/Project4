@@ -55,7 +55,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        _weaponShootController.ShootProcedurePerUpdate(_damage, _atkSpeed, _projectileSpeed);
+        _weaponShootController.ShootProcedurePerUpdate(_atkSpeed, _projectileSpeed);
     }
     #endregion
     
