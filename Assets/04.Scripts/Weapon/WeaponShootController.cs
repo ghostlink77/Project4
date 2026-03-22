@@ -2,7 +2,9 @@
 무기의 사격을 관리하는 스크립트
 */
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -102,6 +104,31 @@ public class WeaponShootController : MonoBehaviour
         }
         _weaponEventController.CallOnShoot();
     }
+
+    private bool IsAbleToCritical(float critRate)
+    {
+        int randomValue = UnityEngine.Random.Range(0, 100);
+        float probability_standard = critRate % 100;
+
+        if (probability_standard >= randomValue) return true;
+        return false;
+    }
+    
+    private float GetCriticalDamage()
+    {
+        float damage = _weaponStatController.Damage;
+        float critRate = _weaponStatController.CritRate;
+        bool isCrit = IsAbleToCritical(critRate);
+        float critMult = _weaponStatController.CritMultiplier;
+        int critLevel = (int)(critRate / 100);
+        if (isCrit)
+        {
+            if (critLevel == 0) return damage * critMult;
+            else return damage * critMult * (float)Math.Pow(2, critLevel);
+        }
+        else if (!isCrit && critLevel > 0) return damage * critMult * (float)Math.Pow(2, critLevel - 1);
+        return damage;
+    }
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
     {
@@ -154,7 +181,10 @@ public class WeaponShootController : MonoBehaviour
         
         if (obj.TryGetComponent<BulletController>(out var bulletController))
         {
-            bulletController.GetNeededVariableForAttack(_weaponDamage, _projectileSpeed, _projectilePool, _weaponEventController);
+            // 여기에 치명타 연산하는 기능을 추가해야 함.
+            // 이후에 _weaponDamage라고 적힌 부분을 치명타 여부에 따라 새로운 값을 반영해 넣도록 한다.
+            float damage = GetCriticalDamage();
+            bulletController.GetNeededVariableForAttack(damage, _projectileSpeed, _projectilePool, _weaponEventController);
         }
     }
 
