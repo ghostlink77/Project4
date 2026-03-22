@@ -156,13 +156,13 @@ public class InGameUIController : MonoBehaviour
         {
             _turretSelectUI.UnSetTurret();
         }
-        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
+        else if (Input.GetMouseButtonDown(0) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.PlaceTurret();
         }
     }
 
-    private void OpenTurretSelectUI()
+    public void OpenTurretSelectUI()
     {
         if (_turretSelectUI != null)
         {
