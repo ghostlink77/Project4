@@ -11,6 +11,7 @@ public enum EnemyType
     Drone1,
     Drone2,
     Robot1,
+    Scout,
     Boss,
 }
 
@@ -59,6 +60,12 @@ public class EnemySpawnManager : MonoBehaviour
     {
         StopSpawnAllPoints();
 
+        if (wave.isBoss)
+        {
+            Debug.Log("보스 스테이지 시작");
+            EnemySpawner.Instance.DestroyAll();
+        }
+
         if (wave.spawnPointConfigs == null || wave.spawnPointConfigs.Length == 0)
         {
             Debug.LogWarning("Wave에 SpawnPointConfig가 설정되지 않았습니다.");
@@ -75,8 +82,8 @@ public class EnemySpawnManager : MonoBehaviour
 
             EnemySpawnPoint spawnPoint = _spawnPoints[config.spawnPointIndex];
             float interval = config.spawnInterval > 0f ? config.spawnInterval : wave.defaultSpawnInterval;
-            spawnPoint.SpawnInterval = interval;
-            spawnPoint.StartSpawn(config.enemyType);
+            int count = config.spawnCount > 1 ? config.spawnCount : 1;
+            spawnPoint.StartSpawn(config.enemyType, interval, count, wave.isBoss);
         }
 
         Debug.Log($"Wave {_waveIndex} 적용: {wave.spawnPointConfigs.Length}개 스폰포인트 활성화");

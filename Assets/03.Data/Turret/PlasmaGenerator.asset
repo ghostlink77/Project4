@@ -36,12 +36,12 @@ MonoBehaviour:
     0.7\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   projectileAdrsKey: Plasma
   <Damage>k__BackingField:
-  - 15
-  - 25
-  - 25
-  - 25
-  - 35
-  - 35
+  - 10
+  - 20
+  - 20
+  - 20
+  - 30
+  - 30
   <NumProjectile>k__BackingField: 010000000100000001000000010000000100000002000000
   <FireRate>k__BackingField:
   - 3.5
@@ -50,4 +50,4 @@ MonoBehaviour:
   - 2.8
   - 2.1
   - 2.1
-  <ProjectileSpeed>k__BackingField: 1
+  <ProjectileSpeed>k__BackingField: 1.8

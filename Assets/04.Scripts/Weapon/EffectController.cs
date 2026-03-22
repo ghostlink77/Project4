@@ -21,7 +21,8 @@ public class EffectController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        AudioManager.Instance.Play(AudioType.BulletSFX, _hitClipName);
+        //AudioManager.Instance.Play(AudioType.BulletSFX, _hitClipName);
+        AudioManager.Instance.PlayAtPoint(_hitClipName, transform.position);
     }
 
     private void OnEnable()

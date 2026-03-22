@@ -3,7 +3,6 @@
 아이템을 바꾸는 메서드나 각종 아이템 업그레이드 기능은 무기 개발이 끝나고 구현하도록 함
 */
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class PlayerItemController : MonoBehaviour

@@ -1,4 +1,5 @@
 // NOTE: 적 유닛의 이동, 전투, 사망 처리를 담당하는 스크립트
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -11,6 +12,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float _maxHp;
     [SerializeField] private EnemyType _enemyType;
     [SerializeField] private float _expDropAmount = 2f;
+    [SerializeField] private Color _hitColor = Color.red;
+    private float _blinkDuration = 0.2f;
+    private WaitForSeconds _blinkWait;
     private float _currentHp;
     private bool _isLive;
 
@@ -21,6 +25,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    private Color _originalColor;
 
     private bool _isStunned;
     private float _stunTimer;
@@ -38,6 +43,8 @@ public class Enemy : MonoBehaviour, IDamageable
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _targetSetter = GetComponentInChildren<EnemyTargetSetter>();
+        _originalColor = _spriteRenderer.color;
+        _blinkWait = new WaitForSeconds(_blinkDuration);
     }
 
     private void Update()
@@ -175,6 +182,18 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Die();
         }
+        StartCoroutine(Blink());
+    }
+
+    private IEnumerator Blink()
+    {
+        if (!_isLive)
+        {
+            yield break; 
+        }
+        _spriteRenderer.color = _hitColor;
+        yield return _blinkWait;
+        _spriteRenderer.color = _originalColor;
     }
 
     private void Die()
@@ -186,12 +205,24 @@ public class Enemy : MonoBehaviour, IDamageable
         _animator.speed = 1f;
         _animator.SetTrigger(DeadHash);
         ClearStunVFX();
+
+        if (_enemyType == EnemyType.Boss)
+        {
+            InGameManager.Instance.StopGameIfClear();
+        }
     }
 
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
         DropExpObject();
+
+        if (_enemyType == EnemyType.Boss)
+        {
+            Debug.Log("보스 처치! 게임 클리어!");
+            InGameManager.Instance.PlayerWinAction?.Invoke();
+        }
+
         EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
     }
 

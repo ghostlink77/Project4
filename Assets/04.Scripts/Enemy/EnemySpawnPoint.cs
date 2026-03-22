@@ -6,8 +6,8 @@ public class EnemySpawnPoint : MonoBehaviour
 {
     [SerializeField] private EnemyType _enemyType = EnemyType.Drone1;
 
-    [SerializeField] private float _spawnInterval = 1f;
-    public float SpawnInterval { get => _spawnInterval; set => _spawnInterval = value; }
+    private float _spawnInterval = 1f;
+    private int _spawnCount = 1;
 
     private bool _isSpawning = false;
     private Coroutine _spawnCoroutine;
@@ -19,11 +19,13 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnRangeCollider = GetComponentInChildren<CircleCollider2D>();
     }
 
-    public void StartSpawn(EnemyType enemyType)
+    public void StartSpawn(EnemyType enemyType, float interval, int count, bool isBossWave)
     {
+        _spawnInterval = interval;
+        _spawnCount = count;
         _isSpawning = true;
         _enemyType = enemyType;
-        _spawnCoroutine = StartCoroutine(SpawnLoop());
+        _spawnCoroutine = StartCoroutine(SpawnLoop(isBossWave));
     }
 
     public void StopSpawn()
@@ -37,20 +39,24 @@ public class EnemySpawnPoint : MonoBehaviour
         _spawnCoroutine = null;
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop(bool isBossWave)
     {
         while (_isSpawning)
         {
             // NOTE: 보스는 한 번만 스폰
-            if (_enemyType == EnemyType.Boss)
+            if (isBossWave)
             {
-                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
+                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), transform.position);
+                StopSpawn();
                 yield break;
             }
             yield return new WaitForSeconds(GetRandomInterval());
             if (EnemySpawner.Instance != null)
             {
-                EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition());
+                for(int  i = 0; i < _spawnCount; i++)
+                { 
+                    EnemySpawner.Instance.SpawnEnemy(_enemyType.ToString(), GetRandomPosition()); 
+                }
             }
             else
             {

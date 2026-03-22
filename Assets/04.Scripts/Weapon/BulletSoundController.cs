@@ -36,7 +36,8 @@ public class BulletSoundController : MonoBehaviour
     private void PlayEnemyHitSound(Collider2D hitTarget)
     {
         if (AudioManager.Instance == null) Debug.LogError("오디오매니저가 없습니다.");
-        else AudioManager.Instance.Play(AudioType.EnemySFX, _hitClipName);
+        else AudioManager.Instance.PlayAtPoint(_hitClipName, hitTarget.transform.position);
+            //AudioManager.Instance.Play(AudioType.EnemySFX, _hitClipName);
     }
     #endregion
 

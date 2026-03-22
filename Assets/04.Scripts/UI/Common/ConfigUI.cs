@@ -13,21 +13,31 @@ public class ConfigUI : BaseUI
     [SerializeField] private Slider _uiSFXSlider;
     [SerializeField] private Slider _gameSFXSlider;
 
+    [SerializeField] private CanvasGroup _canvasGroup;
+
 
     private readonly float _defaultSoundValueScale = 0.01f;
 
-
+    private void Start()
+    {
+        _canvasGroup.blocksRaycasts = false;
+    }
+    private void OnEnable()
+    {
+        EventSystem.current.sendNavigationEvents = false;
+    }
     private void Update()
     {
         InputHandle();
-        SetVolume();
     }
 
     private void InputHandle()
     {
+        if (EventSystem.current.sendNavigationEvents == false) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            base.OnClickCloseButton();
+            OnClickCloseButton();
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
@@ -39,6 +49,14 @@ public class ConfigUI : BaseUI
         }
     }
 
+    public override void OnClickCloseButton()
+    {
+        _canvasGroup.blocksRaycasts = false;
+        EventSystem.current.sendNavigationEvents = false;
+
+        base.OnClickCloseButton();
+
+    }
     private void SetupSound(bool isUp)
     {
         if (EventSystem.current.currentSelectedGameObject.TryGetComponent<ConfigButton>(out ConfigButton component))
@@ -73,6 +91,7 @@ public class ConfigUI : BaseUI
                 else
                     _gameSFXSlider.value -= _defaultSoundValueScale;
             }
+            SetVolume();
         }  
     }
 
@@ -80,19 +99,23 @@ public class ConfigUI : BaseUI
 
     public void SetVolume()
     {
-        AudioManager.Instance.SetVolume(AudioType.BGM, _bgmSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.UISFX, _uiSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.CharSFX, _gameSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.EnemySFX, _gameSFXSlider.value * _masterSlider.value);
-        AudioManager.Instance.SetVolume(AudioType.BulletSFX, _gameSFXSlider.value * _masterSlider.value);
+        AudioManager.Instance.SetVolumeMixer(_gameSFXSlider.value, "SFX");
+        AudioManager.Instance.SetVolumeMixer(_masterSlider.value, "Master");
+        AudioManager.Instance.SetVolumeMixer(_bgmSlider.value, "BGM");
+        AudioManager.Instance.SetVolumeMixer(_uiSFXSlider.value, "UISFX");
     }
 
     public void EndFadeIn()
     {
         EventSystem.current.SetSelectedGameObject(MasterVolumeObj);
+
+        _canvasGroup.blocksRaycasts = true;
+        EventSystem.current.sendNavigationEvents = true;
     }
     public void EndFadeOut()
     {
+        EventSystem.current.sendNavigationEvents = true;
+
         if (UIManager.Instance == null) Debug.Log("UIManager Instance is null.");
         else UIManager.Instance.LoadCurrentBtn();
             Close();

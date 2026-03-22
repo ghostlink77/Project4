@@ -78,6 +78,8 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         PlayTime += Time.deltaTime;
         InGameUIController.ShowPlayTime();
 
+        // ¼öÁ¤ : 10ºÐ ÇÃ·¹ÀÌ ÈÄ º¸½º ÃâÇöÀ» À§ÇØ Å¬¸®¾î Á¶°Ç Á¦°Å
+        /*
         if (PlayTime >= _gameClearConditionTime)
         {
             Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½!!");
@@ -86,6 +88,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
             EnemySpawner.Instance.DestroyAll();
             GameStat = GameStat.End;
         }
+        */
     }
 
     public void OpenLevelUpUI(int level)
@@ -138,5 +141,12 @@ public class InGameManager : SingletonBehaviour<InGameManager>
             AgitGameOverAction?.Invoke();
         }
             
+    }
+
+    public void StopGameIfClear()
+    {
+        GameStat = GameStat.End;
+        Time.timeScale = 0.2f;
+        EnemySpawner.Instance.DestroyAll();
     }
 }

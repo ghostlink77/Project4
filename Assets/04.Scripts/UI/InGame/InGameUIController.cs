@@ -100,7 +100,6 @@ public class InGameUIController : MonoBehaviour
         InGameManager.Instance.PlayerGameOverAction += EndGame;
         InGameManager.Instance.PlayerWinAction += PlayerWinEndGame;
 
-        UpdateInventory();
 
     }
 
@@ -195,7 +194,8 @@ public class InGameUIController : MonoBehaviour
     public void ClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        Time.timeScale = 1f;
+        if (_levelupUI != null && !_levelupUI.activeSelf)
+            Time.timeScale = 1f;
     }
 
     public void OpenConfigUI()
@@ -403,7 +403,7 @@ public class InGameUIController : MonoBehaviour
         _itemSelectBtns[index].interactable = true;
 
         int currentLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot(itemData);
-        int displayLevel = (currentLevel == -1) ? 1 : currentLevel + 1;
+        int ItemLevel = (currentLevel == -1) ? 1 : currentLevel + 1;
 
         if (_itemSelectBtnDatas.Length > index)
         {
@@ -417,16 +417,8 @@ public class InGameUIController : MonoBehaviour
                 _itemSelectBtnDatas[index].ItemImage.sprite = itemData.GetIcon();
                 _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
             }
-
-            if (_itemSelectBtnDatas[index].ItemLevelText != null)
-            {
-                _itemSelectBtnDatas[index].ItemLevelText.text = displayLevel.ToString();
-            }
-
-            if (_itemSelectBtnDatas[index].ItemDescriptionText != null)
-            {
-                _itemSelectBtnDatas[index].ItemDescriptionText.text = itemData.GetDescription(displayLevel);
-            }
+            if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = $"Lv{ItemLevel-1} -> Lv{ItemLevel}";
+            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
         }
 
         _itemSelectBtns[index].onClick.RemoveAllListeners();
@@ -502,6 +494,7 @@ public class InGameUIController : MonoBehaviour
             InGameManager.Instance.StartGame();
             _inGameUI.SetActive(true);
         }
+        UpdateInventory();
     }
 
     public void ShowFadeOutAnim()
