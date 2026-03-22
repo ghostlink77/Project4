@@ -31,7 +31,6 @@ public class TurretPlacer : MonoBehaviour
     {
         if(InGameManager.Instance.InGameUIController != null)
         {
-            Debug.Log("dd");
             InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap); 
         }
     }
