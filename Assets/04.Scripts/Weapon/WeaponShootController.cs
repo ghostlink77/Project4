@@ -21,7 +21,6 @@ public class WeaponShootController : MonoBehaviour
     private WeaponStatController _weaponStatController;
     private WeaponEventController _weaponEventController;
 
-    private float _weaponDamage;
     private float _projectileCount;
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
@@ -69,7 +68,7 @@ public class WeaponShootController : MonoBehaviour
         }
     }
 
-    public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
+    public void ShootProcedurePerUpdate(float atkSpeed, float projectileSpeed)
     {
         if (atkSpeed <= 0.01f)
         {
@@ -80,13 +79,12 @@ public class WeaponShootController : MonoBehaviour
         if (_enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
         {
             _atkCoolTime = 0f;
-            Shoot(weaponDamage, projectileSpeed);
+            Shoot(projectileSpeed);
         }
     }
 
-    private void Shoot(float weaponDamage, float projSpeed)
+    private void Shoot(float projSpeed)
     {
-        _weaponDamage = weaponDamage;
         _projectileSpeed = projSpeed;
         _projectileCount = (int)_weaponStatController.ProjectileCount;
         for (int i = 0; i < _projectileCount; i++)
