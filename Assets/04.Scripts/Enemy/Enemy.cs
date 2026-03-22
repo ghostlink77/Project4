@@ -205,12 +205,24 @@ public class Enemy : MonoBehaviour, IDamageable
         _animator.speed = 1f;
         _animator.SetTrigger(DeadHash);
         ClearStunVFX();
+
+        if (_enemyType == EnemyType.Boss)
+        {
+            InGameManager.Instance.StopGameIfClear();
+        }
     }
 
     // NOTE: 애니메이션이 끝난 후 Animation Event로 호출
     public void OnDeathAnimationEnd()
     {
         DropExpObject();
+
+        if (_enemyType == EnemyType.Boss)
+        {
+            Debug.Log("보스 처치! 게임 클리어!");
+            InGameManager.Instance.PlayerWinAction?.Invoke();
+        }
+
         EnemySpawner.Instance.ReturnToPool(_enemyType.ToString(), gameObject);
     }
 
