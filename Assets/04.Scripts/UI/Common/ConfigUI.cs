@@ -13,10 +13,19 @@ public class ConfigUI : BaseUI
     [SerializeField] private Slider _uiSFXSlider;
     [SerializeField] private Slider _gameSFXSlider;
 
+    [SerializeField] private CanvasGroup _canvasGroup;
+
 
     private readonly float _defaultSoundValueScale = 0.01f;
 
-
+    private void Start()
+    {
+        _canvasGroup.blocksRaycasts = false;
+    }
+    private void OnEnable()
+    {
+        EventSystem.current.sendNavigationEvents = false;
+    }
     private void Update()
     {
         InputHandle();
@@ -24,9 +33,11 @@ public class ConfigUI : BaseUI
 
     private void InputHandle()
     {
+        if (EventSystem.current.sendNavigationEvents == false) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            base.OnClickCloseButton();
+            OnClickCloseButton();
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
@@ -38,6 +49,14 @@ public class ConfigUI : BaseUI
         }
     }
 
+    public override void OnClickCloseButton()
+    {
+        _canvasGroup.blocksRaycasts = false;
+        EventSystem.current.sendNavigationEvents = false;
+
+        base.OnClickCloseButton();
+
+    }
     private void SetupSound(bool isUp)
     {
         if (EventSystem.current.currentSelectedGameObject.TryGetComponent<ConfigButton>(out ConfigButton component))
@@ -89,9 +108,14 @@ public class ConfigUI : BaseUI
     public void EndFadeIn()
     {
         EventSystem.current.SetSelectedGameObject(MasterVolumeObj);
+
+        _canvasGroup.blocksRaycasts = true;
+        EventSystem.current.sendNavigationEvents = true;
     }
     public void EndFadeOut()
     {
+        EventSystem.current.sendNavigationEvents = true;
+
         if (UIManager.Instance == null) Debug.Log("UIManager Instance is null.");
         else UIManager.Instance.LoadCurrentBtn();
             Close();
