@@ -176,8 +176,6 @@ public class WeaponShootController : MonoBehaviour
         
         if (obj.TryGetComponent<BulletController>(out var bulletController))
         {
-            // 여기에 치명타 연산하는 기능을 추가해야 함.
-            // 이후에 _weaponDamage라고 적힌 부분을 치명타 여부에 따라 새로운 값을 반영해 넣도록 한다.
             float damage = GetCriticalDamage();
             bulletController.GetNeededVariableForAttack(damage, _projectileSpeed, _projectilePool, _weaponEventController);
         }
