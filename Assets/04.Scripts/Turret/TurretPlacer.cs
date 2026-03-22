@@ -42,24 +42,33 @@ public class TurretPlacer : MonoBehaviour
                 GameObject turretPrefab = Resources.Load<GameObject>($"Turret/{turretName}");
                 if (turretPrefab.TryGetComponent<TurretBase>(out var turretBasecomponent))
                 {
-                    if (CheckScrapAmount(turretBasecomponent.GetCost()))
+                    if (component.CanPlaceTurret())
                     {
-                        TurretBase placedTurret = component.PlaceTurret(turretPrefab);
-                        if (placedTurret != null)
+                        if (CheckScrapAmount(turretBasecomponent.GetCost()))
                         {
-                            int currentLevel = TurretManager.Instance.GetTurretLevel(turretName);
-                            placedTurret.Initialize(currentLevel);
-                            TurretManager.Instance.RegisterPlacedTurret(turretName, placedTurret);
+                            TurretBase placedTurret = component.PlaceTurret(turretPrefab);
+                            if (placedTurret != null)
+                            {
+                                int currentLevel = TurretManager.Instance.GetTurretLevel(turretName);
+                                placedTurret.Initialize(currentLevel);
+                                TurretManager.Instance.RegisterPlacedTurret(turretName, placedTurret);
+                            }
+                            UseScrapPoint(turretBasecomponent.GetCost());
+                            EndPlaceTurret?.Invoke();
+                            return;
                         }
-                        UseScrapPoint(turretBasecomponent.GetCost());
-                        EndPlaceTurret?.Invoke();
-                        return;
+                        else
+                        {
+                            Debug.Log("스크랩 재화가 부족합니다..");
+                            InGameManager.Instance.InGameUIController.PrintMessge("스크랩 재화가 부족합니다.");
+                        }
                     }
                     else
                     {
-                        Debug.Log("스크랩 재화가 부족합니다..");
-                        InGameManager.Instance.InGameUIController.PrintMessge("스크랩 재화가 부족합니다.");
+                        Debug.Log("현재 위치에 이미 터렛이 존재합니다.");
+                        InGameManager.Instance.InGameUIController.PrintMessge("현재 위치에 이미 터렛이 존재합니다.");
                     }
+                    
                 }
             }
         }

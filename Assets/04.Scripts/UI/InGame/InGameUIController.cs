@@ -101,7 +101,6 @@ public class InGameUIController : MonoBehaviour
         InGameManager.Instance.PlayerGameOverAction += EndGame;
         InGameManager.Instance.PlayerWinAction += PlayerWinEndGame;
 
-        UpdateInventory();
 
     }
 
@@ -511,6 +510,7 @@ public class InGameUIController : MonoBehaviour
             InGameManager.Instance.StartGame();
             _inGameUI.SetActive(true);
         }
+        UpdateInventory();
     }
 
     public void ShowFadeOutAnim()
