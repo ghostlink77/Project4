@@ -7028,7 +7028,7 @@ MonoBehaviour:
   _detectLayer:
     serializedVersion: 2
     m_Bits: 524288
-  _scrap: 0
+  _scrap: 6
   _testTurretDatas: []
 --- !u!4 &532890276
 Transform:
@@ -9563,6 +9563,18 @@ PrefabInstance:
     - target: {fileID: 1648057168967098522, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361471354788731644, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+      propertyPath: _turretSlotMaxCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361471354788731644, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+      propertyPath: _weaponSlotMaxCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361471354788731644, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
+      propertyPath: _passiveSlotMaxCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2786458683079629028, guid: 372bc9bf538ea4d40b53192f0ff0b984, type: 3}
       propertyPath: m_LocalPosition.x

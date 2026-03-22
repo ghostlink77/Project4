@@ -11,17 +11,17 @@ public class PlayerItemController : MonoBehaviour
     [Header("플레이어 무기 슬롯")]
     private List<GameObject> _weaponSlot = new List<GameObject>();
     private Dictionary<string, GameObject> _weaponSlots = new Dictionary<string, GameObject>();
-    [SerializeField] private int _weaponSlotMaxCount = 7;
+    [SerializeField] private int _weaponSlotMaxCount = 4;
 
     [Header("플레이어 패시브 아이템 슬롯")]
     private List<GameObject> _passiveItemSlot = new List<GameObject>();
     private Dictionary<string, GameObject> _passiveSlots = new Dictionary<string, GameObject>();
-    [SerializeField] private int _passiveSlotMaxCount = 6;
+    [SerializeField] private int _passiveSlotMaxCount = 4;
 
     [Header("플레이어 포탑 슬롯")]
     private List<GameObject> _turretSlot = new List<GameObject>();
     private Dictionary<string, GameObject> _turretSlots = new Dictionary<string, GameObject>();
-    [SerializeField] private int _turretSlotMaxCount = 7;
+    [SerializeField] private int _turretSlotMaxCount = 4;
 
     public void SetUp()
     {
@@ -186,6 +186,63 @@ public class PlayerItemController : MonoBehaviour
         if (itemDict.ContainsKey(itemData.GetName())) 
             return itemDict[itemData.GetName()].GetComponent<IItemStatController>().GetLevel();
         return -1;
+    }
+
+    // NOTE: 비제네릭 오버로드 — 통합 아이템 풀에서 사용
+    public int GetItemLevelInSlot(IItemStatData itemData)
+    {
+        Dictionary<string, GameObject> itemDict = GetSlotsForItem(itemData);
+
+        if (itemDict == null) return -1;
+        if (itemDict.ContainsKey(itemData.GetName()))
+        {
+            return itemDict[itemData.GetName()].GetComponent<IItemStatController>().GetLevel();
+        }
+
+        return -1;
+    }
+
+    // NOTE: 해당 아이템 카테고리의 슬롯에 신규 아이템을 추가할 여유가 있는지 확인
+    public bool HasSlotSpaceForNewItem(IItemStatData itemData)
+    {
+        Dictionary<string, GameObject> slots = GetSlotsForItem(itemData);
+        if (slots == null) return false;
+
+        int maxCount = GetMaxSlotCount(itemData);
+        return slots.Count < maxCount;
+    }
+
+    // NOTE: 비제네릭 오버로드 — IItemStatData를 받아 타입별 제네릭 메서드로 위임
+    public void AddItemToSlot(IItemStatData itemData)
+    {
+        if (itemData is WeaponStatData weapon)
+        {
+            AddItemToSlot(weapon);
+        }
+        else if (itemData is PassiveItemData passive)
+        {
+            AddItemToSlot(passive);
+        }
+        else if (itemData is TurretData turret)
+        {
+            AddItemToSlot(turret);
+        }
+    }
+
+    private Dictionary<string, GameObject> GetSlotsForItem(IItemStatData itemData)
+    {
+        if (itemData is WeaponStatData) return _weaponSlots;
+        if (itemData is PassiveItemData) return _passiveSlots;
+        if (itemData is TurretData) return _turretSlots;
+        return null;
+    }
+
+    private int GetMaxSlotCount(IItemStatData itemData)
+    {
+        if (itemData is WeaponStatData) return _weaponSlotMaxCount;
+        if (itemData is PassiveItemData) return _passiveSlotMaxCount;
+        if (itemData is TurretData) return _turretSlotMaxCount;
+        return 0;
     }
 
     // 슬롯에 추가할 무기가 현재 슬롯에 있는지, 있다면 무기의 위치를 반환. 

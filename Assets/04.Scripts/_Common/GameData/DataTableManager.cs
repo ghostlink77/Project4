@@ -41,7 +41,7 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         if (sourceDatas == null) return default(T);
         
         var availableItems = sourceDatas.Where(
-            data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) <= data.GetMaxLevel() &&
+            data => PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(data) < data.GetMaxLevel() &&
             !selectedItemNames.Contains(data.GetName())).ToList();
         if (availableItems.Count == 0) return default(T);
 
@@ -57,5 +57,44 @@ public class DataTableManager : SingletonBehaviour<DataTableManager>
         else return null;
     }
 
+    // NOTE: 카테고리 구분 없이 선택 가능한 아이템을 통합 풀로 반환
+    public List<IItemStatData> GetAllSelectableItems(HashSet<string> excludedNames)
+    {
+        var playerItemController = PlayerManager.Instance.PlayerItemController;
+        var allItems = new List<IItemStatData>();
 
+        AddSelectableItemsFromSource(_weaponDatas, allItems, playerItemController, excludedNames);
+        AddSelectableItemsFromSource(_passiveDatas, allItems, playerItemController, excludedNames);
+        AddSelectableItemsFromSource(_turretDatas, allItems, playerItemController, excludedNames);
+
+        return allItems;
+    }
+
+    private void AddSelectableItemsFromSource<T>(
+        List<T> sourceDatas,
+        List<IItemStatData> result,
+        PlayerItemController playerItemController,
+        HashSet<string> excludedNames) where T : IItemStatData
+    {
+        foreach (T data in sourceDatas)
+        {
+            if (excludedNames.Contains(data.GetName())) continue;
+
+            int currentLevel = playerItemController.GetItemLevelInSlot(data);
+
+            if (currentLevel == -1)
+            {
+                // NOTE: 미보유 아이템 — 슬롯 여유가 있을 때만 선택 가능
+                if (playerItemController.HasSlotSpaceForNewItem(data))
+                {
+                    result.Add(data);
+                }
+            }
+            else if (currentLevel < data.GetMaxLevel())
+            {
+                // NOTE: 보유 중이지만 만렙 미달 — 레벨업 가능
+                result.Add(data);
+            }
+        }
+    }
 }

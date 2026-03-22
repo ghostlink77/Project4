@@ -8,7 +8,7 @@ public class TurretPlacer : MonoBehaviour
     [SerializeField] private int _turretLayerIndex;
     [SerializeField] private LayerMask _detectLayer;
 
-    [SerializeField] private int _scrap = 0;
+    [SerializeField] private int _scrap = 6;
 
     public Action UseScrap;
     public Action EndPlaceTurret;
@@ -25,6 +25,15 @@ public class TurretPlacer : MonoBehaviour
     void OnDisable()
     {
         PlayerManager.Instance.PlayerEventController.ScrapCollected -= CollectScrap;
+    }
+
+    private void Start()
+    {
+        if(InGameManager.Instance.InGameUIController != null)
+        {
+            Debug.Log("dd");
+            InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap); 
+        }
     }
 
     [Header("테스트용")]

@@ -30,12 +30,13 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         IsDestroyOnLoad = true;
 
         base.Init();
+
+        // NOTE: ë‹¤ë¥¸ ì»´í¬ë„ŒíŠ¸ì˜ Startì—ì„œ ì°¸ì¡°í•  ìˆ˜ ìˆë„ë¡ Awake ë‹¨ê³„(Init)ì—ì„œ ì„¸íŒ…
+        InGameUIController = FindAnyObjectByType<InGameUIController>();
     }
 
     private void Start()
     {
-        InGameUIController = FindAnyObjectByType<InGameUIController>();
-        
         if (InGameUIController == null)
         {
             Debug.Log("InGameUIController does not exist.");
@@ -79,7 +80,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
         if (PlayTime >= _gameClearConditionTime)
         {
-            Debug.Log("°ÔÀÓ ¿ì½Â!!");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½!!");
             Time.timeScale = .2f;
             PlayerWinAction?.Invoke();
             EnemySpawner.Instance.DestroyAll();
@@ -95,7 +96,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         }
         else
         {
-            Debug.LogError("UI ÄÁÆ®·Ñ·¯°¡ ¿¬°áµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogError("UI ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
         }
     }
 
