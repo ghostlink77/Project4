@@ -24,6 +24,10 @@ public abstract class TurretData : ScriptableObject, IItemStatData
     {
         return _icon;
     }
+    public int GetMaxLevel()
+    {
+        return MaxLevel;
+    }
     public string GetDescription(int level)
     {
         if (level > 0 && level - 1 < _upgradeDescriptions.Length)

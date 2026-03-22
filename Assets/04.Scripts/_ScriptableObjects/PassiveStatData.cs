@@ -77,6 +77,10 @@ public class PassiveStatData : ScriptableObject, IItemStatData
     {
         return _icon;
     }
+    public int GetMaxLevel()
+    {
+        return level;
+    }
 
     public string GetDescription(int level)
     {
