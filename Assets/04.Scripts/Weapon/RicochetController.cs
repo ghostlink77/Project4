@@ -71,7 +71,7 @@ public class RicochetController : MonoBehaviour
         if (closestEnemyTransform == null)
         {
             _bulletController.Penetratable = false;
-            Debug.LogError("주변에 적 없으므로 도탄 중지");
+            //Debug.LogError("주변에 적 없으므로 도탄 중지");
             return;
         }
 
