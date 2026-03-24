@@ -184,6 +184,7 @@ public class InGameUIController : MonoBehaviour
 
     public void OnClickOpenPauseUI()
     {
+        if (_turretSelectUI.IsSetting) Cursor.visible = true;
         InGameManager.Instance.PauseGame();
 
         if (_pauseUI != null) _pauseUI.SetActive(true);
@@ -194,7 +195,8 @@ public class InGameUIController : MonoBehaviour
     public void ClosePauseUI()
     {
         if (_pauseUI != null) _pauseUI.SetActive(false);
-        if (_levelupUI != null && !_levelupUI.activeSelf)
+        if (_turretSelectUI.IsSetting) Cursor.visible = false;
+        if (_levelupUI != null && !_levelupUI.activeSelf && !_turretSelectUI.IsSetting)
             Time.timeScale = 1f;
     }
 
