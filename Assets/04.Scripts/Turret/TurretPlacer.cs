@@ -17,21 +17,21 @@ public class TurretPlacer : MonoBehaviour
 
     private List<GameObject> _selectableTurretPrefabs = new List<GameObject>();
 
-    void OnEnable()
-    {
-        PlayerManager.Instance.PlayerEventController.ScrapCollected += CollectScrap;
-    }
-
-    void OnDisable()
-    {
-        PlayerManager.Instance.PlayerEventController.ScrapCollected -= CollectScrap;
-    }
-
     private void Start()
     {
-        if(InGameManager.Instance.InGameUIController != null)
+        PlayerManager.Instance.PlayerEventController.ScrapCollected += CollectScrap;
+
+        if (InGameManager.Instance.InGameUIController != null)
         {
-            InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap); 
+            InGameManager.Instance.InGameUIController.UpdateScrapAmountText(_scrap);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerManager.Instance?.PlayerEventController != null)
+        {
+            PlayerManager.Instance.PlayerEventController.ScrapCollected -= CollectScrap;
         }
     }
 
