@@ -17,18 +17,18 @@ MonoBehaviour:
   passiveType: 3
   maxLevel: 5
   levelData:
-  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 2 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 0.4 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 0.4
+    value2: 0
+  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 0.8 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 0.8
+    value2: 0
+  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 1.2 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 1.2
+    value2: 0
+  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 1.6 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    value1: 1.6
+    value2: 0
+  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 2.0 \uC99D\uAC00\uD569\uB2C8\uB2E4."
     value1: 2
-    value2: 0
-  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 4 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-    value1: 4
-    value2: 0
-  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 6 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-    value1: 6
-    value2: 0
-  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 8 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-    value1: 8
-    value2: 0
-  - description: "\uCD08\uB2F9 \uCCB4\uB825 \uD68C\uBCF5\uC774 10 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-    value1: 10
     value2: 0

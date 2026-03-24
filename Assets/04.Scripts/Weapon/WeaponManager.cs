@@ -58,7 +58,7 @@ public class WeaponManager : MonoBehaviour
         if (InGameManager.Instance.GameStat != GameStat.Play)
             return;
 
-        _weaponShootController.ShootProcedurePerUpdate(_damage, _atkSpeed, _projectileSpeed);
+        _weaponShootController.ShootProcedurePerUpdate(_atkSpeed, _projectileSpeed);
     }
     #endregion
     

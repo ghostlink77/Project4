@@ -1,7 +1,3 @@
-/*
- * 적 스폰 및 오브젝트 풀 관리
- * 스폰된 적의 Transform 정보 유지
- */
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -28,7 +24,22 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         base.Init();
 
         LoadEnemyPrefabs();
-        _agitRigidbody = GameObject.FindGameObjectWithTag("Agit").GetComponent<Rigidbody2D>();
+
+        GameObject[] agitObjects = GameObject.FindGameObjectsWithTag("Agit");
+        foreach (GameObject agitObject in agitObjects)
+        {
+            Rigidbody2D rb = agitObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                _agitRigidbody = rb;
+                break;
+            }
+        }
+
+        if (_agitRigidbody == null)
+        {
+            Debug.LogError("[EnemySpawner] Rigidbody2D를 가진 Agit 오브젝트를 찾을 수 없습니다!");
+        }
     }
 
     private async void LoadEnemyPrefabs()
@@ -75,6 +86,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
             Debug.LogError($"Enemy type '{enemyType}' not found!");
             return null;
         }
+
         GameObject enemy = _enemyPools[enemyType].Get();
         enemy.transform.position = position;
         InGameManager.Instance.InGameUIController.AddTracedEnemyInMinimap(enemy.transform);
@@ -120,7 +132,7 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
     {
         foreach (var enemy in _activeEnemies)
         {
-            enemy.TakeDamage(1000000000000);
+            enemy.TakeDamage(Mathf.Infinity);
         }
         SoundManager.Instance?.PlaySFX(SoundType.Enemy, _enemyAllDeadSound);
     }
