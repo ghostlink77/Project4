@@ -389,9 +389,8 @@ MonoBehaviour:
   _selectedImageAnim: {fileID: 4909811677660581827}
   _btnNameText: {fileID: 2790197061247888166}
   _sliderValueText: {fileID: 6716548540228713046}
-  Slider: {fileID: 7865356960332689391}
+  _slider: {fileID: 7865356960332689391}
   _isFirst: 0
-  _configUIObject: {fileID: 0}
   _btnType: 0
   _OnSelectColor: {r: 1, g: 1, b: 0, a: 1}
   _deSelectColor: {r: 1, g: 1, b: 1, a: 1}

@@ -69,13 +69,13 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: b7ede6a9cbb22d94088ff2b4bac99a62
-    name: BGM
+    name: BGMSound
   - guid: 7ce75acd18e286e40a205af1bc90c5ae
-    name: Master
+    name: MasterSound
   - guid: 1d8398154f4d10040b52350d20c03da4
-    name: SFX
+    name: SFXSound
   - guid: 47193c23b5f9db84786028727edd8f3c
-    name: UISFX
+    name: UISFXSound
   m_AudioMixerGroupViews:
   - guids:
     - 77897dec20da0d44cb322efbbd31367e
