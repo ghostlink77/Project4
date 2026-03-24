@@ -1,4 +1,4 @@
-using NUnit.Framework.Constraints;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections.Generic;
@@ -36,6 +36,8 @@ public class Minimap : MonoBehaviour
 
     Vector2 _unitScale;
     Vector2 _mapPosition = Vector2.zero;
+
+    [SerializeField] private Image _image;
 
     private void Awake()
     {
@@ -172,5 +174,6 @@ public class Minimap : MonoBehaviour
     public void StopWarningAnim()
     {
         _anim.enabled = false;
+        _image.color = Color.white;
     }
 }

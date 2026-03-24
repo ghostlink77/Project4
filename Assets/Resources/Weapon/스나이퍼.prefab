@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
   _weaponRangeCollider2D: {fileID: -2793675266237441266}
-  _weaponStat: {fileID: 0}
   _level: 0
   _damage: 0
   _critRate: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
-  _weaponShootSound: {fileID: 8300000, guid: b18db8b09a4de46b1bd0f64534710255, type: 3}
+  _weaponShootClipName: SniperShootSound
 --- !u!114 &5387269975543966741
 MonoBehaviour:
   m_ObjectHideFlags: 0

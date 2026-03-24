@@ -2,10 +2,13 @@
 무기의 사격을 관리하는 스크립트
 */
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
@@ -18,7 +21,6 @@ public class WeaponShootController : MonoBehaviour
     private WeaponStatController _weaponStatController;
     private WeaponEventController _weaponEventController;
 
-    private float _weaponDamage;
     private float _projectileCount;
     private float _atkCoolTime, _projectileSpeed = 0f;
     [SerializeField]
@@ -66,7 +68,7 @@ public class WeaponShootController : MonoBehaviour
         }
     }
 
-    public void ShootProcedurePerUpdate(float weaponDamage, float atkSpeed, float projectileSpeed)
+    public void ShootProcedurePerUpdate(float atkSpeed, float projectileSpeed)
     {
         if (atkSpeed <= 0.01f)
         {
@@ -77,13 +79,12 @@ public class WeaponShootController : MonoBehaviour
         if (_enemiesInRange.Count >= 1 && _atkCoolTime >= atkSpeed)
         {
             _atkCoolTime = 0f;
-            Shoot(weaponDamage, projectileSpeed);
+            Shoot(projectileSpeed);
         }
     }
 
-    private void Shoot(float weaponDamage, float projSpeed)
+    private void Shoot(float projSpeed)
     {
-        _weaponDamage = weaponDamage;
         _projectileSpeed = projSpeed;
         _projectileCount = (int)_weaponStatController.ProjectileCount;
         for (int i = 0; i < _projectileCount; i++)
@@ -101,6 +102,25 @@ public class WeaponShootController : MonoBehaviour
             bullet.SetActive(true);
         }
         _weaponEventController.CallOnShoot();
+    }
+    
+    private float GetCriticalDamage()
+    {
+        float damage = _weaponStatController.Damage;
+        float critRate = _weaponStatController.CritRate;
+        float critMult = _weaponStatController.CritMultiplier;
+        
+        float finalDamage = damage;
+        float remainingCritRate = critRate;
+
+        while (remainingCritRate >= 100f)
+        {
+            finalDamage *= critMult;
+            remainingCritRate -= 100f;
+        }
+        if (UnityEngine.Random.Range(0f, 100f) < remainingCritRate) finalDamage *= critMult;
+
+        return finalDamage;
     }
     
     private Vector2 FindClosestTargetVector(Vector2 playerPos)
@@ -154,7 +174,8 @@ public class WeaponShootController : MonoBehaviour
         
         if (obj.TryGetComponent<BulletController>(out var bulletController))
         {
-            bulletController.GetNeededVariableForAttack(_weaponDamage, _projectileSpeed, _projectilePool, _weaponEventController);
+            float damage = GetCriticalDamage();
+            bulletController.GetNeededVariableForAttack(damage, _projectileSpeed, _projectilePool, _weaponEventController);
         }
     }
 
