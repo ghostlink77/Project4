@@ -3,7 +3,7 @@ using UnityEngine.Pool;
 
 public class PlasmaTurretProjectile : TurretProjectile
 {
-    [SerializeField] private float _explosionRadius = 1.5f;
+    [SerializeField] private float _explosionRadius = 3f;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private GameObject _explosionVFXPrefab;
 

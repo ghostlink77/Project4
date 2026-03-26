@@ -19,14 +19,14 @@ MonoBehaviour:
   maxLevel: 8
   type: 1
   damage:
+  - 10
+  - 10
+  - 10
   - 15
   - 15
   - 15
-  - 20
-  - 20
-  - 20
-  - 20
-  - 22
+  - 15
+  - 18
   critRate:
   - 35
   - 35

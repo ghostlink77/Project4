@@ -20,8 +20,8 @@ MonoBehaviour:
   type: 1
   damage:
   - 5
-  - 8
-  - 8
+  - 5
+  - 5
   - 8
   - 8
   - 11
@@ -55,14 +55,14 @@ MonoBehaviour:
   - 35.714
   - 40
   atkSpeed:
-  - 1
-  - 1
-  - 0.8
-  - 0.8
-  - 0.8
-  - 0.8
-  - 0.6
+  - 0.9
+  - 0.7
+  - 0.7
+  - 0.7
   - 0.5
+  - 0.5
+  - 0.3
+  - 0.15
   atkRange:
   - 4.5
   - 4.5
@@ -75,7 +75,7 @@ MonoBehaviour:
   projectileSpeed:
   - 3.5
   - 3.5
-  - 3.5
+  - 4.3
   - 4.3
   - 4.3
   - 4.3
@@ -84,10 +84,10 @@ MonoBehaviour:
   projectileCount: 0100000001000000010000000100000001000000010000000100000001000000
   _description:
   - "\uAE30\uBCF8 \uBB34\uAE30"
-  - "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   - "\uACF5\uACA9 \uCFE8\uD0C0\uC784\uC774 0.2\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   - "\uD22C\uC0AC\uCCB4 \uC18D\uB3C4\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  - "\uCE58\uBA85\uD0C0 \uD655\uB960\uC774 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  - "\uACF5\uACA9 \uCFE8\uD0C0\uC784\uC774 0.2\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   - "\uACF5\uACA9\uB825\uC774 3 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   - "\uACF5\uACA9 \uCFE8\uD0C0\uC784\uC774 0.2\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   - "\uBB34\uAE30\uC758 \uBAA8\uB4E0 \uB2A5\uB825\uCE58\uAC00 \uC0C1\uC2B9\uD569\uB2C8\uB2E4."

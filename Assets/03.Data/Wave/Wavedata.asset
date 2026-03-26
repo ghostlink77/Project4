@@ -18,14 +18,14 @@ MonoBehaviour:
     defaultSpawnInterval: 2.3
     spawnPointConfigs:
     - spawnPointIndex: 0
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 3
       spawnInterval: 1.7
     - spawnPointIndex: 5
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 3
       spawnInterval: 0
-  - startTime: 40
+  - startTime: 60
     isBoss: 0
     defaultSpawnInterval: 2.8
     spawnPointConfigs:
@@ -38,14 +38,14 @@ MonoBehaviour:
       enemyType: 3
       spawnInterval: 3.5
     - spawnPointIndex: 4
-      spawnCount: 2
+      spawnCount: 3
       enemyType: 3
       spawnInterval: 3.5
     - spawnPointIndex: 5
       spawnCount: 1
       enemyType: 3
       spawnInterval: 0
-  - startTime: 80
+  - startTime: 90
     isBoss: 0
     defaultSpawnInterval: 2.8
     spawnPointConfigs:
@@ -54,16 +54,16 @@ MonoBehaviour:
       enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 1
-      spawnCount: 1
-      enemyType: 0
+      spawnCount: 2
+      enemyType: 3
       spawnInterval: 0
     - spawnPointIndex: 4
       spawnCount: 2
       enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 5
-      spawnCount: 1
-      enemyType: 0
+      spawnCount: 2
+      enemyType: 3
       spawnInterval: 0
   - startTime: 140
     isBoss: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     spawnPointConfigs:
     - spawnPointIndex: 0
       spawnCount: 1
-      enemyType: 2
+      enemyType: 0
       spawnInterval: 5
     - spawnPointIndex: 2
       spawnCount: 2
@@ -82,79 +82,139 @@ MonoBehaviour:
       enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 5
-      spawnCount: 1
-      enemyType: 2
+      spawnCount: 4
+      enemyType: 3
       spawnInterval: 5
   - startTime: 180
     isBoss: 0
-    defaultSpawnInterval: 3.5
+    defaultSpawnInterval: 2.5
     spawnPointConfigs:
     - spawnPointIndex: 0
       spawnCount: 1
-      enemyType: 2
+      enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 1
-      spawnCount: 1
-      enemyType: 2
+      spawnCount: 2
+      enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 2
-      spawnCount: 1
-      enemyType: 2
+      spawnCount: 2
+      enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 3
-      spawnCount: 1
-      enemyType: 2
+      spawnCount: 2
+      enemyType: 0
       spawnInterval: 0
     - spawnPointIndex: 4
-      spawnCount: 1
-      enemyType: 2
+      spawnCount: 2
+      enemyType: 0
       spawnInterval: 0
   - startTime: 240
     isBoss: 0
     defaultSpawnInterval: 1
     spawnPointConfigs:
     - spawnPointIndex: 0
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 1
       spawnInterval: 0
     - spawnPointIndex: 1
-      spawnCount: 1
+      spawnCount: 3
       enemyType: 1
       spawnInterval: 0
     - spawnPointIndex: 2
-      spawnCount: 1
+      spawnCount: 2
       enemyType: 1
       spawnInterval: 0
-  - startTime: 320
+  - startTime: 300
+    isBoss: 0
+    defaultSpawnInterval: 2
+    spawnPointConfigs:
+    - spawnPointIndex: 0
+      spawnCount: 5
+      enemyType: 0
+      spawnInterval: 0
+    - spawnPointIndex: 5
+      spawnCount: 5
+      enemyType: 0
+      spawnInterval: 0
+  - startTime: 325
+    isBoss: 0
+    defaultSpawnInterval: 0.7
+    spawnPointConfigs:
+    - spawnPointIndex: 1
+      spawnCount: 2
+      enemyType: 1
+      spawnInterval: 0
+    - spawnPointIndex: 2
+      spawnCount: 2
+      enemyType: 1
+      spawnInterval: 0
+    - spawnPointIndex: 3
+      spawnCount: 2
+      enemyType: 1
+      spawnInterval: 0
+    - spawnPointIndex: 4
+      spawnCount: 2
+      enemyType: 1
+      spawnInterval: 0
+    - spawnPointIndex: 5
+      spawnCount: 2
+      enemyType: 1
+      spawnInterval: 0
+  - startTime: 420
     isBoss: 0
     defaultSpawnInterval: 1
     spawnPointConfigs:
     - spawnPointIndex: 0
-      spawnCount: 1
-      enemyType: 3
+      spawnCount: 2
+      enemyType: 2
       spawnInterval: 0
-  - startTime: 325
-    isBoss: 0
-    defaultSpawnInterval: 1
-    spawnPointConfigs:
     - spawnPointIndex: 1
-      spawnCount: 1
-      enemyType: 1
+      spawnCount: 2
+      enemyType: 2
       spawnInterval: 0
     - spawnPointIndex: 2
       spawnCount: 1
-      enemyType: 1
+      enemyType: 2
       spawnInterval: 0
     - spawnPointIndex: 3
       spawnCount: 1
+      enemyType: 2
+      spawnInterval: 0
+    - spawnPointIndex: 4
+      spawnCount: 2
+      enemyType: 2
+      spawnInterval: 0
+    - spawnPointIndex: 5
+      spawnCount: 2
+      enemyType: 2
+      spawnInterval: 0
+  - startTime: 500
+    isBoss: 1
+    defaultSpawnInterval: 1
+    spawnPointConfigs:
+    - spawnPointIndex: 0
+      spawnCount: 2
+      enemyType: 2
+      spawnInterval: 0.5
+    - spawnPointIndex: 1
+      spawnCount: 3
+      enemyType: 2
+      spawnInterval: 0.5
+    - spawnPointIndex: 2
+      spawnCount: 3
+      enemyType: 2
+      spawnInterval: 0
+    - spawnPointIndex: 3
+      spawnCount: 4
       enemyType: 1
       spawnInterval: 0
     - spawnPointIndex: 4
-      spawnCount: 1
+      spawnCount: 4
       enemyType: 1
       spawnInterval: 0
     - spawnPointIndex: 5
-      spawnCount: 1
+      spawnCount: 4
       enemyType: 1
       spawnInterval: 0
   - startTime: 600

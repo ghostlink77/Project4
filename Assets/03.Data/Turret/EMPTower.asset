@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EMPTurretData
   turretName: "EMP\uD0C0\uC6CC"
   ID: 0
-  _icon: {fileID: 6428153695190406480, guid: 1070a6fb61ceae3468c83531b8b89b1a, type: 3}
+  _icon: {fileID: 21300000, guid: 2ddc2eee2658a5249b017bf72d0f6514, type: 3}
   <MaxLevel>k__BackingField: 6
   <ScrapCost>k__BackingField: 9
-  <MaxHp>k__BackingField: 1e0000003200000032000000320000003200000032000000
+  <MaxHp>k__BackingField: 280000003c0000003c0000003c0000003c0000003c000000
   <Range>k__BackingField:
-  - 4
-  - 4
-  - 4
-  - 4
-  - 6
+  - 5
+  - 5
+  - 5
+  - 5
   - 7
+  - 8
   _upgradeDescriptions:
   - "\uC8FC\uC704\uC758 \uC801\uB4E4\uC744 \uAE30\uC808\uC2DC\uD0B5\uB2C8\uB2E4."
   - "\uCD5C\uB300 \uCCB4\uB825\uC774 20 \uC99D\uAC00\uD569\uB2C8\uB2E4."
@@ -34,16 +34,16 @@ MonoBehaviour:
   - "\uCFE8\uD0C0\uC784\uC774 2.5\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4.\n\uD6A8\uACFC
     \uBC94\uC704\uAC00 1 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   <EffectCooldown>k__BackingField:
-  - 10
-  - 10
   - 8
   - 8
-  - 8
-  - 5.5
+  - 6
+  - 6
+  - 6
+  - 3.5
   <StunDuration>k__BackingField:
+  - 1.8
+  - 1.8
+  - 1.8
   - 2.5
   - 2.5
   - 2.5
-  - 3.2
-  - 3.2
-  - 3.2

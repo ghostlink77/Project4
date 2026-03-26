@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public enum GameStat
@@ -31,7 +31,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
 
         base.Init();
 
-        // NOTE: 다른 컴포넌트의 Start에서 참조할 수 있도록 Awake 단계(Init)에서 세팅
+        // NOTE: ?ㅻⅨ 而댄룷?뚰듃??Start?먯꽌 李몄“?????덈룄濡?Awake ?④퀎(Init)?먯꽌 ?명똿
         InGameUIController = FindAnyObjectByType<InGameUIController>();
     }
 
@@ -78,11 +78,11 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         PlayTime += Time.deltaTime;
         InGameUIController.ShowPlayTime();
 
-        // ���� : 10�� �÷��� �� ���� ������ ���� Ŭ���� ���� ����
+        // 수정 : 10분 플레이 후 보스 출현을 위해 클리어 조건 제거
         /*
         if (PlayTime >= _gameClearConditionTime)
         {
-            Debug.Log("���� ���!!");
+            Debug.Log("占쏙옙占쏙옙 占쏙옙占?!");
             Time.timeScale = .2f;
             PlayerWinAction?.Invoke();
             EnemySpawner.Instance.DestroyAll();
@@ -99,7 +99,7 @@ public class InGameManager : SingletonBehaviour<InGameManager>
         }
         else
         {
-            Debug.LogError("UI ��Ʈ�ѷ��� ������� �ʾҽ��ϴ�.");
+            Debug.LogError("UI 占쏙옙트占싼뤄옙占쏙옙 占쏙옙占쏙옙占쏙옙占?占십았쏙옙占싹댐옙.");
         }
     }
 
