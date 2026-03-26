@@ -60,6 +60,12 @@ public class EnemySpawnManager : MonoBehaviour
     {
         StopSpawnAllPoints();
 
+        if (wave.isBoss)
+        {
+            Debug.Log("보스 스테이지 시작");
+            EnemySpawner.Instance.DestroyAll();
+        }
+
         if (wave.spawnPointConfigs == null || wave.spawnPointConfigs.Length == 0)
         {
             Debug.LogWarning("Wave에 SpawnPointConfig가 설정되지 않았습니다.");

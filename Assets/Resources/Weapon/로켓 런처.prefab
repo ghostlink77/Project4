@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponStatController
   _weaponRangeCollider2D: {fileID: 4188357915843382534}
-  _weaponStat: {fileID: 0}
   _level: 0
   _damage: 0
   _critRate: 0
@@ -137,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac1cb591fec1e14fa26613b12761b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSoundController
-  _weaponShootSound: {fileID: 8300000, guid: c2f7f4c0d0f4a4cc685cf40e345e94cf, type: 3}
+  _weaponShootClipName: RocketLauncherShootSound
 --- !u!114 &4866292833427450968
 MonoBehaviour:
   m_ObjectHideFlags: 0

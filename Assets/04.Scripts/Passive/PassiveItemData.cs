@@ -25,6 +25,7 @@ public class PassiveItemData : ScriptableObject, IItemStatData
 
     public string GetName() => itemName;
     public Sprite GetIcon() => icon;
+    public int GetMaxLevel() => maxLevel;
 
     public string GetDescription(int level)
     {

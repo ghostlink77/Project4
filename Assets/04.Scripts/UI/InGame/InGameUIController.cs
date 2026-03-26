@@ -61,7 +61,6 @@ public class InGameUIController : MonoBehaviour
     [Header("LevelUpBtns")]
     [SerializeField] private Button[] _itemSelectBtns;
 
-    [SerializeField] private string[] _selectedItemName = new string[3];
 
     [SerializeField] private DamageTextSpawner _damageTextSpawner;
     [SerializeField] private HpUISpawner _hpUISpawner;
@@ -101,7 +100,6 @@ public class InGameUIController : MonoBehaviour
         InGameManager.Instance.PlayerGameOverAction += EndGame;
         InGameManager.Instance.PlayerWinAction += PlayerWinEndGame;
 
-        UpdateInventory();
 
     }
 
@@ -156,13 +154,13 @@ public class InGameUIController : MonoBehaviour
         {
             _turretSelectUI.UnSetTurret();
         }
-        else if (Input.GetMouseButtonDown(2) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
+        else if (Input.GetMouseButtonDown(0) && _turretSelectUI.IsSetting == true && InGameManager.Instance.GameStat == GameStat.Play)
         {
             _turretSelectUI.PlaceTurret();
         }
     }
 
-    private void OpenTurretSelectUI()
+    public void OpenTurretSelectUI()
     {
         if (_turretSelectUI != null)
         {
@@ -369,77 +367,62 @@ public class InGameUIController : MonoBehaviour
         _scrapAmountText.text = amount.ToString();
     }
 
-    // ---- [이하 기존 아이템/미니맵 관련 코드들도 안전하게 방어막 추가] ----
     private void UpdateSelectableItemInUI()
     {
-        Array.Clear(_selectedItemName, 0, _selectedItemName.Length);
+        if (DataTableManager.Instance == null || PlayerManager.Instance == null) return;
 
-        for (int index = 0; index< _itemSelectBtns.Length; index++)
+        var excludedNames = new HashSet<string>();
+        List<IItemStatData> availableItems = DataTableManager.Instance.GetAllSelectableItems(excludedNames);
+
+        // NOTE: 셔플 후 버튼 수만큼 꺼내기
+        for (int i = availableItems.Count - 1; i > 0; i--)
         {
-            float itemTypeIndex = UnityEngine.Random.Range(0, _itemSelectBtns.Length);
-            switch (itemTypeIndex)
+            int randomIndex = UnityEngine.Random.Range(0, i + 1);
+            (availableItems[i], availableItems[randomIndex]) = (availableItems[randomIndex], availableItems[i]);
+        }
+
+        for (int i = 0; i < _itemSelectBtns.Length; i++)
+        {
+            if (_itemSelectBtns[i] == null) continue;
+
+            if (i < availableItems.Count)
             {
-                case 0:
-                    UpdateSelectableItemBtn<WeaponStatData>(index);
-                    break;
-                case 1:
-                    UpdateSelectableItemBtn<PassiveItemData>(index);
-                    break;
-                case 2:
-                    UpdateSelectableItemBtn<TurretData>(index);
-                    break;
-                default:
-                    break;
+                SetupItemSelectBtn(i, availableItems[i]);
+            }
+            else
+            {
+                _itemSelectBtns[i].gameObject.SetActive(false);
+                _itemSelectBtns[i].onClick.RemoveAllListeners();
             }
         }
-        /*UpdateSelectableItemBtn<WeaponStatData>(0);
-        UpdateSelectableItemBtn<PassiveStatData>(1);
-        UpdateSelectableItemBtn<TurretData>(2);*/
     }
 
-    private void UpdateSelectableItemBtn<T>(int index) where T : IItemStatData
+    private void SetupItemSelectBtn(int index, IItemStatData itemData)
     {
-        if (DataTableManager.Instance == null) return;
-
-        T newItemData = DataTableManager.Instance.GetSelectableItem<T>(_selectedItemName);
-        if (EqualityComparer<T>.Default.Equals(newItemData, default(T)))
-        {
-            _itemSelectBtns[index].gameObject.SetActive(false);
-            _itemSelectBtns[index].onClick.RemoveAllListeners();
-            return;
-        }
-
         _itemSelectBtns[index].gameObject.SetActive(true);
-
-        _selectedItemName[index] = newItemData.GetName();
         _itemSelectBtns[index].interactable = true;
 
-        if (PlayerManager.Instance == null) return;
-        int currentItemLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot<T>(newItemData);
-
-        int ItemLevel = 1;
-        if (currentItemLevel != -1)
-        {
-            ItemLevel = currentItemLevel + 1;
-        }
+        int currentLevel = PlayerManager.Instance.PlayerItemController.GetItemLevelInSlot(itemData);
+        int ItemLevel = (currentLevel == -1) ? 1 : currentLevel + 1;
 
         if (_itemSelectBtnDatas.Length > index)
         {
-            if (_itemSelectBtnDatas[index].ItemNameText != null) _itemSelectBtnDatas[index].ItemNameText.text = newItemData.GetName();
+            if (_itemSelectBtnDatas[index].ItemNameText != null)
+            {
+                _itemSelectBtnDatas[index].ItemNameText.text = itemData.GetName();
+            }
+
             if (_itemSelectBtnDatas[index].ItemImage != null)
             {
-                _itemSelectBtnDatas[index].ItemImage.sprite = newItemData.GetIcon();
+                _itemSelectBtnDatas[index].ItemImage.sprite = itemData.GetIcon();
                 _itemSelectBtnDatas[index].ItemImage.preserveAspect = true;
             }
             if (_itemSelectBtnDatas[index].ItemLevelText != null) _itemSelectBtnDatas[index].ItemLevelText.text = $"Lv{ItemLevel-1} -> Lv{ItemLevel}";
-            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = newItemData.GetDescription(ItemLevel);
+            if (_itemSelectBtnDatas[index].ItemDescriptionText != null) _itemSelectBtnDatas[index].ItemDescriptionText.text = itemData.GetDescription(ItemLevel);
         }
 
-        if (_itemSelectBtns.Length > index && _itemSelectBtns[index] != null)
-        {
-            _itemSelectBtns[index].onClick.RemoveAllListeners();
-            _itemSelectBtns[index].onClick.AddListener(() => OnClickItemSelectBtn<T>(newItemData));
-        }
+        _itemSelectBtns[index].onClick.RemoveAllListeners();
+        _itemSelectBtns[index].onClick.AddListener(() => OnClickItemSelectBtn(itemData));
     }
 
     private void UpdateInventory()
@@ -450,11 +433,11 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
-    private void OnClickItemSelectBtn<T>(T newItemData) where T : IItemStatData
+    private void OnClickItemSelectBtn(IItemStatData itemData)
     {
         if (PlayerManager.Instance != null)
         {
-            PlayerManager.Instance.PlayerItemController.AddItemToSlot<T>(newItemData);
+            PlayerManager.Instance.PlayerItemController.AddItemToSlot(itemData);
             UpdateInventory();
         }
     }
@@ -511,6 +494,7 @@ public class InGameUIController : MonoBehaviour
             InGameManager.Instance.StartGame();
             _inGameUI.SetActive(true);
         }
+        UpdateInventory();
     }
 
     public void ShowFadeOutAnim()

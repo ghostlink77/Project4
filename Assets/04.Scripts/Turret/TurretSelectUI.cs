@@ -3,6 +3,7 @@
  * UI오브젝트에 부착
  */
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class TurretSelectUI : MonoBehaviour
     [SerializeField] private TurretPlacer turretPlacer;
     [SerializeField] private Image _setImage;
     [SerializeField] private GameObject _panel;
+    [SerializeField] private GameObject _settingKeyExplaneObj;
     private Camera _mainCamera;
     private Animator _anim;
 
@@ -32,6 +34,7 @@ public class TurretSelectUI : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _setImage?.gameObject.SetActive(false);
+        _settingKeyExplaneObj?.SetActive(false);
         gameObject.SetActive(true);
         _panel?.SetActive(false);
         _anim = GetComponent<Animator>();
@@ -96,9 +99,17 @@ public class TurretSelectUI : MonoBehaviour
             _setImage.sprite = Resources.Load<Sprite>($"{PATH}/{name}");
             _setImage.gameObject.SetActive(true);
         }
-        IsSetting = true;
+        StartCoroutine(DelaySetting());
 
         _selectedTurretName = name;
+        _settingKeyExplaneObj?.SetActive(true);
+    }
+
+    private IEnumerator DelaySetting()
+    {
+        yield return null;
+
+        IsSetting = true;
     }
 
     public void PlaceTurret()
@@ -120,6 +131,7 @@ public class TurretSelectUI : MonoBehaviour
         _panel?.SetActive(false);
         _setImage?.gameObject.SetActive(false);
         IsSetting = false;
+        _settingKeyExplaneObj?.SetActive(false);
     }
 
     public void Show()

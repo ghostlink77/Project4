@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8632266580077319241}
@@ -214,7 +214,7 @@ MonoBehaviour:
   _damage: 3
   _damageDelay: 0.1
   _speed: 0.67
-  _maxHp: 600
+  _maxHp: 2000
   _enemyType: 4
   _expDropAmount: 35
   _hitColor: {r: 1, g: 0, b: 0, a: 1}

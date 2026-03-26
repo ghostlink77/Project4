@@ -16,6 +16,7 @@ MonoBehaviour:
   icon: {fileID: 2109234943996966913, guid: 96fbc46e4fbda4050ab9387e06183afc, type: 3}
   projectilePrefab: {fileID: 2687196738428583231, guid: 72677ec0a9a78482f878bc6f1e28ce11, type: 3}
   level: 1
+  maxLevel: 8
   type: 1
   damage:
   - 3
