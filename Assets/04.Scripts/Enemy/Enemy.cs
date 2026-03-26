@@ -219,7 +219,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (_enemyType == EnemyType.Boss)
         {
-            Debug.Log("보스 처치! 게임 클리어!");
             InGameManager.Instance.PlayerWinAction?.Invoke();
         }
 

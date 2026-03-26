@@ -60,7 +60,6 @@ public class EnemySpawnPoint : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("EnemySpawner not found in the scene.");
             }
         }
     }

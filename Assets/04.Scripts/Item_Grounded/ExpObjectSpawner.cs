@@ -32,7 +32,6 @@ public class ExpObjectSpawner : SingletonBehaviour<ExpObjectSpawner>
         }
         else
         {
-            Debug.LogError("Failed to load ExpObject prefab.");
         }
 
         CreatePool();

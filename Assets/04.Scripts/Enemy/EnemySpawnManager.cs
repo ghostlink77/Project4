@@ -62,13 +62,11 @@ public class EnemySpawnManager : MonoBehaviour
 
         if (wave.isBoss)
         {
-            Debug.Log("보스 스테이지 시작");
             EnemySpawner.Instance.DestroyAll();
         }
 
         if (wave.spawnPointConfigs == null || wave.spawnPointConfigs.Length == 0)
         {
-            Debug.LogWarning("Wave에 SpawnPointConfig가 설정되지 않았습니다.");
             return;
         }
 
@@ -76,7 +74,6 @@ public class EnemySpawnManager : MonoBehaviour
         {
             if (config.spawnPointIndex < 0 || config.spawnPointIndex >= _spawnPoints.Count)
             {
-                Debug.LogWarning($"유효하지 않은 스폰포인트 인덱스: {config.spawnPointIndex}");
                 continue;
             }
 
@@ -86,7 +83,6 @@ public class EnemySpawnManager : MonoBehaviour
             spawnPoint.StartSpawn(config.enemyType, interval, count, wave.isBoss);
         }
 
-        Debug.Log($"Wave {_waveIndex} 적용: {wave.spawnPointConfigs.Length}개 스폰포인트 활성화");
     }
 
     public void StopSpawnAllPoints()

@@ -28,7 +28,6 @@ public class Agit : MonoBehaviour, IDamageable
         if (isDestroyed) return;
 
         currentHP = Mathf.Max(0, currentHP - damage);
-        Debug.Log($"아지트 피해: {damage} | 남은 HP: {currentHP}/{maxHP}");
 
         InGameManager.Instance.InGameUIController.UpdateAgitHpBar(currentHP, maxHP);
         ShowDamagedAnim();
@@ -75,7 +74,6 @@ public class Agit : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1f);
 
         // 게임 오버 처리
-        Debug.Log("Agit Destroyed! Game Over.");
     }
 
     IEnumerator MoveCameraToAgit()

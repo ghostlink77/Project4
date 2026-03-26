@@ -38,7 +38,6 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
         if (_agitRigidbody == null)
         {
-            Debug.LogError("[EnemySpawner] Rigidbody2D를 가진 Agit 오브젝트를 찾을 수 없습니다!");
         }
     }
 
@@ -49,7 +48,6 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
 
         await handle.Task;
 
-        Debug.Log($"적 프리팹 로드 완료: {handle.Result.Count}개");
         foreach (var prefab in handle.Result)
         {
             _enemyPrefabs[prefab.name] = prefab;
@@ -63,7 +61,6 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
         foreach (var kvp in _enemyPrefabs)
         {
             string enemyType = kvp.Key;
-            Debug.Log($"적 프리팹 로드: {enemyType}");
             GameObject prefab = kvp.Value;
 
             var pool = new ObjectPool<GameObject>(
@@ -76,14 +73,12 @@ public class EnemySpawner : SingletonBehaviour<EnemySpawner>
                 maxSize: MaxSize);
             _enemyPools.Add(enemyType, pool);
         }
-        Debug.Log($"적 풀 {_enemyPools.Count}개 생성 완료");
     }
 
     public GameObject SpawnEnemy(string enemyType, Vector3 position)
     {
         if (!_enemyPrefabs.ContainsKey(enemyType))
         {
-            Debug.LogError($"Enemy type '{enemyType}' not found!");
             return null;
         }
 
