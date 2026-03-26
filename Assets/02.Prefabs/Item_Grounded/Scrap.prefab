@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e5c5706ef16d24743bbef5ad2fe68862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scrap
   _defaultSpeed: 2
   _acceleration: 5
+  _arrivalDistance: 0.2
