@@ -7,11 +7,11 @@ public class ConfigUI : BaseUI
 {
     [SerializeField] private GameObject MasterVolumeObj;
 
-    [Header("Sliders")]
-    [SerializeField] private Slider _masterSlider;
-    [SerializeField] private Slider _bgmSlider;
-    [SerializeField] private Slider _uiSFXSlider;
-    [SerializeField] private Slider _gameSFXSlider;
+    [Header("Config Buttons")]
+    [SerializeField] private ConfigButton _masterSoundBtn;
+    [SerializeField] private ConfigButton _bgmSoundBtn;
+    [SerializeField] private ConfigButton _uiSFXSoundBtn;
+    [SerializeField] private ConfigButton _gameSFXSoundBtn;
 
     [SerializeField] private CanvasGroup _canvasGroup;
 
@@ -59,50 +59,29 @@ public class ConfigUI : BaseUI
     }
     private void SetupSound(bool isUp)
     {
+        if (EventSystem.current.currentSelectedGameObject == null) return;
+
         if (EventSystem.current.currentSelectedGameObject.TryGetComponent<ConfigButton>(out ConfigButton component))
         {
             ConfigButton currentBtn = component;
 
-            if (currentBtn.BtnType == BtnType.BGMSoundBtn)
+            if (currentBtn.BtnType == BtnType.BGMSound)
             {
-                if (isUp)
-                    _bgmSlider.value += _defaultSoundValueScale;
-                else
-                    _bgmSlider.value -= _defaultSoundValueScale;
+                _bgmSoundBtn.SetValue(isUp);
             }
-            else if (currentBtn.BtnType == BtnType.MasterSoundBtn)
+            else if (currentBtn.BtnType == BtnType.MasterSound)
             {
-                if (isUp)
-                    _masterSlider.value += _defaultSoundValueScale;
-                else
-                    _masterSlider.value -= _defaultSoundValueScale;
+                _masterSoundBtn.SetValue(isUp);
             }
-            else if (currentBtn.BtnType == BtnType.UISoundBtn)
+            else if (currentBtn.BtnType == BtnType.UISFXSound)
             {
-                if (isUp)
-                    _uiSFXSlider.value += _defaultSoundValueScale;
-                else
-                    _uiSFXSlider.value -= _defaultSoundValueScale;
+                _uiSFXSoundBtn.SetValue(isUp);
             }
-            else if (currentBtn.BtnType == BtnType.CharSoundBtn)
+            else if (currentBtn.BtnType == BtnType.SFXSound)
             {
-                if (isUp)
-                    _gameSFXSlider.value += _defaultSoundValueScale;
-                else
-                    _gameSFXSlider.value -= _defaultSoundValueScale;
+                _gameSFXSoundBtn.SetValue(isUp);
             }
-            SetVolume();
         }  
-    }
-
-
-
-    public void SetVolume()
-    {
-        AudioManager.Instance.SetVolumeMixer(_gameSFXSlider.value, "SFX");
-        AudioManager.Instance.SetVolumeMixer(_masterSlider.value, "Master");
-        AudioManager.Instance.SetVolumeMixer(_bgmSlider.value, "BGM");
-        AudioManager.Instance.SetVolumeMixer(_uiSFXSlider.value, "UISFX");
     }
 
     public void EndFadeIn()

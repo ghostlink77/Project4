@@ -63,7 +63,7 @@ public class TurretSelectUI : MonoBehaviour
 
     private void Update()
     {
-        if (IsSetting)
+        if (IsSetting && InGameManager.Instance.GameStat == GameStat.Play)
         {
             Vector3 mouseScreenPos = Input.mousePosition;
             mouseScreenPos.z = CAMERA_DISTANCE;

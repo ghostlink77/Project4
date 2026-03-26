@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public enum BtnType
 {
-    BGMSoundBtn,
-    MasterSoundBtn,
-    UISoundBtn,
-    CharSoundBtn,
+    BGMSound,
+    MasterSound,
+    UISFXSound,
+    SFXSound,
 }
 
 
@@ -19,7 +19,10 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     [SerializeField] private Animator _selectedImageAnim;
     [SerializeField] private TextMeshProUGUI _btnNameText;
     [SerializeField] private TextMeshProUGUI _sliderValueText;
-    public Slider Slider;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private float _defaultSoundValueScale = 0.01f;
+    public Slider Slider { get { return _slider; } }
+
 
     [SerializeField] private bool _isFirst;
 
@@ -32,15 +35,33 @@ public class ConfigButton : MonoBehaviour, ISelectHandler, IDeselectHandler, IPo
     private static readonly int SHOW_BTN = Animator.StringToHash("showBtn");
     private void Awake()
     {
-        if (Slider != null)
-            Slider.value = 1f;
+        if (_slider != null)
+            _slider.value = 1f;
 
+        SetValueText();
+    }
+
+    public void SetValue(bool isUp)
+    {
+        if (isUp)
+        {
+            _slider.value = Mathf.Min(1f, _slider.value + _defaultSoundValueScale);
+        }
+        else
+        {
+            _slider.value = Mathf.Max(0f, _slider.value - _defaultSoundValueScale);
+        }
+    }
+
+    public void SetVolume()
+    {
+        AudioManager.Instance.SetVolumeMixer(_slider.value, BtnType.ToString());
         SetValueText();
     }
 
     public void SetValueText()
     {
-        _sliderValueText.text = ((int)(Slider.value * 10)).ToString();
+        _sliderValueText.text = ((int)(_slider.value * 10)).ToString();
     }
 
     private void OnEnable()
