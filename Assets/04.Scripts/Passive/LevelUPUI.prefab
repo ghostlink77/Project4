@@ -62,6 +62,10 @@ PlayableDirector:
     value: {fileID: 7991837000509727365}
   - key: {fileID: 8239724763879458085, guid: c290e3061ad14324fa74857440fe2b72, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4637240155136732786, guid: c290e3061ad14324fa74857440fe2b72, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5798192824511719746, guid: c290e3061ad14324fa74857440fe2b72, type: 2}
+    value: {fileID: 8156399414737948903}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &149354677028706029
@@ -642,6 +646,7 @@ GameObject:
   - component: {fileID: 711670306336789905}
   - component: {fileID: 1310333870540387233}
   - component: {fileID: 8156399414737948903}
+  - component: {fileID: 7790902849949925607}
   m_Layer: 5
   m_Name: LevelUPUI
   m_TagString: Untagged
@@ -691,6 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _showAnimation: {fileID: 5945278182731388996}
   _hideAnimation: {fileID: 711670306336789905}
+  canvasGroup: {fileID: 7790902849949925607}
 --- !u!320 &711670306336789905
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -718,6 +724,8 @@ PlayableDirector:
     value: {fileID: 2888445859104097589}
   - key: {fileID: -2260789298814534584, guid: ff946684f973fa640bf4f7b46cb742a4, type: 2}
     value: {fileID: 7991837000509727365}
+  - key: {fileID: -6989765111521407020, guid: ff946684f973fa640bf4f7b46cb742a4, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &1310333870540387233
@@ -757,6 +765,8 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 396129191f1775e43bd473cece8930f9, type: 2}
+    - {fileID: 11400000, guid: 118555290c7b79043890c88e80ce77cb, type: 2}
+    - {fileID: 11400000, guid: 04ed6acb8a0ee9a408ac3e48f1a7944a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -772,6 +782,58 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7790902849949925607}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7790902849949925607}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7790902849949925607}
+          m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+--- !u!225 &7790902849949925607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457430659824835108}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2483816088511478609
 GameObject:
   m_ObjectHideFlags: 0
