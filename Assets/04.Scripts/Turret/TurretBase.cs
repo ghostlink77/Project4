@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatController
@@ -9,6 +10,8 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
     private const int StartLevel = 1;
     protected int _level = 1;
     private bool _isInitialized;
+
+    public event Action DestroyTurret;
 
     protected virtual void Start()
     {
@@ -45,7 +48,9 @@ public abstract class TurretBase : MonoBehaviour, IDamageable, IItemStatControll
         {
             TurretManager.Instance.UnregisterPlacedTurret(_turretData.GetName(), this);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        DestroyTurret?.Invoke();
+
     }
 
     public int GetLevel()

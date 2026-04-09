@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] bool isPlaceable = true;
     [SerializeField] GameObject currentTurret;
+    [SerializeField] TurretBase currentTurretBase;
 
     public bool CanPlaceTurret()
     {
@@ -23,16 +24,21 @@ public class Tile : MonoBehaviour
         currentTurret.transform.parent = this.transform;
         isPlaceable = false;
 
+
         InGameManager.Instance.InGameUIController.CreateTurretHpBar(transform);
 
-        return currentTurret.GetComponent<TurretBase>();
+        currentTurretBase = currentTurret.GetComponent<TurretBase>();
+        currentTurretBase.DestroyTurret += RemoveTurret;
+
+        return currentTurretBase;
     }
 
     public void RemoveTurret()
     {
         if (currentTurret != null)
         {
-            Destroy(currentTurret);
+            currentTurretBase.DestroyTurret -= RemoveTurret;
+            Destroy(currentTurretBase.gameObject);
             currentTurret = null;
             isPlaceable = true;
         }
